@@ -1,0 +1,12 @@
+- `lsblk` : visualise les périphériques de stockage et les partitions
+- `blkid` : visualise les détails sur les partitions
+- `df [-h]` : liste les partitions
+- `mount` : visualise les montages
+- `du [-h] [-s] [OPTION] [ENTREE]` : affiche l'occupation d'un répertoire
+- `ncdu` : affiche l'occupation des répertoires avec la possibilité de naviguer dedans
+- `qdirstat` : affiche un treemap du système de fichier
+
+- `zip` : compresse un répertoire
+- `unzip` : décompresse un répertoire
+- `tar [-c] [-x] [-v] [-f]` : archive un répertoire
+- `7z` : compresse avec plusieurs formats

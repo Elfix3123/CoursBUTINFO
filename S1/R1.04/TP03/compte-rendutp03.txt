@@ -1,0 +1,256 @@
+***********************************************
+Felix (Theo) Martins - B2 - TP3 : Redirections, filtres, recherches
+***********************************************
+
+2. Redirections d'entrees/sorties, filtres
+==========================================
+
+1. On copie le repertoire /users/info/pub/1a/R1.04/tp-filtres/ dans notre repertoire TP03 :
+>>> martinst@pc-dg-037-03:~/Documents/R1.04/TP03$ cp -r /users/info/pub/1a/R1.04/tp-filtres/ .
+
+2. La copie a bien ete faite.
+
+2.2 Entrees/sorties standard
+----------------------------
+
+1. On redirige la sortie de la commande ls -l vers un fichier nomme "trace" :
+>>> martinst@pc-dg-037-03:~/Documents/R1.04/TP03$ ls -l > trace
+
+2. Contenu du fichier trace :
+total 8
+-rw-r--r-- 1 martinst infobut1  613 27 sept. 10:12 compte-rendutp03.txt
+drwxr-xr-x 2 martinst infobut1 4096 27 sept. 10:10 tp-filtres
+-rw-r--r-- 1 martinst infobut1    0 27 sept. 10:12 trace
+
+3. On ajoute au fichier "trace" le resultat de la commande ps :
+>>> martinst@pc-dg-037-03:~/Documents/R1.04/TP03$ ps >> trace
+
+4. Contenu du fichier trace :
+total 8
+-rw-r--r-- 1 martinst infobut1  613 27 sept. 10:12 compte-rendutp03.txt
+drwxr-xr-x 2 martinst infobut1 4096 27 sept. 10:10 tp-filtres
+-rw-r--r-- 1 martinst infobut1    0 27 sept. 10:12 trace
+    PID TTY          TIME CMD
+  76197 pts/3    00:00:00 bash
+  79247 pts/3    00:00:00 ps
+
+5.
+>>> martinst@pc-dg-037-03:~/Documents/R1.04/TP03/tp-filtres$ cat mots
+reseau
+bases de donnees
+programmation
+informatique
+systeme
+modelisation
+>>> martinst@pc-dg-037-03:~/Documents/R1.04/TP03/tp-filtres$ cat mots | sort
+bases de donnees
+informatique
+modelisation
+programmation
+reseau
+systeme
+
+Le tube vers le logiciel sort permet de trier chaque ligne par ordre alphabetique.
+
+2.3 Filtres
+-----------
+
+1. 
+>>> martinst@pc-dg-037-03:~/Documents/R1.04/TP03$ getent passwd
+
+2. Pour chaque utilisateur est affiche spn login, son UID, son GID, son nom et son prenom ainsi que l'adresse de son repertoire personnel.
+
+1. Konsole memorise par defaut 1000 lignes.
+
+1. Dans le script liste1a, le filtre grep, qui permet de faire une recherche, est utilise.
+
+2. On execute le script liste1a :
+>>> martinst@pc-dg-037-03:~/Documents/R1.04/TP03/tp-filtres$ ./liste1a
+akopiane:*:105021:212001:AKOPIAN Edwin:/users/info/etu-1a/akopiane:/bin/bash
+bardia:*:104965:212001:BARDI Amyn:/users/info/etu-1a/bardia:/bin/bash
+braitita:*:106912:212001:BRAITIT AYMAN:/users/info/etu-1a/braitita:/bin/bash
+[...]
+
+3. On utilise un tube et le logiciel wc pour compter le nombre de lignes affichees et donc le nombre d'etudiants de 1ere annee connus du systeme :
+>>> martinst@pc-dg-037-03:~/Documents/R1.04/TP03/tp-filtres$ ./liste1a | wc -l
+151
+Il y a 151 etudiants en 1ere annee connus dans le systeme.
+
+4. On n'affiche que les 3 premieres lignes de la liste :
+>>> martinst@pc-dg-037-03:~/Documents/R1.04/TP03/tp-filtres$ ./liste1a | head -n 3
+akopiane:*:105021:212001:AKOPIAN Edwin:/users/info/etu-1a/akopiane:/bin/bash
+bardia:*:104965:212001:BARDI Amyn:/users/info/etu-1a/bardia:/bin/bash
+braitita:*:106912:212001:BRAITIT AYMAN:/users/info/etu-1a/braitita:/bin/bash
+[...]
+
+5.On n'affiche que les 3 dernieres lignes de la liste :
+>>> martinst@pc-dg-037-03:~/Documents/R1.04/TP03/tp-filtres$ ./liste1a | tail -n 3
+faurelu:*:107283:212001:FAURE Lukas:/users/info/etu-1a/faurelu:/bin/bash
+francoue:*:107284:212001:FRANCOU Eddy:/users/info/etu-1a/francoue:/bin/bash
+mbelondm:*:109244:212001:MBELO NDRIAMANAMPY Manohisoa:/users/info/etu-1a/mbelondm:/bin/bash
+[...]
+
+6. L'option du logiciel grep -v MOT permet de chercher les lignes qui ne contiennent pas la chaine MOT.
+
+7. On execute le script liste1a-vrais :
+>>> martinst@pc-dg-037-03:~/Documents/R1.04/TP03/tp-filtres$ ./liste1a-vrais
+On remarque dans la sortie que le compte test iutdeuxt a disparu
+
+8. Avec le logiciel cut, l'option -d permet de definir le caractere qui delimite les differentes colonnes et l'option -f5 precise quelle colonne doit etre affichee.
+
+9. On utilise un tube supplementaire et le filtre sort pour trier les etudiants selon leur nom :
+>>> martinst@pc-dg-037-03:~/Documents/R1.04/TP03/tp-filtres$ ./liste1a-vrais-noms|sort
+ADAM Esteban
+AKOPIAN Edwin
+ALLEGRE Bastien
+[...]
+
+10. On verifier que notre nom est bien dans la liste :
+>>> martinst@pc-dg-037-03:~/Documents/R1.04/TP03/tp-filtres$ ./liste1a-vrais-noms|sort|grep MARTINS
+MARTINS Theo
+
+11. On extrait la liste des prenoms avec une 2eme utilisation du logiciel cut :
+>>> martinst@pc-dg-037-03:~/Documents/R1.04/TP03/tp-filtres$ ./liste1a-vrais-noms|sort|cut -d" " -f2
+Edwin
+Amyn
+AYMAN
+[...]
+
+12. On trie la liste des prenoms :
+>>> martinst@pc-dg-037-03:~/Documents/R1.04/TP03/tp-filtres$ ./liste1a-vrais-noms|cut -d" " -f2|sort
+Adam
+Adam
+Adam
+[...]
+
+13. On supprime les doublons parmi les prenoms :
+>>> martinst@pc-dg-037-03:~/Documents/R1.04/TP03/tp-filtres$ ./liste1a-vrais-noms|cut -d" " -f2|sort|uniq
+Adam
+Adrien
+Aimery
+[...]
+
+14. Grâce a 2 options du logiciel uniq, on fait une liste des prenoms que l'on retrouve plusieurs fois avec leur nombre d'occurrences :
+>>> martinst@pc-dg-037-03:~/Documents/R1.04/TP03/tp-filtres$ ./liste1a-vrais-noms|cut -d" " -f2|sort|uniq -c -d
+      3 Adam
+      2 Adrien
+      2 Antonin
+[...]
+
+15. On trie cette liste par ordre decroissant :
+>>> martinst@pc-dg-037-03:~/Documents/R1.04/TP03/tp-filtres$ ./liste1a-vrais-noms|cut -d" " -f2|sort|uniq -c -d|sort -r
+      3 Thomas
+      3 Paul
+      3 Nolan
+[...]
+
+16. On extrait les prenoms les plus frequents, pour presenter un « Top 10 » des prenoms les plus populaires :
+>>> martinst@pc-dg-037-03:~/Documents/R1.04/TP03/tp-filtres$ echo Top 10 des prenoms les plus populaires :
+>>> ./liste1a-vrais-noms|cut -d" " -f2|sort|uniq -c -d|sort -r|head -n 10
+Top 10 des prenoms les plus populaires :
+      3 Thomas
+      3 Paul
+      3 Nolan
+      3 Lucas
+      3 Adam
+      2 Valentin
+      2 Tristan
+      2 Nils
+      2 Nael
+      2 Lea
+
+17. On extrait les prenoms les plus frequents, pour presenter un « Top 10 » des prenoms les plus populaires du departement informatique :
+>>> martinst@pc-dg-037-03:~/Documents/R1.04/TP03/tp-filtres$ echo Top 10 des prenoms les plus populaires du departement informatique :
+>>> getent passwd | grep '/users/info/' | grep -v 'iutdeuxt' | cut -d':' -f5|cut -d" " -f2|sort|uniq -c -d|sort -r|head -n 10
+Top 10 des prenoms les plus populaires :
+      9 Paul
+      8 Quentin
+      7 Nathan
+      7 Maxime
+      6 Thomas
+      5 Valentin
+      5 Romain
+      5 Arthur
+      5 Antoine
+      5 Alexis
+
+3. Recherche et indexation de fichiers
+======================================
+
+3.1 Recherche de pages de manuel et de logiciels
+------------------------------------------------
+
+1. On cherche tous les logiciels qui permettent de manipuler des fichiers PDF :
+>>> martinst@pc-dg-037-03:~/Documents/R1.04/TP03/tp-filtres$ man -k PDF
+a2ping (1)           - - convert between PS, EPS and PDF and other page description formats
+a5toa4 (1)           - arrange A5 pages in a PDF onto A4 landscape paper
+afmtodit (1)         - create font files for use with groff -Tps and -Tpdf
+[...]
+
+2. On cherche tous les logiciels en rapport avec le langage Java :
+>>> martinst@pc-dg-037-03:~/Documents/R1.04/TP03/tp-filtres$ man -k JAVA
+Log::Log4perl::JavaMap::SyslogAppender (3pm) - wraps Log::Dispatch::Syslog
+acorn (1)            - parse JavaScript file
+ant (1)              - a Java based make tool.
+[...]
+
+3.2 Recherche de fichiers
+-------------------------
+
+1. La commande find avec notre homedir comme argument affiche l'ensemble des entrees de mon repertoire personnel :
+>>> martinst@pc-dg-037-03:~$ find ~
+/users/info/etu-1a/martinst
+/users/info/etu-1a/martinst/.mozilla.back
+/users/info/etu-1a/martinst/.mozilla.back/firefox
+[...]
+
+2. On utilise les logiciels find et wc pour compter le nombre d'entrees presentes dans notre repertoire, ici 6794 :
+>>> martinst@pc-dg-037-03:~$ find ~|wc -l
+6794
+
+3. On utilise les logiciels find et grep, reliees par un tube, pour afficher tous les fichiers source Java contenus dans notre homedir :
+>>> martinst@pc-dg-037-03:~$ find ~ -name *.java
+/users/info/etu-1a/martinst/.vscode/extensions/vscjava.vscode-maven-0.42.0/resources/maven-wrapper/.mvn/wrapper/MavenWrapperDownloader.java
+/users/info/etu-1a/martinst/.vscode/extensions/vscjava.vscode-java-dependency-0.23.1/templates/invisible-project/src/App.java
+/users/info/etu-1a/martinst/.config/Code/User/workspaceStorage/55e727142fda289e65e739cbbdbb19c1/redhat.java
+[...]
+
+4. On ecrire l'enchaînement de logiciels qui permet de trouver combien de fichiers source Java on avez dans notre homedir :
+>>> martinst@pc-dg-037-03:~$ find ~ -name *.java|wc -l
+424
+
+3.3 Indexation des fichiers
+---------------------------
+
+1. On utilise locate pour faire afficher les noms des fichiers contenant des fichiers Java :
+>>> martinst@pc-dg-037-03:~$ locate *.java
+/etc/.java
+/usr/lib/R/site-library/rJava/java/ArrayDimensionException.java
+/usr/lib/R/site-library/rJava/java/ArrayWrapper.java
+[...]
+
+2. Il y a 666 fichiers contenant des fichiers Java :
+>>> martinst@pc-dg-037-03:~$ locate *.java|wc -l
+666
+
+3. On utilise les logiciels locate et grep pour afficher les commandes permettant de lancer les differentes versions de firefox :
+>>> martinst@pc-dg-037-03:~$ locate firefox|grep /bin/
+/usr/bin/firefox-esr
+/usr/local/bin/firefox
+/usr/local/bin/firefox-release
+/usr/local/bin/firefox.real
+
+1. Le fichier Toto.java se trouve dans le repertoire /users/info/pub/1a/R1.04/.repertoire-cache/rep1/rep2/.
+>>> martinst@pc-dg-037-03:~$ ulocate Toto.java
+/users/info/pub/1a/R1.04/.repertoire-cache/rep1/rep2/Toto.java
+
+2. Les signets de Firefox sont situes dans le repertoire ~/.mozilla/firefox/zc7o6hfa.default-release/.
+>>> martinst@pc-dg-037-03:~$ ulocate firefox|grep places
+/users/info/etu-1a/martinst/.mozilla/firefox/zc7o6hfa.default-release/places.sqlite
+/users/info/etu-1a/martinst/.mozilla.back/firefox/a178k9wn.default-release/places.sqlite
+/users/info/etu-1a/martinst/.mozilla.back/firefox/a178k9wn.default-release/places.sqlite-wal
+
+3. Les fichiers de configuration de gedit sont situes dans le repertoire ~/.config/gedit.
+>>> martinst@pc-dg-037-03:~$ ulocate gedit|grep config
+/users/info/etu-1a/martinst/.config/gedit
+/users/info/etu-1a/martinst/.config/gedit/accels

@@ -1,0 +1,2 @@
+<%1000 0110><sub>deux</sub> = <$86><sub>deux</sub> = <262><sub>dix</sub>
+Un bit est un élément, un chiffre d'un donnée en binaire. Un byte, ou un octet, est un ensemble de 8 bits. Les bits qui valent le plus, c'est-à-dire à gauche, sont dit de poids forts, tandis que ceux qui valent le moins, c'est-à-dire à droite, sont dits de poids faible. Quand on fait une table de vérité, on commence par faire varier les bits de poids faible

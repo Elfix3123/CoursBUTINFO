@@ -1,0 +1,6 @@
+# Le Système Européen de Banque Centrale
+Le SEBC est le nom qui qualifie l'organisation des banques dans la zone euro. Dans cette zone, on trouve la **Banque Centrale Européenne**, qui a des satellites dans tous les pays de la zone euro, avec lesquelles elle est en communication étroite. Ces satellites respectent et font respecter aux banques commerciales les directives de la BCE.
+Le **taux repo** qualifie le taux d’intérêts d'une banque centrale. C'est le taux auquel la banque centrale prête aux banques commerciales en quête de liquidités ou pour maîtriser l'inflation.
+Lorsque la BCE augmente les taux d’intérêts directeurs, les coûts de financement des banques augmente, et l'épargne devient plus attractive alors que les intérêts augmentent. Cela entraîne une baisse de la demande et donc de l'inflation.
+On appelle **taux d’intérêts nominal** le taux d’intérêts non corrigé de l'inflation. Le taux d’intérêts corrigé s'appelle le **taux d’intérêts réel, défalqué** de l'inflation.
+Lors que le taux d'intérêts nominal est supérieur à l'inflation, le taux d'intérêts réel est positif et le pouvoir d'achat de l'épargne des ménages augmente. En revanche, si il est inférieur à l'inflation, le taux d’intérêts réel est négatif et le pouvoir d'achat de l'épargne des ménages baisse. 

@@ -1,0 +1,11 @@
+body {
+	color: #ffffff;
+	background-color: #303050;
+}
+
+p{
+	background-color: #505070;
+	width: 50%;
+	margin: left right auto;
+	border : solid #ffffff 2px;
+}

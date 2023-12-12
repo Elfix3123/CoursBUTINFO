@@ -1,0 +1,117 @@
+***********************************************
+Felix (Theo) Martins - B2 - TP6 : Utilisation de machines à distance, transferts de fichiers
+***********************************************
+
+2. Depuis une machine de l'IUT2 sous Windows
+============================================
+
+2.1 Utilisation d'une station Linux à distance avec un shell
+------------------------------------------------------------
+
+3. 
+>>> C:\WINDOWS\system32>ssh martinst@pc-dg-025-05
+The authenticity of host 'pc-dg-025-05 (192.168.141.105)' can't be established.
+ECDSA key fingerprint is SHA256:RKOrkItEwozCDKwBTg+NyzN1BXP6atlLjZ5gxtyq0eI.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'pc-dg-025-05,192.168.141.105' (ECDSA) to the list of known hosts.
+martinst@pc-dg-025-05's password:
+Linux pc-dg-025-05 6.1.0-13-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.55-1 (2023-09-29) x86_64
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+martinst@pc-dg-025-05:~$          
+
+4. Les empreintes sont identiques.
+
+7. Le prompt a bien été modifié.
+
+8.
+>>> martinst@pc-dg-025-05:~$ cd Documents/R1.04/TP02   
+
+9. Le message d'erreur quand on essaye d'ouvrir gedit indique une abscence de moyen d'affichage.
+
+10.
+>>> martinst@pc-dg-025-05:~/Documents/R1.04/TP02$ micro Essai.java
+
+14.
+>>> martinst@pc-dg-025-05:~/Documents/R1.04/TP02$ javac Essai.java
+
+15.
+>>> martinst@pc-dg-025-05:~/Documents/R1.04/TP02$ java Essai.class
+
+2.2 Utilisation d'une station Linux à distance avec un client VNC
+-----------------------------------------------------------------
+
+4. On arrive sur un ecran de connexion.
+
+7. Les logiciels sont plutôt réactifs.
+
+2.3 Utilisation d'une station Linux à distance avec un client X2Go
+------------------------------------------------------------------
+
+5. Les logiciels sont un peu moins réactifs.
+
+3. Depuis une machine personnelle hors IUT2
+===========================================
+
+3.1 Utilisation du serveur transit à distance avec un shell
+-----------------------------------------------------------
+
+1.
+>>> C:\WINDOWS\system32>ssh martinst@transit.iut2.univ-grenoble-alpes.fr
+The authenticity of host 'transit.iut2.univ-grenoble-alpes.fr (193.55.51.227)' can't be established.
+ECDSA key fingerprint is SHA256:RKOrkItEwozCDKwBTg+NyzN1BXP6atlLjZ5gxtyq0eI.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'transit.iut2.univ-grenoble-alpes.fr,193.55.51.227' (ECDSA) to the list of known hosts.
+martinst@transit.iut2.univ-grenoble-alpes.fr's password:
+Linux transit 6.1.0-13-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.55-1 (2023-09-29) x86_64
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Fri Oct 20 15:36:06 2023 from 130.190.75.86
+martinst@transit:~$
+
+3. 
+>>> martinst@transit:~$ who
+martinst pts/0        2023-10-20 16:18 (192.168.12.144)
+ramete   pts/1        2023-10-20 15:56 (130.190.91.29)
+ruffletk pts/2        2023-10-20 15:50 (88.160.41.68)
+lizzia   pts/5        2023-10-20 16:08 (130.190.26.149)
+
+4.
+>>> martinst@transit:~$ free -h
+               total        used        free      shared  buff/cache   available
+Mem:            15Gi       2,6Gi       5,3Gi        23Mi       8,1Gi        13Gi
+Swap:          1,0Gi          0B       1,0Gi
+
+5. Le serveur a 15G de RAM.
+
+6. Le serveur a 2.6G de RAM utilisée.
+
+3.2 Utilisation du serveur transit à distance avec un client VNC
+----------------------------------------------------------------
+
+TRANSIT HS
+
+3.3 Utilisation d'une station Linux à distance avec un client VNC
+----------------------------------------------------------------
+
+1.
+>>> C:\WINDOWS\system32>ssh -f -N -L 5900:pc-dg-025-05:5900 martinst@transit.iut2.univ-grenoble-alpes.fr
+martinst@transit.iut2.univ-grenoble-alpes.fr's password:
+
+4. Les logiciels sont plutôt réactifs.
+
+3.4 Utilisation du serveur transit à distance avec un client X2Go
+-----------------------------------------------------------------
+
+TRANSIT HS
+
+3.5 Transferts de fichiers
+--------------------------
+
+1 à 6. Fait

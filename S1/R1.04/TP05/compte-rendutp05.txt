@@ -1,0 +1,218 @@
+***********************************************
+Felix (Theo) Martins - B2 - TP5 : Permissions Unix, Scripts shell, Liens symboliques
+***********************************************
+
+2. Droits d'accès aux fichiers
+==============================
+
+1.
+>>> martinst@pc-dg-035-13:~$ ls
+ Desktop   Documents   Downloads   Music   Pictures   Public   Templates  't@pc-dg-027-14:~$ kcalc'   Videos
+
+2. 
+>>> martinst@pc-dg-035-13:~/Public$ touch texte.txt; echo texte > texte.txt
+
+3.
+>>> martinst@pc-dg-035-13:~$ chmod g+rx ~
+>>> martinst@pc-dg-035-13:~$ chmod g+rx ~/Public
+
+4. 
+>>> martinst@pc-dg-035-13:~/Public$ chmod g+r texte.txt
+
+6.
+>>> martinst@pc-dg-035-13:~/Public$ cp -r /users/info/pub/1a/R1.04/tp-permissions/* .
+
+7. 
+>>> martinst@pc-dg-035-13:~/Public$ chmod ug+rx exemple-script 
+>>> rtinst@pc-dg-035-13:~/Pubmartinstlic$ chmod ug+rx exemple-script 
+>>> martinst@pc-dg-035-13:~/Public$ ./exemple-script toto
+Bonjour,
+Je suis le script ./exemple-script
+Mon propriétaire est : martinst
+Je suis exécuté par : martinst
+Le paramètre qui m'a été transmis est : toto
+
+8.
+>>> martinst@pc-dg-035-13:/users/info/etu-1a/manjalr/Public/tp-permissions$ ./exemple-script toto
+Bonjour,
+Je suis le script ./exemple-script
+Mon propriétaire est : manjalr
+Je suis exécuté par : martinst
+Le paramètre qui m'a été transmis est : toto
+
+3. Scripts shell
+================
+
+3.1 Variable d'environnement PATH
+---------------------------------
+
+1. 
+>>> martinst@pc-dg-035-13:/users/info/etu-1a/manjalr/Public/tp-permissions$ echo $PATH
+/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/users/info/pub/bin
+
+2. 5 répertoires sont listés dans cette variable.
+
+3. 
+>>> martinst@pc-dg-035-13:/users/info/etu-1a/manjalr/Public/tp-permissions$ PATH=toto
+martinst@pc-dg-035-13:/users/info/etu-1a/manjalr/Public/tp-permissions$ echo $PATH
+toto
+
+4. Un message d'erreur indiquant que la commande n'est pas trouvée s'affiche quand on essaye d'utiliser la commande ls.
+>>> martinst@pc-dg-035-13:/users/info/etu-1a/manjalr/Public/tp-permissions$ ls
+bash: ls: command not found
+
+5. L'adresse du logicie n'est plus indiqué dans le PATH, il est donc necessaire d'indiquer son adresse manuellement.
+>>> martinst@pc-dg-035-13:/users/info/etu-1a/manjalr/Public/tp-permissions$ /bin/ls
+exemple-script
+
+6. La variable PATH est réinitialisée lors qu'on ouvre un autre shell.
+>>> martinst@pc-dg-035-13:~/Documents$ echo $PATH
+/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/users/info/pub/bin
+
+7. 
+>>> martinst@pc-dg-035-13:~/Documents$ mkdir ~/.local/bin/
+
+8. Le nouveau répertoire est maintenant listé dans le PATH.
+>>> martinst@pc-dg-035-13:~/Documents$ echo $PATH
+/users/info/etu-1a/martinst/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/users/info/pub/bin
+
+3.2 Premier script
+------------------
+
+1. 
+>>> martinst@pc-dg-035-13:~/.local/bin$ touch essai-script
+>>> martinst@pc-dg-035-13:~/Documents$ echo '#!/bin/bash
+echo "Ça marche !"' > ../.local/bin/essai-script 
+
+2.
+>>> chmod +x essai-script
+
+3. 
+>>> martinst@pc-dg-035-13:~$ ./.local/bin/essai-script 
+Ça marche !
+
+3.3 Script avec paramètre
+-------------------------
+
+1. 
+>>> martinst@pc-dg-035-13:~$ touch script-param; echo '#!/bin/bash
+echo "La valeur du paramètre est : $1"' > script-param
+
+2. 
+>>> martinst@pc-dg-035-13:~$ ./script-param toto
+La valeur du paramètre est : toto
+
+3.4 Script d'archivage simple
+-----------------------------
+
+1-5. Script :
+#!/bin/bash
+rep='/tmp'
+tar --xz -cvf $rep/archive.tar.xz ~/Documents/R1.01 
+xz -t $rep/archive.tar.xz
+
+3.5 Script d'archivage avec paramètre
+-------------------------------------
+
+1. Script :
+#!/bin/bash
+rep='/tmp'
+echo Archivage du module $1 vers le répertoire $rep
+tar --xz -cvf $rep/archive$1.tar.xz ~/Documents/$1 
+xz -t $rep/archive$1.tar.xz
+
+2. 
+>>> martinst@pc-dg-035-13:~/.local/bin$ ./archivage R1.05
+Archivage du module R1.05 vers le répertoire /tmp
+tar: Removing leading `/' from member names
+/users/info/etu-1a/martinst/Documents/R1.05/
+[...]
+/users/info/etu-1a/martinst/Documents/R1.05/TP02/reqTP2.sql
+
+>>> martinst@pc-dg-035-13:~/.local/bin$ ./archivage R1.04
+Archivage du module R1.04 vers le répertoire /tmp
+tar: Removing leading `/' from member names
+/users/info/etu-1a/martinst/Documents/R1.04/
+[...]
+/users/info/etu-1a/martinst/Documents/R1.04/TP03/trace
+
+3.6 Script d'archivage amélioré
+-------------------------------
+
+1. Script :
+#!/bin/bash
+rep='/tmp'
+XZ_OPT='-9e'
+echo Archivage du module $1 vers le répertoire $rep
+tar --xz -cvf $rep/archive$1.tar.xz ~/Documents/$1 
+xz -t $rep/archive$1.tar.xz
+
+2. On obtien bien une réduction de la taille de l'archive.
+
+3. Script :
+#!/bin/bash
+rep='/tmp'
+XZ_OPT='-9e'
+date=$(date -I)
+echo Archivage du module $1 vers le répertoire $rep
+tar --xz -cvf $rep/archive$date$1.tar.xz ~/Documents/$1 
+xz -t $rep/archive$date$1.tar.xz
+
+4. 
+>>> martinst@pc-dg-035-13:~/.local/bin$ shellcheck archivage
+
+4. Liens symboliques
+====================
+
+4.1 Lien symbolique comme "raccourci" vers un répertoire
+--------------------------------------------------------
+
+1. 
+>>> martinst@pc-dg-025-05:~/Documents/R1.04$ ln -s /users/info/pub/1a/R1.04/ publicR1.04
+
+2. Le fichier s'ouvre bien.
+>>> martinst@pc-dg-025-05:~/Documents/R1.04$ gedit publicR1.04/tp-fichiers/Proverbes.txt 
+
+4.2 Lien symbolique comme "raccourci" vers un logiciel
+------------------------------------------------------
+
+1.
+>>> martinst@pc-dg-025-05:/$ whereis RR1.04-commande-très-longue-à-taper 
+RR1.04-commande-très-longue-à-taper: /users/info/pub/bin/RR1.04-commande-très-longue-à-taper
+
+2. 
+>>> martinst@pc-dg-025-05:~/.local/bin$ ln -s /users/info/pub/bin/RR1.04-commande-très-longue-à-taper ctl
+
+4.3 Lien symbolique pour contrôler des versions de logiciels
+------------------------------------------------------------
+
+2. C'est la version 17.0.8 qui est celle par défaut de Java.
+2.1.
+>>> martinst@pc-dg-025-05:~/.local/bin$ java -version
+openjdk version "17.0.8" 2023-07-18
+OpenJDK Runtime Environment (build 17.0.8+7-Debian-1deb12u1)
+OpenJDK 64-Bit Server VM (build 17.0.8+7-Debian-1deb12u1, mixed mode, sharing)
+2.2. 
+>>> martinst@pc-dg-025-05:/usr/bin$ ls -lh | grep java
+lrwxrwxrwx 1 root   root      22 25 juin   2013 java -> /etc/alternatives/java
+[...]
+>>> martinst@pc-dg-025-05:/usr/bin$ cd /etc/alternatives
+>>> martinst@pc-dg-025-05:/etc/alternatives$ ls -lh | grep java
+[...]
+lrwxrwxrwx 1 root root  43  9 oct.  17:18 java -> /usr/lib/jvm/java-17-openjdk-amd64/bin/java
+[...]
+>>> martinst@pc-dg-025-05:/etc/alternatives$ cd /usr/lib/jvm/java-17-openjdk-amd64/bin/
+>>> martinst@pc-dg-025-05:/usr/lib/jvm/java-17-openjdk-amd64/bin$ ls -lh | grep java
+-rwxr-xr-x 1 root root 15K 24 juil. 11:57 java
+
+3. 
+>>> martinst@pc-dg-025-05:~/.local/bin$ ln -s /usr/lib/jvm/java-21-openjdk-amd64/bin/java java
+
+4. 
+>>> martinst@pc-dg-025-05:~/.local/bin$ ./java -version
+openjdk version "21" 2023-09-19
+OpenJDK Runtime Environment (build 21+35-Debian-1)
+OpenJDK 64-Bit Server VM (build 21+35-Debian-1, mixed mode, sharing)
+
+5.
+>>> martinst@pc-dg-025-05:~/.local/bin$ ln -s /usr/lib/jvm/java-21-openjdk-amd64/bin/javac javac

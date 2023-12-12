@@ -1,0 +1,440 @@
+***********************************************
+Felix (Theo) Martins - B2 - TP1 : Prise en main du shell
+***********************************************
+
+2. Introduction : shell et systeme de fichiers
+==============================================
+
+ctrl+alt+F1 pour le terminal original, ctrl+alt+F7 pour sortir
+
+3. Utilisation de la ligne de commande
+======================================
+
+3.1 Lancer un shell
+-------------------
+
+1.
+
+>>> martinst@pc-dg-033-09:~$ pwd
+/users/info/etu-1a/martinst/
+
+2. 
+
+Le chemin affiche est celui de mon dossier personnel (ou homedir)
+
+3.
+
+Il s'agit du meme chemin que celui affiche par Dolphin.
+
+4.
+
+>>> martinst@pc-dg-027-14:~$ echo ~
+/users/info/etu-1a/martinst
+
+5.
+
+C'est toujours le meme, celui de mon dossier personnel.
+
+3.2 Commandes et parametres
+---------------------------
+
+1. 
+>>> martinst@pc-dg-027-14:~$ ls
+Desktop  Documents  Downloads  Music  Pictures  Public  R1.04  Templates  Videos
+
+2.
+Il existe bien dans mon dosier personnel.
+
+3. 
+>>> martinst@pc-dg-027-14:~$ ls R1.04
+TP01
+>>> martinst@pc-dg-027-14:~$ ls ~/R1.04
+TP01
+>>> martinst@pc-dg-027-14:~$ ls ./R1.04
+TP01
+>>> martinst@pc-dg-027-14:~$ ls /users/info/etu-1a/martinst/R1.04
+TP01
+
+4.
+Pour la premiere et la troisieme commande, le repertoire est relatif puis qu'il depends du repertoire courant.
+Pour la deuxieme et la quatrieme commande, le repertoire est relatif puis qu'il contient un chemin absolu, qui est integre dans le cas de la tilde.
+
+3.3 Sensibilite à la casse et messages d'erreur
+-----------------------------------------------
+
+1. 
+>>> martinst@pc-dg-027-14:~$ ls r1.04
+ls: cannot access 'r1.04': No such file or directory
+
+2. 
+Le shell nous indique que le repertoire auquel on essaie d'acceder n'existe pas.
+
+3.
+>>> martinst@pc-dg-027-14:~$ LS
+bash: LS: command not found
+>>> martinst@pc-dg-027-14:~$ Ls
+bash: Ls: command not found
+
+4. 
+Le shell nous indique que la commande qu'on essaie d'executer n'existe pas.
+
+3.4 Edition de la ligne de commande
+-----------------------------------
+
+3.
+Non, elle ne permet pas de deplacer le curseur.
+
+3.5 Completion automatique
+--------------------------
+
+3.
+Puis qu'il n'existe qu'un repertoire appartenant au repertoire courant commencant par un t, il est possible de completer la commande sans abiguite et le shell complete la commande en ls toto/.
+
+4.
+>>> martinst@pc-dg-027-14:~$ ls R1.0
+R1.01/ R1.04/ 
+Au premier appui, le shell complete autant qu'il peut ce qui est commun aux noms des repertoires appartenant au repertoire courant commencant par un R, c'est-à-dire ls R1.0.
+Au troisieme appui, le shell renvoie une liste des repertoires appartenant au repertoire courant commencant par R1.0, c'est-à-dire R1.01 R1.04.
+
+3.6 Historique du shell
+-----------------------
+
+3. 
+>>> martinst@pc-dg-027-14:~$ echo test
+test
+
+4. 
+>>> martinst@pc-dg-027-14:~$ history
+    1  cd/users/info/etu-1a/martinst/Documents/R1.01/
+    2  ls
+    3  cd Documents
+    4  ls
+    5  cd R1.01
+    6  mkdr TP01
+    7  mkdir TP01
+    8  cd TP01
+    9  cp -r /users/info/pub/lq/R1.01/TP1_Files
+   10  cd ~
+   11  cp -r /users/info/pub/lq/R1.01/TP1_Files
+   12  cd -r /users/info/pub/lq/R1.01/TP1_Files
+   13  cd /users/info/pub/lq/R1.01/TP1_Files
+   14  cp -r /users/info/pub/lq/R1.01/TP1_Files
+   15  ls
+   16  cd Documents/R1.01
+   17  ls
+   18  cd TP01
+   19  cp -r /users/info/pub/lq/R1.01/TP1_Files
+   20  cp -r /users/info/pub/1a/R1.01/TP1_Files
+   21  cd ..
+   22  cp
+   23  cp --help
+   24  cd Documents
+   25  cd R1.01
+   26  cd TP01
+   27  idea &
+   28  cd ..
+   29  pwd
+   30  ls
+   31  cd R1.04
+   32  cd TP01
+   33  ls
+   34  pwd
+   35  echo hello
+   36  echo ~
+   37  ls
+   38  cd ..
+   39  cd Documents
+   40  ls R1.04
+   41  ls ~/R1.04
+   42  cd ..
+   43  ls R1.04
+   44  ls ~/R1.04
+   45  ls ./R1.04
+   46  ls /users/info/etu-1a/martinst/R1.04
+   47  ls
+   48  ls r1.04
+   49  LS
+   50  Ls
+   51  sl
+   52  sl R1.0
+   53  ls R1.0
+   54  echo ~
+   55  echo test
+   56  history
+
+5. On en trouve 4.
+
+3.7 Interruption d’une commande par Ctrl-c
+------------------------------------------
+
+1. martinst@pc-dg-027-14:~$ boucle-infinie
+0
+1
+2
+3
+^C
+
+3. martinst@pc-dg-027-14:~$ kcalc
+^C
+
+4. Le logiciel est ferme par le ctrl-c dans le shell.
+
+3.8 Lancement d’une commande en arriere plan (&)
+------------------------------------------------
+
+1. 
+>>> martinst@pc-dg-027-14:~$ kcalc &
+[1] 52634
+
+3. Oui : l'inclusion du caractere & a la fin de la ligne redonne la main sur le shell.
+
+4. Commandes Unix/Linux de base
+===============================
+
+4.1 Documentation en ligne (man)
+--------------------------------
+
+3.
+ -l     use a long listing format
+
+4. 
+>>> martinst@pc-dg-027-14:~$ ls -l
+total 56
+drwxr-xr-x 2 martinst infobut1  4096  7 sept. 09:45  Desktop
+drwxr-xr-x 5 martinst infobut1  4096 13 sept. 10:00  Documents
+drwxr-xr-x 2 martinst infobut1  4096  7 sept. 10:18  Downloads
+drwxr-xr-x 2 martinst infobut1  4096  7 sept. 08:58  Music
+drwxr-xr-x 2 martinst infobut1  4096  7 sept. 08:58  Pictures
+drwxr-xr-x 2 martinst infobut1  4096  7 sept. 08:58  Public
+drwxr-xr-x 2 martinst infobut1  4096 13 sept. 10:22  R1.01
+drwxr-xr-x 3 martinst infobut1  4096 13 sept. 09:57  R1.04
+drwxr-xr-x 2 martinst infobut1  4096  7 sept. 08:58  Templates
+drwxr-xr-x 2 martinst infobut1  4096 13 sept. 10:23  toto
+-rw-r--r-- 1 martinst infobut1 10264 13 sept. 10:36 't@pc-dg-027-14:~$ kcalc'
+drwxr-xr-x 2 martinst infobut1  4096  7 sept. 08:58  Videos
+
+4.2 Operations sur les repertoires
+----------------------------------
+
+Operations de base
+---
+
+>>> martinst@pc-dg-027-14:~$ pwd
+>>> ls -l
+/users/info/etu-1a/martinst
+total 56
+drwxr-xr-x 2 martinst infobut1  4096  7 sept. 09:45  Desktop
+drwxr-xr-x 5 martinst infobut1  4096 13 sept. 10:00  Documents
+drwxr-xr-x 2 martinst infobut1  4096  7 sept. 10:18  Downloads
+drwxr-xr-x 2 martinst infobut1  4096  7 sept. 08:58  Music
+drwxr-xr-x 2 martinst infobut1  4096  7 sept. 08:58  Pictures
+drwxr-xr-x 2 martinst infobut1  4096  7 sept. 08:58  Public
+drwxr-xr-x 2 martinst infobut1  4096 13 sept. 10:22  R1.01
+drwxr-xr-x 3 martinst infobut1  4096 13 sept. 09:57  R1.04
+drwxr-xr-x 2 martinst infobut1  4096  7 sept. 08:58  Templates
+drwxr-xr-x 2 martinst infobut1  4096 13 sept. 10:23  toto
+-rw-r--r-- 1 martinst infobut1 10264 13 sept. 10:36 't@pc-dg-027-14:~$ kcalc'
+drwxr-xr-x 2 martinst infobut1  4096  7 sept. 08:58  Videos
+
+Ces commandes affichent le nom absolu du repertoire courant et listent de maniere longue les fichiers et repertoires qu'il contient.
+
+>>> martinst@pc-dg-027-14:~$ ls -l R1.04
+total 4
+drwxr-xr-x 2 martinst infobut1 4096 13 sept. 10:00 TP01
+
+Ces commandes listent de maniere longue les repertoires et fichiers contenus dans le repertoire R1.04 du repertoire courant.
+
+>>> martinst@pc-dg-027-14:~$ cd R1.04
+>>> pwd
+>>> ls -l
+/users/info/etu-1a/martinst/R1.04
+total 4
+drwxr-xr-x 2 martinst infobut1 4096 13 sept. 10:00 TP01
+
+Ces commandes nous placent dans le repertoire R1.04 du repertoire courant, affichent le nom absolu du nouveau repertoire courant puis listent les fichierser repertoire qu'il contient.
+inst/R1.04/toto
+total 8
+drwxr-xr-x 2 martinst infobut1 4096 13 sept. 10:43 toto
+drwxr-xr-x 2 martinst infobut1 4096 13 sept. 10:00 TP01
+/users/info/etu-1a/martinst
+
+Cette commabde nous placent dans le repertoire toto du repertoire R1.04 du repertoire courant, affichent son nom absolu, listent de maniere longue les fichiers et dossier que contient le repertoire R1.04, repertoire parent du repertoire courant, nous placent dans le repertoire parant du repertoire parent du repertoire courant, mnotre dossier personne, puis affichent son nom asbolu.
+
+>>> martinst@pc-dg-027-14:~/R1.04$ cd ..
+>>> pwd
+/users/info/etu-1a/martinst
+
+Ces commandes nous placent dans le repertoire parent du repertoire courant puis affichent le nom asbolu du nouveau repertoire courant.
+
+>>>martinst@pc-dg-027-14:~$ cd R1.04
+>>> pwd
+>>> mkdir toto
+>>> cd toto
+>>> pwd
+/users/info/etu-1a/martinst/R1.04/toto
+total 8
+drwxr-xr-x 2 martinst infobut1 4096 13 sept. 10:43 toto
+drwxr-xr-x 2 martinst infobut1 4096 13 sept. 10:00 TP01
+/users/info/etu-1a/martinst
+
+Cette commabde nous placent dans le repertoire toto du repertoire R1.04 du repertoire courant, affichent son nom absolu, listent de maniere longue les fichiers et dossier que contient le repertoire R1.04, repertoire parent du repertoire courant, nous placent dans le repertoire parant du repertoire parent du repertoire courant, mnotre dossier personne, puis affichent son nom asbolu.
+inst/R1.04
+/users/info/etu-1a/martinst/R1.04/toto
+
+Ces commandes nous placent dans le repertoire R1.04 du repertoire courant, affichent le nom absolu du novueau repertoire courant, puis cree dans le repertoire courant un repertoire toto, se placent dans ce repertorie puis affichent le nom absolu du nouveau repertoire courant.
+
+>>> martinst@pc-dg-027-14:~$ cd
+>>> pwd
+/users/info/etu-1a/martinst
+
+Ces commandes nous placent dans notre dossier personnel puis affichent son nom absolu.
+
+>>> martinst@pc-dg-027-14:~$ cd R1.04/toto
+>>> pwd
+>>> ls -l ..
+>>> cd ../..
+/users/info/etu-1a/martinst/R1.04/toto
+total 8
+drwxr-xr-x 2 martinst infobut1 4096 13 sept. 10:43 toto
+drwxr-xr-x 2 martinst infobut1 4096 13 sept. 10:00 TP01
+/users/info/etu-1a/martinst
+
+Cette commabde nous placent dans le repertoire toto du repertoire R1.04 du repertoire courant, affichent son nom absolu, listent de maniere longue les fichiers et dossier que contient le repertoire R1.04, repertoire parent du repertoire courant, nous placent dans le repertoire parant du repertoire parent du repertoire courant, mnotre dossier personne, puis affichent son nom asbolu.
+
+Supprimer un repertoire vide
+---
+
+3.
+>>> martinst@pc-dg-027-14:~$ cd R1.04
+>>> martinst@pc-dg-027-14:~/R1.04$ rmdir toto
+
+4. Il supprime le repertoire mentionne si il existe dans le repertoire courant.
+
+Supprimer un repertoire non vide
+---
+
+1.
+>>> martinst@pc-dg-027-14:~/R1.04$ mkdir rep1
+>>> mkdir rep1/rep2
+>>> rmdir rep1
+rmdir: failed to remove 'rep1': Directory not empty
+
+2.
+Le shell nous indique que le repertoire que l'on tente de supprimer n'est pas vide.
+
+4.
+>>> martinst@pc-dg-027-14:~/R1.04$ rm -r -f rep1
+
+4.3 Operations sur les fichiers
+-------------------------------
+
+La commande cp copie colle un repertoire source vers un repertoire cible.
+La commande cat affiche en une seule fois le fichier texte demande.
+La commande more affiche le fichier texte une ligne à la fois à chaque appui sur la touche entrer.
+La commande less est similaire a la commande more sauf qu'elle permet egalement de scroller pour faire defiler le fichier.
+La commande mv deplace un fichier ou un repertoire dans un autre repertoire. Elle permet egalement de deplacer le contenu d'un fichier texte dans un autre fichier texte.
+
+5 Commandes pour la programmation en Java
+=========================================
+
+3.
+>>> martinst@pc-dg-027-14:~/R1.04/TP01$ ls -l
+total 12
+-rw-r--r-- 1 martinst infobut1 973 13 sept. 10:12 compte-rendu-tp1.txt
+-rw-r--r-- 1 martinst infobut1 618 13 sept. 09:59 compte-rendu-tp1.txt~
+-rw-r--r-- 1 martinst infobut1 131 13 sept. 11:13 Essai.java
+>>> martinst@pc-dg-027-14:~/R1.04/TP01$ javac Essai.java
+>>> martinst@pc-dg-027-14:~/R1.04/TP01$ ls -l
+total 16
+-rw-r--r-- 1 martinst infobut1 973 13 sept. 10:12 compte-rendu-tp1.txt
+-rw-r--r-- 1 martinst infobut1 618 13 sept. 09:59 compte-rendu-tp1.txt~
+-rw-r--r-- 1 martinst infobut1 413 13 sept. 11:14 Essai.class
+-rw-r--r-- 1 martinst infobut1 131 13 sept. 11:13 Essai.java
+>>> martinst@pc-dg-027-14:~/R1.04/TP01$ java Essai
+Bonjour !
+
+4.
+>>> martinst@pc-dg-027-14:~/R1.04/TP01$ ls -l
+>>> javac Essai.java                            
+>>> ls -l                                                        
+>>> java Essai
+total 20
+-rw-r--r-- 1 martinst infobut1 973 13 sept. 10:12 compte-rendu-tp1.txt
+-rw-r--r-- 1 martinst infobut1 618 13 sept. 09:59 compte-rendu-tp1.txt~
+-rw-r--r-- 1 martinst infobut1 413 13 sept. 11:14 Essai.class
+-rw-r--r-- 1 martinst infobut1 137 13 sept. 11:15 Essai.java
+-rw-r--r-- 1 martinst infobut1 131 13 sept. 11:13 Essai.java~
+total 20
+-rw-r--r-- 1 martinst infobut1 973 13 sept. 10:12 compte-rendu-tp1.txt
+-rw-r--r-- 1 martinst infobut1 618 13 sept. 09:59 compte-rendu-tp1.txt~
+-rw-r--r-- 1 martinst infobut1 419 13 sept.  2023 Essai.class
+-rw-r--r-- 1 martinst infobut1 137 13 sept. 11:15 Essai.java
+-rw-r--r-- 1 martinst infobut1 131 13 sept. 11:13 Essai.java~
+
+6. Questions de synthese
+========================
+
+6.1 Commandes de base
+---------------------
+
+1.
+Le nom du repertoire courant est affiche dans le nom de la fenetre, dans le nom de l'onglet ainsi que dans le promp.
+
+2.
+C'est pwd.
+
+3. 
+C'est cd.
+
+4. 
+Afficher le contenu d'un fichier : cat [nomDuFichier], more [nomDuFichier] et less [nomDuFichier]
+Affichier le contenu d'un repertoire : ls [-l pour la version longue] [adresseDuRepertoire]
+Creer un repertoire : mkdir [adresse du repertoire]
+Supprimer un fichier : rm [adresseDuFichier]
+Supprimer un repertoire : rmdir [adresseDuRepertoire] pour un repertoire vide, rm -r(supprime recursivement) -f(force la supression) [adresseDuRepertoire]
+Copier un fichier : cp [adresseDuFichierSource] [adresseDuRepertoireCible]
+Copier un repertoire : cp [adresseDuRepertoireSource] [adresseDuRepertoireCible]
+Deplacer un fichier : mv [adresseDuFichierSource] [adresseDuRepertoireCible]
+Deplacer un repertoire : mv [adresseDuRepertoireSource] [adresseDuRepertoireCible]
+Renommer un fichier : mv [adresseDuFichier] [AdresseDuRepertoireParent/nouveauNom]
+Renommer un repertoire : mv [adresseDuRepertoire] [AdresseDuRepertoireParent/nouveauNom]
+
+6.2 Designation de fichiers
+---------------------------
+
+1.
+C'est martinst.
+
+2.
+/users/info/etu-1a/martinst
+
+3.
+Chemin d'acces absolu complet depuis la racine du systeme de fichiers:
+exo1.java : /users/info/etu-1a/martinst/Rx.y/tp01/exo1.java
+exo2.java : /users/info/etu-1a/martinst/exo2.java
+tp01 : /users/info/etu-1a/martinst/Rx.y/tp01/
+
+Chemin d'acces absolu abrege utilisant l'abreviation ~:
+exo1.java : ~/Rx.y/tp01/exo1.java
+exo2.java : ~/exo2.java
+tp01 : ~/Rx.y/tp01/
+
+Chemin d'acces relatif en supposant que le repertoire courant est votre homedir ~:
+exo1.java : Rx.y/tp01/exo1.java
+exo2.java : exo2.java
+tp01 : Rx.y/tp01/
+
+Chemin d'acces relatif en supposant que le repertoire courant est ~/Rx.y:
+exo1.java : tp01/exo1.java
+exo2.java : ../exo2.java
+tp01 : tp01/
+
+Chemin d'acces relatif en supposant que le repertoire courant est ~/Rx.y/tp01:
+exo1.java : exo1.java
+exo2.java : ../../exo2.java
+tp01 : .
+
+4.
+~/: mv exo2.java Rx.y/tp01/
+~/Rx.y/: mv ~/exo2.java tp01/
+~/Rx.y/tp01/ : mv ~/exo2.java .

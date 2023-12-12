@@ -1,0 +1,51 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+main {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+img {
+  border-radius: 0.5em;
+}
+
+figure {
+  margin: 0;
+}
+
+figcaption {
+  color: blue;
+  text-align: center;
+  font-weight: bold;
+  padding: 1em;
+}
+
+p {
+  width: 230px;
+  border: 2px solid orangered;
+  border-radius: 5px;
+  padding: 10px;
+  margin: auto;
+  box-sizing: border-box;
+}
+
+div{
+  position: relative;
+}
+
+.badge{
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: rgba(128, 128, 64, 0.8);
+  color: white;
+  padding: 0.6em;
+  border-radius: 0 8px 0 5px;
+}
+
+.badge:hover{
+  background-color: yellowgreen;
+}

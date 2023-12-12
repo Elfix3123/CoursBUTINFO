@@ -1,0 +1,30 @@
+# Qu'est-ce que la croissance ?
+Le principal problème des sciences économique réside dans l'étude de la manière dont les richesses croissent. La croissance est une augmentation **soutenue** et **durable** de la production d'un pays. Elle agit en profondeur sur les dynamiques sociétales, autant sociales que professionnelles. Une croissance positive est généralement en lien avec une augmentation du niveau de vie et des libertés individuelles et collectives. La croissance économique est :
+- **Extensive** lorsque le volume des facteurs de production, c'est-à-dire la main d'œuvre, les moyens de production et les matières premières, augmente.
+- **Intensive** lorsque c'est une meilleure efficacité de la production, due au progrès technique ou d'une hausse de qualité des facteurs de production, qui permet d'augmenter la productivité.
+# Le PIB
+Le principal indicateur de la croissance est le Produit Intérieur Brut. Il correspond à la somme de toutes les productions, marchandes ou non marchandes. On la mesure en faisant la somme de toutes les valeurs ajoutées, c'est à dire le prix de vente moins le prix des consommations intermédiaires, des organisations installées sur le territoire national. La production est l'activité économique socialement organisée qui consiste a produire des biens ou des services destinés à un marché […]. La production doit provenir d'activités légales, déclarées, et créant des biens et des services qui rémunèrent. 
+On différencie la production marchande et non-marchande, ainsi que les services quasi-gratuits, échangés conte une contribution inférieure à 50% de leur coût de production. Les biens vendus à moins de 50% de leur coût de production sont considérés comme des services quasi-gratuits.
+Le taux de croissance du PIB peut être calculé :
+
+- A **prix courant**, qui prend en compte l'inflation, c'est-à-dire le taux de croissance en valeur.
+- A **prix constant**, qui est corrigée de l'inflation, c'est-à-dire le taux de croissance en volume.
+La croissance correspond à la seule évolution des quantités produites, c'est-à-dire du PIB à prix constant.
+
+On peut calculer le PIB par habitant afin de mesurer le pouvoir d'achat moyen de l'habitant.
+Le PIB a plusieurs avantages : il permet d'éviter les doubles comptages et ne prend en compte que la création de valeur. Cependant, il a plusieurs limites : il ne prend pas en compte les influences négatives comme l'écologie et ne comprend pas les éléments non comptabilisables comme les machés noir, le bénévolat… En outre, il ne mesure pas le bien être individuel.
+# A quoi sert la richesse produite ?
+Dans la richesse produite, deux tiers servent à rémunérer les travailleurs, et le dernier revient aux entreprises et aux administrations publiques. Les ménages utilisent ces fonds pour consommer ou épargner. Les entreprises utilisent leur profit pour financer leurs production, et les administrations publiques s'en servent pour financer les investissements publics. La croissance du PIB représente ainsi également la croissance des fonds qui sont partagés entre les acteurs économiques. 
+# D'autres indices sur la croissance
+Le développement économique se distingue de la croissance économique dans le sens où celui-ci est durable et participe au développement national : il est qualitatif. La croissance semble indispensable au développement puis que la richesse produite permet d'investir dans l'éducation, la santé… Il existe plusieurs indicateurs autre que le PIB qui ont pour but de rendre compte de l'état d'un pays de manière plus précise :
+- L'**Indice de Développement Humain** est un indicateur qui est calculé chaque année pour chaque pays et qui prend en compte le PIB par habitant, le niveau d'instruction et l'espérance de vie. Il est compris entre 0 et 1, 1 rendant compte de revenus confortables pour la population et d'un système de santé et d'éducation exceptionnel. 
+- L'**Indice de Pauvreté Humaine**, qui prend en compte la longévité, le taux d'alphabétisation, le pourcentage de la population d'utilisant pas une eau potable traitée et le pourcentage d'enfants souffrant d'une insuffisance pondérale. Les seuils sont différents pour les pays en développement et les pays développés. 
+- L'**Indice de bien-être économique** prend en compte les flux effectifs de consommation par habitant.
+- L'**empreinte écologique** mesure la surface de la planète en hectares dont une population a besoin afin de satisfaire son mode de vie et absorber ses déchets.
+- L'**indice de richesse global** intègre au PIB d'un pays son patrimoine écologique.
+- L'**empreinte carbone**, qui représente la quantité de GES émise par la demande d'un pays. Elle est donc composée des émissions directes des ménages, des émissions de la production intérieure et extérieure, ainsi que des émissions associées aux productions importées.
+- La **Croissance Potentielle** est la croissance que l'économie peut maintenir à long terme, hors effet de court terme lié à un écart entre la demande est le niveau potentiel de l'offre. Ses déterminants sont la population en âge de travailler, le taux d'emploi ainsi que les tendances de croissance de la productivité au travail.
+
+La croissance économique permet de mesurer l'évolution d'un pays mais pas la répartition de cette évolution. Or, la croissance économique n'est pas homogène : les pays émergeants, en particulier les BRICS, sont ceux qui se sont le plus enrichis, tandis que les pays développés ont une croissance ralentie.
+# Croissance et épuisement des ressources naturelles
+Les pays émergeants veulent rattraper le niveau des pays développés, tandis que les pays développés souhaitent maintenir leur croissance. De ce fait, les ressources naturelles supportent une pression importante et deviennent l'enjeu de tensions entre pays. Tous les pays industrialisés exercent une pression sur l'environnement. Plus ce développement est élevé, plus l'empreinte est importante. L'humanité vit à crédit, elle dépense davantage de ressources que ce que la nature peut produire. C'est la consommation d'énergie fossile qui pèse le plus dans l'empreinte écologique. 

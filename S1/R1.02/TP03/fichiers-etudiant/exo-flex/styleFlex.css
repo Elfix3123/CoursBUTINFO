@@ -1,0 +1,25 @@
+article {
+  flex-direction: row;
+  align-items: end;
+  background-color: lightgrey;
+  border: 1px solid gray;
+  height: 600px;
+  display: flex;
+}
+
+article section {
+  flex-basis: 300px;
+}
+
+article section:first-child {
+  flex-grow: 2;
+  background-color: cornflowerblue;
+}
+
+article section:nth-child(2) {
+  background-color: green;
+}
+
+article section:last-child {
+  background-color: red;
+}

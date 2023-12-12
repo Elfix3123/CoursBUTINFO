@@ -1,0 +1,179 @@
+/*Ajouter ci-dessous les règles pour body */
+
+body {
+  font-family: Arial, Verdana, sans-serif;
+  font-size: 0.9em;
+  color: #4D4D4D;
+  margin: 50px;
+  background-image: url("bg-198-198.png");
+  counter-reset: h1 h2 h3;
+}
+
+/*Ajouter ci-dessous les règles pour le header */
+
+header {
+  padding: 10px;
+  background-color: #FF623F;
+}
+
+h1 {
+  text-decoration: underline;
+  font-variant: small-caps;
+  text-shadow: 0.2em 0.2em 0.2em;
+}
+
+h1::before {
+  counter-increment: h1;
+  content: counter(h1) ". ";
+}
+
+h2::before {
+  counter-increment: h2;
+  content: counter(h1) "." counter(h2) ". ";
+}
+
+h3::before {
+  counter-increment: h3;
+  content: counter(h1) "." counter(h2) "." counter(h3) ". ";
+}
+
+/*Ajouter ci-dessous les règles pour la section */
+
+section{
+  padding: 10px;
+  background-color: #00BEFF;
+}
+
+section p{
+  text-align: justify;
+}
+
+p::first-letter{
+  font-size: 1.2em;
+  font-weight: bolder;
+}
+
+/*Ajouter ci-dessous les règles pour les aside */
+
+section + aside{
+  background-color: #FFD900;
+}
+
+aside {
+  padding: 10px;
+  background-color: #FF66B0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+ol {
+  list-style-type: upper-roman;
+}
+
+img {
+  opacity: 0.6;
+}
+
+img:hover {
+  opacity: 1;
+}
+
+table {
+  caption-side: bottom;
+}
+
+caption {
+  color: #00BEFF;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+table, th, td{
+  border: 1px solid #FFD900;
+  border-collapse: collapse;
+}
+
+th {
+  background-color: green;
+  color: white;
+}
+
+th, td {
+  padding: 0.4em;
+}
+
+a {
+  color: blue;
+  text-decoration: underline white;
+}
+
+a:visited {
+  color: purple;
+  text-decoration: underline white;
+}
+
+a:hover {
+  background-color: white;
+  color: blue;
+}
+
+a:active {
+  background-color: white;
+  color: #FF623F;
+}
+
+/*Ajouter ci-dessous les règles pour le footer */
+
+footer {
+  padding: 10px;
+  background-color: #8DF08C;
+}
+
+footer p{
+  font-style: italic;
+}
+
+/***************************/
+/*NE PAS MODIFIER*/
+/*règles de positionnement*/
+
+div {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+div > * {
+  flex: 1 100%;
+}
+
+header,
+footer,
+div > * {
+  border: 1px solid gray;
+}
+
+@media (min-width: 800px) {
+  section {
+    flex: 3 0px;
+  }
+  section + aside {
+    order: 1;
+  }
+  section {
+    order: 2;
+  }
+  aside + aside {
+    order: 3;
+  }
+}
+
+@media (min-width: 600px) {
+  section + aside {
+    flex: 1 auto;
+  }
+  aside + aside {
+    flex: 1 auto;
+  }
+}

@@ -1,0 +1,25 @@
+<mxfile host="Electron" modified="2023-12-06T12:50:16.958Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.1.2 Chrome/114.0.5735.289 Electron/25.9.4 Safari/537.36" etag="uZVJTa0pzJ1R7CL6vl6t" version="22.1.2" type="device">
+  <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
+    <mxGraphModel dx="683" dy="397" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="35l5R2rgI5Nu7lGioXdj-0" value="Fournisseurs" style="rounded=0;whiteSpace=wrap;html=1;fillStyle=auto;sketch=1;curveFitting=1;jiggle=2;strokeColor=#FFFFFF;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="200" y="600" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="35l5R2rgI5Nu7lGioXdj-1" value="Entreprise cliente" style="rounded=0;whiteSpace=wrap;html=1;fillStyle=auto;sketch=1;curveFitting=1;jiggle=2;strokeColor=#FFFFFF;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="590" y="600" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="35l5R2rgI5Nu7lGioXdj-2" value="Service achat" style="rounded=0;whiteSpace=wrap;html=1;fillStyle=auto;sketch=1;curveFitting=1;jiggle=2;strokeColor=#FFFFFF;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="400" y="480" width="116" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="35l5R2rgI5Nu7lGioXdj-3" value="Service approvisionnement" style="rounded=0;whiteSpace=wrap;html=1;fillStyle=auto;sketch=1;curveFitting=1;jiggle=2;strokeColor=#FFFFFF;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="400" y="720" width="116" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="35l5R2rgI5Nu7lGioXdj-4" value="Marchandises" style="rounded=0;whiteSpace=wrap;html=1;fillStyle=auto;sketch=1;curveFitting=1;jiggle=2;strokeColor=#FFFFFF;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="400" y="600" width="116" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

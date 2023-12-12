@@ -1,0 +1,120 @@
+***********************************************
+Felix (Theo) Martins - B2 - TP4 : Espace disque, Quotas, Archivage
+***********************************************
+
+2. Espace disque
+================
+
+2.1 Inventaire des disques et partitions
+----------------------------------------
+
+1.
+>>> martinst@pc-dg-025-15:~/Documents/R1.04/TP04$ lsblk
+NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+nvme0n1     259:0    0 238,5G  0 disk 
+└─nvme0n1p1 259:1    0 238,5G  0 part /
+
+2. Un périphérique de stockage est présent sur la station.
+
+3. Une partition a été définie.
+
+2.2 Taille et remplissage des partitions
+----------------------------------------
+
++----------------------------+----------------------+----------------------+
+| Périphérique de stockage   | Espace total (en GO) | Espace libre (en GO) |
++----------------------------+----------------------+----------------------+
+| SSD de la station          | 234 GO               | 146 GO               |
++----------------------------+----------------------+----------------------+
+| Serveur de fichier erebus4 | 1800 GO              | 1500 GO              |
++----------------------------+----------------------+----------------------+
+
+2. Le type de périphérique local est ext4.
+
+3. Le type de périphérique réseau est nfs4.
+
+2.3 Quotas
+----------
+
++-------------------------+----------------------+--------------------+
+|                         | Place disque (en MO) | Nombre de fichiers |
++-------------------------+----------------------+--------------------+
+| Occupation actuelle     | 845 MO               | 7962               |
++-------------------------+----------------------+--------------------+
+| Quota                   | 1500 MO              | 200000             |
++-------------------------+----------------------+--------------------+
+| Limite                  | 1550 MO              | 205000             |
++-------------------------+----------------------+--------------------+
+| Occupation en fin de TP | 846 MO               | 8023               |
++-------------------------+----------------------+--------------------+
+
+2.4 Espace occupé par une entrée
+--------------------------------
+
+Logiciel de base
+----------------
+
+1. Mon répertoire R1.04 occupe 96 Ko.
+>>> martinst@pc-dg-025-15:~/Documents$ du -h ./R1.04/
+24K     ./R1.04/TP01
+8,0K    ./R1.04/TP04
+28K     ./R1.04/TP02
+20K     ./R1.04/TP03/tp-filtres
+28K     ./R1.04/TP03
+96K     ./R1.04/
+
+2. Mon homedir occupe 826 Mo.
+>>> martinst@pc-dg-025-15:~/Documents$ du -h ~
+4,0K    /users/info/etu-1a/martinst/.mozilla.back/firefox/a178k9wn.default-release/extension-store
+16K     /users/info/etu-1a/martinst/.mozilla.back/firefox/a178k9wn.default-release/datareporting/archived/2023-09
+20K     /users/info/etu-1a/martinst/.mozilla.back/firefox/a178k9wn.default-release/datareporting/archived
+[...]
+826M    /users/info/etu-1a/martinst
+
+3. L'espace disque indiqué par le logiciel du pour votre homedir est à peu près conforme à celui indiqué par la commande quota.
+
+Logiciel amélioré
+-----------------
+
+1.
+>>> martinst@pc-dg-025-15:~$ ncdu
+
+2. Le plus gros répertoire dans mon homedir est /.vscode.
+
+3. Dans ce répertoire, le plus gros sous-répertoire est /extension
+
+Logiciel graphique
+------------------
+
+1.
+>>> martinst@pc-dg-025-15:~$ qdirstat .
+Logging to /tmp/qdirstat-martinst/qdirstat.log
+
+2. Les 3 plus gros fichiers de mon homedir sont des fichiers modules de VSCode ainsi que ~/.config/Code/User/workspaceStorage/55e727142fda289e65e739cbbdbb19c1/redhat.java/jdt_ws/.metadata/.plugins.
+
+2.5 Réduction de la place disque occupée sur l'espace disque du serveur erebus4
+-------------------------------------------------------------------------------
+
+2.
+>>> martinst@pc-dg-025-15:~$ find ~ -name '*.class'
+/users/info/etu-1a/martinst/.config/Code/User/workspaceStorage/55e727142fda289e65e739cbbdbb19c1/redhat.java/jdt_ws/Documents_201ccb12/bin/Point.class
+/users/info/etu-1a/martinst/.config/Code/User/workspaceStorage/55e727142fda289e65e739cbbdbb19c1/redhat.java/jdt_ws/Documents_201ccb12/bin/Triangle_Main.class
+/users/info/etu-1a/martinst/.config/Code/User/workspaceStorage/55e727142fda289e65e739cbbdbb19c1/redhat.java/jdt_ws/Documents_201ccb12/bin/Triangle_Utilitaire.class
+/users/info/etu-1a/martinst/.config/Code/User/workspaceStorage/55e727142fda289e65e739cbbdbb19c1/redhat.java/jdt_ws/Documents_201ccb12/bin/Triangle_Main2.class
+/users/info/etu-1a/martinst/.config/Code/User/workspaceStorage/55e727142fda289e65e739cbbdbb19c1/redhat.java/jdt_ws/Documents_201ccb12/bin/TriangleCompose.class
+/users/info/etu-1a/martinst/.config/Code/User/workspaceStorage/55e727142fda289e65e739cbbdbb19c1/redhat.java/jdt_ws/Documents_201ccb12/bin/TriangleAgrege.class
+
+3. 
+>>> martinst@pc-dg-025-15:~$ rm -i .config/*/*/*/*/*/*/*/*/*.class
+rm: remove regular file '.config/Code/User/workspaceStorage/55e727142fda289e65e739cbbdbb19c1/redhat.java/jdt_ws/Documents_201ccb12/bin/Point.class'? y
+rm: remove regular file '.config/Code/User/workspaceStorage/55e727142fda289e65e739cbbdbb19c1/redhat.java/jdt_ws/Documents_201ccb12/bin/TriangleAgrege.class'? y
+rm: remove regular file '.config/Code/User/workspaceStorage/55e727142fda289e65e739cbbdbb19c1/redhat.java/jdt_ws/Documents_201ccb12/bin/TriangleCompose.class'? y
+rm: remove regular file '.config/Code/User/workspaceStorage/55e727142fda289e65e739cbbdbb19c1/redhat.java/jdt_ws/Documents_201ccb12/bin/Triangle_Main2.class'? y
+rm: remove regular file '.config/Code/User/workspaceStorage/55e727142fda289e65e739cbbdbb19c1/redhat.java/jdt_ws/Documents_201ccb12/bin/Triangle_Main.class'? y
+rm: remove regular file '.config/Code/User/workspaceStorage/55e727142fda289e65e739cbbdbb19c1/redhat.java/jdt_ws/Documents_201ccb12/bin/Triangle_Utilitaire.class'? y
+
+4.
+>>> martinst@pc-dg-025-15:~$ find ~ -name '*.class'
+
+5. 
+>>> martinst@pc-dg-025-15:~$ rm -i ~/*/*/*~

@@ -1,0 +1,12 @@
+# Interfaces graphiques
+Système Linux : texte + shell ou graphique + interface graphique
+Interface Homme Machine (IHM) = Graphical User Interface (GUI)
+Le bureau est composé de bibliothèques et d’applications, et les bibliothèques graphiques définissent tout les objets graphiques (widget) ainsi que leur comportement (look & feel)
+Dans un bureau complet, on trouve un gestionnaire de fenêtres (compositeur), un gestionnaire de tableau de bord, un gestionnaire de fond du bureau, un gestionnaire de fichiers...
+Elles reposent sur un système graphique, comme X Windows System (X11/Xorg) ou Wayland. Wayland et X Windows System sont équivalents.
+Exemples d’interfaces graphiques : KDE/Plasma 5 – simple mais riche, Gnome 3 – peu configurable, MATE et Cinnamon, les héritiers de Gnome 2 qui trouvent Gnome 3 trop minimal, Xfce, LXDE et LXQT, adaptés aux machines ayant peu de ressources. Il existe également d’autres interfaces ainsi que de simple gestionnaires de fenêtres.
+Le modele client-serveur de X11 : les applications graphiques sont clientes d’un logiciel serveur qui tourne sur la console graphique. Elles envoient au serveur des ordres au serveur, qui les traduit en commandes pour le GPU.
+# Gestionnaire de fenêtre
+Le gestionnaire de fenêtre, ou compositeur, est un composant essentiel d’un système graphique. Le gestionnaire de fenêtres est simple, les fenêtres sont rectangulaires et sans effet graphiques. Le compositeur en revanche utilise des effets complexes qui nécessitent un GPU. Dans tous les cas, son rôle est de gérer les fenêtres, leur comportement, en bref le look & feel. La plupart des gestionnaires de fenêtres sont paramétrables dans leurs thèmes graphiques et leur comportement, afin de répondre aux besoin de l’utilisateur. Notons qu’un gestionnaire de fenêtre peut être utilisé sans système graphique.
+Exemples de gestionnaire de fenêtres pour Linux : Kwin, le gestionnaire-compositeur de KDE/Plasma, Metacity, utilisé par GNOME 2, Xfwm, utilisé par Xfce, Compiz, le premier compositeur, qui peut être utilisé par MATE.
+Schéma : Architecture logicielle simplifiée de KDE – Linux utilise X11 ou Wayland, qui utilise la bibliothèque graphique de KDE/Plasma Qt, qui utilise le framework d’applications grahiques KF5.

@@ -1,0 +1,71 @@
+***********************************************
+Felix (Theo) Martins - B2 - TP2 : Jokers, Processus, alias du shell, fichiers caches
+***********************************************
+
+3. Manipuler plusieurs fichiers en une seule commande (Jokers)
+==============================================================
+
+1. La commande qui permet de copier dans TP02 tous les fichiers du repertoire /users/info/pub/1a/R1.04/tp-fichiers/ dont le nom se termine par .java est :
+martinst@pc-dg-037-03:~/Documents$ cp -r /users/info/pub/1a/R1.04/tp-fichiers/*.java ./R1.04/TP02
+
+2. La commande qui permet de copier les fichiers Prg.java, Prg.class et Proverbes.txt dans mon repertoire TP02 est :
+martinst@pc-dg-037-03:~/Documents/R1.04/TP02$ cp /users/info/pub/1a/R1.04/tp-fichiers/P* .
+
+3. La commande qui permet de copier les fichiers toto dont le numero est pair est :
+martinst@pc-dg-037-03:~/Documents/R1.04/TP02$ cp /users/info/pub/1a/R1.04/tp-fichiers/toto[02468] .
+
+4. Processus
+============
+
+4.1 Arborescence de processus
+-----------------------------
+
+1. Les attributs listes par la commande ps -ef sont UID, PID, PPID, C, STIME, TTY, TIME et CMD.
+
+2. Les attributs listes par la commande ps aux sont USER, PID, %CPU, %MEM, VSZ, RSS, TTY, STAT, START, TIME, COMMAND.
+
+4. bash semble etre un processus enfant de konsole puis que le PPID de bash est le PID de konsole.
+
+6. top est interactif et dynamique tandis que ps est fige.
+
+4.2 Processus en avant plan, en arriere plan, suspendu
+------------------------------------------------------
+
+5. Le logiciel reprend ou on l'avait suspendu lors avec la commande fg.
+
+6. Le logiciel reprend en arriere plan avec la commande bg.
+
+2. Le logiciel ne fonctionne plus si il est suspendu depuis le shell.
+
+4.3 Fermeture d'un terminal
+---------------------
+
+4. systemd est le processus parent de kcalc apres qu'on ait tue le shell dans lequel on avait lance kcalc.
+
+6. Il a disparu, gedit ayant ete tue en meme temps que la mort de son processus parent.
+
+5. Utilisation efficace du shell
+================================
+
+5.1 Definir des raccourcis (alias) dans le shell
+------------------------------------------------
+
+4. L'alias qui permet d'afficher la liste detaillee de tous les fichiers, y compris les fichiers caches est alias ll="ls -l -a".
+
+9. La commande alias affiche tous les alias effectifs du shell en cours.
+
+6. Questions diverses
+=====================
+
+6.1 Fichiers caches
+-------------------
+
+1. Pour afficher les fichiers caches dans un logiciel GNOME, il faut faire clic droit dans le gesionnaire de fichier et activer l'option "Show hidden files".
+2. Pour afficher les fichiers caches dans un logiciel KDR, il faut cliquer sur les options en haut a droite et activer l'option "Show hidden files".
+3. Pour afficher les fichiers caches dans Dolphin, il faut activer l'option "Show hidden files" dans le dropdown View.
+
+6.2 Utilisation efficace du pager less
+--------------------------------------
+1. Pour chercher une chaine de caracteres dans less, il faut saisir /{chaine}, par exemple /pere pour rechercher la chaine "pere".
+2. Pour rechercher les occurrences suivantes de cette meme chaine, il faut appuyer sur n.
+3. Pour rechercher les occurrences precedentes de cette meme chaine, il faut appuyer sur maj + n.

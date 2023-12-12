@@ -1,0 +1,194 @@
+***********************************************
+Felix (Theo) Martins - B2 - TP6 : Bilan et rattrapage, Compléments, Applications réseau
+***********************************************
+
+3. Compléments sur le logiciel grep
+===================================
+
+1.
+>>> martinst@pc-dg-027-03:~/Documents/R1.04/publicR1.04/tp-fichiers$ grep père Avare.txt 
+HARPAGON, père de Cléante et d'Elise, et amoureux de Mariane.
+ANSELME, père de Valère et de Mariane.
+ELISE.-- Hélas! cent choses à la fois : l'emportement d'un père, les
+[...]
+
+2. 
+>>> martinst@pc-dg-027-03:~/Documents/R1.04/publicR1.04/tp-fichiers$ grep père Avare.txt | wc -l
+12
+
+3. 
+>>> martinst@pc-dg-027-03:~/Documents/R1.01$ grep -r 'public class' .
+./TP02A/src/Meteo.java:public class Meteo {
+./TP02A/src/Localisation.java:public class Localisation {
+./TP02A/src/Calendrier.java:public class Calendrier {
+
+4. J'ai écrit 40 classes de Java.
+>>> martinst@pc-dg-027-03:~/Documents/R1.01$ grep -r 'public class' . | wc -l
+40
+
+5. J'ai utilisé la classe ArrayList dans les fichiers suivants :
+>>> martinst@pc-dg-027-03:~/Documents/R1.01$ grep -r ArrayList .
+./TP06A/src/InitMonde.java:import java.util.ArrayList;
+./TP06A/src/InitMonde.java:    public static ArrayList<Pays> creerMonde() {
+./TP06A/src/InitMonde.java:        ArrayList<Pays> resultat = new ArrayList<>();
+./TP06A/src/Monde.java:import java.util.ArrayList;
+./TP06A/src/Monde.java:         ArrayList<Pays> leMonde = InitMonde.creerMonde();
+./TP06A/src/Monde.java:         ArrayList<String> lesContinents = new ArrayList<>();
+./TP06A/src/Monde.java:         ArrayList<Pays> vPaysDeCont = Utilitaire.paysDeCont(leMonde, unCont);
+./TP06A/src/Utilitaire.java:import java.util.ArrayList;
+./TP06A/src/Utilitaire.java:    public static int indContinent(ArrayList<String> vCont, String cont) {
+./TP06A/src/Utilitaire.java:    public static boolean existString(ArrayList<String> vString, String uneString) {
+./TP06A/src/Utilitaire.java:    public static ArrayList<Pays> paysDeCont(ArrayList<Pays> vPays, String cont) {
+./TP06A/src/Utilitaire.java:            ArrayList<Pays> resultat = new ArrayList<>();
+./TP06A/src/Utilitaire.java:    public static String saisieCont(ArrayList<String> vCont) {
+./TP05B/src/Pollution.java:import java.util.ArrayList;
+./TP05B/src/Pollution.java:             ArrayList<ReleveMensuel> testReleve = new ArrayList<>();
+./TP05B/src/Pollution.java:             ArrayList<String> semestre1 = new ArrayList<>(Arrays.asList("janvier", "février", "mars", "avril", "mai", "juin"));
+./TP05B/src/Pollution.java:             ArrayList<ReleveMensuel> bilanSem1;
+./TP05B/src/Pollution.java:             ArrayList<String> semestre2 = new ArrayList<>(Arrays.asList("juillet", "août", "septembre", "octobre", "novembre", "décembre"));
+./TP05B/src/Pollution.java:             ArrayList<ReleveMensuel> bilanSem2;
+./TP05B/src/Utilitaire.java:import java.util.ArrayList;
+./TP05B/src/Utilitaire.java:    public static ArrayList<ReleveMensuel> bilanSem(ArrayList<String> desMois) {
+./TP05B/src/Utilitaire.java:            ArrayList<ReleveMensuel> concSaisies = new ArrayList<>();
+./TP05B/src/Utilitaire.java:    public static float moyConc (ArrayList<ReleveMensuel> desReleves) {
+./TP05B/src/Utilitaire.java:    public static float maxConc(ArrayList<ReleveMensuel> desReleves) {
+./TP05B/src/Utilitaire.java:    public static float minConc(ArrayList<ReleveMensuel> desReleves) {
+./TP05B/src/Utilitaire.java:    public static int nbPoll(ArrayList<ReleveMensuel> desReleves, float seuil) {
+./TP05B/src/Utilitaire.java:    public static String poll1(ArrayList<ReleveMensuel> desReleves, float seuil) {
+./TP05B/src/Utilitaire.java:    public static int compareReleves(ArrayList<ReleveMensuel> releves1,ArrayList<ReleveMensuel> releves2, float seuil) {
+./TP05A/src/VecteusrDeInteger.java:import java.util.ArrayList;
+./TP05A/src/VecteusrDeInteger.java:     public static ArrayList<Integer> lesDiviseurs(int unEnt) {
+./TP05A/src/VecteusrDeInteger.java:             ArrayList<Integer> diviseursDeUnEnt = new ArrayList<Integer>();
+./TP05A/src/VecteusrDeInteger.java:     private static int sommeDe(ArrayList<Integer> unVectEntPos) {
+./TP05A/src/VecteusrDeInteger.java:             ArrayList<Integer> lesDiv;
+./TP05A/src/VecteursDeString.java:import java.util.ArrayList;
+./TP05A/src/VecteursDeString.java:      private static int nbChEgales(ArrayList<String> v1, ArrayList<String> v2) {
+./TP05A/src/VecteursDeString.java:      public static String equiv(String uneChaine, ArrayList<String> v1, ArrayList<String> v2) {
+./TP05A/src/VecteursDeString.java:                      ArrayList<String> couleursFR = new ArrayList<String>(Arrays.asList("rouge", "orange", "jaune", "vert", "bleu", "indigo", "violet"));
+./TP05A/src/VecteursDeString.java:                      ArrayList<String> couleursEN = new ArrayList<String>(Arrays.asList("red", "orange", "yellow", "green", "blue", "indigo", "purple"));
+
+4. Compléments sur les wildcards
+================================
+
+1. Son nom est .bash_aliases
+>>> martinst@pc-dg-027-03:~$ ll
+total 192
+drwx------  26 martinst infobut1  4096 18 oct.  09:56  .
+drwxr-xr-x 137 root     root      4096 20 sept. 11:39  ..
+drwxr-xr-x   2 martinst infobut1  4096 13 sept. 08:45  .android
+-rw-r--r--   1 martinst infobut1    87  4 oct.  10:57  .bash_aliases
+
+2. 
+>>> martinst@pc-dg-027-03:~$ echo 'shopt -s globstar' >> .bash_aliases
+
+3. Nouveaux alias :
+alias rmbackup="rm -i **/*~"
+alias rmclass="rm -i **/*.class"
+
+4. 
+>>> martinst@pc-dg-027-03:~/Documents$ rmclass
+rm: remove regular file 'R1.01/TP01/TP01/src/ConversionsBis.class'? y
+rm: remove regular file 'R1.01/TP02A/src/Calendrier.class'? y
+
+6. Utilisation de machines en réseau
+====================================
+
+6.1 Inventaire des machines et des utilisateurs
+-----------------------------------------------
+
+1. 
+>>> martinst@pc-dg-027-03:~/Documents$ rwho
+adame    pc-dg-035-08:pts/0  Oct 18 10:01 :43
+adame    pc-dg-035-08:pts/1  Oct 18 10:01 :43
+adame    pc-dg-035-08:pts/2  Oct 18 10:01 :43
+[...]
+
+2.
+>>> martinst@pc-dg-027-03:~/Documents$ ruptime
+epperly4      up   14+12:58,     0 users,  load 0.00, 0.00, 0.03
+erebus4       up    4+12:28,     0 users,  load 0.01, 0.02, 0.04
+pc-dg-025-01  up       2:10,     5 users,  load 0.65, 0.74, 0.80
+[...]
+
+3. 
+>>> martinst@pc-dg-027-03:~/Documents$ ruptime | grep '^pc-dg-' | wc -l
+87
+
+6.2 Utilisation de machines à distance
+--------------------------------------
+
+Protocole X11
+-------------
+
+1. 
+>>> martinst@pc-dg-027-03:~/Documents$ rwho |grep cogitorp
+cogitorp pc-dg-027-04:pts/1  Oct 18 10:29 :16
+
+2. 
+>>> martinst@pc-dg-027-03:~/Documents$ ssh -X pc-dg-027-04
+The authenticity of host 'pc-dg-027-04 (192.168.141.124)' can't be established.
+ED25519 key fingerprint is SHA256:mszYzrQYKBMRSwOtRP+1Casg2a27jof66ygdio1p7qw.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'pc-dg-027-04' (ED25519) to the list of known hosts.
+martinst@pc-dg-027-04's password: 
+Linux pc-dg-027-04 6.1.0-13-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.55-1 (2023-09-29) x86_64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+
+3. Le prompt et le titre de la fenêtre a bien changé.
+
+4. 
+>>> martinst@pc-dg-027-04:~$ who
+cogitorp tty7         2023-10-18 08:21 (:0)
+cogitorp pts/0        2023-10-18 08:21 (:0)
+cogitorp pts/1        2023-10-18 10:29 (:0)
+martinst pts/2        2023-10-18 10:51 (192.168.141.123)
+
+5.
+>>> martinst@pc-dg-027-04:~$ kcalc
+
+6. Elle est quasi instantanée.
+
+7. 
+>>> martinst@pc-dg-027-03:~/Documents$ ps aux | grep calc
+martinst  111671  0.0  0.0   6412  2052 pts/2    S+   10:57   0:00 grep --color=auto calc
+
+Protocole VNC
+-------------
+1.
+>>> martinst@pc-dg-027-03:~/Documents$ vncviewer pc-dg-027-04
+
+2. On arrive sur un écran de connexion.
+
+4. L'interface est très rapide.
+
+Protocole X2Go
+--------------
+
+3. L'interface est plutôt rapide.
+
+6.4 Transferts de fichiers entre machines
+-----------------------------------------
+
+1. 
+>>> martinst@pc-dg-027-03:/tmp$ scp -p /users/info/pub/1a/R1.04/tp-fichiers/Avare.txt .
+
+2. Le fichier n'est pas présent.
+
+3. 
+>>> martinst@pc-dg-027-03:/tmp$ scp -p Avare.txt martinst@pc-dg-027-01:/tmp/
+martinst@pc-dg-027-01's password: 
+Avare.txt
+
+4. Il apparait bien.
+
+Avec un gestionnaire de fichiers
+--------------------------------
+
+3. Fait
