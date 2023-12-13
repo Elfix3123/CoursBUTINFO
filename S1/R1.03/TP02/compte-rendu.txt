@@ -1,0 +1,284 @@
+***********************************************
+Felix Martins - B2 - TP02 : Codage de nombres et arithmétique
+***********************************************
+
+2.Question simple 1. Le registre SR contient 16 bits. Les 4 indicateurs sont de poids faible.
+
+2.Question simple 2. 
++-----+-+-+-+-+
+| SR  |N|Z|V|C|
++-----+-+-+-+-+
+|$2700|0|0|0|0|
++-----+-+-+-+-+
+|$2708|1|0|0|0|
++-----+-+-+-+-+
+|$270A|1|0|1|0|
++-----+-+-+-+-+
+
+3.2.Question preliminaire. Le processeur 68000 utilise la base 2 et le complément à 2.
+
+-----------------------------
+CAS1
+     MOVE.B #%01111111,D0
+-----------------------------
+
+Notation algorithmique :    MOVE: D0.B:= %0111 1111
+
+Valeurs finales : D0.B = %0111 1111 ($7f); N=0; Z=0; V=0; C=0;
+
+Interprétation du résultat en base deux :
+Dépassement : non car C=0
+Interprétation en base dix : %0111 1111 soit 127
+
+Interprétation du résultat en complément a 2 :
+Débordement : non car V=0
+Interprétation en base dix : %0111 1111 soit 127
+
+-----------------------------
+CAS2
+     MOVE.B #%11111111,D1
+-----------------------------
+
+Notation algorithmique :    MOVE: D1.B:= %1111 1111
+
+Valeurs finales : D1.B = %1111 1111 ($ff); N=1; Z=0; V=0; C=0;
+
+Interprétation du résultat en base deux :
+Interprétation en base dix : %1111 1111 soit 255
+
+Interprétation du résultat en complément a 2 :
+Interprétation en base dix : %1111 1111 soit -1
+
+-----------------------------
+CAS3
+     MOVE.B #%11111100,D1
+     ADD.B  #7,D1
+-----------------------------
+
+Notation algorithmique :    MOVE: D1.B:= %1111 1100
+                            ADD: D1.B:= D1.B+7
+Valeurs finales : D1.B = %0000 0011 ($03); N=1; Z=0; V=1; C=1;
+
+Interprétation du résultat en base deux :
+Dépassement : oui car C=1
+Interprétation en base dix : %0000 0011 soit 3, incoherent car 252 + 7 = 259
+
+Interprétation du résultat en complément a 2 :
+Débordement : oui car V=1
+Interprétation en base dix : %0000 0011 soit 3, incoherent 252 + 7 = 259
+
+-----------------------------
+CAS4
+     MOVE.B  NBF,D0
+     ADD.B   NBG,D0
+-----------------------------
+
+Notation algorithmique :    MOVE: D0.B:= NBF.B
+                            ADD: D0.B:= NBG.B+D0.B
+Valeurs finales : D0.B = %0100 0101 ($45); N=0; Z=0; V=0; C=0;
+
+Interprétation du résultat en base deux :
+Dépassement : non car C=0
+Interprétation en base dix : %0100 0101 soit 69, coherent car NBF + NBG = 46 + 23 = 69
+
+Interprétation du résultat en complément a 2 :
+Débordement : non car V=0
+Interprétation en base dix : %0100 0101 soit 69, coherent car NBF + NBG = 46 + 23 = 69
+
+-----------------------------
+CAS5
+     MOVE.B  NBF,D0
+     SUB.B   NBG,D0
+-----------------------------
+
+Notation algorithmique :    MOVE: D0.B:= NBF.B
+                            ADD: D0.B:= D0.B - NBG.B
+Valeurs finales : D0.B = %0001 0111 ($17); N=0; Z=0; V=0; C=0;
+
+Interprétation du résultat en base deux :
+Dépassement : non car C=0
+Interprétation en base dix : %0001 0111 soit 23, coherent car NBF - NBG = 46 - 23 = 23
+
+Interprétation du résultat en complément a 2 :
+Débordement : non car V=0
+Interprétation en base dix : %0001 0111 soit 23, coherent car NBF - NBG = 46 - 23 = 23
+
+-----------------------------
+CAS6
+     MOVE.W #$00FC,D2
+     ADD.W #4,D2
+-----------------------------
+
+Notation algorithmique :    MOVE: D2.W:= $00FC
+                            ADD: D2.W:= D2.W + 4
+Valeurs finales : D2.W = %0000 0001 0000 0000 ($0100); N=0; Z=0; V=0; C=0;
+
+Interprétation du résultat en base deux :
+Dépassement : non car C=0
+Interprétation en base dix : %0000 0001 0000 0000 soit 256, cohérent car 252 + 4 = 256
+
+Interprétation du résultat en complément a 2 :
+Débordement : non car V=0
+Interprétation en base dix : %0000 0001 0000 0000 soit 256, cohérent car 252 + 4 = 256
+
+-----------------------------
+CAS7
+     MOVE.B #%11001111,D3
+     SUB.B  #%10111000,D3
+-----------------------------
+
+Notation algorithmique :    MOVE: D3.B:= %11001111
+                            SUB: D3.B:= D3.B - %10111000
+Valeurs finales : D3.B = %0001 0111 ($17); N=0; Z=0; V=0; C=0;
+
+Interprétation du résultat en base deux :
+Dépassement : non car C=0
+Interprétation en base dix : %0001 0111 soit 23, cohérent car 207 - 184 = 23
+
+Interprétation du résultat en complément a 2 :
+Débordement : non car V=0
+Interprétation en base dix : %0001 0111 soit 23, cohérent car (-72) - (-49) = 23
+
+-----------------------------
+CAS8
+     MOVE.B #%10001111,D4
+     SUB.B #$12,D4
+-----------------------------
+
+Notation algorithmique :    MOVE: D4.B:= %10001111
+                            SUB: D4.B:= D4.B - $12
+Valeurs finales : D4.B = %0111 1101 ($7d); N=0; Z=0; V=1; C=0;
+
+Interprétation du résultat en base deux :
+Dépassement : non car C=0
+Interprétation en base dix : %0111 1101 soit 125, cohérent car 143 - 22 = 125
+
+Interprétation du résultat en complément a 2 :
+Débordement : oui car V=1
+Interprétation en base dix : %0111 1101 soit 125, incohérent car (-113) - 22 = (-135)
+
+-----------------------------
+CAS9
+     MOVE.B #%01100011,D5
+     ADD.B  #%00110000,D5
+-----------------------------
+
+Notation algorithmique :    MOVE: D5.B:= %01100011
+                            ADD: D5.B:= D5.B + %00110000
+Valeurs finales : D5.B = %1001 0011 ($93); N=1; Z=0; V=1; C=0;
+
+Interprétation du résultat en base deux :
+Dépassement : non car C=0
+Interprétation en base dix : %1001 0011 soit 147, cohérent car 99 + 48 = 147
+
+Interprétation du résultat en complément a 2 :
+Débordement : oui car V=1
+Interprétation en base dix : %1001 0011 soit -109, incohérent car 99 + 48 = 147
+
+-----------------------------
+CAS10
+     MOVE.B NBA,D0
+     ADD.B  NBB,D0
+-----------------------------
+
+Notation algorithmique :    MOVE: D0.B:= NBA
+                            ADD: D0.B:= D0.B + NBB
+Valeurs finales : D0.B = %1101 1011 ($db); N=1; Z=0; V=0; C=0;
+
+Interprétation du résultat en base deux :
+Dépassement : non car C=0
+Interprétation en base dix : %1101 1011 soit 219, cohérent car NBA + NBB = 210 + 9 = 219
+
+Interprétation du résultat en complément a 2 :
+Débordement : oui car V=1
+Interprétation en base dix : %1001 0011 soit -37, cohérent car NBA + NBB = (-46) + 9 = -37
+
+-----------------------------
+CAS11
+     MOVE.B NBA,D1
+     ADD.B  NBC,D1
+-----------------------------
+
+Notation algorithmique :    MOVE: D1.B:= NBA
+                            ADD: D1.B:= D1.B + NBC
+Valeurs finales : D1.B = %0101 0100 ($54); N=0; Z=0; V=1; C=1;
+
+Interprétation du résultat en base deux :
+Dépassement : oui car C=1
+Interprétation en base dix : %0101 0100 soit 84, incohérent car NBA + NBB = 210 + 130 = 340
+
+Interprétation du résultat en complément a 2 :
+Débordement : non car V=1
+Interprétation en base dix : %0101 0100 soit 84, incohérent car NBA + NBB = (-46) + (-126) = -172
+
+-----------------------------
+CAS12
+     MOVE.B NBB,D3
+     ADD.B  NBD,D3
+-----------------------------
+
+Notation algorithmique :    MOVE: D3.B:= NBB
+                            ADD: D3.B:= D3.B + NBD
+Valeurs finales : D1.B = %0100 0001 ($41); N=0; Z=0; V=0; C=0;
+
+Interprétation du résultat en base deux :
+Dépassement : non car C=0
+Interprétation en base dix : %0100 0001 soit 65, cohérent car NBB + NBD = 9 + 56 = 65
+
+Interprétation du résultat en complément a 2 :
+Débordement : non car V=0
+Interprétation en base dix : %0101 0100 soit 84, cohérent car NBB + NBD = 9 + 56 = 65
+
+-----------------------------
+CAS13
+     MOVE.B NBA,D1
+     SUB.B  NBD,D1
+-----------------------------
+
+Notation algorithmique :    MOVE: D1.B:= NBA
+                            ADD: D1.B:= D1.B - NBD
+Valeurs finales : D1.B = %1001 1010 ($9a); N=1; Z=0; V=0; C=0;
+
+Interprétation du résultat en base deux :
+Dépassement : non car C=0
+Interprétation en base dix : %1001 1010 soit 154, cohérent car NBB + NBD = 210 - 56 = 154
+
+Interprétation du résultat en complément a 2 :
+Débordement : non car V=0
+Interprétation en base dix : %1001 1010 soit -102, cohérent car NBA + NBD = (-46) - 56 = -102
+
+-----------------------------
+CAS14
+     MOVE.B NBA,D2
+     SUB.B  NBB,D2
+-----------------------------
+
+Notation algorithmique :    MOVE: D2.B:= NBA
+                            ADD: D2.B:= D1.B - NBB
+Valeurs finales : D2.B = %1100 1001 ($c9); N=1; Z=0; V=0; C=0;
+
+Interprétation du résultat en base deux :
+Dépassement : non car C=0
+Interprétation en base dix : %1001 1010 soit 201, cohérent car NBA - NBB = 210 - 9 = 201
+
+Interprétation du résultat en complément a 2 :
+Débordement : non car V=0
+Interprétation en base dix : %1001 1010 soit -102, cohérent car NBA + NBD = (-46) - 9 = (-55)
+
+-----------------------------
+CAS15
+     MOVE.B NBD,D3
+     SUB.B  NBC,D3
+-----------------------------
+
+Notation algorithmique :    MOVE: D3.B:= NBD
+                            ADD: D3.B:= D3.B - NBC
+Valeurs finales : D3.B = %1011 0110 ($b6); N=1; Z=0; V=1; C=1;
+
+Interprétation du résultat en base deux :
+Dépassement : oui car C=1
+Interprétation en base dix : %1011 0110 soit 182, incohérent car NBD - NBC = 56 - 130 = (-74)
+
+Interprétation du résultat en complément a 2 :
+Débordement : oui car V=1
+Interprétation en base dix : %1011 0110 soit -112, incohérent car NBD - NBC = 56 - (-126) = 182

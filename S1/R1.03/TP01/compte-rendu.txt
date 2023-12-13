@@ -1,0 +1,35 @@
+***********************************************
+Felix Martins - B2 - TP01 : codage des données et exécution d’un programme
+***********************************************
+
+2.a.1. C'est la notation hexadecimale qui est utilisée. 16 octets (32 chiffres hexadécimaux) sont affichés par ligne.
+
+2.a.2. Les adresses des octets de la première colonne du contenu terminent par un $0. Celles de la dernière colonne terminent par un $F. L'adresse indiquée au debut de chaque ligne est celle du premier octet de la ligne et est en base 2 et en hexadécimal.
+
+2.a.3. L'adresse des octets de la 4eme ligne, 1ere colonne est $000030. L'adresse des octets de la 4eme ligne, 13e colonne est $00003C
+
+2.a.4.
+Contenu de l'octet $000503 : $e6 = %1110 0110
+Contenu de l'octet $000506 : $43 = %0100 0011
+Contenu de l'octet $000563 : $3c = %0010 1100
+Contenu de l'octet $000002 : $80 = %1000 0000
+
+2.b.1. La zone des données commence à l'adresse $000500 et se termine à l'adresse  $000534. La zone des instructions démarre à l'adresse $000550 et se termine à l'adresse $00574.
+
+2.b.2. L'étiquette DBIN est associée à l'adresse $000500 et son contenu dans la mémoire centrale est $0115. L'étiquette EHEX est associée à l'adresse $000502 et son contenu est $00E6.
+
+2.b.3. L'octet d'adresse $000520 a pour étiquette ABEC. Il vaut $1A = %0001 1010, soit 26 en base 10. Le mot d'adresse $000521 a pour étiquette BDEC. Il vaut $23 = %0010 0011, soit 35 en base 10. La méthode de codage utilisée lors de l'assemblage du programme est l'hexadécimal.
+
+2.b.4. Le mot d'adresse $000522 a pour étiquette CDEC. Il vaut $01BA = %0000 0001 1011 1010, soit 442 en base 10. La méthode de codage utilisée lors de l'assemblage du programme est toujours l'hexadécimal.
+
+2.b.5. Le codage utilisé pour ces octets est l'ASCII.
+
+3.2. La seconde instruction inscrit $7572 dans l'adresse associée à l'étiquette CDEC, d'adresse $000522.
+
+3.3. Le registre D3 est visible dans la partie Trace de la fenêtre principale de bsvc. La 4e instruction inscrit %0110 0100, soit $64, dans le registre D3.
+
+3.4. L'emplacement de la mémoire centrale modifié est un octet partant de l'adresse $000524.
+
+3.5. L'emplacement de la mémoire centrale modifié est un mot partant de l'adresse $000520.
+
+Question complémentaire : Les adresses vont de $000000 à $FFFFFF, ce qui laisse la place à 2^24 octets.
