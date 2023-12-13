@@ -1,0 +1,63 @@
+body {
+	width: 90%;
+	font-family: Times, Serif;
+}
+
+h1 {
+	text-align: center;
+	font-size: 2.5em;
+	color: #626262;
+	font-weight: bold;
+}
+
+nav ul {
+	text-align: center;
+}
+
+nav li {
+	display: inline;
+	padding: 0.5em 0.8em;
+	border: solid 0.1em #626262;
+	border-left: none;
+	text-decoration-line: none;
+}
+
+nav li:first-child {
+	border-left: solid 0.1em #626262;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+nav li:hover {
+	color: #ffffff;
+	background-color: #626262;
+}
+
+main {
+	display: flex;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+}
+
+main div{
+	position: relative;
+}
+
+main p {
+	background-color: #B2924D;
+	padding: 0.5em;
+	color: #ffffff;
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin: 0;
+}
+
+main h2 {
+	color: #9FAF3A;
+	width: 0;
+	min-width: 100%;
+}

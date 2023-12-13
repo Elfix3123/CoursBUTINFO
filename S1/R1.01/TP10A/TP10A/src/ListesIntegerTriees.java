@@ -63,5 +63,13 @@ public class ListesIntegerTriees {
 
 		ListeTrieeC<Integer> listIntC2_sdb = Utilitaire.lCsansDoublons(listIntC2);
 		listIntC2_sdb.afficheGD();
+
+		ListeTrieeC<Integer> listUnion = Utilitaire.union(listIntC1_sdb, listIntC2_sdb);
+		System.out.print("Union : ");
+		listUnion.afficheGD();
+
+		ListeTrieeC<Integer> listInter = Utilitaire.intersect(listIntC1_sdb, listIntC2_sdb);
+		System.out.print("Inter : ");
+		listInter.afficheGD();
 	}
 }

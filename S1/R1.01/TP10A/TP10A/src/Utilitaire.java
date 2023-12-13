@@ -43,13 +43,18 @@ public class Utilitaire {
 		ListeTrieeD<Integer> listeUnion = new ListeTrieeD<>();
 
 		while (celluleActive1 != null && celluleActive2 != null) {
-			if (celluleActive1.getInfo() < celluleActive2.getInfo()) {
+			if(celluleActive1.getInfo() == celluleActive2.getInfo()){
+				listeUnion.insereTrie(celluleActive1.getInfo());
+				celluleActive1 = celluleActive1.getCelluleSuivante();
+				celluleActive2 = celluleActive2.getCelluleSuivante();
+			}
+			else if (celluleActive1.getInfo() < celluleActive2.getInfo()) {
 				listeUnion.insereTrie(celluleActive1.getInfo());
 				celluleActive1 = celluleActive1.getCelluleSuivante();
 			}
 			else{
 				listeUnion.insereTrie(celluleActive2.getInfo());
-				celluleActive1 = celluleActive2.getCelluleSuivante();
+				celluleActive2 = celluleActive2.getCelluleSuivante();
 			}
 		}
 
@@ -71,6 +76,24 @@ public class Utilitaire {
 		// { résultat = liste triée croissante, contenant, sans doublons,
 		// les entiers portés par les cellules de lC1_sdb qui sont
 		// égaux à ceux portés par les cellules de lC2_sdb }
+		Cellule<Integer> celluleActive1 = lC1_sdb.getTete();
+		Cellule<Integer> celluleActive2 = lC2_sdb.getTete();
+		ListeTrieeD<Integer> listeInter = new ListeTrieeD<>();
 
+		while (celluleActive1 != null && celluleActive2 != null) {
+			if(celluleActive1.getInfo() == celluleActive2.getInfo()){
+				listeInter.insereTrie(celluleActive1.getInfo());
+				celluleActive1 = celluleActive1.getCelluleSuivante();
+				celluleActive2 = celluleActive2.getCelluleSuivante();
+			}
+			else if(celluleActive1.getInfo() > celluleActive2.getInfo()){
+				celluleActive2 = celluleActive2.getCelluleSuivante();
+			}
+			else{
+				celluleActive1 = celluleActive1.getCelluleSuivante();
+			}
+		}
+
+		return listeInter.renverseListe();
 	}
 }
