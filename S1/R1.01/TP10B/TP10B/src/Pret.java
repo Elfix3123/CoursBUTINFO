@@ -52,7 +52,8 @@ public class Pret {
 		// { la première occurrence de unInstrument a été supprimée de ce vecteur }
 		int i = 0;
 
-		while(i < this.instrumentsPretes.size() && this.instrumentsPretes.get(i).compareTo(unInstrument) < 0){
+		// On est certain de trouver
+		while(this.instrumentsPretes.get(i).compareTo(unInstrument) < 0){
 			i++;
 		}
 
@@ -67,13 +68,13 @@ public class Pret {
 		// { résultat = nombre d'occurrences de unInst dans instrumeentsPretes }
 		int i = 0;
 
-		while(i < this.instrumentsPretes.size() && this.instrumentsPretes.get(i).compareTo(unInstrument) < 0){
+		while(this.instrumentsPretes.get(i).compareTo(unInstrument) < 0){
 			i++;
 		}
 
 		int compteur = 0;
 
-		while(i < this.instrumentsPretes.size() && this.instrumentsPretes.get(i).compareTo(unInstrument) == 0){
+		while(this.instrumentsPretes.get(i).compareTo(unInstrument) == 0){
 			compteur++;
 			i++;
 		}
@@ -97,7 +98,28 @@ public class Pret {
 			System.out.println("Ce pret est soldé");
 		}
 		else{
-			
+			int i = 0;
+			int nbExemplaires = 0;
+			while (i < this.instrumentsPretes.size()-1) {	// Parcours complet du vecteur jusqu'à l'avant dernier élémént
+				nbExemplaires++;	// On ajoute l'exemplaire i
+				if (this.instrumentsPretes.get(i).compareTo(this.instrumentsPretes.get(i+1)) != 0) {	// Si c'est le dernier du vecteur
+					System.out.println("(" + this.instrumentsPretes.get(i).getNomInstrument() + ", " + nbExemplaires + ")");	// On l'affiche
+					nbExemplaires = 0;	// Et on remet le nombre d'exemplaires à 0
+
+				}
+			}
+			System.out.println("(" + this.instrumentsPretes.get(i).getNomInstrument() + ", " + nbExemplaires + ")");	// On affiche dans tous les cas le dernier élément
 		}
 	}
+	
+	public int compareTo(Pret pret){
+		/*
+		 * Compare l'instance active de Pret avec l'instance en paramètre
+		 * selon l'ordre naturel de l'attribut numPret
+		 * 
+		 * @return résultat de la comparaison
+		 */
+		return this.numPret-pret.getnumPret();
+	}
 }
+

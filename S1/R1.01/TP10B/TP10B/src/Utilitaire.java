@@ -9,4 +9,21 @@ public class Utilitaire {
 		catCour = catCour.getCelluleSuivante();
 		}
 	}
+
+	public static Instrument chercheInstrument(ListeTrieeC<Categorie> lCategories, String nomCat, String nomInst) {
+		// { } =>
+		// { résultat = Instrument dont l'attribut nomInstrument est nomInst si trouvé,
+		// null sinon }
+		Cellule<Categorie> celluleActiveCategorie = lCategories.getTete();
+
+		while (celluleActiveCategorie != null && (celluleActiveCategorie.getInfo().getNomCat().compareTo(nomCat) != 0)) {	// On commence par chercher la bonne catégorie
+			celluleActiveCategorie = celluleActiveCategorie.getCelluleSuivante();
+		}
+
+		Cellule<Instrument> celluleActiveInstrument = celluleActiveCategorie.getInfo().getLInstruments().getTete();
+
+		while () {
+			
+		}
+	}
 }

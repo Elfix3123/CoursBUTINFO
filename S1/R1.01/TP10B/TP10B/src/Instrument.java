@@ -1,4 +1,4 @@
-public class Instrument implements Comparable<Instrument>{
+public class Instrument implements Comparable<Instrument> {
 	// Attributs
 	private String nomInstrument;
 	private int nbDispo;
