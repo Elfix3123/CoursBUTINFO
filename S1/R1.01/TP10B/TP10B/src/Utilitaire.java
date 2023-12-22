@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Utilitaire {
 	public static void afficheListeCat(ListeTrieeC<Categorie> lCategories) {
 		// { } => { les éléments de lCategories ont été affichés }
@@ -22,8 +24,22 @@ public class Utilitaire {
 
 		Cellule<Instrument> celluleActiveInstrument = celluleActiveCategorie.getInfo().getLInstruments().getTete();
 
-		while () {
-			
+		while (celluleActiveInstrument != null && (celluleActiveInstrument.getInfo().getNomInstrument().compareTo(nomInst) != 0)) {	// On cherche le bon instrument dans la catégorie
+			celluleActiveInstrument = celluleActiveInstrument.getCelluleSuivante();
+		}
+
+		return celluleActiveInstrument.getInfo();
+	}
+
+	public static ArrayList<String> vNomsDesCat(ListeTrieeC<Categorie> lCategories) {
+		// { } =>
+		// { résultat = vecteur de chaînes trié croissant, contenant les valeurs de
+		// l'attribut nomCat de chaque élément de lCategories }
+		ArrayList<String> nomsCat = new ArrayList<>();
+		Cellule<Categorie> celluleActive = lCategories.getTete();
+
+		while (celluleActive != null) {
+			celluleActive = celluleActive.getCelluleSuivante();
 		}
 	}
 }
