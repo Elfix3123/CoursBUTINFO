@@ -19,7 +19,12 @@ public class Calculatrice {
 			return f1*f2;
 		}
 		else if (op.compareTo("divise") == 0) {
-			
+			if (f2 == 0f) {
+				throw new EDivideByZero("Division par 0 non autorisée");
+			}
+			else {
+				return f1/f2;
+			}
 		}
 	}
 
