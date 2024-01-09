@@ -1,0 +1,41 @@
+00000000                                     1    		ORG	$0
+00000000  00008000                           2  		DC.L	$8000	; adresse de la pile
+00000004  00000AC0                           3  		DC.L	Inst1	; pour initialisation PC (Compteur Ordinal)
+00000008                                     4  
+00000008                                     5  * declaration des "variables" du programme
+00000008                                     6  * on reserve et on initialise avec la directive DC 
+00000008                                     7  * on reserve sans initialiser avec la directive DS
+00000A00                                     8  		ORG	$A00
+00000A00                                     9  A   		DS.L 1
+00000A04                                    10  B	        DS.L 1
+00000A08                                    11  
+00000A08                                    12  
+00000A08                                    13  * debut des instructions du programme
+00000A08                                    14  
+00000AC0                                    15  		ORG	$AC0
+00000AC0  21FC 0000015C 0A00                16  Inst1		MOVE.L #348,A
+00000AC8  21FC 000008B1 0A04                17  		    MOVE.L #2225,B
+00000AD0                                    18  
+00000AD0                                    19  *  a vous d'ecrire la suite en assembleur...
+00000AD0                                    20  
+00000AD0  2238 0A00                         21          MOVE.L A,d1
+00000AD4  2438 0A04                         22          MOVE.L B,d2
+00000AD8  B481                              23  tq      CMP.L d1,d2     ;d2 ? d1
+00000ADA  6700 0012                         24          BEQ fintq       ;d2 = d1 => aller à fintq
+00000ADE  B481                              25  si      CMP.L d1,d2     ;d2 ? d1
+00000AE0  6400 0008                         26          BCC sinon       ;d2 >= d1 en base 2 => aller à sinon
+00000AE4  9282                              27  alors   SUB.L d2,d1
+00000AE6  6000 0004                         28          BRA finsi
+00000AEA  9481                              29  sinon   SUB.L d1,d2
+00000AEC  60EA                              30  finsi   BRA tq
+00000AEE  2001                              31  fintq   MOVE.L d1,d0
+00000AF0                                    32  
+00000AF0                                    33  
+00000AF0                                    34  * fin du programme principal
+00000AF0  4848                              35  		BREAK	
+00000AF2                                    36  
+00000AF2                                    37  * fin du contenu a assembler
+00000AF2                                    38  		END
+
+No errors detected
+No warnings generated

@@ -12,7 +12,7 @@ Le taux de croissance du PIB peut être calculé :
 La croissance correspond à la seule évolution des quantités produites, c'est-à-dire du PIB à prix constant.
 
 On peut calculer le PIB par habitant afin de mesurer le pouvoir d'achat moyen de l'habitant.
-Le PIB a plusieurs avantages : il permet d'éviter les doubles comptages et ne prend en compte que la création de valeur. Cependant, il a plusieurs limites : il ne prend pas en compte les influences négatives comme l'écologie et ne comprend pas les éléments non comptabilisables comme les machés noir, le bénévolat… En outre, il ne mesure pas le bien être individuel.
+Le PIB a plusieurs avantages : il permet d'éviter les doubles comptages et ne prend en compte que la création de valeur. Cependant, il a plusieurs limites : il ne prend pas en compte les influences négatives comme l'écologie et ne comprend pas les éléments non comptabilisables comme les marchés noir, le bénévolat… En outre, il ne mesure pas le bien être individuel.
 # A quoi sert la richesse produite ?
 Dans la richesse produite, deux tiers servent à rémunérer les travailleurs, et le dernier revient aux entreprises et aux administrations publiques. Les ménages utilisent ces fonds pour consommer ou épargner. Les entreprises utilisent leur profit pour financer leurs production, et les administrations publiques s'en servent pour financer les investissements publics. La croissance du PIB représente ainsi également la croissance des fonds qui sont partagés entre les acteurs économiques. 
 # D'autres indices sur la croissance

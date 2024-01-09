@@ -1,0 +1,37 @@
+00000000                                     1    		ORG	$0
+00000000  00008000                           2  		DC.L	$8000	; adresse de la pile
+00000004  00000AC0                           3  		DC.L	Inst1	; pour initialisation PC (Compteur Ordinal)
+00000008                                     4  
+00000008                                     5  * declaration des "variables" du programme
+00000008                                     6  * on reserve et on initialise avec la directive DC 
+00000008                                     7  * on reserve sans initialiser avec la directive DS
+00000A00                                     8  		ORG	$A00
+00000A00  0001                               9  a		DC.W 1
+00000A02  000A                              10  b	    DC.W 10
+00000A04  696E6974                          11  cas     DC.L 'init'
+00000A08                                    12  
+00000A08                                    13  * debut des instructions du programme
+00000A08                                    14  
+00000AC0                                    15  Inst1		ORG	$AC0
+00000AC0                                    16  
+00000AC0                                    17  *  a vous d'ecrire la suite en assembleur...
+00000AC0                                    18  
+00000AC0  3038 0A00                         19  		MOVE.W a,d0
+00000AC4  B078 0A02                         20  si      CMP.W b,d0		;a ? b
+00000AC8  6300 0016                         21  		BLS	sinon		;a <= b sur entiers naturels -> sinon
+00000ACC  B07C 0004                         22  et		CMP.W #4,d0		;a ? 4
+00000AD0  6200 000E                         23  		BHI sinon		;a > 4 sur entiers naturels -> sinon
+00000AD4  21FC 616C6F31 0A04                24  alors	MOVE.L #'alo1',cas
+00000ADC  6000 000A                         25  		BRA finsi
+00000AE0  21FC 73696E31 0A04                26  sinon	MOVE.L #'sin1',cas
+00000AE8                                    27  finsi
+00000AE8                                    28  fin
+00000AE8                                    29  
+00000AE8                                    30  * fin du programme principal
+00000AE8  4848                              31  		BREAK	
+00000AEA                                    32  
+00000AEA                                    33  * fin du contenu a assembler
+00000AEA                                    34  		END
+
+No errors detected
+No warnings generated

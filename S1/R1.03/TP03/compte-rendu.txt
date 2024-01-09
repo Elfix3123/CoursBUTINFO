@@ -1,0 +1,11 @@
+***********************************************
+Felix Martins - B2 - TP02 : Codage-décodage des instructions
+***********************************************
+
+1.2 
+Codage de PrixBonbon : $12
+Codé à l'adresse $000A00 -> MC[$000A00].B = $12
+Codage de l'instruction : $1238 0A00
+Codé à l'adresse $000AC0 -> MC[$000AC0].L = $1238 0A00
+
+$

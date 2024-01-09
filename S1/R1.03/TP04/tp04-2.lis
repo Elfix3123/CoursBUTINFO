@@ -1,0 +1,39 @@
+00000000                                     1    		ORG	$0
+00000000  00008000                           2  		DC.L	$8000	; adresse de la pile
+00000004  00000AC0                           3  		DC.L	Inst1	; pour initialisation PC (Compteur Ordinal)
+00000008                                     4  
+00000008                                     5  * declaration des "variables" du programme
+00000008                                     6  * on reserve et on initialise avec la directive DC 
+00000008                                     7  * on reserve sans initialiser avec la directive DS
+00000A00                                     8  		ORG	$A00
+00000A00  0005                               9  a		DC.W 5
+00000A02  0004                              10  b	    DC.W 4
+00000A04  53                                11  c       DC.B 'S'
+00000A05                                    12  
+00000A05                                    13  
+00000A05                                    14  * debut des instructions du programme
+00000A05                                    15  
+00000AC0                                    16  Inst1	ORG	$AC0
+00000AC0                                    17  
+00000AC0                                    18  *  a vous d'ecrire la suite en assembleur...
+00000AC0                                    19  
+00000AC0  0C78 0002 0A00                    20  tq      CMPI.W  #2,a        ;a ? 2
+00000AC6  6300 0026                         21  		BLS		fin         ;a <= 2 sur entiers naturels : aller à fin
+00000ACA  0C78 0003 0A02                    22  et      CMPI.W	#3,b        ;b ? 3
+00000AD0  6300 000C                         23  		BLS     faire       ;b <= 3 sur entiers naturels : aller à faire
+00000AD4  0C38 0053 0A04                    24  ou      CMPI.B	#'S',c       ;c ? 'S'
+00000ADA  6600 0012                         25  		BNE     fin         ;c != 'S' : aller à fin
+00000ADE  11FC 004E 0A04                    26  faire   MOVE.B	#'N',c
+00000AE4  5378 0A02                         27  		SUBI.W	#1,b
+00000AE8  5378 0A00                         28  		SUBI.W	#1,a
+00000AEC  60D2                              29  		BRA		tq
+00000AEE                                    30  fin
+00000AEE                                    31  
+00000AEE                                    32  * fin du programme principal
+00000AEE  4848                              33  		BREAK	
+00000AF0                                    34  
+00000AF0                                    35  * fin du contenu a assembler
+00000AF0                                    36  		END
+
+No errors detected
+No warnings generated

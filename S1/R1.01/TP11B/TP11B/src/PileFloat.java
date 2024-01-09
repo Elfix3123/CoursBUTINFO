@@ -59,4 +59,17 @@ public class PileFloat {
 			return elt;
 		}
 	}
+
+	@Override
+	public String toString() {
+		String retour = "-> ";
+		int i = 0;
+
+		while (i <= this.sommet) {
+			retour += this.pile[i] + " - ";
+			i++;
+		}
+
+		return retour;
+	}
 }
