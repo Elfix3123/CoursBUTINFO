@@ -1,0 +1,72 @@
+- Preparation
+	- Image ISO
+		- Installer l'ISO
+		- Verifier son intégrité
+			- Empreinte de l'image, comparer
+	- Image disque 
+		- Créer image disque
+- Installation
+	- Lancer installation
+	- Se laisser guider
+- Compléter
+	- Paramètres
+		- Configurer la résolution
+		- Configurer les widgets
+	- Exploration de packages
+		- Regarder les packages déjà installés
+	- Mise en place de sudo
+		- commande su -
+		- Ajouter au groupe sudo
+		- Verifier qu'on a les privilèges
+	- Configurer apt
+		- Enlever cdrom de /ect/apt/sources.list
+	- Gestion de packages
+		- Verifier l'éspace disque restant
+			- commande df -h
+		- MAJ
+			- apt updade
+			- apt upgrade
+			- apt clean
+		- Supprimer les packages inutiles
+			- apt purge modemmanager speech-dispatcher kdeconnect
+			- apt autopurge
+		- Installer les packages desirés
+			- apt install gedit
+			- apt clean
+	- Amélioration du shell bash
+		- Installer command-not-found
+- Installer des packages snap et flatpak
+	-Installer snap et flatpak
+		- apt install snapd flatpak
+	- Installation avec apt
+		- apt install vlc - version 3.0.18-0+deb11u1
+	- Installation avec snap
+		- snap search LOGICIEL
+		- snap install LOGICIEL
+		- version 3.0.19
+		- du -h /var/lib/snapd
+	- Installation avec flatpack
+		- flatpak remote-add flathub https://flathub.org/repo/flathub.flatpakrepo
+		- flatpak search LOGICIEL
+		- flatpak install LOGICIEL
+		- Version 3.0.19
+- Installation par packages Debian
+	- Installation de JDK avec apt
+		- apt install default-jdk default-jdk-doc
+	- verifier la version installée
+		- java -version
+	- Nettoyer
+		- apt clean
+- Installation d'un IDE
+	- Installation par archive
+		- Installer l'archive 
+		- Verifier son integrité
+		- Desarchiver dans /usr/local/netbeans-xx
+		- Creer un lien symbolique dans /usr/local/bin/
+			- ln -s /usr/local/netbeans-xx/bin/netbeans netbeans-xx
+	- Installation avec snap
+		- snap search LOGICIEL
+		- snap install LOGICIEL
+	- Installation avec flatpack
+		- flatpak search LOGICIEL
+		- flatpak install LOGICIEL
