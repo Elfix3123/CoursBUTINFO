@@ -1,0 +1,268 @@
+---
+title: "Guide d'achat de diamants"
+output:
+  html_document:
+    toc: yes
+  word_document:
+    toc: yes
+  pdf_document: default
+---
+
+<!--# Ceci est un commentaire : This is an R Markdown document. When you click the Knit button (pelote de laine dans le menu) a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. -->
+
+```{r setup, include=FALSE}
+library(ggplot2)
+library(dplyr)
+```
+
+## Description rapide du jeu de données
+
+Description du jeu de données :
+
+- La caractéristique carat représente le poid du diamant (1 carat = 200 mg).
+
+- La caractéristique cut représente la qualité de la coupe.
+
+- La caractéristique color représente la couleur du diamant.
+
+- La caractéristique clarity représente la clareté du diamant.
+
+- La caractéristique depth représente la profondeur du diamant.
+
+- La caractéristique table représente la largeur en pourcentage du diamant.
+
+- La caractéristique price représente le prix du diamant en dollars.
+
+- La caractéristique x représente la longueur en mm du diamant.
+
+- La caractéristique y représente la largeur en mm du diamant.
+
+- La caractéristique z représente la profondeur en mm du diamant.
+
+## Description statistique des différentes variables
+
+### La couleur 
+
+```{r etude de la couleur, echo = FALSE}
+diamonds %>%
+  group_by(color) %>%
+  summarise(frequence = round(n() / nrow(diamonds), 2), nombre = n())
+```
+
+La couleur la moins fréquente est la J (la pire) avec 5% des diamants. Pour les autres couleurs la fréquence se situe entre 10% (la couleur I) et 21% (la couleur G).
+
+### La qualité de la coupe
+
+```{r etude de la qualité de coupe, echo = FALSE}
+ggplot(diamonds) +
+  geom_bar(aes(x = cut)) +
+  xlab("Qualité de coupe") +
+  ylab("Nombre de diamants")
+```
+
+La qualité de coupe la moins fréquente est acceptable, avec 1610 des diamants. Plus la qualité est haute, plus on a de diamants de cette qualité, avec 21551 diamants de qualité idéale.
+
+### La clarté
+
+```{r, echo = FALSE}
+diamonds %>%
+  mutate(clarte = recode(clarity,
+    "I1" = "Visible", "SI1" = "Petites inclusions",
+    "SI2" = "Petites inclusions",
+    "VS1" = "Minuscules inclusions",
+    "VS2" = "Minuscules inclusions",
+    "VVS1" = "Difficilement visibles",
+    "VVS2" = "Difficilement visibles",
+    "IF" = "Pur"
+  )) %>%
+  group_by(clarte) %>%
+  summarise(frequence = round(n() / nrow(diamonds), 2), nombre = n())
+```
+
+La plupart des diamants ont de petites ou minuscules inclusions (respectivement 41% et 38%), et le reste a pour la majeure partie des inclusions difficilement visibles (16% des diamants).
+
+### Le nombre de carats
+
+```{r statistiques simples, echo=FALSE}
+diamonds %>%
+  summarise(minimum = min(carat), moyenne = round(mean(carat), 3), maximum = max(carat), Q1 = quantile(carat, 0.25), médiane = median(carat), Q3 = quantile(carat, 0.75), D9 = quantile(carat, 0.9))
+```
+
+On constate ici que la moyenne du nombre de carats se situe à environ 8 et qu'elle est supérieure à la médiane indiquant que certains diamants ont un nombre de carats grand ce que l'on voit sur la valeur maximale qui est de 5 carats soit un diamant d'environ 1 gramme. De plus, 10% des diamants font plus de 1.51 carats.
+
+On peut bien sûr inclure des graphiques :
+
+```{r exemples de graphiques, echo=FALSE}
+ggplot(diamonds) +
+  geom_histogram(aes(x = carat, y = ..density..), breaks = seq(0, 3.5, 0.25), fill = "grey40", color = "black", alpha = 0.4)
+
+ggplot(diamonds, aes(x = color, y = carat)) +
+  geom_boxplot()
+```
+
+En regardant de plus près, c'est-à-dire en précisant que chaque intervalle sur l'axe des abscisses doit être de 0,01 et en ne considérant que les diamants de moins de 1,51 carats (soit 90% des diamants), on constate ceci :
+
+```{r echo=FALSE}
+diamonds %>%
+  filter(carat <= 1.51) %>%
+  ggplot() +
+  geom_histogram(aes(x = carat),
+    breaks = (seq(0.2, 1.51, by = 0.01)),
+    closed = "left", fill = "grey40", color = "black", alpha = 0.4
+  ) +
+  scale_x_continuous(breaks = seq(0.2, 1.51, by = 0.05)) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+On peut voir dans l'histogramme un pic au niveau de certains nombres ronds (0.30, 0.50, 0.70...). On peut supposer que ces pics sont liés à des erreurs d'arrondis.
+
+### Le pourcentage de profondeur
+
+```{r echo=FALSE}
+diamonds %>%
+  summarise(minimum = min(depth), moyenne = round(mean(depth), 3), maximum = max(depth), Q1 = quantile(depth, 0.25), médiane = median(depth), Q3 = quantile(depth, 0.75), D1 = quantile(depth, 0.1), D9 = quantile(depth, 0.9))
+```
+
+Puis qu'on peut s'assurer que 80% des diamants ont une profondeur comprise entre 60 et 63.3%, le second graphique ne porte que sur une partie des diamants, de profondeur comprise entre 59 et 64%.
+
+```{r echo=FALSE}
+ggplot(diamonds) +
+  geom_histogram(aes(x = depth), breaks = seq(59, 64, 0.1), fill = "grey40", color = "black", alpha = 0.4)
+```
+
+On peut observer une distribution d'allure binomiale autour de la profondeur 61.9%, ce qui est cohérent avec les données trouvées précédemment.
+
+### La table
+
+```{r echo=FALSE}
+diamonds %>%
+  summarise(minimum = min(table), moyenne = round(mean(table), 3), maximum = max(table), Q1 = quantile(table, 0.25), médiane = median(table), Q3 = quantile(table, 0.75), D1 = quantile(table, 0.1), D9 = quantile(table, 0.9))
+```
+
+```{r echo=FALSE}
+ggplot(diamonds) +
+  geom_histogram(aes(x = table), breaks = seq(50, 65, 0.1), fill = "grey40", color = "black", alpha = 0.4)
+```
+
+La plupart des diamants ont une table entière. De plus, on peut voir que les tables de 56 et 57% sont celles qui ont le plus de diamants.
+
+### Longueur, largeur et profondeur
+
+```{r echo=FALSE}
+diamonds %>% ggplot(aes(x = x, y = y, colour = z)) +
+  geom_point()
+```
+
+```{r echo=FALSE}
+diamonds %>%  filter(x > 3 & y < 20 & z < 10 & z > 2) %>% ggplot(aes(x = x, y = y, colour = z)) +
+  geom_point()
+```
+
+La plupart des diamants ont une largeur et une longueur similaire, bien qu'on en trouve certains qui ne le sont pas. de plus, la profondeur z reste la même et ne semble dépendre ni de la longueur ni de la largeur du diamant.
+
+## Comment s'explique le prix d'un diamant ?
+
+```{r echo=FALSE}
+diamonds%>%summarise(minimum = min(price),Q1 = quantile(price, 0.25), moyenne = round(mean(price), 0),  mediane = median(price), Q3 = quantile(price, 0.75), maximum=max(price))
+```
+
+Dans ce tableau, on peut voir que l'étendue des prix des diamants est très grande. De plus, la moyenne et la médianne sont très écartés, indiquant qu'on peut trouver quelques diamants très chers qui modifient la moyenne mais pas la médianne.
+
+```{r histogramme du prix, echo=FALSE}
+ggplot(diamonds, aes(x = price)) +
+  geom_histogram(breaks = seq(0, 20000, 1000), fill = "grey40", color = "black", alpha = 0.4)
+```
+
+Cet histogramme représente en abscisse le prix des diamants et en ordonnée leur nombre. On remarque encore une fois un très grand écart entre les prix. De plus, le nombre de diamants pour chaque intervalle de prix diminue avec le prix, indiquant qu'il y a de moins en moins de diamant à mesure que le prix augmente.
+
+```{r histogramme avec echelle log,message=FALSE, echo=FALSE}
+ggplot(diamonds, aes(x = price)) +
+  geom_histogram() +
+  scale_x_continuous(trans = "log10") +
+  annotation_logticks()
+```
+
+Cet histogamme est similaire au précédent : il représente en abscisse le prix des diamants selon une échelle logarithmique et en ordonnée leur nombre. Ainsi, plus les diamants coûtent cher, plus l'intervalle correspondant à chaque barre est grand, ce qui permet de visualiser des intervalles très grands. Ainsi, on peut voir qu'il y a peu de diamants en dessous de 300\$. On voit également un trou dans le nombre de diamants autour de 1500\$.
+
+```{r echo=FALSE,message=FALSE}
+ggplot(diamonds) +
+  geom_boxplot(aes(x = cut, y = price)) +
+  scale_y_continuous(trans = "log10")
+```
+
+```{r echo=FALSE,message=FALSE}
+ggplot(diamonds) +
+  geom_boxplot(aes(x = color, y = price)) +
+  scale_y_continuous(trans = "log10")
+```
+
+```{r echo=FALSE,message=FALSE}
+ggplot(diamonds) +
+  geom_boxplot(aes(x = clarity, y = price)) +
+  scale_y_continuous(trans = "log10")
+```
+
+On peut voir sur ces boxplot en abscisse la qualité de coupe des diamants (respectivement la couleur, la clareté) et en ordonnée le prix, sur l'échelle logarithmique. On peut constater que la médiane du prix semble globalement diminuer à mesure que la qualité de coupe (respectivement la qualité de la couleur, la clareté) augmente. On peut supposer que cela est du au fait que l'augmentation de la qualité de coupe, une augmentation de clareté ou une meilleure couleur entraine la baisse d'un autre paramètre, comme le nombre de carats, qui fait baisser le prix.
+
+```{r echo=FALSE}
+diamonds %>% ggplot() +
+  geom_point(aes(x = carat, y = price), size = 0.1) +
+  scale_y_continuous(trans = "log10")
+```
+
+Sur ce nuage de points, on a représenté le nombre de carats en abscisse, et le prix sur l'échelle logarithmique en ordonnée. On peut de nouveau constater le trou dans les prix des diamants autour de 1500$, ainsi que plusieurs paliers en nombre de diamants autour des nombres ronds de carats. De plus, on peut observer une coorélation entre le prix du diamant et son nombre de carats : le prix semble augmenter en fonction du nombre de carats du diamants.
+
+```{r echo=FALSE}
+ggplot(diamonds) +
+  geom_point(aes(x = carat, y = price, color = cut), size = 0.1) +
+  scale_y_continuous(trans = "log10") +
+  scale_x_continuous(limits = c(0, 3))
+```
+
+```{r echo=FALSE}
+ggplot(diamonds) +
+  geom_point(aes(x = carat, y = price, color = color), size = 0.1) +
+  scale_y_continuous(trans = "log10") +
+  scale_x_continuous(limits = c(0, 3))
+```
+
+```{r echo=FALSE}
+ggplot(diamonds) +
+  geom_point(aes(x = carat, y = price, color = clarity), size = 0.1) +
+  scale_y_continuous(trans = "log10") +
+  scale_x_continuous(limits = c(0, 3))
+```
+
+Ces nuages de points représentent en abscisse le nombre de carats, en ordonnée le prix sur l'échelle logarithmique et de couleurs différentes la coupe (respectivement la couleur du diamant, la clareté du diamant). Ils ne représentent pas les diamant pesant plus de 3 carats. On constate que dans tous les cas, le poids du diamant corrèle avec le prix de celui-ci. En outre, de manière locale, c'est-à-dire pour un nombre de carats donné, les diamants avec la meilleure coupe, la meilleure couleur ou la meilleure clareté sont ceux qui valent le plus cher.
+
+```{r echo=FALSE}
+diamonds %>% ggplot(aes(x = price, y = table)) +
+  geom_point() +
+  scale_x_continuous(trans = "log10")
+```
+
+```{r echo=FALSE}
+diamonds %>% ggplot(aes(x = price, y = depth)) +
+  geom_point() +
+  scale_x_continuous(trans = "log10")
+```
+
+
+Sur ces deux nuages de points, on a représenté le prix sur l'échelle logarithmique par rapport à la table (respectivement la profondeur) des diamants. On ne peut pas observer de coorélation entre ni la table ni la profondeur des diamants et leur prix.
+
+```{r echo=FALSE,message=FALSE}
+ggplot(diamonds) +
+  geom_boxplot(aes(x = cut, y = carat))
+```
+
+```{r echo=FALSE,message=FALSE}
+ggplot(diamonds) +
+  geom_boxplot(aes(x = color, y = carat))
+```
+
+```{r echo=FALSE,message=FALSE}
+ggplot(diamonds) +
+  geom_boxplot(aes(x = clarity, y = carat))
+```
+
+On peut voir sur ces boxplot en abscisse la qualité de coupe des diamants (respectivement la couleur, la clareté) et en ordonnée le nombre de carats. On peut constater que dans tous les cas, le nombre de carats semble augmenter à mesure que la qualité de la coupe (respectivement la qualité de la couleur, la clareté) diminue. On peut supposer que le faible nombre de diamants ayant une coupe, une couleur ou une clareté parfaite entraîne une diminution du nombre de carats médian, qui entraîne ainsi la médiane du prix vers le bas.

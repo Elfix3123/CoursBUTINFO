@@ -1,0 +1,562 @@
+nom1;nom2;dist
+Gamora;Drax le Destructeur;0
+Groot;Gamora;0
+Groot;Drax le Destructeur;0
+Nébula;Drax le Destructeur;0
+Nébula;Groot;0
+Nébula;Gamora;0
+Rocket;Gamora;0
+Rocket;Nébula;0
+Rocket;Drax le Destructeur;0
+Rocket;Groot;0
+Star-Lord;Gamora;0
+Star-Lord;Groot;0
+Star-Lord;Nébula;0
+Star-Lord;Drax le Destructeur;0
+Star-Lord;Rocket;0
+Mantis;Drax le Destructeur;1
+Mantis;Gamora;1
+Mantis;Groot;1
+Nébula;Mantis;1
+Rocket;Mantis;1
+Sorcière rouge;Faucon;1
+Star-Lord;Mantis;1
+Wong;Doctor Strange;1
+La Guêpe;Ant-Man;2
+La Valkyrie;La Guêpe;2
+La Valkyrie;Doctor Strange;2
+Mantis;Captain Marvel;2
+Sorcière rouge;Commandant Hill;2
+Spider-Man;Black Panther;2
+Thanos;Commandant Hill;2
+Thor;Loki;2
+Vision;Sorcière rouge;2
+Wong;Mantis;2
+Wong;Captain Marvel;2
+Captain Marvel;Black Panther;3
+Commandant Hill;Black Widow;3
+Doctor Strange;Captain Marvel;3
+Drax le Destructeur;Captain Marvel;3
+Faucon;Commandant Hill;3
+Gamora;Captain Marvel;3
+Groot;Captain Marvel;3
+La Guêpe;Captain Marvel;3
+La Valkyrie;Captain Marvel;3
+Loki;Heimdall;3
+Mantis;La Valkyrie;3
+Mantis;Doctor Strange;3
+Mantis;La Guêpe;3
+Mantis;Black Panther;3
+Mighty Thor;Loki;3
+Mighty Thor;La Guêpe;3
+Mighty Thor;La Valkyrie;3
+Nébula;Captain Marvel;3
+Pepper Potts;Iron Man;3
+Rocket;Captain Marvel;3
+Soldat de l'hiver;Faucon;3
+Soldat de l'hiver;Black Panther;3
+Sorcière rouge;Black Panther;3
+Sorcière rouge;Black Widow;3
+Spider-Man;Mantis;3
+Spider-Man;Sorcière rouge;3
+Spider-Man;Captain Marvel;3
+Star-Lord;Captain Marvel;3
+Thanos;Star-Lord;3
+Thanos;Rocket;3
+Thanos;Drax le Destructeur;3
+Thanos;Gamora;3
+Thanos;Nébula;3
+Thanos;Groot;3
+Thor;Heimdall;3
+Vision;Spider-Man;3
+Vision;Black Panther;3
+Vision;Faucon;3
+Wong;Black Panther;3
+Wong;Spider-Man;3
+Wong;Groot;3
+Wong;La Guêpe;3
+Wong;Star-Lord;3
+Wong;La Valkyrie;3
+Wong;Gamora;3
+Wong;Nébula;3
+Wong;Rocket;3
+Wong;Drax le Destructeur;3
+Black Panther;Ant-Man;4
+Captain America;Black Widow;4
+Commandant Hill;Captain Marvel;4
+Doctor Strange;Black Panther;4
+Drax le Destructeur;Doctor Strange;4
+Drax le Destructeur;Black Panther;4
+Faucon;Black Widow;4
+Faucon;Captain America;4
+Faucon;Ant-Man;4
+Faucon;Black Panther;4
+Gamora;Black Panther;4
+Gamora;Doctor Strange;4
+Groot;Black Panther;4
+Groot;Doctor Strange;4
+Hawkeye;Commandant Hill;4
+La Guêpe;Doctor Strange;4
+La Guêpe;Groot;4
+La Guêpe;Black Panther;4
+La Guêpe;Gamora;4
+La Guêpe;Drax le Destructeur;4
+La Valkyrie;Ant-Man;4
+La Valkyrie;Black Panther;4
+La Valkyrie;Drax le Destructeur;4
+La Valkyrie;Gamora;4
+La Valkyrie;Groot;4
+Loki;La Valkyrie;4
+Loki;Doctor Strange;4
+Mantis;Commandant Hill;4
+Mighty Thor;Captain Marvel;4
+Mighty Thor;Mantis;4
+Mighty Thor;Heimdall;4
+Mighty Thor;Hawkeye;4
+Nébula;Black Panther;4
+Nébula;La Guêpe;4
+Nébula;La Valkyrie;4
+Nébula;Doctor Strange;4
+Nick Fury;Black Widow;4
+Rocket;Black Panther;4
+Rocket;La Valkyrie;4
+Rocket;Doctor Strange;4
+Rocket;La Guêpe;4
+Sorcière rouge;Soldat de l'hiver;4
+Sorcière rouge;Mantis;4
+Sorcière rouge;Captain Marvel;4
+Sorcière rouge;Hawkeye;4
+Spider-Man;Faucon;4
+Spider-Man;Rocket;4
+Spider-Man;La Valkyrie;4
+Spider-Man;Nébula;4
+Spider-Man;La Guêpe;4
+Spider-Man;Groot;4
+Spider-Man;Gamora;4
+Spider-Man;Ant-Man;4
+Spider-Man;Doctor Strange;4
+Spider-Man;Drax le Destructeur;4
+Star-Lord;Spider-Man;4
+Star-Lord;La Valkyrie;4
+Star-Lord;Black Panther;4
+Star-Lord;Doctor Strange;4
+Star-Lord;La Guêpe;4
+Thanos;Hawkeye;4
+Thanos;Sorcière rouge;4
+Thanos;Captain Marvel;4
+Thanos;Mantis;4
+Thor;Doctor Strange;4
+Vision;Heimdall;4
+Vision;Mantis;4
+Vision;Thanos;4
+Vision;Commandant Hill;4
+Vision;Captain Marvel;4
+Vision;Hawkeye;4
+War Machine;Black Widow;4
+War Machine;Iron Man;4
+Wong;Mighty Thor;4
+Wong;Sorcière rouge;4
+Wong;Thanos;4
+Wong;Commandant Hill;4
+Wong;Vision;4
+Captain Marvel;Black Widow;5
+Captain Marvel;Ant-Man;5
+Commandant Hill;Captain America;5
+Commandant Hill;Black Panther;5
+Doctor Strange;Commandant Hill;5
+Drax le Destructeur;Commandant Hill;5
+Faucon;Captain Marvel;5
+Gamora;Commandant Hill;5
+Groot;Commandant Hill;5
+Hawkeye;Faucon;5
+Hawkeye;Ant-Man;5
+Hawkeye;Black Widow;5
+Hawkeye;Black Panther;5
+Heimdall;Doctor Strange;5
+Hulk;Captain Marvel;5
+Hulk;Commandant Hill;5
+La Guêpe;Hawkeye;5
+La Guêpe;Commandant Hill;5
+La Valkyrie;Hawkeye;5
+La Valkyrie;Commandant Hill;5
+La Valkyrie;Heimdall;5
+Loki;Hawkeye;5
+Loki;Captain Marvel;5
+Loki;Commandant Hill;5
+Mantis;Faucon;5
+Mantis;Ant-Man;5
+Mantis;Loki;5
+Mighty Thor;Groot;5
+Mighty Thor;Drax le Destructeur;5
+Mighty Thor;Ant-Man;5
+Mighty Thor;Doctor Strange;5
+Mighty Thor;Gamora;5
+Mighty Thor;Black Panther;5
+Nébula;Commandant Hill;5
+Nébula;Mighty Thor;5
+Nick Fury;Commandant Hill;5
+Phil Coulson;Nick Fury;5
+Rocket;Commandant Hill;5
+Rocket;Mighty Thor;5
+Soldat de l'hiver;Ant-Man;5
+Soldat de l'hiver;Captain America;5
+Sorcière rouge;Groot;5
+Sorcière rouge;Rocket;5
+Sorcière rouge;Nébula;5
+Sorcière rouge;La Guêpe;5
+Sorcière rouge;La Valkyrie;5
+Sorcière rouge;Ant-Man;5
+Sorcière rouge;Captain America;5
+Sorcière rouge;Doctor Strange;5
+Sorcière rouge;Drax le Destructeur;5
+Sorcière rouge;Gamora;5
+Spider-Man;Mighty Thor;5
+Spider-Man;Hawkeye;5
+Spider-Man;Commandant Hill;5
+Spider-Man;Soldat de l'hiver;5
+Spider-Man;Pepper Potts;5
+Star-Lord;Sorcière rouge;5
+Star-Lord;Commandant Hill;5
+Star-Lord;Mighty Thor;5
+Thanos;La Valkyrie;5
+Thanos;La Guêpe;5
+Thanos;Faucon;5
+Thanos;Spider-Man;5
+Thanos;Loki;5
+Thanos;Black Widow;5
+Thanos;Hulk;5
+Thanos;Black Panther;5
+Thanos;Doctor Strange;5
+Thor;Commandant Hill;5
+Thor;Thanos;5
+Thor;Hawkeye;5
+Thor;Mighty Thor;5
+Vision;Doctor Strange;5
+Vision;Nébula;5
+Vision;Ant-Man;5
+Vision;Black Widow;5
+Vision;Rocket;5
+Vision;Drax le Destructeur;5
+Vision;Gamora;5
+Vision;Groot;5
+Vision;Star-Lord;5
+Vision;La Guêpe;5
+Vision;La Valkyrie;5
+War Machine;Pepper Potts;5
+War Machine;Vision;5
+War Machine;Captain Marvel;5
+War Machine;Sorcière rouge;5
+Wong;Thor;5
+Wong;Ant-Man;5
+Wong;Faucon;5
+Wong;Loki;5
+Black Widow;Black Panther;6
+Doctor Strange;Ant-Man;6
+Drax le Destructeur;Ant-Man;6
+Faucon;Doctor Strange;6
+Faucon;Drax le Destructeur;6
+Gamora;Ant-Man;6
+Gamora;Faucon;6
+Groot;Ant-Man;6
+Groot;Faucon;6
+Hawkeye;Captain Marvel;6
+Heimdall;Commandant Hill;6
+Heimdall;Hawkeye;6
+Heimdall;Captain Marvel;6
+Hulk;Black Widow;6
+Hulk;Doctor Strange;6
+Iron Man;Black Widow;6
+Iron Man;Hulk;6
+La Guêpe;Faucon;6
+La Valkyrie;Faucon;6
+La Valkyrie;Hulk;6
+Loki;Black Panther;6
+Loki;Hulk;6
+Loki;La Guêpe;6
+Loki;Gamora;6
+Loki;Drax le Destructeur;6
+Loki;Groot;6
+Mantis;Hawkeye;6
+Mantis;Heimdall;6
+Mighty Thor;Commandant Hill;6
+Nébula;Faucon;6
+Nébula;Ant-Man;6
+Nébula;Loki;6
+Nick Fury;Captain America;6
+Pepper Potts;Commandant Hill;6
+Pepper Potts;Mantis;6
+Pepper Potts;Captain Marvel;6
+Phil Coulson;Mighty Thor;6
+Phil Coulson;Pepper Potts;6
+Phil Coulson;Captain Marvel;6
+Phil Coulson;Hawkeye;6
+Rocket;Loki;6
+Rocket;Faucon;6
+Rocket;Ant-Man;6
+Soldat de l'hiver;Mantis;6
+Soldat de l'hiver;Commandant Hill;6
+Soldat de l'hiver;Captain Marvel;6
+Sorcière rouge;Heimdall;6
+Sorcière rouge;Mighty Thor;6
+Spider-Man;Loki;6
+Spider-Man;Black Widow;6
+Spider-Man;Captain America;6
+Spider-Man;Iron Man;6
+Star-Lord;Faucon;6
+Star-Lord;Loki;6
+Star-Lord;Ant-Man;6
+Thanos;Mighty Thor;6
+Thanos;Pepper Potts;6
+Thanos;Heimdall;6
+Thor;La Valkyrie;6
+Thor;Hulk;6
+Vision;Mighty Thor;6
+Vision;Soldat de l'hiver;6
+War Machine;Faucon;6
+War Machine;Hulk;6
+War Machine;Spider-Man;6
+War Machine;Nick Fury;6
+War Machine;Black Panther;6
+Wong;Pepper Potts;6
+Wong;Soldat de l'hiver;6
+Wong;Hawkeye;6
+Wong;Heimdall;6
+Captain Marvel;Captain America;7
+Commandant Hill;Ant-Man;7
+Hawkeye;Groot;7
+Hawkeye;Doctor Strange;7
+Hawkeye;Drax le Destructeur;7
+Hawkeye;Gamora;7
+Hawkeye;Captain America;7
+Heimdall;Drax le Destructeur;7
+Heimdall;Black Panther;7
+Heimdall;Faucon;7
+Heimdall;Gamora;7
+Heimdall;Groot;7
+Hulk;Hawkeye;7
+Hulk;Heimdall;7
+Iron Man;Commandant Hill;7
+Iron Man;Hawkeye;7
+La Guêpe;Heimdall;7
+Mantis;Black Widow;7
+Mantis;Hulk;7
+Mighty Thor;Faucon;7
+Nébula;Heimdall;7
+Nébula;Hawkeye;7
+Nick Fury;Captain Marvel;7
+Nick Fury;Hawkeye;7
+Pepper Potts;Black Widow;7
+Pepper Potts;La Guêpe;7
+Pepper Potts;Hulk;7
+Pepper Potts;Black Panther;7
+Pepper Potts;Groot;7
+Pepper Potts;Gamora;7
+Pepper Potts;Drax le Destructeur;7
+Pepper Potts;Doctor Strange;7
+Pepper Potts;Nick Fury;7
+Pepper Potts;Nébula;7
+Pepper Potts;Loki;7
+Pepper Potts;La Valkyrie;7
+Phil Coulson;Black Widow;7
+Phil Coulson;La Valkyrie;7
+Phil Coulson;Loki;7
+Phil Coulson;La Guêpe;7
+Rocket;Heimdall;7
+Rocket;Hawkeye;7
+Rocket;Pepper Potts;7
+Soldat de l'hiver;Nébula;7
+Soldat de l'hiver;Black Widow;7
+Soldat de l'hiver;Doctor Strange;7
+Soldat de l'hiver;Drax le Destructeur;7
+Soldat de l'hiver;Gamora;7
+Soldat de l'hiver;Groot;7
+Soldat de l'hiver;La Guêpe;7
+Soldat de l'hiver;La Valkyrie;7
+Soldat de l'hiver;Rocket;7
+Sorcière rouge;Hulk;7
+Sorcière rouge;Iron Man;7
+Sorcière rouge;Nick Fury;7
+Sorcière rouge;Loki;7
+Spider-Man;Heimdall;7
+Star-Lord;Hawkeye;7
+Star-Lord;Soldat de l'hiver;7
+Star-Lord;Pepper Potts;7
+Star-Lord;Heimdall;7
+Thanos;Iron Man;7
+Thanos;Nick Fury;7
+Thanos;Ant-Man;7
+Thanos;Captain America;7
+Thor;Captain Marvel;7
+Thor;Sorcière rouge;7
+Thor;Mantis;7
+Vision;Captain America;7
+Vision;Thor;7
+Vision;Loki;7
+Vision;Iron Man;7
+Vision;Hulk;7
+War Machine;Phil Coulson;7
+War Machine;Commandant Hill;7
+War Machine;Hawkeye;7
+War Machine;Thanos;7
+War Machine;Mantis;7
+Wong;War Machine;7
+Wong;Black Widow;7
+Wong;Hulk;7
+Black Widow;Ant-Man;8
+Captain America;Ant-Man;8
+Captain America;Black Panther;8
+Doctor Strange;Black Widow;8
+Drax le Destructeur;Black Widow;8
+Gamora;Black Widow;8
+Groot;Black Widow;8
+Hulk;Groot;8
+Hulk;Black Panther;8
+Hulk;Captain America;8
+Hulk;Drax le Destructeur;8
+Hulk;Faucon;8
+Hulk;Gamora;8
+Iron Man;Captain America;8
+Iron Man;Black Panther;8
+Iron Man;Faucon;8
+La Guêpe;Hulk;8
+La Guêpe;Black Widow;8
+La Valkyrie;Black Widow;8
+Loki;Ant-Man;8
+Loki;Faucon;8
+Loki;Black Widow;8
+Nébula;Hulk;8
+Nébula;Black Widow;8
+Nick Fury;Hulk;8
+Nick Fury;Loki;8
+Nick Fury;Faucon;8
+Nick Fury;Iron Man;8
+Pepper Potts;Hawkeye;8
+Pepper Potts;Mighty Thor;8
+Phil Coulson;Heimdall;8
+Phil Coulson;Commandant Hill;8
+Phil Coulson;Mantis;8
+Rocket;Hulk;8
+Rocket;Black Widow;8
+Soldat de l'hiver;Hawkeye;8
+Soldat de l'hiver;Mighty Thor;8
+Sorcière rouge;Pepper Potts;8
+Spider-Man;Hulk;8
+Star-Lord;Black Widow;8
+Star-Lord;Hulk;8
+Thanos;Soldat de l'hiver;8
+Thanos;Phil Coulson;8
+Thor;Faucon;8
+Thor;Spider-Man;8
+Thor;Black Panther;8
+Thor;Star-Lord;8
+Thor;Nébula;8
+Thor;Black Widow;8
+Thor;Groot;8
+Thor;Gamora;8
+Thor;La Guêpe;8
+Thor;Drax le Destructeur;8
+Thor;Rocket;8
+Thor;Nick Fury;8
+Vision;Phil Coulson;8
+Vision;Pepper Potts;8
+War Machine;Star-Lord;8
+War Machine;Groot;8
+War Machine;Doctor Strange;8
+War Machine;Gamora;8
+War Machine;Rocket;8
+War Machine;Ant-Man;8
+War Machine;La Guêpe;8
+War Machine;La Valkyrie;8
+War Machine;Nébula;8
+War Machine;Drax le Destructeur;8
+War Machine;Captain America;8
+Wong;Phil Coulson;8
+Heimdall;Black Widow;9
+Heimdall;Ant-Man;9
+Iron Man;Captain Marvel;9
+Mantis;Captain America;9
+Mantis;Iron Man;9
+Mighty Thor;Hulk;9
+Mighty Thor;Black Widow;9
+Nick Fury;Heimdall;9
+Nick Fury;Mighty Thor;9
+Nick Fury;Mantis;9
+Pepper Potts;Faucon;9
+Pepper Potts;Captain America;9
+Pepper Potts;Ant-Man;9
+Phil Coulson;Drax le Destructeur;9
+Phil Coulson;Hulk;9
+Phil Coulson;Gamora;9
+Phil Coulson;Groot;9
+Phil Coulson;Iron Man;9
+Phil Coulson;Doctor Strange;9
+Phil Coulson;Nébula;9
+Phil Coulson;Black Panther;9
+Phil Coulson;Ant-Man;9
+Rocket;Phil Coulson;9
+Soldat de l'hiver;Nick Fury;9
+Soldat de l'hiver;Loki;9
+Spider-Man;Phil Coulson;9
+Star-Lord;Phil Coulson;9
+Thor;Pepper Potts;9
+Thor;Phil Coulson;9
+Vision;Nick Fury;9
+War Machine;Mighty Thor;9
+War Machine;Heimdall;9
+War Machine;Soldat de l'hiver;9
+Wong;Iron Man;9
+Wong;Captain America;9
+Wong;Nick Fury;9
+Doctor Strange;Captain America;10
+Drax le Destructeur;Captain America;10
+Gamora;Captain America;10
+Groot;Captain America;10
+Hulk;Ant-Man;10
+Iron Man;Doctor Strange;10
+Iron Man;Ant-Man;10
+Iron Man;Groot;10
+Iron Man;Gamora;10
+Iron Man;Drax le Destructeur;10
+La Guêpe;Iron Man;10
+La Guêpe;Captain America;10
+La Valkyrie;Iron Man;10
+La Valkyrie;Captain America;10
+Loki;Captain America;10
+Loki;Iron Man;10
+Nébula;Captain America;10
+Nébula;Iron Man;10
+Nick Fury;Groot;10
+Nick Fury;Nébula;10
+Nick Fury;La Valkyrie;10
+Nick Fury;La Guêpe;10
+Nick Fury;Gamora;10
+Nick Fury;Drax le Destructeur;10
+Nick Fury;Doctor Strange;10
+Nick Fury;Black Panther;10
+Pepper Potts;Heimdall;10
+Rocket;Captain America;10
+Rocket;Iron Man;10
+Rocket;Nick Fury;10
+Soldat de l'hiver;Pepper Potts;10
+Soldat de l'hiver;Heimdall;10
+Sorcière rouge;Phil Coulson;10
+Spider-Man;Nick Fury;10
+Star-Lord;Captain America;10
+Star-Lord;Nick Fury;10
+Star-Lord;Iron Man;10
+Thor;Iron Man;10
+Thor;Captain America;10
+Thor;Ant-Man;10
+War Machine;Thor;10
+War Machine;Loki;10
+Heimdall;Captain America;11
+Iron Man;Heimdall;11
+Mighty Thor;Iron Man;11
+Mighty Thor;Captain America;11
+Phil Coulson;Captain America;11
+Phil Coulson;Faucon;11
+Soldat de l'hiver;Hulk;11
+Soldat de l'hiver;Iron Man;11
+Thor;Soldat de l'hiver;11
+Nick Fury;Ant-Man;12
+Soldat de l'hiver;Phil Coulson;12
