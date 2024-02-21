@@ -1,0 +1,140 @@
+/*================================================================*/
+/* Martins Felix - TP02 : SQL avancé : objets définis par requête 
+/*================================================================*/
+
+/*=============================*/
+/* Section 1 : Morts multiples
+/*=============================*/
+/***********************************************************/
+/* 1 - Changement de contrainte sur meurt_dans
+/***********************************************************/
+
+ALTER TABLE meurt_dans 
+DROP CONSTRAINT meurt_dans_pkey;
+
+ALTER TABLE meurt_dans 
+ADD PRIMARY KEY (numero, nom);
+
+/***********************************************************/
+/* 2 - Changement de contrainte sur apparait_dans
+/***********************************************************/
+
+ALTER TABLE apparait_dans
+ADD y_meurt boolean
+DEFAULT false;
+
+UPDATE apparait_dans a
+SET y_meurt = true
+WHERE EXISTS (SELECT *
+FROM meurt_dans m
+WHERE (a.numero, a.nom) = (m.numero, m.nom));
+
+DROP TABLE meurt_dans;
+
+/***********************************************************/
+/* 3 - Création de la vue meurt_dans
+/***********************************************************/
+
+CREATE VIEW meurt_dans_legacy
+AS (SELECT numero, nom
+FROM apparait_dans
+WHERE y_meurt);
+
+/***********************************************************/
+/* 4 - Nouvelles morts
+/***********************************************************/
+
+UPDATE apparait_dans
+SET y_meurt = true
+WHERE (nom = 'Soldat de l''hiver' AND numero = 5)
+OR (nom = 'Nick Fury' AND numero = 9);
+
+/***********************************************************/
+/* 5 - Affichage du contenu de la vue
+/***********************************************************/
+
+SELECT *
+FROM meurt_dans_legacy
+WHERE (nom = 'Soldat de l''hiver' AND numero = 5)
+OR (nom = 'Nick Fury' AND numero = 9);
+
+/*=============================*/
+/* Section 2 : Ajout d'une fan base
+/*=============================*/
+/***********************************************************/
+/* 6 - La table fan_base doit elle être une table permanente ou temporaire ?
+/***********************************************************/
+# La table doit être temporaire
+CREATE TEMP TABLE fan_base_temp(
+	login varchar,
+	nom varchar,
+	annee int
+);
+
+/***********************************************************/
+/* 7 - Alimentation de la table
+/***********************************************************/
+\copy fan_base_temp FROM 'fan_base.csv' WITH (DELIMITER ';', format CSV, HEADER, ENCODING 'UTF8');
+
+/***********************************************************/
+/* 8 - Creation des tables fan et favoris
+/***********************************************************/
+CREATE TABLE fan AS (SELECT DISTINCT login, annee
+FROM fan_base_temp);
+ALTER TABLE fan ADD PRIMARY KEY (login);
+
+CREATE TABLE favoris(login, perso) AS (SELECT DISTINCT login, nom
+FROM fan_base_temp
+WHERE nom IS NOT NULL);
+ALTER TABLE favoris ADD PRIMARY KEY (login, perso);
+ALTER TABLE favoris ADD FOREIGN KEY (login) REFERENCES fan(login);
+ALTER TABLE favoris ADD FOREIGN KEY (perso) REFERENCES personnage(nom);
+
+/***********************************************************/
+/* 9 - Creation d'une vue pour les fans
+/***********************************************************/
+CREATE VIEW mes_favoris AS (SELECT perso
+FROM favoris
+WHERE login = user);
+
+/***********************************************************/
+/* 10 - Quels elements ont disparus ?
+/***********************************************************/
+# La table temporaire a disparue.
+
+/*=============================*/
+/* Section 2 : Publication de la distance entre personnages
+/*=============================*/
+/***********************************************************/
+/* 11 - Construire une première table temporaire couples(nom1,nom2,ne)
+/***********************************************************/
+CREATE TEMP TABLE couples AS
+(SELECT p1.nom AS nom1, p2.nom AS nom2, (SELECT COUNT(pp.numero) 
+FROM (SELECT a1.numero, a1.nom AS nom1, a2.nom AS nom2
+FROM apparait_dans a1 JOIN apparait_dans a2 ON a1.numero = a2.numero AND a1.nom > a2.nom) AS pp
+WHERE p1.nom = pp.nom1
+AND p2.nom = pp.nom2) AS ne
+FROM personnage p1 JOIN personnage p2 ON p1.nom > p2.nom);
+
+/***********************************************************/
+/* 12 - Construire une seconde table temporaire filmo(nom,nf)
+/***********************************************************/
+CREATE TEMP TABLE filmo AS
+(SELECT nom, count(numero) AS dist
+FROM personnage NATURAL LEFT JOIN apparait_dans
+GROUP BY nom);
+
+/***********************************************************/
+/* 13 - Construire une dernière table temporaire proches(nom1,nom2,dist)
+/***********************************************************/
+CREATE TEMP TABLE proches AS 
+(SELECT p1.nom AS nom1, p2.nom AS nom2, (SELECT f1.dist FROM filmo f1 WHERE f1.nom = p1.nom) +
+(SELECT f2.dist FROM filmo f2 WHERE f2.nom = p2.nom) -
+2 * (SELECT c.ne FROM couples c WHERE c.nom1 = p1.nom AND c.nom2 = p2.nom) AS dist
+FROM personnage p1 JOIN personnage p2 ON p1.nom > p2.nom
+ORDER BY dist, nom1);
+
+/***********************************************************/
+/* 14 - Exporter le contenu de cette table dans un fichier CSV nommé proches.csv
+/***********************************************************/
+\copy proches TO 'proches.csv' WITH (DELIMITER ';', format CSV, HEADER, ENCODING 'UTF8');

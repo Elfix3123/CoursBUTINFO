@@ -17,7 +17,7 @@ public class Etudiant {
 	private int indiceDeNotes = 0;
 
 	// Constructeur de la classe
-	public Etudiant(String login, String prenom, String nom) {
+	Etudiant(String login, String prenom, String nom) {
 		setLogin(login);
 		setPrenom(prenom);
 		setNom(nom);
@@ -78,7 +78,7 @@ public class Etudiant {
 	/**
 	 * Renvoie le nom complet de l'étudiant
 	 *
-	 * @return le nom complet
+	 * @return Le nom complet
 	 */
 	public String getNomComplet() {
 		return this.prenom + " " +  this.nom;
@@ -87,10 +87,10 @@ public class Etudiant {
 	/**
 	 * Renvoie le mail de l'étudiant
 	 *
-	 * @return le mail
+	 * @return Le mail
 	 */
 	public String getMail() {
-		return this.prenom + "." + this.nom + "@etu.univ-grenoble-alpes.fr";
+		return this.prenom + "." + this.nom + "@univ-grenoble-alpes.fr";
 	}
 
 	/**
@@ -106,7 +106,7 @@ public class Etudiant {
 	/**
 	 * Calcule la moyenne des notes de l'etudiant
 	 * 
-	 * @return la moyenne si on peut la calculer, -1 sinon
+	 * @return La moyenne si on peut la calculer, -1 sinon
 	 */
 
 	 public double getMoyenne() {
