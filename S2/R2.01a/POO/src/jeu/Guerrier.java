@@ -76,7 +76,7 @@ public class Guerrier {
 	protected void subirDegats(int degats) {
 		this.setPointsDeVie(this.getPointsDeVie() - degats);
 	}
-
+	
 	@Override
 	public String toString() {
 		return "{" +

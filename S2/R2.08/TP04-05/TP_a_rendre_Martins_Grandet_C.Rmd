@@ -1,0 +1,152 @@
+---
+title: "Sujet du TP à rendre "
+output:
+  pdf_document: default
+  word_document:
+    toc: yes
+  html_document:
+    toc: yes
+    always_allow_html: true
+---
+# Etude de l'évolution des ventes de jeux-vidéos en fonction de la zone géographique et des genres, de 1980 à 2010.
+```{r setup, include=FALSE}
+library(dplyr)
+library(ggplot2)
+library(readr)
+setwd("C:/Users/martinst/Downloads/")
+vgsales <- read_csv("vgsales.csv")
+```
+
+Le jeu de données utilisée provient des sites suivants : <https://www.kaggle.com/datasets/gregorut/videogamesales> et <https://www.vgchartz.com/>.
+
+Il contient des informations sur des jeux vidéos sortis entre 1980 et 2020. Ce document vise à étudier les éventuelles coorélations entre les genres des jeux vidéos et leurs ventes selon les zones géographiques de vente. 
+
+Il a été décidé de ne garder que les jeux sortis en 2010 ou avant compte tenu du manque de données fiables pour les enregistrement qui postdatent 2010.
+
+```{r}
+vgsales$An <- as.numeric(vgsales$Year)
+vgsales2 <- vgsales %>% filter(NA_Sales > 0 & EU_Sales > 0 & JP_Sales > 0) %>% filter(An <= 2010)
+summary(vgsales2)
+```
+## Partie 1
+
+```{r}
+vgsales2 %>%
+group_by(An) %>%
+  summarise(
+    somme = sum(Global_Sales),
+  ) %>%
+ggplot(aes(x = An)) +
+geom_line(aes(y = somme)) +
+  labs(
+    title = "Evolution des ventes de jeux-vidéos au cours du temps",
+    x = "Année de sortie du jeu",
+    y = "Nombre de ventes du jeu (en millions)"
+  ) 
+  scale_x_continuous(breaks = seq(1980, 2010, 5))
+```
+
+Ce graphique représente le nombre de jeu vendus en millon par année de sortie du jeu. Il permet de représenter l'évolution de l'importance du marché du jeu vidéo. On peut constater que celui-ci est en augmentation depuis environ 1995, passant de environ 25 millions de copies vendues pour les jeux sortis en 1995 à plus de 150 millons pour les jeux sortis en 2010.
+
+```{r}
+vgsales2 %>%
+group_by(An) %>%
+  summarise(
+    sommeNA = sum(NA_Sales),
+    sommeEU = sum(EU_Sales),
+    sommeJP = sum(JP_Sales),
+    sommeOT = sum(Other_Sales),
+  ) %>%
+ggplot(aes(x = An)) +
+  geom_line(aes(y = sommeNA), color = "#0072B2") +
+  geom_line(aes(y = sommeEU), color = "#D55E00") +
+  geom_line(aes(y = sommeJP), color = "#009E73") +
+  geom_line(aes(y = sommeOT), color = "#FFFF00") +
+  labs(
+    title = "Evolution des ventes de jeux-vidéos en Amérique du Nord (en bleu),\nen Europe (en rouge), au Japon (en vert) et dans le reste du monde (en jaune)",
+    x = "Année de sortie du jeu",
+    y = "Nombre de ventes du jeu (en millions)"
+  ) 
+```
+
+Ce graphique représente le nombre de jeu vendus en millon par année de sortie du jeu, en fonction de la zone géographique. On peut y comparer l'évolution du marché du jeu-vidéo selon la zone de vente du jeu. On peut y constater que l'Amérique du nord représente depuis le début des années 80 le principal client du marché du jeu-video. En second se trouve le Japon, puis l'Europe à partir de 1995. De plus, on peut voir que l'augmentation des ventes est semblable pour toutes les zones géographique.
+
+## Partie 2
+
+Vente global par genre
+```{r}
+library(ggplot2)
+library(dplyr)
+
+# Agréger les ventes globales par genre et trier par ordre croissant de ventes
+ventes_genre <- vgsales2 %>%
+  group_by(Genre) %>%
+  summarize(Total_Ventes = sum(Global_Sales, na.rm = TRUE)) %>%
+  arrange(Total_Ventes)
+
+# Créer le graphique à barres avec ggplot2
+ggplot(ventes_genre, aes(x = reorder(Genre, Total_Ventes), y = Total_Ventes)) +
+  geom_bar(stat = "identity", fill = "skyblue") +
+  labs(x = "Genre", y = "Nombre de ventes globales", title = "Ventes globales par genre (triées)")
+
+```
+
+Grâce au graphique ci-dessus on peut observer que les genres ayant eu le plus de ventes sont en première place le genre action avec plus de 1500 millions de ventes, le sport avec 1200 million de ventes et enfin le genre shooter avec 1000millions de ventes. 
+
+
+Vente global par continent
+```{r}
+library(ggplot2)
+library(dplyr)
+
+# Agréger les ventes globales par continent
+ventes_continent <- vgsales2 %>%
+  summarize(
+    NA_Ventes = sum(NA_Sales, na.rm = TRUE),
+    EU_Ventes = sum(EU_Sales, na.rm = TRUE),
+    JP_Ventes = sum(JP_Sales, na.rm = TRUE),
+    Other_Ventes = sum(Other_Sales, na.rm = TRUE)
+  ) %>%
+  pivot_longer(cols = c(NA_Ventes, EU_Ventes, JP_Ventes, Other_Ventes), names_to = "Continent", values_to = "Total_Ventes")
+
+# Créer le graphique à barres avec ggplot2
+ggplot(ventes_continent, aes(x = Continent, y = Total_Ventes, fill = Continent)) +
+  geom_bar(stat = "identity", show.legend = FALSE) +
+  scale_fill_manual(values = c("NA_Ventes" = "#8FB1CC", "EU_Ventes" = "#B6D9B4", "JP_Ventes" = "#D9B6DD", "Other_Ventes" = "#F0B1B6")) +
+  labs(x = "Continent", y = "Nombre de ventes globales", title = "Ventes globales par continent")
+
+ 
+```
+
+6 A refaire
+
+```{r}
+
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+
+# Supposons que vgsales2 est votre jeu de données contenant les colonnes Genre, NA_Sales, EU_Sales, JP_Sales, Other_Sales et Global_Sales
+# Assurez-vous de charger vos données si elles ne sont pas déjà en mémoire
+
+# Regrouper les données par genre et calculer les ventes globales pour chaque genre
+ventes_genre <- vgsales2 %>%
+  group_by(Genre) %>%
+  summarize(
+    NA_Sales = sum(NA_Sales, na.rm = TRUE),
+    EU_Sales = sum(EU_Sales, na.rm = TRUE),
+    JP_Sales = sum(JP_Sales, na.rm = TRUE),
+    Other_Sales = sum(Other_Sales, na.rm = TRUE),
+    Global_Sales = sum(Global_Sales, na.rm = TRUE)
+  )
+
+# Convertir les données en un format long pour le tracé
+ventes_genre_long <- ventes_genre %>%
+  pivot_longer(cols = c(NA_Sales, EU_Sales, JP_Sales, Other_Sales), names_to = "Category", values_to = "Sales")
+
+# Créer le graphique à barres avec ggplot2
+ggplot(ventes_genre_long, aes(x = Genre, y = Sales, fill = Category)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(x = "Genre", y = "Ventes globales", title = "Ventes globales par genre et par catégorie") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```

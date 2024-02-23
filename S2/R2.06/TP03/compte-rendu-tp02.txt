@@ -1,0 +1,285 @@
+/*================================================================*/
+/* Martins Felix - TP03 : Triggers et fonctions simples  
+/*================================================================*/
+
+/*=============================*/
+/* Section 1 : Trigger pour respecter une contrainte référentielle
+/*=============================*/
+/***********************************************************/
+/* 1 - Supression d'un personnage
+/***********************************************************/
+
+CREATE OR REPLACE FUNCTION f_personnage_delete() RETURNS trigger
+AS $$
+BEGIN
+	DELETE FROM apparait_dans a WHERE a.nom = old.nom;
+	DELETE FROM etat_civil e WHERE e.nom = old.alias;
+	DELETE FROM favoris f WHERE f.perso = old.nom;
+	RAISE NOTICE '% ON % FIRES %', TG_OP, TG_TABLE_NAME, TG_NAME;
+	RETURN old;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE TRIGGER t_personnage_delete
+BEFORE DELETE
+ON personnage
+FOR EACH ROW
+EXECUTE FUNCTION f_personnage_delete();
+
+/***********************************************************/
+/* 2 - Experiences sur un personnage
+/***********************************************************/
+
+SELECT perso, count(login)
+FROM mes_favoris NATURAL JOIN favoris
+GROUP BY perso;
+
+DELETE FROM personnage WHERE nom = 'Commandant Hill';
+
+/***********************************************************/
+/* 3 - Supression d'un fan
+/***********************************************************/
+
+CREATE OR REPLACE FUNCTION f_fan_delete() RETURNS trigger
+AS $$
+BEGIN
+	DELETE FROM favoris f WHERE f.login = old.login;
+	RAISE NOTICE '% ON % FIRES %', TG_OP, TG_TABLE_NAME, TG_NAME;
+	RETURN old;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE TRIGGER t_fan_delete
+BEFORE DELETE
+ON fan
+FOR EACH ROW
+EXECUTE FUNCTION f_fan_delete();
+
+
+/***********************************************************/
+/* 4 - Experiences sur un fan
+/***********************************************************/
+
+INSERT INTO fan VALUES('arthur', 9999);
+INSERT INTO favoris VALUES('arthur', 'Thor');
+
+SELECT * FROM favoris WHERE login = 'arthur';
+DELETE FROM fan WHERE login = 'arthur';
+
+/*=============================*/
+/* Section 2 : Trigger pour réaliser un historique
+/*=============================*/
+/***********************************************************/
+/* 5 - Creation de historique_fan_base(heure,nb_fans,nb_likes)
+/***********************************************************/
+
+CREATE TABLE historique_fan_base(
+	heure timestamp,
+	nb_fans int,
+	nb_likes int
+);
+
+/***********************************************************/
+/* 6 - Insertion d'un premier enregistrement
+/***********************************************************/
+
+INSERT INTO historique_fan_base VALUES(current_timestamp, 
+(SELECT count(login)
+FROM fan), 
+(SELECT count(*)
+FROM favoris));
+
+/***********************************************************/
+/* 7 - Avec une jointure externe
+/***********************************************************/
+
+SELECT current_timestamp AS heure, count(DISTINCT login) AS nb_fans, count(perso) AS nb_likes
+FROM fan NATURAL LEFT JOIN favoris;
+
+/***********************************************************/
+/* 8 - Creation d'un premier trigger
+/***********************************************************/
+
+CREATE OR REPLACE FUNCTION f_favoris() RETURNS trigger
+AS $$
+BEGIN
+	INSERT INTO historique_fan_base 
+		VALUES(current_timestamp, 
+		(SELECT count(login) FROM fan), 
+		(SELECT count(*) FROM favoris));
+	RAISE NOTICE '% ON % FIRES %', TG_OP, TG_TABLE_NAME, TG_NAME;
+	RETURN (CASE WHEN TG_OP = 'DELETE' THEN old ELSE new END);
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE TRIGGER t_favoris
+BEFORE DELETE OR INSERT OR UPDATE
+ON favoris
+FOR EACH ROW
+EXECUTE FUNCTION f_favoris();
+
+INSERT INTO favoris VALUES('arthur', 'Iron Man');
+INSERT INTO favoris VALUES('arthur', 'Ant-Man');
+DELETE FROM favoris WHERE perso IN ('Iron Man', 'Ant-Man') AND login = 'arthur';
+
+# Cette solution n'est pas satisfaisante car elle insère une ligne pour chaque ligne modifiée alors qu'elle n'insère pas dans la table historique d'informations relatives aux lignes : elle devrait etre FOR EACH STATEMENT.
+
+DELETE FROM historique_fan_base WHERE true;
+
+/***********************************************************/
+/* 9 - Creation d'un nouveau trigger
+/***********************************************************/
+
+CREATE OR REPLACE TRIGGER t_favoris
+BEFORE DELETE OR INSERT OR UPDATE
+ON favoris
+FOR EACH STATEMENT
+EXECUTE FUNCTION f_favoris();
+
+/***********************************************************/
+/* 10 - Creation d'un nouveau trigger sur fan
+/***********************************************************/
+
+CREATE OR REPLACE TRIGGER t_fan
+BEFORE DELETE OR INSERT OR UPDATE
+ON fan
+FOR EACH STATEMENT
+EXECUTE FUNCTION f_favoris();
+
+/*=============================*/
+/* Section 3 : Trigger pour réaliser le journal de bord d'une table
+/*=============================*/
+/***********************************************************/
+/* 11 - Creation de la table favoris_log(modifie_par,modifie_a,operation)
+/***********************************************************/
+CREATE TABLE favoris_log(
+	modifie_par varchar default current_user,
+	modifie_a timestamp default current_timestamp,
+	operation varchar,
+	PRIMARY KEY(modifie_par, modifie_a)
+);
+
+/***********************************************************/
+/* 12 - Creation du trigger et de la fonction associée
+/***********************************************************/
+
+CREATE OR REPLACE FUNCTION f_favoris_log() RETURNS trigger
+AS $$
+BEGIN
+	INSERT INTO favoris_log(operation) VALUES(TG_OP);
+	RAISE NOTICE '% ON % FIRES %', TG_OP, TG_TABLE_NAME, TG_NAME;
+	RETURN NULL;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE TRIGGER f_favoris_log
+BEFORE DELETE OR INSERT OR UPDATE
+ON favoris
+FOR EACH STATEMENT
+EXECUTE FUNCTION f_favoris_log();
+
+/***********************************************************/
+/* 13 - Experiences
+/***********************************************************/
+INSERT INTO fan VALUES('arthur', 9999);
+INSERT INTO favoris VALUES('arthur', 'Thor');
+INSERT INTO favoris VALUES('arthur', 'Iron Man');
+DELETE FROM fan WHERE login = 'arthur';
+
+/*=============================*/
+/* Section 3 : Trigger pour réaliser un historique
+/*=============================*/
+/***********************************************************/
+/* 14 - Creation de historique_sans_favori(heure,nb_fans_sans_favori nb_perso_sans_like)
+/***********************************************************/
+CREATE TABLE historique_sans_favori(
+	heure timestamp,
+	nb_fans_sans_favori int,
+	nb_perso_sans_like int
+);
+
+/***********************************************************/
+/* 15 - Insertion d'un premier enregistrement
+/***********************************************************/
+
+INSERT INTO historique_sans_favori VALUES(
+	current_timestamp,
+	(
+		SELECT count(*)
+		FROM (SELECT login 
+			FROM fan
+			EXCEPT SELECT login
+			FROM favoris) AS login_sans_fav
+	),
+	(
+		SELECT count(*)
+		FROM (SELECT nom
+			FROM personnage
+			EXCEPT SELECT perso
+			FROM favoris) AS perso_sans_fav
+	)
+);
+
+/***********************************************************/
+/* 16 - Requete unique
+/***********************************************************/
+
+SELECT current_timestamp AS heure,
+count(fan.login) - count(fav.perso) AS login_sans_fav,
+count(p.nom) - count(fav.perso) AS perso_sans_fav
+FROM fan fan NATURAL LEFT JOIN favoris fav FULL JOIN personnage p ON p.nom = fav.perso;
+
+/***********************************************************/
+/* 17 - Triggers et fonction
+/***********************************************************/
+CREATE OR REPLACE FUNCTION f_historique_sans_favori() RETURNS trigger
+AS $$
+BEGIN
+	INSERT INTO historique_sans_favori VALUES(
+		current_timestamp,
+		(
+			SELECT count(*)
+			FROM (SELECT login 
+				FROM fan
+				EXCEPT SELECT login
+				FROM favoris) AS login_sans_fav
+		),
+		(
+			SELECT count(*)
+			FROM (SELECT nom
+				FROM personnage
+				EXCEPT SELECT perso
+				FROM favoris) AS perso_sans_fav
+		)
+	);
+	RAISE NOTICE '% ON % FIRES %', TG_OP, TG_TABLE_NAME, TG_NAME;
+	RETURN NULL;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE TRIGGER f_historique_sans_favori_fan
+BEFORE DELETE OR INSERT OR UPDATE
+ON fan
+FOR EACH STATEMENT
+EXECUTE FUNCTION f_historique_sans_favori();
+
+CREATE OR REPLACE TRIGGER f_historique_sans_favori_favoris
+BEFORE DELETE OR INSERT OR UPDATE
+ON favoris
+FOR EACH STATEMENT
+EXECUTE FUNCTION f_historique_sans_favori();
+
+CREATE OR REPLACE TRIGGER f_historique_sans_favori_personnage
+BEFORE DELETE OR INSERT OR UPDATE
+ON personnage
+FOR EACH STATEMENT
+EXECUTE FUNCTION f_historique_sans_favori();
+
+/***********************************************************/
+/* 18 - Experiences
+/***********************************************************/
+INSERT INTO favoris VALUES('arthur', 'Thor');
+INSERT INTO favoris VALUES('arthur', 'Iron Man');
+INSERT INTO personnage VALUES('Wolverine', NULL);
+UPDATE favoris SET perso = 'Wolverine' WHERE perso = 'Thor' AND login = 'arthur';
+DELETE FROM fan WHERE login = 'arthur';
