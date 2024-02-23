@@ -1,4 +1,5 @@
 #!/bin/bash au début de chaque script bash
+
 shellcheck SCRIPT : verifie que SCRIPT est ecrit correctement 
 
 history : renvoie les commandes tapees precedemment
