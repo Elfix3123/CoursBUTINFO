@@ -1,13 +1,14 @@
 package tp02.universite;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 import tp02.contrainte.Note;
 
 /**
  * La classe Etudiant représente la notion d'Etudiant et hérite de la classe Personne.
  */
-public class Etudiant extends Personne {
+public class Etudiant extends Personne implements Comparable<Etudiant>{
 	private String adresseParent;
 	private ArrayList<Note> notes;
 
@@ -120,4 +121,44 @@ public class Etudiant extends Personne {
 			" adresseParent='" + this.getAdresseParents() + "'" +
 			"}";
 	}
+
+	/*
+	 * Compare deux étudiants selon l'ordre naturel (nom, prenom).
+	 * 
+	 * @param etudiant l'Etudiant à comparer
+	 * 
+	 * @return un entier qui représente l'ordre des étudiants
+	 */
+	@Override
+	public int compareTo(Etudiant etudiant) {
+		if (super.getNom().compareTo(etudiant.getNom()) < 0 ||
+			(super.getNom().compareTo(etudiant.getNom()) == 0 && 
+			super.getPrenom().compareTo(etudiant.getPrenom()) < 0)) {
+			return -1;
+		}
+		else if (super.getNom().compareTo(etudiant.getNom()) == 0 &&
+			super.getPrenom().compareTo(etudiant.getPrenom()) == 0){
+			return 0;
+		}
+		else {
+			return 1;
+			
+		}
+	}
+
+	public static final Comparator<Etudiant> compareToMoyenne = new Comparator<Etudiant>() {
+		@Override
+		public int compare(Etudiant o1, Etudiant o2) {
+			if (o1.getMoyenne() < o2.getMoyenne()) {
+				return -1;
+			}
+			else if (o1.getMoyenne() == o2.getMoyenne()) {
+				return 0;
+			}
+			else {
+				return 1;
+				
+			}
+		}
+	};
 }
