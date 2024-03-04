@@ -11,6 +11,7 @@ import tp02.contrainte.Note;
 public class Etudiant extends Personne implements Comparable<Etudiant>{
 	private String adresseParent;
 	private ArrayList<Note> notes;
+	private Groupe groupe;
 
 	/**
 	 * Constructeur d'Etudiant sans adresses.
@@ -161,4 +162,43 @@ public class Etudiant extends Personne implements Comparable<Etudiant>{
 			}
 		}
 	};
+
+	/**
+	 * Vérifie si l'étudiant courant appartient à un groupe.
+	 * 
+	 * @return Vrai si l'étudiant appartient à un groupe, Faux sinon
+	 */
+	public boolean appartientAuGroupe() {
+		return this.groupe != null;
+	}
+
+	/**
+	 * Verifie si l'etudiant courant appartient au groupe en paramètre.
+	 * 
+	 * @param groupe le groupe à vérifier
+	 * 
+	 * @return Vrai si l'etudiant appartient au groupe, Faux sinon
+	 */
+	public boolean appartientAuGroupe(Groupe groupe) {
+		return this.groupe.equals(groupe);
+	}
+
+	/**
+	 * Renvoie le groupe de l'etudiant.
+	 *
+	 * @return le groupe de l'etudiant
+	 */
+	public Groupe getGroupe() {
+		return this.groupe;
+	}
+
+	/**
+	 * Setter du groupe.
+	 * 
+	 * @param groupe le groupe de l'etudiant
+	 */
+	public void setGroupe(Groupe groupe) {
+		this.groupe = groupe;
+		groupe.ajouterEtudiant(this);
+	}
 }

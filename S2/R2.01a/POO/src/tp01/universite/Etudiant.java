@@ -24,43 +24,93 @@ public class Etudiant {
 	}
 
 	// Getters
+	/**
+	 * Renvoie le login de l'étudiant courant.
+	 * 
+	 * @return login
+	 */
 	public String getLogin() {
 		return this.login;
 	}
 
+	/**
+	 * Renvoie le nom de l'étudiant courant.
+	 * 
+	 * @return nom
+	 */
 	public String getNom() {
 		return this.nom;
 	}
 
+	/**
+	 * Renvoie le prénom de l'étudiant courant.
+	 * 
+	 * @return prenom
+	 */
 	public String getPrenom() {
 		return this.prenom;
 	}
 
+	/**
+	 * Renvoie l'adresse de l'étudiant courant.
+	 * 
+	 * @return adresse
+	 */
 	public String getAdresse() {
 		return this.adresse;
 	}
 
+	/**
+	 * Renvoie les notes de l'étudiant courant.
+	 * 
+	 * @return notes
+	 */
 	public double[] getNotes() {
 		return this.notes;
 	}
 
+	/**
+	 * Renvoie l'indice de notes de l'étudiant courant.
+	 * 
+	 * @return indiceDeNotes
+	 */
 	public int getIndiceDeNotes() {
 		return this.indiceDeNotes;
 	}
 
 	// Setters
+	/**
+	 * Setter de login.
+	 * 
+	 * @param login
+	 */
 	public void setLogin(String login) {
 		this.login = login.toLowerCase();
 	}
 
+	/**
+	 * Setter de nom.
+	 * 
+	 * @param nom
+	 */
 	public void setNom(String nom) {
 		this.nom = EtudiantUtilitaire.capitalize(nom);
 	}
 
+	/**
+	 * Setter de prenom.
+	 * 
+	 * @param prenom
+	 */
 	public void setPrenom(String prenom) {
 		this.prenom = EtudiantUtilitaire.capitalize(prenom);
 	}
 
+	/**
+	 * Setter de adresse.
+	 * 
+	 * @param adresse
+	 */
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
 	}

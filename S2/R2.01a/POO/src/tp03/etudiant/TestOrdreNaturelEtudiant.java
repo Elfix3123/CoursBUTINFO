@@ -1,17 +1,10 @@
 package tp03.etudiant;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.TreeSet;
 import tp02.universite.*;
 
 public class TestOrdreNaturelEtudiant {
-	public static void affichageEtudiants(Collection<Etudiant> etudiants) {
-		for (Etudiant etudiant : etudiants) {
-			System.out.println(etudiant.getNom() + ", " + etudiant.getPrenom());
-		}
-	}
-
 	public static void main(String[] args) {
 		// Créer les étudiants
 		Etudiant etudiant1 = new Etudiant("login1", "Floriant", "Sanz");
@@ -30,7 +23,7 @@ public class TestOrdreNaturelEtudiant {
 
 		// Afficher la liste d'étudiants quelconque
 		System.out.println("--------------\nLes étudiants : mesEtudiantsOrdreQcq");
-		affichageEtudiants(mesEtudiantsOrdreQcq);
+		TestUtilitaire.affichageEtudiants(mesEtudiantsOrdreQcq);
 
 		// Créer l'ensemble d'étudiants trié et ajouter les étudiants
 		TreeSet<Etudiant> mesEtudiantsTries = new TreeSet<>();
@@ -42,6 +35,6 @@ public class TestOrdreNaturelEtudiant {
 
 		// Afficher l'ensemble d'étudiants trié
 		System.out.println("--------------\nLes étudiants triés : mesEtudiantsTries");
-		affichageEtudiants(mesEtudiantsTries);
+		TestUtilitaire.affichageEtudiants(mesEtudiantsTries);
 	}
 }
