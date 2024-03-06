@@ -44,7 +44,7 @@ public class Groupe {
 	 */
 	public void ajouterEtudiant(Etudiant etudiant) {
 		this.etudiants.add(etudiant);
-		if (!etudiant.getGroupe().equals(this)) {
+		if (etudiant.getGroupe() != this) {
 			etudiant.setGroupe(this);
 		}
 	}

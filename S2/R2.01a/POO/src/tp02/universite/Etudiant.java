@@ -168,7 +168,7 @@ public class Etudiant extends Personne implements Comparable<Etudiant>{
 	 * 
 	 * @return Vrai si l'étudiant appartient à un groupe, Faux sinon
 	 */
-	public boolean appartientAuGroupe() {
+	public boolean existeGroupe() {
 		return this.groupe != null;
 	}
 
@@ -179,7 +179,7 @@ public class Etudiant extends Personne implements Comparable<Etudiant>{
 	 * 
 	 * @return Vrai si l'etudiant appartient au groupe, Faux sinon
 	 */
-	public boolean appartientAuGroupe(Groupe groupe) {
+	public boolean  isContainedGroupe(Groupe groupe) {
 		return this.groupe.equals(groupe);
 	}
 
@@ -198,7 +198,12 @@ public class Etudiant extends Personne implements Comparable<Etudiant>{
 	 * @param groupe le groupe de l'etudiant
 	 */
 	public void setGroupe(Groupe groupe) {
+		if (this.existeGroupe() & groupe != null) {
+			this.groupe.enleverEtudiant(this);
+		}
 		this.groupe = groupe;
-		groupe.ajouterEtudiant(this);
+		if (groupe != null) {
+			groupe.ajouterEtudiant(this);
+		}
 	}
 }

@@ -1,0 +1,3 @@
+# La constitution
+Le Conseil Constitutionnel est le garant des règles constitutionnelles. Il est composé de 9 members, choisis par tiers par le président de la République, de l'Assemblée Nationale et du Sénat. Dans le cas d'une loi non constitutionnelle, le Conseil Constitutionnel doit être saisi par le Président de la République, du Sénat ou de l'Assemblée Nationale, ou encore par 60 députés ou sénateurs. 
+Deux types de compétences sont reconnues au Conseil constitutionnel, la compétence juridictionnelle et la compétence consultative.
