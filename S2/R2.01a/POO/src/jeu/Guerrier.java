@@ -5,9 +5,13 @@ package jeu;
  * Elle a pour objectif d'implémenter des méthodes permettant
  * de jouer à ce jeu.
  */
-public class Guerrier {
-	private int force;
+public abstract class Guerrier {
+	private final int FORCE_BASE = 10;
+	private final int PV_MAX_BASE = 100;
+	private final int RESSOURCE_BASE = 1;
 	private int pointsDeVie;
+
+	private Couleur couleur;
 	
 	/**
 	 * Constructeur d'une instance de Guerrier.
@@ -16,22 +20,21 @@ public class Guerrier {
 	 * La valeur par défault de pointsDeVie est 100.
 	 */
 	public Guerrier() {
-		this.force = 10;
-		this.pointsDeVie = 100;
+		this.pointsDeVie = this.PV_MAX_BASE;
 	}
 
 	// Getters
 	/**
-	 * Getter de force
+	 * Retourne la force de l'instance courante de Guerrier
 	 * 
-	 * @return l'attribut force de l'instance courante de Guerrier
+	 * @return l'attribut FORCE_BASE de l'instance courante de Guerrier
 	 */
 	public int getForce() {
-		return this.force;
+		return this.FORCE_BASE;
 	}
 
 	/**
-	 * Getter de pointsDeVie
+	 * Retourne la pointsDeVie de l'instance courante de Guerrier
 	 * 
 	 * @return l'attribut pointsDeVie de l'instance courante de Guerrier
 	 */
@@ -40,12 +43,40 @@ public class Guerrier {
 	}
 
 	/**
-	 * Setter de pointsDeVie
+	 * Retourne le nombre de ressources nécessaires pour entraîner l'instance courante de Guerrier
+	 * 
+	 * @return l'attribut RESSOURCE_BASE de l'instance courante de Guerrier
+	 */
+	public int getRessourcesPourEntrainement() {
+		return this.RESSOURCE_BASE;
+	}
+
+	/**
+	 * Retourne la couleur de l'instance courante de Guerrier
+	 * 
+	 * @return l'attribut couleur de l'instance courante de Guerrier
+	 */
+	public Couleur getCouleur() {
+		return this.couleur;
+	}
+
+	/**
+	 * Modifie le nombre de points de vie de l'instance courante de Guerrier
 	 * 
 	 * @param pointsDeVie le nombre de points de vie
 	 */
 	public void setPointsDeVie(int pointsDeVie) {
 		this.pointsDeVie = pointsDeVie;
+	}
+
+	/**
+	 * Modifie le chateau de l'instance courante de Guerrier.
+	 * 
+	 * @param chateau le chateau cible
+	 */
+	public void setChateau(Chateau chateau) {
+		chateau.ajoutGuerrierNovice(this);
+		this.couleur = chateau.getCouleur();
 	}
 
 	// Methodes
@@ -56,6 +87,24 @@ public class Guerrier {
 	 */
 	public boolean estVivant() {
 		return this.getPointsDeVie() > 0;
+	}
+
+	/**
+	 * Renvoie vrai si l'instance courante de Guerrier est bleue, faux sinon.
+	 * 
+	 * @return vrai si couleur == Couleur.BLEU, faux sinon
+	 */
+	public boolean estBleu() {
+		return this.couleur == Couleur.BLEU;
+	}
+
+	/**
+	 * Renvoie vrai si l'instance courante de Guerrier est rouge, faux sinon.
+	 * 
+	 * @return vrai si couleur == Couleur.ROUGE, faux sinon
+	 */
+	public boolean estRouge() {
+		return this.couleur == Couleur.ROUGE;
 	}
 
 	/**

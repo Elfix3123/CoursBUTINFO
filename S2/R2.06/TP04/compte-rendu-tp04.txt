@@ -1,0 +1,214 @@
+/*================================================================*/
+/* Martins Felix - TP04 : Triggers sur vues  
+/*================================================================*/
+
+/*=============================*/
+/* Section 1 : Vues modifiables
+/*=============================*/
+/***********************************************************/
+/* 1 - Tentative d'insertion via mes_favorits
+/***********************************************************/
+
+INSERT INTO mes_favoris VALUES('Thor');
+
+ERROR:  null value in column "login" of relation "favoris" violates not-null constraint
+DETAIL:  Failing row contains (null, Thor).
+
+// Tous les attributs NOT NULL de favoris ne sont pas dans la vue.
+
+/***********************************************************/
+/* 2 - Tentative d'insertion dans favoris
+/***********************************************************/
+
+INSERT INTO favoris VALUES(user, 'Iron Man');
+SELECT * FROM mes_favoris;
+
+/***********************************************************/
+/* 3 - Modification via mes_favoris
+/***********************************************************/
+
+UPDATE mes_favoris SET perso = 'Ant-Man';
+
+// La mise à jour est possible et se fait également dans favoris car la vue
+// est simple et l'attribut NOT NULL manquant est déjà renseigné dans le cadre 
+// d'une modification.
+
+/***********************************************************/
+/* 4 - Fin de l'implémentation de la vue meurt_dans_legacy
+/***********************************************************/
+
+// Il est nécessaire de répercuter sur la table d'origine les opérations
+// DELETE, INSERT et UPDATE.
+
+DELETE FROM meurt_dans_legacy 
+WHERE (numero, nom) IN ((5, 'Soldat de l''hiver'), (9, 'Nick Fury'));
+
+// Cette solution n'est pas la bonne car les enregistrements sont supprimés
+// alors que le seul attribut y_meurt devrait passer à false.
+
+/***********************************************************/
+/* 5 - Insertion via meurt_dans_legacy
+/***********************************************************/
+
+INSERT INTO meurt_dans_legacy VALUES(5, 'Soldat de l''hiver');
+
+// Le nouvel enregistrement n'apparait pas dans la vue car sa valeur y_meurt,
+// non renseignée, est par défaut à false.
+
+/***********************************************************/
+/* 6 - Création de la vue et du trigger
+/***********************************************************/
+
+CREATE OR REPLACE VIEW meurt_dans_legacy AS
+SELECT apparait_dans.numero, apparait_dans.nom
+FROM apparait_dans
+WHERE apparait_dans.y_meurt = true
+WITH CHECK OPTION;
+
+INSERT INTO meurt_dans_legacy VALUES(9, 'Soldat de l''hiver');
+
+// L'insertion renvoie une erreur.
+
+ERROR:  new row violates check option for view "meurt_dans_legacy"
+DETAIL:  Failing row contains (9, Soldat de l'hiver, f, f).
+
+/***********************************************************/
+/* 7 - Rétablissement de apparait_dans
+/***********************************************************/
+
+DELETE FROM apparait_dans
+WHERE (numero, nom) IN ((5, 'Soldat de l''hiver'), (9, 'Nick Fury'));
+
+INSERT INTO apparait_dans(numero, nom, y_meurt) VALUES
+	(5, 'Soldat de l''hiver', true), 
+	(9, 'Nick Fury', true);
+
+/*=============================*/
+/* Section 2 : Triggers sur vues 
+/*=============================*/
+/***********************************************************/
+/* 7 - Trigger pour insertion via mes_favoris
+/***********************************************************/
+
+CREATE OR REPLACE FUNCTION f_mes_favoris() RETURNS trigger
+AS $$
+BEGIN
+	INSERT INTO favoris VALUES(user, new.perso);
+	RAISE NOTICE '% ON % FIRES %',TG_OP,TG_TABLE_NAME,TG_NAME;
+	RETURN old;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE TRIGGER t_mes_favoris_delete
+INSTEAD OF INSERT
+ON mes_favoris
+FOR EACH ROW
+EXECUTE FUNCTION f_mes_favoris();
+
+/***********************************************************/
+/* 9 - Ajout de perso via mes_favoris
+/***********************************************************/
+
+SELECT * FROM mes_favoris;
+INSERT INTO mes_favoris VALUES('Thor');
+SELECT * FROM favoris WHERE (login, perso) = (user, 'Thor');
+
+/***********************************************************/
+/* 10 - Trigger pour delete sur meurt_dans_legacy
+/***********************************************************/
+
+CREATE FUNCTION f_meurt_dans_legacy_delete() RETURNS trigger
+AS $$
+BEGIN
+	UPDATE apparait_dans SET y_meurt = false WHERE (old.numero, old.nom) = (numero, nom);
+	RAISE NOTICE '% ON % FIRES %',TG_OP,TG_TABLE_NAME,TG_NAME;
+	RETURN old;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER t_meurt_dans_legacy_delete
+INSTEAD OF DELETE
+ON meurt_dans_legacy
+FOR EACH ROW
+EXECUTE FUNCTION f_meurt_dans_legacy_delete();
+
+/***********************************************************/
+/* 11 - Supression dans meurt_dans_legacy
+/***********************************************************/
+
+SELECT * FROM apparait_dans WHERE (numero, nom) = ((
+	SELECT numero FROM film WHERE titre = 'Avengers: Endgame'
+), 'Thanos');
+DELETE FROM meurt_dans_legacy WHERE (numero, nom) = ((
+	SELECT numero FROM film WHERE titre = 'Avengers: Endgame'
+), 'Thanos');
+SELECT * FROM apparait_dans WHERE (numero, nom) = ((
+	SELECT numero FROM film WHERE titre = 'Avengers: Endgame'
+), 'Thanos');
+
+/***********************************************************/
+/* 12 - Trigger pour insert dans meurt_dans_legacy
+/***********************************************************/
+
+CREATE OR REPLACE FUNCTION f_meurt_dans_legacy_insert() RETURNS trigger
+AS $$
+BEGIN
+	UPDATE apparait_dans SET y_meurt = true WHERE (new.numero, new.nom) = (numero, nom);
+	RAISE NOTICE '% ON % FIRES %',TG_OP,TG_TABLE_NAME,TG_NAME;
+	RETURN new;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE TRIGGER t_meurt_dans_legacy_insert
+INSTEAD OF INSERT
+ON meurt_dans_legacy
+FOR EACH ROW
+EXECUTE FUNCTION f_meurt_dans_legacy_insert();
+
+/***********************************************************/
+/* 13 - Insertion dans meurt_dans_legacy
+/***********************************************************/
+
+SELECT * FROM apparait_dans WHERE numero IN (
+	SELECT numero FROM film WHERE titre LIKE 'Avengers%'
+) AND nom = 'Thanos';
+INSERT INTO meurt_dans_legacy VALUES((
+	SELECT numero FROM film WHERE titre = 'Avengers'
+), 'Thanos');
+SELECT * FROM apparait_dans WHERE numero IN (
+	SELECT numero FROM film WHERE titre LIKE 'Avengers%'
+) AND nom = 'Thanos';
+
+/***********************************************************/
+/* 14 - Trigger pour update dans meurt_dans_legacy
+/***********************************************************/
+
+CREATE OR REPLACE FUNCTION f_meurt_dans_legacy_update() RETURNS trigger
+AS $$
+BEGIN
+	RAISE NOTICE 'test';
+	UPDATE apparait_dans SET y_meurt = false WHERE (old.numero, old.nom) = (numero, nom);
+	UPDATE apparait_dans SET y_meurt = true WHERE (new.numero, new.nom) = (numero, nom);
+	RAISE NOTICE '% ON % FIRES %',TG_OP,TG_TABLE_NAME,TG_NAME;
+	RETURN new;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE TRIGGER t_meurt_dans_legacy_update
+INSTEAD OF insert
+ON meurt_dans_legacy
+FOR EACH ROW
+EXECUTE FUNCTION f_meurt_dans_legacy_update();
+
+/***********************************************************/
+/* 15 - Mise à jour dans meurt_dans_legacy
+/***********************************************************/
+
+SELECT * FROM apparait_dans WHERE numero IN (
+	SELECT numero FROM film WHERE titre LIKE 'Avengers%'
+) AND nom = 'Thanos';
+UPDATE meurt_dans_legacy SET numero = (
+	SELECT numero FROM film WHERE titre = 'Avengers: Endgame'
+) WHERE numero = (
+	SELECT numero FROM film WHERE titre = 'Avengers'
+);

@@ -13,4 +13,13 @@ public class Elfe extends Guerrier{
 	public int getForce() {
 		return super.getForce()*2;
 	}
+
+	/**
+	 * Retourne le nombre de ressources nécessaires pour entraîner l'instance courante de Elfe.
+	 * 
+	 * @return l'attribut RESSOURCE_BASE de l'instance courante de Elfe
+	 */
+	public int getRessourcesPourEntrainement() {
+		return super.getRessourcesPourEntrainement() * 2;
+	}
 }

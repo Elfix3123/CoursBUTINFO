@@ -13,4 +13,13 @@ public class ChefNain extends Nain{
 	protected void subirDegats(int degats) {
 		super.subirDegats(degats/2);
 	}
+
+	/**
+	 * Retourne le nombre de ressources nécessaires pour entraîner l'instance courante de ChefNain.
+	 * 
+	 * @return l'attribut RESSOURCE_BASE de l'instance courante de ChefNain
+	 */
+	public int getRessourcesPourEntrainement() {
+		return super.getRessourcesPourEntrainement() * 3;
+	}
 }
