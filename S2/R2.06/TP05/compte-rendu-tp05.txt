@@ -1,0 +1,151 @@
+/*================================================================*/
+/* Martins Felix - TP05 : Triggers pour vérifier des contraintes complexes 
+/*================================================================*/
+
+/*=============================*/
+/* Section 1 : Triggers pour vérifier des contraintes complexes
+/*=============================*/
+/***********************************************************/
+/* 1 - Adhérent
+/***********************************************************/
+
+CREATE OR REPLACE FUNCTION f_adherent_skipper()
+RETURNS trigger
+AS $$
+BEGIN
+	IF old.skipper AND NOT new.skipper THEN 
+		RAISE EXCEPTION 'Un adherent ne peut pas perdre l''agrément skipper';
+	END IF;
+	RETURN new;
+END $$
+LANGUAGE plpgsql;
+
+CREATE OR REPLACE TRIGGER t_adherent_skipper
+BEFORE UPDATE
+ON adherent
+FOR EACH ROW
+EXECUTE FUNCTION f_adherent_skipper();
+
+UPDATE adherent SET skipper = false WHERE skipper = true;
+>>> ERROR:  Un adherent ne peut pas perdre l'agrément skipper
+>>> CONTEXT:  PL/pgSQL function f_adherent_skipper() line 4 at RAISE
+
+UPDATE adherent SET skipper = true WHERE numadh = 18;
+>>> UPDATE 1
+
+/***********************************************************/
+/* 2 - Course
+/***********************************************************/
+
+CREATE OR REPLACE FUNCTION f_course_overlap()
+RETURNS trigger
+AS $$
+DECLARE
+	tuple_dates RECORD;
+BEGIN
+	IF EXISTS(	SELECT *
+				FROM course
+				WHERE (datedebut, datefin) 
+				OVERLAPS (new.datedebut, new.datefin)) THEN
+		RAISE EXCEPTION 'Le seul jour commun possible entre deux courses est le dernier jour de l''une et le premier jour de l''autre.';
+	END IF;
+	RETURN new;
+END $$
+LANGUAGE plpgsql;
+
+CREATE OR REPLACE TRIGGER t_course_overlap
+BEFORE INSERT OR UPDATE
+ON course
+FOR EACH ROW
+EXECUTE FUNCTION f_course_overlap();
+
+insert into course values (3, 'Port_', '2021-05-01', '2021-05-03');
+>>> INSERT 0 1
+
+insert into course values (4, 'Port_1', '2021-05-02', '2021-05-04');
+>>> ERROR:  Le seul jour commun possible entre deux courses est le dernier jour de l'une et le premier jour de l'autre.
+>>> CONTEXT:  PL/pgSQL function f_course_overlap() line 12 at RAISE
+
+insert into course values (4, 'Port_1', '2021-05-03', '2021-05-04');
+>>> INSERT 0 1
+
+UPDATE course SET datedebut = '2021-05-02' WHERE numcourse = 4;
+>>> NOTICE:  2021-05-01  2021-05-03, 2021-05-02  2021-05-04
+>>> ERROR:  Le seul jour commun possible entre deux courses est le dernier jour de l'une et le premier jour de l'autre.
+>>> P45CONTEXT:  PL/pgSQL function f_course_overlap() line 12 at RAISE
+
+/***********************************************************/
+/* 3 - Chef de bord
+/***********************************************************/
+
+CREATE OR REPLACE FUNCTION f_chefdebord()
+RETURNS trigger
+AS $$
+BEGIN
+	IF NOT (SELECT skipper FROM adherent WHERE numadh = new.numadh) THEN
+		RAISE EXCEPTION 'Un adhérent doit avoir l''agrément skipper pour être le chef de bord d''un bateau pour une course';
+	END IF;
+	IF EXISTS(SELECT * FROM equipier WHERE (numcourse, numadh) = (new.numcourse, new.numadh)) THEN
+		RAISE EXCEPTION 'Un adhérent ne peut être à la fois chef de bord et équipier pour une même course';
+	END IF;
+	RETURN new;
+END $$
+LANGUAGE plpgsql;
+
+CREATE OR REPLACE TRIGGER t_chefdebord
+BEFORE INSERT OR UPDATE
+ON chefdebord
+FOR EACH ROW
+EXECUTE FUNCTION f_chefdebord();
+
+INSERT INTO chefdebord VALUES (2, 3, 4);
+>>> ERROR:  Un adhérent doit avoir l'agrément skipper pour être le chef de bord d'un bateau pour une course
+>>> CONTEXT:  PL/pgSQL function f_chefdebord() line 4 at RAISE
+
+UPDATE chefdebord SET numadh = 10 WHERE (numcourse, numadh, numbat) = (1, 2, 3);
+>>> ERROR:  Un adhérent ne peut être à la fois chef de bord et équipier pour une même course
+>>> CONTEXT:  PL/pgSQL function f_chefdebord() line 7 at RAISE
+
+INSERT INTO chefdebord VALUES (2, 5, 4);
+>>> INSERT 0 1
+
+/***********************************************************/
+/* 4. Equipier
+/***********************************************************/
+
+CREATE OR REPLACE FUNCTION f_equipier()
+RETURNS trigger
+AS $$
+BEGIN
+	IF EXISTS(SELECT * FROM chefdebord WHERE (numcourse, numadh) = (new.numcourse, new.numadh)) THEN
+		RAISE EXCEPTION 'Un adhérent ne peut être à la fois chef de bord et équipier pour une même course';
+	END IF;
+	IF (SELECT count(numadh) FROM equipier WHERE (numbat, numcourse) = (new.numbat, new.numcourse)) + 2  > 
+	(SELECT nbplaces FROM bateau WHERE numbat = new.numbat) THEN
+		RAISE EXCEPTION 'Il ne peut pas y avoir plus de membres d''équipage que de places sur un bateau';
+	END IF;
+	RETURN new;
+END $$
+LANGUAGE plpgsql;
+
+CREATE OR REPLACE TRIGGER t_equipier
+BEFORE INSERT OR UPDATE
+ON equipier
+FOR EACH ROW
+EXECUTE FUNCTION f_equipier();
+
+INSERT INTO equipier VALUES (1, 1, 6);
+>>> ERROR:  Un adhérent ne peut être à la fois chef de bord et équipier pour une même course
+>>> CONTEXT:  PL/pgSQL function f_equipier() line 4 at RAISE
+
+UPDATE equipier SET numbat = 6 WHERE (numbat, numcourse) = (3, 1);
+>>> ERROR:  Il ne peut pas y avoir plus de membres d'équipage que de places sur un bateau
+>>> CONTEXT:  PL/pgSQL function f_equipier() line 8 at RAISE
+
+UPDATE equipier SET numbat = 6 WHERE (numcourse, numadh, numbat) = (1, 8, 3);
+>>> UPDATE 1
+
+/***********************************************************/
+/* 4. Régate
+/***********************************************************/
+

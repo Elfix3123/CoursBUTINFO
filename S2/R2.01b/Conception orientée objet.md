@@ -13,3 +13,17 @@ Modèle : maquette, représentation simplifiée et standardisée d'un système q
 Processus métier : ensemble d'activités pour arriver à un résultat déterminé.
 Logiciel support :
 Méthode : ensemble d'activités pour arriver à un résultat.
+Généralisation/spécialisation : lien qui relie un élément hérité et un élément héritant.
+Factorisation : fait pour une classe mère de faire hériter à la classe fille ses attributs.
+Enrichissement : fait pour une classe fille d'ajouter des attributs à sa classe mère.
+# Associations
+Une agrégation est une composition moins forte. 
+Une composition au contraire permet au parent de modifier ses élément enfants. Cela implique qu'un élément composé a un et un seul conteneur; les compositions sont nécessairement de cardinalité [0..1].
+
+Dans un héritage, l'élément parent n'a aucun pouvoir sur ses éléments enfants. Par exemple, si l'élément parent est supprimé, les éléments enfants ne le sont pas.
+# Contraintes
+Les contraintes sont représentées par des lignes pointillées. Il en existe plusieurs :
+- `{opposite}`
+- `{subset}` ou `{inclus}`
+- `{ID}` ou `{unique}`
+- `{eclude}` ou `{XOR}`
