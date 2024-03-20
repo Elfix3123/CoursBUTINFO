@@ -1,4 +1,5 @@
-package jeu;
+import elements.*;
+import guerriers.*;
 
 public class TestEntraînement {
 	public static void main(String[] args) {
@@ -6,7 +7,7 @@ public class TestEntraînement {
 		Chateau chateauRouge = new Chateau(Couleur.ROUGE);
 		
 		// Création des guerriers
-		Guerrier guerrier = new Guerrier();
+		Guerrier guerrier = new Nain();
 		Elfe elfe = new Elfe();
 		ChefNain chefNain = new ChefNain();
 

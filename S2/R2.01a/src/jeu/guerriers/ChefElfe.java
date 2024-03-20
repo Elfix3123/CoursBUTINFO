@@ -1,4 +1,4 @@
-package jeu;
+package guerriers;
 
 /**
  * La classe ChefElfe représete un guerrier chef elfe du jeu Faërun.

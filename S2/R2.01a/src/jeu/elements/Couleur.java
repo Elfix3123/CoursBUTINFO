@@ -1,4 +1,4 @@
-package jeu;
+package elements;
 
 public enum Couleur {
 	ROUGE,

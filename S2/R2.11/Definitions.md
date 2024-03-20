@@ -6,3 +6,4 @@ Mandat impératif : mandat pendant lequel le sujet est tenu de respecter un ense
 Mandat représentatif : TODO
 Abus de droit : le fait, pour le sujet qui à un droit, de l'utiliser au delà de ce qu'il dispose.
 Principe de stricte nécessité de la loi :
+Préfet : représentant du premier ministre au niveau local.

@@ -1,4 +1,7 @@
-/*package jeu;
+// Tests destinés à une versions antèrieure : ne fonctionnent plus
+
+/*
+package jeu;
 
 public class TestGuerrier {
 	public static void main(String[] args) {

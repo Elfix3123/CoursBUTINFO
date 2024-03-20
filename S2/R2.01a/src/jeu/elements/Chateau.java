@@ -1,6 +1,8 @@
-package jeu;
+package elements;
 
 import java.util.ArrayList;
+
+import guerriers.*;
 
 /**
  * La classe Chateau représente un chateau du jeu Faërun.

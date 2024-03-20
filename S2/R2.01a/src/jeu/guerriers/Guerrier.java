@@ -1,11 +1,13 @@
-package jeu;
+package guerriers;
+
+import elements.*;;
 
 /**
  * La classe Guerrier représete un guerrier du jeu Faërun.
  * Elle a pour objectif d'implémenter des méthodes permettant
  * de jouer à ce jeu.
  */
-public class Guerrier {
+public abstract class Guerrier {
 	private final int FORCE_BASE = 10;
 	private final int PV_MAX_BASE = 100;
 	private final int RESSOURCE_BASE = 1;

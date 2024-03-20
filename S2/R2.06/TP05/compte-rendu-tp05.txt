@@ -223,3 +223,51 @@ UPDATE resultat SET classement = 1 WHERE (numbat, numcourse, numregate) = (5, 2,
 
 UPDATE resultat SET classement = 1 WHERE (numbat, numcourse, numregate) = (2, 1, 3);
 >>> UPDATE 1
+
+/*=============================*/
+/* Section 2 : Autres triggers pour vérifier des contraintes complexes
+/*=============================*/
+/***********************************************************/
+/* 1 - Resultat 2/2
+/***********************************************************/
+
+CREATE OR REPLACE FUNCTION f_resultat()
+RETURNS trigger
+AS $$
+DECLARE
+	dateregatecourante DATE;
+BEGIN
+	IF (TG_OP = 'UPDATE') AND (old.numbat, old.numcourse, old.numregate) != (new.numbat, new.numcourse, new.numregate) THEN
+		RAISE EXCEPTION 'Une fois enregistré, la seule mise à jour autorisée d''un résultat est le classement';
+	END IF;
+	SELECT dateregate INTO dateregatecourante FROM regate WHERE (numcourse, numregate) = (new.numcourse, new.numregate);
+	IF (new.numcourse IS NOT NULL) AND (dateregatecourante > current_date) THEN
+		IF (TG_OP = 'UPDATE') THEN
+			RAISE EXCEPTION 'On ne peut pas enregistrer un classement avant le jour de la regate';
+		ELSE 
+			new.classement = NULL;
+			RAISE NOTICE 'On ne peut pas enregistrer un classement avant le jour de la regate';
+		END IF;
+	END IF;
+	IF (new.classement != SELECT count(*) FROM resultat WHERE classement < new.classement AND (numcourse, numregate) = (new.numcourse, new.numregate) + 1) THEN
+		RAISE EXCEPTION 'Le classement d''un bateau à une régate doit être égal à 1 plus le nombre de bateaux mieux classés que lui';
+	END IF;
+	RETURN new;
+END $$
+LANGUAGE plpgsql;
+
+CREATE OR REPLACE TRIGGER t_resultat
+BEFORE INSERT OR UPDATE
+ON resultat
+FOR EACH ROW
+EXECUTE FUNCTION f_resultat();
+
+UPDATE resultat SET classement = 1 WHERE (numbat, numcourse, numregate) = (3, 1, 3);
+>>> UPDATE 1
+
+UPDATE resultat SET classement = 2 WHERE (numbat, numcourse, numregate) = (6, 1, 3);
+>>> ERROR:  Le classement d'un bateau à une régate doit être égal à 1 plus le nombre de bateaux mieux classés que lui
+>>> CONTEXT:  PL/pgSQL function f_resultat() line 18 at RAISE
+
+UPDATE resultat SET classement = 3 WHERE (numbat, numcourse, numregate) = (6, 1, 3);
+>>> UPDATE 1

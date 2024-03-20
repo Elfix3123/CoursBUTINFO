@@ -1,4 +1,4 @@
-package jeu;
+package guerriers;
 
 /**
  * Classe utilitaire de Guerrier
