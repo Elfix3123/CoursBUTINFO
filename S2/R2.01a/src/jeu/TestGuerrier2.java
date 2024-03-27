@@ -1,4 +1,4 @@
-import guerriers.*;;
+import guerriers.*;
 
 public class TestGuerrier2 {
 	public static void main(String[] args) {

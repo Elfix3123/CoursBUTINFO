@@ -1,0 +1,52 @@
+/*=====================================================================*/
+/* Felix Martins - TP06 : Mise en place d'un serveur de bases de données 
+/*=====================================================================*/
+
+/***********************************************************/
+/* 1 - Installation du programme
+/***********************************************************/
+
+1. Mises à jour de securité
+	# apt update
+	# apt upgrade
+	# apt clean
+
+2. Installation du package
+	# apt install postgresql
+/!\ Faire attention à l'éspace disponnible
+	# df -h
+
+3. Vérfier que le serveur s'execute
+	$ pg_lsclusters
+
+/***********************************************************/
+/* 2 - Configuration du serveur pour accepter des connexions extérieures
+/***********************************************************/
+
+1. Se connecter à l'utilisateur unix postgres
+	# su - postgres
+
+2. Se connecter à PostgreSQL en tant que postgres
+	# psql
+
+3. Créer un nouveau role dans PostgreSQL, du nom du login unix voulu
+	postgres=# CREATE ROLE login PASSWORD 'xxx';
+
+4. Se déconnecter de postgres
+	postgres=# \q
+	# exit
+
+5. Modifier postgresql.conf pour accepter les connexions exterieures
+	# nano /etc/postgresql/14/main/postgresql.conf -> Ajouter ou decommenter listen_addresses = '*'
+
+6. Modifier pg_hba.conf pour ajouter une règle de connexion pour les utilisateurs distants
+	# nano /etc/postgresql/14/main/pg_hba.conf -> Ajouter host all all 0.0.0.0/0 scram-sha-256
+
+7. Relancer le serveur PostgreSQL
+	# service postgresql restart
+
+8. Se connecter avec le nouvel utilisateur et changer le mot de passe
+	$ psql postgres
+	postgres=> \password
+
+psql -h localhost -U aflau postgres 

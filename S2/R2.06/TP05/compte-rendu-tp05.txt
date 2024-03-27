@@ -121,7 +121,7 @@ BEGIN
 	IF EXISTS(SELECT * FROM chefdebord WHERE (numcourse, numadh) = (new.numcourse, new.numadh)) THEN
 		RAISE EXCEPTION 'Un adhérent ne peut être à la fois chef de bord et équipier pour une même course';
 	END IF;
-	IF (SELECT count(numadh) FROM equipier WHERE (numbat, numcourse) = (new.numbat, new.numcourse)) + 2  > 
+	IF (SELECT count(numadh) FROM equipier WHERE (numbat, numcourse) = (new.numbat, new.numcourse)) + 1  > 
 	(SELECT nbplaces FROM bateau WHERE numbat = new.numbat) THEN
 		RAISE EXCEPTION 'Il ne peut pas y avoir plus de membres d''équipage que de places sur un bateau';
 	END IF;
@@ -130,7 +130,7 @@ END $$
 LANGUAGE plpgsql;
 
 CREATE OR REPLACE TRIGGER t_equipier
-BEFORE INSERT OR UPDATE
+AFTER INSERT OR UPDATE
 ON equipier
 FOR EACH ROW
 EXECUTE FUNCTION f_equipier();
@@ -271,3 +271,34 @@ UPDATE resultat SET classement = 2 WHERE (numbat, numcourse, numregate) = (6, 1,
 
 UPDATE resultat SET classement = 3 WHERE (numbat, numcourse, numregate) = (6, 1, 3);
 >>> UPDATE 1
+
+/***********************************************************/
+/* 2 - Cotisation
+/***********************************************************/
+
+PAS FINI
+
+CREATE OR REPLACE FUNCTION f_cotisation()
+RETURNS trigger
+AS $$
+DECLARE
+	anneeprecedentepayee BOOLEAN;
+BEGIN
+	IF (TG_OP = 'UPDATE') AND ((numadh, annee, payé) != (new.numadh, new.annee, new.payé)) THEN
+		(new.numadh, new.annee, new.payé) = (numadh, annee, payé);
+		RAISE NOTICE 'Une fois une cotisation enregistrée, seul le montant peut être modifié';
+	END IF;
+	IF new.montant > (SELECT montant FROM tarif WHERE annee = new.annee) THEN
+		RAISE EXCEPTION 'Une cotisation ne doit pas dépasser le tarif prévu pour la même année';
+	END IF;
+	SELECT payé INTO anneeprecedentepayee FROM cotisation WHERE (numadh, annee) = (new.numadh, new.annee-1);
+	IF NOT anneeprecedentepayee IS NULL OR
+	RETURN new;
+END $$
+LANGUAGE plpgsql;
+
+CREATE OR REPLACE TRIGGER t_cotisation
+BEFORE INSERT OR UPDATE
+ON cotisation
+FOR EACH ROW
+EXECUTE FUNCTION f_cotisation();

@@ -124,7 +124,7 @@ public class Carreau {
 		int i = 0;
 
 		// Tour bleu
-		while (i < this.guerriersBleus.size()) {	// Tant qu'il reste des guerriers bleus
+		while (i < this.guerriersBleus.size() & !this.guerriersRouges.isEmpty()) {	// Tant qu'il reste des guerriers bleus
 			this.guerriersBleus.get(i).attaquer(this.guerriersRouges.get(0));	// Le guerrier bleu courant attaque le guerrier rouge en tête de file
 
 			if (!this.guerriersRouges.get(0).estVivant()) {	// Si le guerrier rouge en tête de file est mort
@@ -137,7 +137,7 @@ public class Carreau {
 		i = 0;
 
 		// Tour rouge
-		while (i < this.guerriersRouges.size()) {	// Tant qu'il reste des guerriers rouges
+		while (i < this.guerriersRouges.size() & !this.guerriersBleus.isEmpty()) {	// Tant qu'il reste des guerriers rouges
 			this.guerriersRouges.get(i).attaquer(this.guerriersBleus.get(0));	// Le guerrier rouge courant attaque le guerrier bleu en tête de file
 
 			if (!this.guerriersBleus.get(0).estVivant()) {	// Si le guerrier bleu en tête de file est mort

@@ -1,0 +1,150 @@
+\documentclass[12pt, a4paper, french]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{babel}
+\usepackage[pdftex]{graphicx, color}
+\usepackage[shortlabels]{enumitem}
+
+\title{SAE1.04 \item Naufrage du Titanic \item Etape 1}
+\author{\bsc{F.Martins} \and \bsc{N.Rayot}}
+\date{\today}
+
+\begin{document}
+
+\selectlanguage{french}
+
+\begin{titlepage}
+	\begin{center}
+		\textbf{SAE1.04 \item Naufrage du Titanic \item Etape 2}
+		\vspace*{1cm}
+		
+		\today
+		\vspace*{1cm}
+		
+		IUT2 \item Dép. Informatique
+		\vfill
+		\raggedleft
+
+		F.Martins, N.Rayot
+	\end{center}
+ \end{titlepage}
+\thispagestyle{empty}
+\newpage
+
+\tableofcontents
+\setcounter{page}{2}
+\thispagestyle{empty}
+\begin{sloppypar}
+\newpage
+
+\section{Justification du SLR}
+
+\begin{itemize}
+\item Dans PORT:
+\begin{itemize}
+    \item PortId, PortName et Country viennent de l'application de la règle R0 à l'entité PORT. 
+	\item PortId est clef primaire car il représente l'identifiant de PORT.
+\end{itemize}
+\item Dans PASSENGER:
+\begin{itemize}
+    \item PassengerId, Name, Sex, Age, Survived viennent de l'application de la règle R0 à l'entité PASSENGER. 
+	\item PassengerId est clef primaire car il représente l'identifiant de PASSENGER.
+    \item PortId provient de l'application de la regle R1 à l'association BOARDING qui associe seulement une occurrence de l'entité PORT à une occurrence de l'entité PASSENGER.
+    \item PortId est une clef étrangère en tant qu'identifiant de PORT.
+    \item PClass n'est pas une clef étrangère car il appartenait à une entité contenant un seul élément et était en clef étrangère seulement dans l'entité PASSENGER.
+\end{itemize}
+\item Dans OCCUPATION:
+\begin{itemize}
+    \item PassengerId et CabinCode deviennent clef primaire d'OCCUPATION avec l'application de la R3.
+    \item PassengerId est une clef étrangère en tant qu'identifiant de PASSENGER avec l'application de la R3.
+    \item CabinCode n'est pas une clef étrangère car il appartenait à une entité contenant un seul élément et était en clef étrangère seulement dans l'entité OCCUPATION.
+\end{itemize}
+\item Dans SERVICE:
+\begin{itemize}
+    \item Role résulte de l'application de la R0 car Role était un attribut de l'association SERVICE.
+    \item PassengerId\_Dom, PassengerId\_Emp sont des clef étrangères qui proviennent de PASSENGER suite à la R3. 
+	\item PassengerId\_Dom est clef primaire par l'application des cardinalités.
+\end{itemize}
+\item Dans CATEGORY:
+\begin{itemize}
+    \item LifeBoatCat,Structure et Places viennent de l'application de la règle R0 à l'entité CATEGORY.
+    \item LifeBoatCat est la clef primaire car identifiant de l'entité CATEGORY.
+\end{itemize}
+\item Dans LIFEBOAT:
+\begin{itemize}
+    \item LifeBoatId ,Side, Position et Location viennent de l'entité LIFEBOAT suite a l'application de R0.
+	\item LifeBoatId est clef primaire en tant qu'identifiant de LIFEBOAT.
+    \item Lauching\_Time  vient de l'association OBSERVED\_TIME suite a l'applicationd de la R3. 
+	\item Elle n'est pas en clef étrangère car la relation OBSERVED\_TIME est supprimée puisqu'elle n'a qu'un attribut.
+    \item LifeBoatCat est une clef étrangère de CATEGORY. Elle est présente dans la relation suite à l'application de la R3.
+\end{itemize}
+\item Dans RECOVERY:
+\begin{itemize}
+	\item Recovery\_Time vient de l'association OBSERVED\_TIME suite à l'application de la R3. Elle n'est pas en clef étrangère suite à la supression de OBSERVED\_TIME.
+    \item LifeBoatId est une clef étrangère de l'entité LIFEBOAT avec l'application de la R2.
+\end{itemize}
+\item Dans RESCUE:
+\begin{itemize}
+    \item PassengerId est une clef étrangère en tant qu'identifiant de PASSENGER suite à l'application de la R2.
+    \item LifeBoatId est une clef étrangère en tant qu'identifiant de LIFEBOAT suite à l'application de R3.
+\end{itemize}
+
+\end{itemize}
+\newpage
+\section{Contraintes du SLR}
+
+Sur consigne, on ignorera les contraintes "NOT NULL" et les contraintes de type.
+
+\begin{itemize}
+
+\item  Port :
+\begin{itemize}
+\item Contrainte d'attribut sur PortId : PRIMARY KEY(PortId)
+\item Contrainte d'attribut sur PortId : CHECK(PortId IN ('C', 'Q', 'S'))
+\end{itemize}
+\item Passenger :
+\begin{itemize} 
+\item Contrainte d'attribut sur PassengerId : PRIMARY KEY(PassengerId)
+\item Contrainte d'attribut sur Survived : CHECK(Survived in (0, 1))
+\item Contrainte d'attribut sur PClass : CHECK(1 <= PClass AND PClass <= 3)
+\item Contrainte référentielle sur PortId : PortId REFERENCES PORT(PortId)
+\end{itemize}
+\item Occupation :
+\begin{itemize}
+\item Contrainte référentielle sur PassengerId : PassengerId REFERENCES PASSENGER(PassengerId)
+\item Contrainte de relation sur PassengerID et CabinCode : PRIMARY KEY (PassengerId, CabinCode)
+\end{itemize}
+\item Service :
+\begin{itemize}
+\item Contrainte d'attribut sur PassengerId\_Dom : PRIMARY KEY(PassengerId\_Dom) lalalalalalalalal
+\item Contrainte référentielle sur PassengerId\_Dom : PassengerId\_Dom REFERENCES PASSENGER(PassengerId)
+\item Contrainte référentielle sur PassengerId\_Emp : PassengerId\_Emp REFERENCES PASSENGER(PassengerId)
+\end{itemize}
+\item Category :
+\begin{itemize}
+\item Contrainte d'attribut sur LifeBoatCat : PRIMARY KEY(LifeBoatCat)
+\item Contrainte d'attribut sur LifeBoatCat : CHECK(LifeBoatCat in ('standard', 'secours', 'radeau'))
+\item Contrainte d'attribut sur Structure : CHECK(Structure in ('bois', 'bois et toile'))
+\end{itemize}
+\item Lifeboat :*
+\begin{itemize}
+\item Contrainte d'attribut sur LifeBoatId : PRIMARY KEY(LifeBoatId)
+\item Contrainte référentielle sur LifeBoatCat : LifeBoatCat REFERENCES CATEGORY(LifeBoatCat)
+\item Contrainte d'attribut sur Side : CHECK(Side in ('babord', 'tribord'))
+\item Contrainte d'attribut sur Position : CHECK(Position in ('avant', 'arriere'))
+\end{itemize}
+\item Recovery :
+\begin{itemize}
+\item Contrainte d'attribut sur LifeBoatId : PRIMARY KEY(LifeBoatId)
+\item Contrainte référentielle sur LifeBoatId : LifeBoatId REFERENCES LIFEBOAT(LifeBoatId)
+\end{itemize}
+\item Rescue :
+\begin{itemize}
+\item Contrainte d'attribut sur PassengerId : PRIMARY KEY(PassengerId)
+\item Contrainte référentielle sur PassengerId : PassengerId REFERENCES PASSENGER(PassengerId)
+\item Contrainte référentielle sur LifeBoatId : LifeBoatId REFERENCES LIFEBOAT(LifeBoatId)
+\end{itemize}
+
+\end{itemize}
+\end{sloppypar}
+\end{document}

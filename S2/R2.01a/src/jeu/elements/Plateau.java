@@ -66,16 +66,20 @@ public class Plateau {
 	public void deplacerGuerriers() {
 		int i = 0;
 		ArrayList<Guerrier> guerriersBleusTemp = new ArrayList<Guerrier>();
+		ArrayList<Guerrier> guerriersBleusCourants = new ArrayList<Guerrier>();
 
 		while (i < this.carreaux.size()) {
-			if (this.carreaux.get(i).estBleu() & i < this.carreaux.size() - 1) {
-				guerriersBleusTemp = this.carreaux.get(i).retirerGuerriersBleus();
-			}
-
-			this.carreaux.get(i).ajoutGuerriersBleus(guerriersBleusTemp);
-
 			if (this.carreaux.get(i).estRouge() & i > 0) {
 				this.carreaux.get(i-1).ajoutGuerriersRouges(this.carreaux.get(i).retirerGuerriersRouges());
+			}
+			else if (this.carreaux.get(i).estBleu() & i < this.carreaux.size() - 1) {
+				guerriersBleusCourants = this.carreaux.get(i).retirerGuerriersBleus();
+				this.carreaux.get(i).ajoutGuerriersBleus(guerriersBleusTemp);
+				guerriersBleusTemp = guerriersBleusCourants;
+			}
+			else {
+				this.carreaux.get(i).ajoutGuerriersBleus(guerriersBleusTemp);
+				guerriersBleusTemp.clear();
 			}
 		}
 	}

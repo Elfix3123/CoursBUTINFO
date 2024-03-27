@@ -1,6 +1,8 @@
 package guerriers;
 
-import elements.*;;
+import elements.Chateau;
+import elements.Couleur;
+import test.jeu.elements.*;;
 
 /**
  * La classe Guerrier représete un guerrier du jeu Faërun.

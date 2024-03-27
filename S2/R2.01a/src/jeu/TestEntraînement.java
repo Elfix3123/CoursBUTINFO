@@ -1,5 +1,7 @@
-import elements.*;
+import elements.Chateau;
+import elements.Couleur;
 import guerriers.*;
+import test.jeu.elements.*;
 
 public class TestEntraînement {
 	public static void main(String[] args) {
