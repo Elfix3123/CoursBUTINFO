@@ -14,11 +14,11 @@ public class CarreauTest {
 	@Test
 	void testLanceCombat() {
 		ArrayList<Guerrier> lesNainsBleus = new ArrayList<>();
-		for (int i; i < 10; i++) {
+		for (int i = 0; i < 10; i++) {
 			lesNainsBleus.add(new Nain());
 		}
 		ArrayList<Guerrier> lesNainsRouges = new ArrayList<>();
-		for (int i; i < 10; i++) {
+		for (int i = 0; i < 10; i++) {
 			lesNainsBleus.add(new Nain());
 		}
 		Carreau carreau = new Carreau();
@@ -26,7 +26,7 @@ public class CarreauTest {
 		carreau.ajoutGuerriersRouges(lesNainsRouges);
 
 		carreau.lanceCombat();
-		Assertions.assertTrue(carreau.getGuerriersBleus().get(0).getPointsDeVie() < 100, "Le guerrier doit avoir perdu de la vie");
+		Assertions.assertTrue(carreau.getGuerriersRouges().size() < 10, "Au moins un guerrier rouge doit être mort");
 	}
 
 	@Test

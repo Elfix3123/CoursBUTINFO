@@ -69,6 +69,8 @@ public class Plateau {
 		ArrayList<Guerrier> guerriersBleusCourants = new ArrayList<Guerrier>();
 
 		while (i < this.carreaux.size()) {
+			this.carreaux.get(i).ajoutGuerriersBleus(guerriersBleusTemp);
+
 			if (this.carreaux.get(i).estRouge() & i > 0) {
 				this.carreaux.get(i-1).ajoutGuerriersRouges(this.carreaux.get(i).retirerGuerriersRouges());
 			}

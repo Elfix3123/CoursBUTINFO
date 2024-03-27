@@ -10,13 +10,17 @@ Script :
 
 Célian - Rolalala… j'arrive pas à lancer Fortnite… mon PC me dit que j'ai pas assez de mémoire alors que normalement j'en ai assez, on dirait que ma mémoire est toujours occupée. Comment je fait pour faire mes Top 1 moi maintenant ? Mais dit moi Nolan, pourquoi est-ce que ma mémoire n'arrive pas à se nettoyer au fur et à mesure ?
 
-Nolan - Et bien c'est très simple ! Tout ça c'est de ta faute ! Dans ton ordinateur, il y a un programme qui tourne en continu et qui s'appelle le ramasse-miettes. *montre la maquette* Quand les programmes de ton PC s’exécutent, ils utilisent un certain espace dans la mémoire pour stocker les variables, les executions : quand il n'y a plus d’espace, plus rien ne fonctionne ! C'est pour ça que quand une zone n'est plus utile, par exemple quand le programme qui l'utilise se termine, le ramasse-miettes s'occupe de la vider, permettant ainsi à un autre programme de l'utiliser. Si tu n'as pas assez de mémoire pour lancer ton jeu, c'est que d'autres programmes sont ouverts en arrière plan : tu devrais donc les fermer.
+Nolan - Et bien tout ça c'est de ta faute ! La question que tu pose c'est : "Dans quelle mesure les algorithme influencent les ramasse-miettes ?", et c'est très simple : une fois que tu saura comment les ramasse-miettes fonctionnent tu pourras comprendre le role des algorithmes dans leur conception ! Voici un programme de ton ordinateur. Il est ici représenté par une boite noire car ce qu'il se passe à l'interieur ne nous interesse pas. Ce qui nous interesse, c'est l'éspace qu'il utilise. Lors de son execution, il va avoir besoin de stocker des variables, des piles d'execution… et tout ca, ca prend de la place dans la mémoire de ton ordinateur. Lors que tu n'as plus de mémoire disponnible, tout plante, et c'est pour cela qu'il est important de faire en sorte de libérer la mémoire disponnible au fur et à mesure, et c'est le rôle du ramasse-miettes ! Lors que ton programme a fini de s'éxecuter, il rend l'éspace qu'il utilise à la machine, mais ne le néttoie pas. C'est alors au rôle du ramasse miettes de s'en occuper ! Cependant, plus tu as de programmes ouverts, plus l'éspace est utilisé; Si tu n'as pas assez de mémoire pour lancer ton jeu, c'est que d'autres programmes sont ouverts en arrière plan : tu devrais donc les fermer.
 
 Célian - D'accord, je comprend… mais je n'ai aucun programme ouvert en arrière plan et Fortnite ne veut toujours pas se lancer !
 
-Nolan - Alors là je sèche… 
+Nolan - Alors la c'est trop compliqué pour moi… la petite voix ?
 
-Felix - C'est également possible que le ramasse-miettes fasse mal son travail, et pour vous expliquer ça je vais devoir vous parler du problème de l'arrêt. Pour qu'un ramasse-miettes soit optimal, il doit pouvoir savoir si un programme va un jour s’arrêter de lui-même ou non. Imaginons qu'une telle chose soit possible : voici le programme halt, qui prend en entrée un autre programme ainsi que son entrée et donne en sortie si le programme en entrée s'arrête ou non. Par exemple, avec ce programme et cette entrée, halt donne oui, et avec cette autre entrée, halt donne non. Voici un autre programme prog :
+Felix - Oui ?
+
+Nolan - Visiblement tu à un chat dans la gorge, fin bon tu peux lui expliquer ?
+
+Felix - Bien sur ! Il existe un problème principal qui limite l'efficacité des ramasse-miettes : le problème de l'arrêt. Pour qu'un ramasse-miettes soit optimal, il doit pouvoir savoir si un programme va un jour s’arrêter de lui-même ou non, pour nettoyer sa zone mémoire. Imaginons qu'une telle chose soit possible : voici le programme halt, qui prend en entrée un autre programme ainsi que son entrée et donne en sortie si le programme en entrée s'arrête ou non. Par exemple, avec ce programme et cette entrée, halt donne oui, et avec cette autre entrée, halt donne non. Voici un autre programme prog :
 ```
 prog(x) {
 	Si halt(prog, x) {
