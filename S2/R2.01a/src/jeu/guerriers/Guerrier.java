@@ -1,8 +1,11 @@
-package guerriers;
+package jeu.guerriers;
 
-import elements.Chateau;
-import elements.Couleur;
-import test.jeu.elements.*;;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import jeu.Application;
+import jeu.elements.Chateau;
+import jeu.elements.Couleur;
 
 /**
  * La classe Guerrier représete un guerrier du jeu Faërun.
@@ -14,6 +17,7 @@ public abstract class Guerrier {
 	private final int PV_MAX_BASE = 100;
 	private final int RESSOURCE_BASE = 1;
 	private int pointsDeVie;
+	private static final Logger LOGGER = Logger.getLogger(Application.class.getPackageName());
 
 	private Couleur couleur;
 	
@@ -24,6 +28,7 @@ public abstract class Guerrier {
 	 * La valeur par défault de pointsDeVie est 100.
 	 */
 	public Guerrier() {
+		LOGGER.log(Level.INFO, "Création d'une instance de guerrier" + this.toString());
 		this.pointsDeVie = this.PV_MAX_BASE;
 	}
 
@@ -70,6 +75,7 @@ public abstract class Guerrier {
 	 * @param pointsDeVie le nombre de points de vie
 	 */
 	public void setPointsDeVie(int pointsDeVie) {
+		LOGGER.log(Level.INFO, "Modification des points de vie d'une instance de guerrier" + this.toString());
 		this.pointsDeVie = pointsDeVie;
 	}
 
@@ -79,6 +85,7 @@ public abstract class Guerrier {
 	 * @param chateau le chateau cible
 	 */
 	public void setChateau(Chateau chateau) {
+		LOGGER.log(Level.INFO, "Modification du chateau d'une instance de guerrier" + this.toString());
 		chateau.ajoutGuerrierNovice(this);
 		this.couleur = chateau.getCouleur();
 	}
@@ -118,6 +125,7 @@ public abstract class Guerrier {
 	 * @param guerrier le guerrier à attaquer
 	 */
 	public void attaquer(Guerrier guerrier) {
+		LOGGER.log(Level.INFO, "Attaque d'une autre instance de guerrier" + this.toString());
 		guerrier.subirDegats(GuerrierUtilitaire.de3(this.getForce()));
 	}
 
@@ -127,6 +135,7 @@ public abstract class Guerrier {
 	 * @param degats les degats à subir
 	 */
 	protected void subirDegats(int degats) {
+		LOGGER.log(Level.INFO, "Degats recus par une instance de guerrier, " + this.toString());
 		this.setPointsDeVie(this.getPointsDeVie() - degats);
 	}
 	

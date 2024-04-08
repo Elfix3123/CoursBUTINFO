@@ -1,8 +1,11 @@
-package elements;
+package jeu.elements;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-import guerriers.Guerrier;
+import jeu.Application;
+import jeu.guerriers.Guerrier;
 
 /**
  * Cette classe représente un carreau du plateau de jeu.
@@ -10,11 +13,13 @@ import guerriers.Guerrier;
 public class Carreau {
 	ArrayList<Guerrier> guerriersBleus;
 	ArrayList<Guerrier> guerriersRouges;
+	private static final Logger LOGGER = Logger.getLogger(Application.class.getPackageName());
 
 	/**
 	 * Constructeur de la classe Carreau.
 	 */
 	public Carreau() {
+		LOGGER.log(Level.INFO, "Création d'une instance de carreau");
 		guerriersBleus = new ArrayList<Guerrier>();
 		guerriersRouges = new ArrayList<Guerrier>();
 	}
@@ -43,6 +48,7 @@ public class Carreau {
 	 * @param ArrayList<Guerrier> les guerriers à ajouter
 	 */
 	public void ajoutGuerriersBleus(ArrayList<Guerrier> guerriers) {
+		LOGGER.log(Level.INFO, "Ajout de guerriers bleus à une instance de carreau");
 		this.guerriersBleus.addAll(guerriers);
 	}
 
@@ -52,6 +58,7 @@ public class Carreau {
 	 * @param ArrayList<Guerrier> les guerriers à ajouter
 	 */
 	public void ajoutGuerriersRouges(ArrayList<Guerrier> guerriers) {
+		LOGGER.log(Level.INFO, "Ajout de guerriers rouges à une instance de carreau");
 		this.guerriersRouges.addAll(guerriers);
 	}
 
@@ -61,6 +68,7 @@ public class Carreau {
 	 * @return ArrayList<Guerrier> les guerriers retirés
 	 */
 	public ArrayList<Guerrier> retirerGuerriersBleus() {
+		LOGGER.log(Level.INFO, "Retrait de guerriers bleus d'une instance de carreau");
 		ArrayList<Guerrier> guerriersRetires = new ArrayList<Guerrier>(this.guerriersBleus);
 		this.guerriersBleus.clear();
 		return guerriersRetires;
@@ -72,6 +80,7 @@ public class Carreau {
 	 * @return ArrayList<Guerrier> les guerriers retirés
 	 */
 	public ArrayList<Guerrier> retirerGuerriersRouges() {
+		LOGGER.log(Level.INFO, "Retrait de guerriers rouges d'une instance de carreau");
 		ArrayList<Guerrier> guerriersRetires = new ArrayList<Guerrier>(this.guerriersRouges);
 		this.guerriersRouges.clear();
 		return guerriersRetires;
@@ -83,6 +92,7 @@ public class Carreau {
 	 * @param Guerrier le guerrier à supprimer
 	 */
 	public void supprimerGuerrier(Guerrier guerrier) {
+		LOGGER.log(Level.INFO, "Suppression d'un guerrier d'une instance de carreau");
 		if (this.guerriersBleus.contains(guerrier)) {
 			this.guerriersBleus.remove(guerrier);
 		} else if (this.guerriersRouges.contains(guerrier)) {
@@ -121,6 +131,7 @@ public class Carreau {
 	 * Lance un combat sur l'instance courante de carreau, suivant les règles du jeu.
 	 */
 	public void lanceCombat() {
+		LOGGER.log(Level.INFO, "Lancement d'un combat sur une instance de carreau");
 		int i = 0;
 
 		// Tour bleu
@@ -146,5 +157,17 @@ public class Carreau {
 
 			i++;
 		}
+	}
+
+	/**
+	 * Renvoie une représentation textuelle de l'instance de carreau courante.
+	 * 
+	 * @return String la représentation textuelle du carreau
+	 */
+	public String toString() {
+		String carreau = "";
+		carreau += new String(new char[this.guerriersBleus.size()]).replace("\0", "B");
+		carreau += new String(new char[this.guerriersRouges.size()]).replace("\0", "R");
+		return carreau;
 	}
 }

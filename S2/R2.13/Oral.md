@@ -20,7 +20,8 @@ Felix - Oui ?
 
 Nolan - Visiblement tu à un chat dans la gorge, fin bon tu peux lui expliquer ?
 
-Felix - Bien sur ! Il existe un problème principal qui limite l'efficacité des ramasse-miettes : le problème de l'arrêt. Pour qu'un ramasse-miettes soit optimal, il doit pouvoir savoir si un programme va un jour s’arrêter de lui-même ou non, pour nettoyer sa zone mémoire. Imaginons qu'une telle chose soit possible : voici le programme halt, qui prend en entrée un autre programme ainsi que son entrée et donne en sortie si le programme en entrée s'arrête ou non. Par exemple, avec ce programme et cette entrée, halt donne oui, et avec cette autre entrée, halt donne non. Voici un autre programme prog :
+Felix - Bien sur ! Il existe un problème principal qui limite l'efficacité des ramasse-miettes : le problème de l'arrêt. Pour qu'un ramasse-miettes soit optimal, il doit pouvoir savoir si un programme va un jour s’arrêter de lui-même ou non, pour nettoyer sa zone mémoire : si on sait qu'un programme ne s'arrête jamais, il est inutile de revérifier si on peut nettoyer sa zone mémoire puis qu'on ne pourra jamais la nettoyer. En revanche, si on sait si et quand un programme va se terminer, on peut prévoir de nétoyer sa zone à ce moment la.
+Imaginons qu'une telle chose soit possible : voici le programme halt, qui prend en entrée un autre programme ainsi que son entrée et donne en sortie si le programme en entrée s'arrête ou non. Par exemple, avec ce programme et cette entrée, halt donne oui, et avec cette autre entrée, halt donne non. Voici un autre programme prog :
 ```
 prog(x) {
 	Si halt(prog, x) {
@@ -31,6 +32,6 @@ prog(x) {
 	}
 }
 ```
-Ce programme boucle à l'infini si halt(prog, x) est vrai, c'est-à-dire si prog s’arrête avec l'entrée x. De plus, il s’arrête si halt(prog, x) est faux, c'est-à-dire si prog boucle à l'infini avec l'entrée x. Ainsi, si prog boucle à l'infini, prog s’arrête et si prog s’arrête, alors il boucle à l'infini : on constate un paradoxe, qui met en relief le fait que halt n'existe pas.
+Ce programme boucle à l'infini si halt(prog, x) est vrai, c'est-à-dire si prog s’arrête avec l'entrée x. De plus, il s’arrête si halt(prog, x) est faux, c'est-à-dire si prog boucle à l'infini avec l'entrée x. Ainsi, si prog boucle à l'infini, prog s’arrête et si prog s’arrête, alors il boucle à l'infini : on constate un paradoxe, qui montre que halt n'existe pas.
 
 Célian - J'ai compris ! Puis qu'on ne peut pas savoir à coup sûr si un programme s’arrête, alors le ramasse-miettes passe sûrement à coté de zones qu'il pourrait nettoyer ! Il me reste plus qu'à redémarrer mon PC…

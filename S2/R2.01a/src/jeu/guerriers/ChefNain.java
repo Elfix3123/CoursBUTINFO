@@ -1,4 +1,4 @@
-package guerriers;
+package jeu.guerriers;
 
 /**
  * La classe ChefNain représete un guerrier chef nain du jeu Faërun.

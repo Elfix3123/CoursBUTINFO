@@ -1,0 +1,6 @@
+# Qu'est-ce que le droit judiciaire ?
+L'action judiciaire est le moyen par lequel le titulaire d'un droit subjectif fait valoir son droit, dans le domaine du droit privé (le droit public est jugé en droit adminstratif). La première étape est d'estimer la validité de la demande : elle n'est valide que si le juge estime qu'elle est régulière, recevable et bien fondée; le juge doit ainsi avoir **intérêt** et **qualité** à agir.
+Après cette validation, l'action doit être qualifiée. En effet, l'action n'est pas défendue de la même manière selon comment elle est qualifiée. 
+Il existe plusieurs principes d'organisation judiciaires :
+- Le principe 
+- Le principe de l'exercice des lois de recours, qui permet de se mettre en désaccord avec la première décision du juge. Il existe plusieurs manières de le faire valoir : l'appel - demander à ce que l'affaire soit déferrée dans une cour supérieure - et l'opposition - quand les jugements sont rendus par défaut - (ordinaires), ayant un effet suspensif et dévolutif, et le pourvoi en cassation - qui consiste à déferrer l'affaire devant la cour de cassation, et qui peut être utilisé dans le cadre d'un vice de procédure, d'un défaut de base légale ou la violation de la loi, le renvoi en révision - quand on découvre un fait nouveau qui peut renverser la décision initiale - et , qui n'ont pas d'effet suspensif.

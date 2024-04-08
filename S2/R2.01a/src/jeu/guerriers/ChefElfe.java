@@ -1,4 +1,4 @@
-package guerriers;
+package jeu.guerriers;
 
 /**
  * La classe ChefElfe représete un guerrier chef elfe du jeu Faërun.
@@ -20,6 +20,6 @@ public class ChefElfe extends Elfe{
 	 * @return l'attribut RESSOURCE_BASE de l'instance courante de ChefElfe
 	 */
 	public int getRessourcesPourEntrainement() {
-		return super.getRessourcesPourEntrainement() * 4;
+		return super.getRessourcesPourEntrainement() * 2;
 	}
 }

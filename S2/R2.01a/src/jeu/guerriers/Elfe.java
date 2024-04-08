@@ -1,4 +1,4 @@
-package guerriers;
+package jeu.guerriers;
 
 /**
  * La classe Elfe représete un guerrier elfe du jeu Faërun.

@@ -1,8 +1,11 @@
-package elements;
+package jeu.elements;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-import guerriers.*;
+import jeu.Application;
+import jeu.guerriers.*;
 
 /**
  * La classe Chateau représente un chateau du jeu Faërun.
@@ -13,6 +16,7 @@ public class Chateau {
 	private final int RESSOURCES_INITIALES = 3;
 	private final int RESSOURCES_AJOUTEES_PAR_TOUR = 1;
 	private int ressources;
+	private static final Logger LOGGER = Logger.getLogger(Application.class.getPackageName());
 
 	private ArrayList<Guerrier> guerriers;
 	private Couleur couleur;
@@ -23,6 +27,7 @@ public class Chateau {
 	 * La valeur par défault de ressources est 3.
 	 */
 	public Chateau(Couleur couleur) {
+		LOGGER.info("Création d'une instance de chateau");
 		this.ressources = this.RESSOURCES_INITIALES;
 		this.couleur = couleur;
 		this.guerriers = new ArrayList<>();
@@ -34,6 +39,7 @@ public class Chateau {
 	 * @param guerrier le guerrier à ajouter
 	 */
 	public void ajoutGuerrierNovice(Guerrier guerrier) {
+		LOGGER.log(Level.INFO, "Ajout d'un guerrier novice à une instance de chateau");
 		this.guerriers.add(guerrier);
 	}
 
@@ -50,6 +56,7 @@ public class Chateau {
 	 * @return guerriersEntraines le vecteur des guerriers entrainés
 	 */
 	public ArrayList<Guerrier> entrainer() {
+		LOGGER.log(Level.INFO, "Entraînement des guerriers d'une instance de chateau");
 		ArrayList<Guerrier> guerriersEntraines = new ArrayList<Guerrier>();
 
 		while (!guerriers.isEmpty() && guerriers.get(0).getRessourcesPourEntrainement() <= this.ressources) {
@@ -65,6 +72,7 @@ public class Chateau {
 	 * Ajoute le nombre de ressources ajoutées par tour aux ressources de l'instance courante de Chateau.
 	 */
 	private void incrementerRessources() {
+		LOGGER.log(Level.INFO, "Incrémentation des ressources d'une instance de chateau");
 		this.ressources += this.RESSOURCES_AJOUTEES_PAR_TOUR;
 	}
 

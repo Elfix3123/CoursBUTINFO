@@ -2,9 +2,9 @@ package test.jeu.elements;
 
 import org.junit.jupiter.api.Test;
 
-import elements.Carreau;
-import guerriers.Guerrier;
-import guerriers.Nain;
+import jeu.elements.Carreau;
+import jeu.guerriers.Guerrier;
+import jeu.guerriers.Nain;
 
 import java.util.ArrayList;
 

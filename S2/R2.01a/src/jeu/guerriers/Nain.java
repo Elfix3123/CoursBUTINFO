@@ -1,4 +1,4 @@
-package guerriers;
+package jeu.guerriers;
 
 /**
  * La classe Nain représete un guerrier nain du jeu Faërun.

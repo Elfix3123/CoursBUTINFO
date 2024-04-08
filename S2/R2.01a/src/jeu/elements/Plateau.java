@@ -1,14 +1,18 @@
-package elements;
+package jeu.elements;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-import guerriers.Guerrier;
+import jeu.Application;
+import jeu.guerriers.Guerrier;
 
 /**
  * Cette classe représente un plateau du jeu de Faerun.
  */
 public class Plateau {
 	ArrayList<Carreau> carreaux;
+	private static final Logger LOGGER = Logger.getLogger(Application.class.getPackageName());
 
 	/**
 	 * Constructeur de la classe Plateau.
@@ -16,6 +20,7 @@ public class Plateau {
 	 * @param longueur la longueur du plateau
 	 */
 	public Plateau(int longueur) {
+		LOGGER.log(Level.INFO, "Création d'une instance de plateau");
 		carreaux = new ArrayList<Carreau>();
 		
 		int i = 0;
@@ -33,6 +38,7 @@ public class Plateau {
 	 * @param ArrayList<Guerrier> les guerriers à ajouter
 	 */
 	public void ajoutGuerriers(Chateau chateau, ArrayList<Guerrier> guerriers) {
+		LOGGER.log(Level.INFO, "Ajout de guerriers à une instance de plateau");
 		if (chateau.getCouleur() == Couleur.BLEU) {
 			this.getCaseDepartBleus().ajoutGuerriersBleus(guerriers);
 		} else {
@@ -60,29 +66,45 @@ public class Plateau {
 
 	/**
 	 * Déplace tous les guerriers du plateau.
-	 * 
-	 * NE FONCTIONNE PAS ENCORE
 	 */
 	public void deplacerGuerriers() {
+		LOGGER.log(Level.INFO, "Déplacement des guerriers sur une instance de plateau");
 		int i = 0;
 		ArrayList<Guerrier> guerriersBleusTemp = new ArrayList<Guerrier>();
 		ArrayList<Guerrier> guerriersBleusCourants = new ArrayList<Guerrier>();
 
 		while (i < this.carreaux.size()) {
-			this.carreaux.get(i).ajoutGuerriersBleus(guerriersBleusTemp);
-
-			if (this.carreaux.get(i).estRouge() & i > 0) {
-				this.carreaux.get(i-1).ajoutGuerriersRouges(this.carreaux.get(i).retirerGuerriersRouges());
-			}
-			else if (this.carreaux.get(i).estBleu() & i < this.carreaux.size() - 1) {
-				guerriersBleusCourants = this.carreaux.get(i).retirerGuerriersBleus();
-				this.carreaux.get(i).ajoutGuerriersBleus(guerriersBleusTemp);
-				guerriersBleusTemp = guerriersBleusCourants;
-			}
-			else {
+			if (this.carreaux.get(i).estBleu()) {
+				guerriersBleusCourants.clear();
+				guerriersBleusCourants.addAll(this.carreaux.get(i).retirerGuerriersBleus());
 				this.carreaux.get(i).ajoutGuerriersBleus(guerriersBleusTemp);
 				guerriersBleusTemp.clear();
+				guerriersBleusTemp.addAll(guerriersBleusCourants);
+			} else {
+				this.carreaux.get(i).ajoutGuerriersBleus(guerriersBleusTemp);
+				guerriersBleusTemp.clear();
+				if (this.carreaux.get(i).estRouge() & i != 0) {
+					this.carreaux.get(i - 1).ajoutGuerriersRouges(this.carreaux.get(i).retirerGuerriersRouges());
+				}
 			}
+
+			i++;
 		}
+	}
+
+	/**
+	 * Renvoie une représentation textuelle du plateau.
+	 * 
+	 * @return String la représentation textuelle du plateau
+	 */
+	public String toString() {
+		String plateau = "|";
+
+		for (Carreau carreau : carreaux) {
+			plateau += carreau.toString();
+			plateau += "\t|";
+		}
+
+		return plateau;
 	}
 }

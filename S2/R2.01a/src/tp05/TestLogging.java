@@ -12,7 +12,7 @@ public class TestLogging {
 	private static Logger LOGGER = Logger.getLogger(TestLogging.class.getPackageName());
 
 	// Configuration du logger
-	static{
+	static {
 		try {
 			LOG_MANAGER.readConfiguration(new FileInputStream("conf/debug-logging.properties"));
 		} catch (IOException exception ) {

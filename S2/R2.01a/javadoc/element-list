@@ -1,4 +1,6 @@
 jeu
+jeu.elements
+jeu.guerriers
 tp01
 tp01.forme
 tp01.universite
@@ -7,3 +9,9 @@ tp02.telephone
 tp02.universite
 tp03.billetterie
 tp03.etudiant
+tp04.collection
+tp04.dalton
+tp04.tabledemultiplication
+tp05
+tp05.tabledoperation
+tp06
