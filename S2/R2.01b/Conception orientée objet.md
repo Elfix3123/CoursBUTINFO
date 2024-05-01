@@ -1,4 +1,4 @@
-06# Qu'est-ce que la conception ?
+# Qu'est-ce que la conception ?
 La conception représente le fait de schématiser et de modéliser un but, souvent d'un point de vue graphique. Elle permet de prendre du recul sur son objectif ainsi que de s'accorder sur celui-ci en équipe. Elle s'oppose à la réalisation, qui correspond à la mise en oeuvre de la conception.
 La conception est une étape nécessaire au développement d'un logiciel. Elle permet de présenter au client une version simplifiée et comprehensible du logiciel.
 La conception comprend plusieurs étapes :

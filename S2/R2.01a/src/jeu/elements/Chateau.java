@@ -71,7 +71,7 @@ public class Chateau {
 	/**
 	 * Ajoute le nombre de ressources ajoutées par tour aux ressources de l'instance courante de Chateau.
 	 */
-	private void incrementerRessources() {
+	public void incrementerRessources() {
 		LOGGER.log(Level.INFO, "Incrémentation des ressources d'une instance de chateau");
 		this.ressources += this.RESSOURCES_AJOUTEES_PAR_TOUR;
 	}

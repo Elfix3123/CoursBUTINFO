@@ -141,8 +141,8 @@ public abstract class Guerrier {
 	
 	@Override
 	public String toString() {
-		return "{" +
-			" force='" + getForce() + "'" +
+		return "{" + this.getClass().getSimpleName() +
+			" : force='" + getForce() + "'" +
 			", pointsDeVie='" + getPointsDeVie() + "'" +
 			"}";
 	}

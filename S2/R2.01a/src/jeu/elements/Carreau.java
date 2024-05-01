@@ -129,16 +129,20 @@ public class Carreau {
 
 	/**
 	 * Lance un combat sur l'instance courante de carreau, suivant les règles du jeu.
+	 * 
+	 * @return int le nombre de guerriers morts
 	 */
-	public void lanceCombat() {
+	public int lanceCombat() {
 		LOGGER.log(Level.INFO, "Lancement d'un combat sur une instance de carreau");
 		int i = 0;
+		int guerriersMorts = 0;
 
 		// Tour bleu
 		while (i < this.guerriersBleus.size() & !this.guerriersRouges.isEmpty()) {	// Tant qu'il reste des guerriers bleus
 			this.guerriersBleus.get(i).attaquer(this.guerriersRouges.get(0));	// Le guerrier bleu courant attaque le guerrier rouge en tête de file
 
 			if (!this.guerriersRouges.get(0).estVivant()) {	// Si le guerrier rouge en tête de file est mort
+				guerriersMorts++;
 				this.guerriersRouges.remove(0);	// Supprime le guerrier rouge en tête de file
 			}
 
@@ -152,11 +156,14 @@ public class Carreau {
 			this.guerriersRouges.get(i).attaquer(this.guerriersBleus.get(0));	// Le guerrier rouge courant attaque le guerrier bleu en tête de file
 
 			if (!this.guerriersBleus.get(0).estVivant()) {	// Si le guerrier bleu en tête de file est mort
+				guerriersMorts++;
 				this.guerriersBleus.remove(0);	// Supprime le guerrier bleu en tête de file
 			}
 
 			i++;
 		}
+		
+		return guerriersMorts;
 	}
 
 	/**

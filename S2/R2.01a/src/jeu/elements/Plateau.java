@@ -91,6 +91,27 @@ public class Plateau {
 			i++;
 		}
 	}
+	
+	/**
+	 * Lance un combat sur toutes les cases de l'instance de plateau courante qui sont des champs de bataille.
+	 * 
+	 * @return le nombre de guerriers morts
+	 */
+	public int lanceCombats() {
+		LOGGER.log(Level.INFO, "Lancement des combats sur une instance de plateau");
+		int i = 0;
+		int guerriersMorts = 0;
+
+		while (i < this.carreaux.size()) {
+			if (this.carreaux.get(i).estChampsDeBataille()) {
+				guerriersMorts += this.carreaux.get(i).lanceCombat();
+			}
+
+			i++;
+		}
+
+		return guerriersMorts;
+	}
 
 	/**
 	 * Renvoie une représentation textuelle du plateau.

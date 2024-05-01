@@ -40,6 +40,28 @@ public class GuerrierUtilitaire {
 	}
 
 	/**
+	 * Retourne une instance d'une classe qui hérite de Guerrier (Nain, ChefNain, Elfe, ChefElfe) aléatoire
+	 * 
+	 * @return une instance d'une classe qui hérite de Guerrier
+	 */
+	public static Guerrier guerrierAleatoire() {
+		LOGGER.log(Level.INFO, "Création d'une instance de guerrier aléatoire");
+		int choix = (int)(Math.random()*4);
+		switch (choix) {
+			case 0:
+				return new Nain();
+			case 1:
+				return new ChefNain();
+			case 2:
+				return new Elfe();
+			case 3:
+				return new ChefElfe();
+			default:
+				return null;
+		}
+	}
+
+	/**
 	 * Affiche une instance de guerrier.
 	 * 
 	 * @param guerrier le guerrier à afficher

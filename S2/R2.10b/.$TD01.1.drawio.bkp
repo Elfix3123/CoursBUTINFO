@@ -1,0 +1,377 @@
+<mxfile host="Electron" modified="2024-04-11T08:18:01.434Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.1.0 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="mIhp9wnq9BSG0HuK1r8O" version="24.1.0" type="device">
+  <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
+    <mxGraphModel dx="2261" dy="839" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="m6cD3cyZK9qOw0DMA8eo-0" target="m6cD3cyZK9qOw0DMA8eo-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-0" value="Début" style="ellipse;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="210" y="240" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="270" y="441" as="sourcePoint" />
+            <mxPoint x="270" y="481" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-10" value="Oui" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="m6cD3cyZK9qOw0DMA8eo-9" vertex="1" connectable="0">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="-12" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="m6cD3cyZK9qOw0DMA8eo-2" target="m6cD3cyZK9qOw0DMA8eo-62" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="440" y="940" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="680" y="400" />
+              <mxPoint x="680" y="930" />
+              <mxPoint x="440" y="930" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-2" value="Celui qui fait la demande est-il dans la liste ?" style="rhombus;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="210" y="360" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-5" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="m6cD3cyZK9qOw0DMA8eo-4" target="m6cD3cyZK9qOw0DMA8eo-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-4" value="Liste d&#39;attente" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="370" y="270" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="m6cD3cyZK9qOw0DMA8eo-6" target="m6cD3cyZK9qOw0DMA8eo-12" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-14" value="Oui" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="m6cD3cyZK9qOw0DMA8eo-13" vertex="1" connectable="0">
+          <mxGeometry x="-0.2357" y="-1" relative="1" as="geometry">
+            <mxPoint y="-5" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="m6cD3cyZK9qOw0DMA8eo-6" target="m6cD3cyZK9qOw0DMA8eo-32" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="20" y="520" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-35" value="Non" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="m6cD3cyZK9qOw0DMA8eo-34" vertex="1" connectable="0">
+          <mxGeometry x="-0.9604" y="2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-6" value="Celui qui fait la demande travaille-t-il depuis plus de 2 ans dans la branche et 6 mois dans l&#39;entreprise ?" style="rhombus;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="210" y="480" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="m6cD3cyZK9qOw0DMA8eo-12" target="m6cD3cyZK9qOw0DMA8eo-15" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-17" value="Non" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="m6cD3cyZK9qOw0DMA8eo-16" vertex="1" connectable="0">
+          <mxGeometry x="-0.1786" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="m6cD3cyZK9qOw0DMA8eo-12" target="m6cD3cyZK9qOw0DMA8eo-18" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-21" value="Oui" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="m6cD3cyZK9qOw0DMA8eo-19" vertex="1" connectable="0">
+          <mxGeometry x="-0.789" y="-2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-12" value="La durée de la formation est-elle supèrieure ou égale à 6 mois et la demande est-elle faite plus de 60 jours avant le début du congé ?" style="rhombus;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="210" y="600" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="m6cD3cyZK9qOw0DMA8eo-15" target="m6cD3cyZK9qOw0DMA8eo-18" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-22" value="Oui" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="m6cD3cyZK9qOw0DMA8eo-20" vertex="1" connectable="0">
+          <mxGeometry x="-0.7994" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="m6cD3cyZK9qOw0DMA8eo-15" target="m6cD3cyZK9qOw0DMA8eo-32" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-39" value="Non" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="m6cD3cyZK9qOw0DMA8eo-38" vertex="1" connectable="0">
+          <mxGeometry x="-0.8143" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-15" value="La durée de la formation est-elle infèrieure à 6 mois et la demande est-elle faite plus de 30 jours avant le début du congé ?" style="rhombus;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="210" y="720" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="m6cD3cyZK9qOw0DMA8eo-18" target="m6cD3cyZK9qOw0DMA8eo-62" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="440" y="940" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-27" value="Oui" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="m6cD3cyZK9qOw0DMA8eo-25" vertex="1" connectable="0">
+          <mxGeometry x="-0.2643" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-44" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="m6cD3cyZK9qOw0DMA8eo-18" target="m6cD3cyZK9qOw0DMA8eo-43" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-45" value="Non" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="m6cD3cyZK9qOw0DMA8eo-44" vertex="1" connectable="0">
+          <mxGeometry x="-0.9485" y="-2" relative="1" as="geometry">
+            <mxPoint x="-11" y="2" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-18" value="Le délai de franchise est-il respecté ?" style="rhombus;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="380" y="820" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="m6cD3cyZK9qOw0DMA8eo-62" target="m6cD3cyZK9qOw0DMA8eo-43" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="380.0600000000004" y="980.0400000000002" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-47" value="Oui" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="m6cD3cyZK9qOw0DMA8eo-46" vertex="1" connectable="0">
+          <mxGeometry x="-0.8684" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-57" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="m6cD3cyZK9qOw0DMA8eo-29" target="m6cD3cyZK9qOw0DMA8eo-56" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-115" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="m6cD3cyZK9qOw0DMA8eo-29" target="m6cD3cyZK9qOw0DMA8eo-114" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-29" value="Accepter la demande" style="rounded=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="447" y="1670" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-53" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="m6cD3cyZK9qOw0DMA8eo-99" target="m6cD3cyZK9qOw0DMA8eo-52" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="1690" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-59" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="m6cD3cyZK9qOw0DMA8eo-99" target="m6cD3cyZK9qOw0DMA8eo-58" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="20" y="1650" />
+              <mxPoint x="20" y="1940" />
+              <mxPoint x="250" y="1940" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-100" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="m6cD3cyZK9qOw0DMA8eo-32" target="m6cD3cyZK9qOw0DMA8eo-99" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-32" value="Refuser la demande" style="rounded=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="-40" y="1530" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-41" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="m6cD3cyZK9qOw0DMA8eo-40" target="m6cD3cyZK9qOw0DMA8eo-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-40" value="Dossier du salarié" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="60" y="270" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-51" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="m6cD3cyZK9qOw0DMA8eo-43" target="m6cD3cyZK9qOw0DMA8eo-50" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-55" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="m6cD3cyZK9qOw0DMA8eo-101" target="m6cD3cyZK9qOw0DMA8eo-54" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-60" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="m6cD3cyZK9qOw0DMA8eo-101" target="m6cD3cyZK9qOw0DMA8eo-58" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-102" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="m6cD3cyZK9qOw0DMA8eo-43" target="m6cD3cyZK9qOw0DMA8eo-101" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-43" value="Reporter la demande" style="rounded=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="190" y="1530" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-50" value="Ajouter à la liste d&#39;attente" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="70" y="1600" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-52" value="Notifier le refus" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="-140" y="1740" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-54" value="Notifier le repport" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="60" y="1830" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-56" value="Ajouter à la liste des salariés en congés" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="327" y="1740" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-58" value="Fin" style="ellipse;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="190" y="2020" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-64" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="m6cD3cyZK9qOw0DMA8eo-62" target="m6cD3cyZK9qOw0DMA8eo-63" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-65" value="Non" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="m6cD3cyZK9qOw0DMA8eo-64" vertex="1" connectable="0">
+          <mxGeometry x="-0.0534" y="2" relative="1" as="geometry">
+            <mxPoint x="-2" y="-9" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-90" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="m6cD3cyZK9qOw0DMA8eo-62" target="m6cD3cyZK9qOw0DMA8eo-103" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="760" y="1010" />
+              <mxPoint x="760" y="1390" />
+              <mxPoint x="507" y="1390" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-91" value="Oui" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="m6cD3cyZK9qOw0DMA8eo-90" vertex="1" connectable="0">
+          <mxGeometry x="-0.9738" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-62" value="Moins de 10 salariés et moins d&#39;1 salarié déjà en formation ?" style="rhombus;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="380" y="970" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-70" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="m6cD3cyZK9qOw0DMA8eo-63" target="m6cD3cyZK9qOw0DMA8eo-69" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-71" value="Oui" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="m6cD3cyZK9qOw0DMA8eo-70" vertex="1" connectable="0">
+          <mxGeometry x="-0.2603" y="2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-76" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="m6cD3cyZK9qOw0DMA8eo-63" target="m6cD3cyZK9qOw0DMA8eo-75" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-77" value="Non" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="m6cD3cyZK9qOw0DMA8eo-76" vertex="1" connectable="0">
+          <mxGeometry x="-0.5362" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-63" value="Moins de 200 salariés ?" style="rhombus;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="380" y="1090" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-67" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="m6cD3cyZK9qOw0DMA8eo-66" target="m6cD3cyZK9qOw0DMA8eo-62" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-66" value="Liste des autres salariés en formation" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="707" y="910" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-74" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="m6cD3cyZK9qOw0DMA8eo-69" target="m6cD3cyZK9qOw0DMA8eo-73" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-69" value="Additionner les heures des salariés déjà en formation" style="rounded=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="577" y="1100" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-79" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="m6cD3cyZK9qOw0DMA8eo-73" target="m6cD3cyZK9qOw0DMA8eo-103" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="660" y="1390" />
+              <mxPoint x="507" y="1390" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-83" value="Non" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="m6cD3cyZK9qOw0DMA8eo-79" vertex="1" connectable="0">
+          <mxGeometry x="-0.8703" relative="1" as="geometry">
+            <mxPoint y="-9" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-80" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="m6cD3cyZK9qOw0DMA8eo-73" target="m6cD3cyZK9qOw0DMA8eo-43" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="637" y="1360" />
+              <mxPoint x="250" y="1360" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-82" value="Oui" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="m6cD3cyZK9qOw0DMA8eo-80" vertex="1" connectable="0">
+          <mxGeometry x="-0.9452" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-73" value="cumul des heures en formation + heures de la demande &amp;gt; cumul total * 2% ?" style="rhombus;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="577" y="1200" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-84" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="m6cD3cyZK9qOw0DMA8eo-75" target="m6cD3cyZK9qOw0DMA8eo-43" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-85" value="Oui" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="m6cD3cyZK9qOw0DMA8eo-84" vertex="1" connectable="0">
+          <mxGeometry x="-0.9342" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-86" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="m6cD3cyZK9qOw0DMA8eo-75" target="m6cD3cyZK9qOw0DMA8eo-103" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="440" y="1390" />
+              <mxPoint x="507" y="1390" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-87" value="Non" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="m6cD3cyZK9qOw0DMA8eo-86" vertex="1" connectable="0">
+          <mxGeometry x="-0.9024" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-75" value="nombre de salariés en formation + 1 &amp;gt; total des salariés ?" style="rhombus;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="380" y="1210" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-93" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="m6cD3cyZK9qOw0DMA8eo-92" target="m6cD3cyZK9qOw0DMA8eo-63" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-92" value="Liste de tous les salariés" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="270" y="1040" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-96" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="m6cD3cyZK9qOw0DMA8eo-94" target="m6cD3cyZK9qOw0DMA8eo-58" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="250" y="1920" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-98" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="m6cD3cyZK9qOw0DMA8eo-94" target="m6cD3cyZK9qOw0DMA8eo-97" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-94" value="Notifier l&#39;acceptation" style="rounded=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="354" y="1890" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-97" value="Notifier l&#39;acceptation" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="360" y="2050" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-99" value="Notifier le refus" style="rounded=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="-210" y="1610" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-101" value="Notifier le report" style="rounded=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="190" y="1754" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-104" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="m6cD3cyZK9qOw0DMA8eo-103" target="m6cD3cyZK9qOw0DMA8eo-29" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-105" value="Non" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="m6cD3cyZK9qOw0DMA8eo-104" vertex="1" connectable="0">
+          <mxGeometry x="-0.8364" y="-2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-106" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="m6cD3cyZK9qOw0DMA8eo-103" target="m6cD3cyZK9qOw0DMA8eo-43" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-107" value="Oui" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="m6cD3cyZK9qOw0DMA8eo-106" vertex="1" connectable="0">
+          <mxGeometry x="-0.8615" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-103" value="L&#39;abscence est elle nuisible ?" style="rhombus;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="447" y="1480" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-110" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="m6cD3cyZK9qOw0DMA8eo-109" target="m6cD3cyZK9qOw0DMA8eo-12" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-109" value="Dossier de la demande" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="60" y="555" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-116" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="m6cD3cyZK9qOw0DMA8eo-114" target="m6cD3cyZK9qOw0DMA8eo-94" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-118" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="m6cD3cyZK9qOw0DMA8eo-114" target="m6cD3cyZK9qOw0DMA8eo-117" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-114" value="MàJ dossier salarié" style="rounded=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="610" y="1814" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m6cD3cyZK9qOw0DMA8eo-117" value="Dossier salarié" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="500" y="1930" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
