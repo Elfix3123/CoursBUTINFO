@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exo3.HelloController">
+<columnConstraints>
+    <ColumnConstraints fillWidth="false" halignment="LEFT" hgrow="SOMETIMES" maxWidth="120.0" minWidth="120.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+</columnConstraints>
+<rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+</rowConstraints>
+<children>
+    <Label text="Nom" />
+    <Label text="Prénom" GridPane.rowIndex="1" />
+    <Label text="Genre" GridPane.rowIndex="2" />
+    <Label text="Moyens de transport" GridPane.rowIndex="3">
+        <GridPane.margin>
+            <Insets />
+        </GridPane.margin>
+    </Label>
+    <Label text="Lieu de résidence" GridPane.rowIndex="4" />
+    <Button fx:id="btnValider" mnemonicParsing="false" onAction="#onValiderButtonPressed" text="Valider" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+    <Button fx:id="btnAnnuler" mnemonicParsing="false" onMousePressed="#onAnnulerButtonPressed" text="Annuler" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+    <TextField fx:id="fieldNom" alignment="TOP_LEFT" nodeOrientation="LEFT_TO_RIGHT" scaleX="0.7" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+        <children>
+            <RadioButton contentDisplay="CENTER" mnemonicParsing="false" selected="true" text="Femme">
+                <cursor>
+                    <Cursor fx:constant="N_RESIZE" />
+                </cursor>
+                <padding>
+                    <Insets right="10.0" />
+                </padding>
+                <toggleGroup>
+                    <ToggleGroup fx:id="genre" />
+                </toggleGroup>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Homme" toggleGroup="$genre">
+                <HBox.margin>
+                    <Insets right="10.0" />
+                </HBox.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Autre" toggleGroup="$genre" />
+        </children>
+    </HBox>
+    <TextField fx:id="fieldPrenom" scaleX="0.7" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+        <children>
+            <CheckBox mnemonicParsing="false" text="Voiture">
+                <HBox.margin>
+                    <Insets left="10.0" />
+                </HBox.margin>
+            </CheckBox>
+            <CheckBox mnemonicParsing="false" text="Train">
+                <HBox.margin>
+                    <Insets left="10.0" />
+                </HBox.margin>
+            </CheckBox>
+            <CheckBox mnemonicParsing="false" text="Tram">
+                <HBox.margin>
+                    <Insets left="10.0" />
+                </HBox.margin>
+            </CheckBox>
+            <CheckBox mnemonicParsing="false" text="Vélo">
+                <HBox.margin>
+                    <Insets left="10.0" />
+                </HBox.margin>
+            </CheckBox>
+        </children>
+    </HBox>
+    <ComboBox editable="true" prefWidth="150.0" promptText="Grenoble" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+</children>
+<padding>
+    <Insets left="10.0" />
+</padding>
+</GridPane>

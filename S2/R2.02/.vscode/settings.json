@@ -1,0 +1,7 @@
+{
+	"java.project.sourcePaths": [
+		"TP03"
+	],
+	"r.lsp.promptToInstall": false,
+	"java.configuration.updateBuildConfiguration": "interactive"
+}
