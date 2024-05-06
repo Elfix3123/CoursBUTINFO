@@ -68,6 +68,9 @@ public class TP3_Exo1App extends Application {
 		TextArea taCachee = new TextArea("Passez la souris ici !");
 		taCachee.setEditable(false);
 
+		vbox.getChildren().addAll(gridPane, hboxBoutons, taCachee);
+		vbox.setPadding(new Insets(10,10,10,10));
+
 		//Ajoutez vos gestionnaires d'évènements
 		btnReset.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
@@ -150,9 +153,6 @@ public class TP3_Exo1App extends Application {
 		};
 
 		taCachee.setOnMouseExited(hideTextAera);
-
-		vbox.getChildren().addAll(gridPane, hboxBoutons, taCachee);
-		vbox.setPadding(new Insets(10,10,10,10));
 
 		Scene scene = new Scene(vbox);
 		stage.setScene(scene);
