@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -72,7 +73,7 @@ public class TP3_Exo1App extends Application {
 		vbox.setPadding(new Insets(10,10,10,10));
 
 		//Ajoutez vos gestionnaires d'évènements
-		btnReset.setOnAction(new EventHandler<ActionEvent>() {
+		EventHandler<ActionEvent> reset = new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
 				System.out.println("Reset");
@@ -81,7 +82,9 @@ public class TP3_Exo1App extends Application {
 				tfPrenom.setText("");
 				pfMdP.setText("");
 			}
-		});
+		};
+
+		btnReset.setOnAction(reset);
 
 		EventHandler<KeyEvent> loginUpdate = new EventHandler<KeyEvent>() {
 			@Override
@@ -157,7 +160,8 @@ public class TP3_Exo1App extends Application {
 		Scene scene = new Scene(vbox);
 		stage.setScene(scene);
 		stage.show();
-
+		FXMLLoader fxmlLoader = new FXMLLoader(TP3_Exo1App.class.getResource("TP3_Exo1-view.fxml"));
+		
 	}
 
 	public static void main(String[] args) {
