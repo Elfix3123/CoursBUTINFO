@@ -57,7 +57,7 @@ public class HelloController {
 
 			fieldNomConfirm.setText(fieldNom.getText());
 			fieldPrenomConfirm.setText(fieldPrenom.getText());
-			cbLieuConfirm.setValue(cbLieu.getValue());
+			cbLieuConfirm.setValue(cbLieu.getValue());;
 
 			for (Toggle toggle : genre.getToggles()) {
 				System.out.println(toggle.getProperties());
