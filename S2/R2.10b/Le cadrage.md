@@ -1,4 +1,4 @@
-rti# Qu'est-ce que le cadrage du projet ?
+# Qu'est-ce que le cadrage du projet ?
 Le cadrage, ou analyse, représente la première activité de la gestion de projet; elle **conditionne l'efficacité du projet**. Le cadrage a pour but de :
 - Définir les **objectifs**
 - Gérer les **contraintes**
@@ -31,3 +31,33 @@ Il est important de proposer au client des dossiers de choix. On suit un process
 - Exploration des idées.
 - Evaluation des solutions.
 - Mise en oeuvre.
+### Définition de l'organisation du projet
+La définition de l'organisation se fait en deux parties.
+#### L'organisation humaine
+L’organisation humaine consiste en l'identification de l'organisation et des outils de communication. Ainsi, il est nécessaire de planifier les membres de l'équipe projet, le comité de pilotage et le découpage du projet, mais aussi les règles et canaux de communication entre les pairs mais aussi avec les autres niveaux hiérarchiques.
+#### L'organisation logique
+L'organisation logique consiste en la définition de sous-ensembles quasi autonomes dans le projet. Ce découpage doit permettre de maîtriser la complexité du projet sans perdre de vue l'objectif global. 
+Les modèles de développement se font en fonction des prototypes : les prototypes rapides - maquettes faits en amont du cycle de développement, les prototypes expérimentaux - jetables et faits pendant la conception, et les prototypes évolutifs - réutilisables et faits pendant la réalisation.
+Le découpage se fait en fonction des activités du projet ainsi que des critères à mettre en oeuvre, complémentaires et non-exclusifs :
+- Le critère **temporel** (découper en fonction du temps) ou **structurel** (découper en fonction de la structure du projet final).
+- La démarche **top-down** (on créé des modèles puis on raffine dans le détail) ou **bottom-up** (on créé des miettes qu'on agrège).
+- La démarche **itérative** (on créé des prototypes successifs qu'on raffine plus tard).
+- La démarche **incrémentale** (on créé des lots un par un).
+- La démarche **adaptative** (on accepte des évolutions et spécifications supplémentaires).
+- La démarche **centrée utilisateur** (on se concentre sur la réalisation des tâches par l'utilisateur) ou **centrée usage** (on se concentre sur la modélisation pour la réalisation des tâches).
+En associant ces critères on érige des modèles de développement (software process) dont les deux grandes familles :
+- Les méthodes **classiques**, prédictives, strictes, dont les étapes sont clairement définies.
+- Les méthodes **agiles**, incrémentales, itératives, adaptatives et forçant des livraisons petites et fréquentes.
+Quelques modèles :
+- Le modèle en cascade : le client intervient à la fin de chaque phase pour la valider, si elle est validée on passe à la suite.
+- Le modèle en V : on précise pour chaque étape quels tests seront fait pour pouvoir tous les exécuter après la réalisation. 
+- Le modèle en spirale : on reprend les étapes en cycles en rajoutant des fonctionnalités à chaque itération. 
+- Le modèle RAD : l'initialisation et le cadrage sont en top-down et séquentielles, le design et la construction sont en bottom-up, itératives, adaptatives et incrémentales.
+- Le modèle agile : le développement est itératif, incrémental et adaptatif, centré utilisateur et pragmatique. 
+### Estimation des charges
+Il est nécessaire d'estimer la quantité de travail à fournir dans le cadre du projet, indépendamment du nombre d'intervenants. La charge est exprimée en temps/homme. Avec cette charge, on est en capacité de déduire la durée réelle du projet. Il est cependant nécessaire de prendre en compte la nature des tâches à compléter (si elle est partitionnable). 
+On estime la charge de plusieurs manières : par l'expertise, par proportionnalité ou par des modèles économétriques.
+### Planification
+La planification peut se faire avec plusieurs outils :
+- Les diagrammes à barre (GANTT) qui permet de visualiser les impacts des allocations de ressources et de fractionnement des tâches, et de visualiser un calendrier précis.
+- Les graphes en réseau (MPM/PERT), qui permettent une visualisation globale du projet.

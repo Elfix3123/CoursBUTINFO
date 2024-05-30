@@ -19,3 +19,18 @@ Il existe plusieurs principes d'organisation judiciaires :
 - Le principe du contradictoire, qui permet à chaque partie de se défendre. A ce titre, elles doivent pouvoir connaître les arguments et prétentions de l'autre partie avant l'audience.
 - Le principe de neutralité.
 - Le principe de compétence; la compétence est la capacité d'une juridiction de juger un litige. Afin de juger quel tribunal va être saisi, on commence par déterminer le type de juridiction qui doit être saisie, puis on localise un tribunal compétent au lieu du domicile de l'infraction au pénal.
+# Les régimes probatoires
+Les régimes probatoires sont l'ensemble des preuves qui peuvent être amenées dans le cadre d'un jugement. On se demande dans ce cadre qui soit amener la preuve, quelle est la preuve et comment amener la preuve :
+- La **charge de la preuve** change au civil et au pénal : dans le cadre d'une procédure accusatoire, la charge de la preuve est au demandeur; dans le cadre d'une procédure inquisitoire, la charge de la preuve est au magistrat. Des présomption légales existent : dans certains cas, c'est la loi qui amène des éléments de preuve et c'est au défendeur de faire tomber la présomption. Trois types de présomptions existent : la présomption simple, qui peut tomber par la preuve contraire, la présomption mixte, qui tombe par la preuve de la cause étrangère, et la présomption irréfragable, qui ne peut tomber.
+- L'**objet de la preuve** est la preuve en elle même : au civil, il est nécessaire de prouver du droit subjectif. Dans le cadre de faits juridiques et d'infraction pénales, la preuve se fait par tous moyens. Dans le cadre d'actes juridiques, il ne se fait par tout moyens que si la somme engagée est inférieure à 1500€. L'écrit n'est pas obligatoire si il existe un commencement de preuve par écrit, si on considère une impossibilité matérielle ou morale de se procurer un écrit, ou en matière commerciale.
+Procédés de preuve écrits (on ne prouve contre un écrit que par écrit) :
+- Acte authentique : fait foi de son contenu et de sa date jusqu'à son inscription en faux, dressé par un officier public.
+- Acte sous-seing privé : fait foi jusqu'à preuve contraire, établi par de simples particuliers. Si sa forme n'est pas valide, alors c'est un simple commencement de preuve par écrit.
+Procédés de preuve autre :
+- Le témoignage est une affirmation par une personne d'un fait dont elle a personnellement eu connaissance.
+- L'aveu, qui est la reconnaissance par une personne d'un fait produisant contre elle des effets de droit. Il peut être judiciaire (irrévocable et indivisible, lie le juge) ou bien extrajudiciaire.
+- Le serment est une affirmation par une partie d'un acte ou d'un fait qui lui produit des effets de droit favorable. Il peut être supplétoire ou bien décisoire (lie le juge).
+# Les effets des jugements
+Le jugement a deux effets :
+- L'autorité de la chose jugée, c'est-à-dire la possibilité de recourir à la force publique afin de contraindre la partie condamnée à exécuter le jugement après que les délais de voie de recours ordinaires soient écoulées. 
+- La force exécutoire des jugements, c'est-à-dire le principe selon lequel on ne peut pas juger de nouveau une décision de justice, pour toutes les décisions, et devient parfait lorsque les voies de recours sont fermées. 

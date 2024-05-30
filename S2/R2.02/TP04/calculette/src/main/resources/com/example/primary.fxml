@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.Controller">
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+   <children>
+      <TextArea fx:id="taHistory" editable="false" maxHeight="100.0" maxWidth="100.0" />
+      <TextField fx:id="tfResult" editable="false" maxWidth="50.0" />
+      <GridPane>
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button alignment="CENTER" minWidth="50.0" mnemonicParsing="false" onAction="#buttonOnePressed" text="1" GridPane.rowIndex="1" />
+            <Button alignment="CENTER" minWidth="50.0" mnemonicParsing="false" onAction="#buttonOrPressed" text="OR" GridPane.columnIndex="1" />
+            <Button alignment="CENTER" minWidth="50.0" mnemonicParsing="false" onAction="#buttonZeroPressed" text="0" />
+            <Button alignment="CENTER" minWidth="50.0" mnemonicParsing="false" onAction="#buttonAndPressed" text="AND" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button alignment="CENTER" minWidth="50.0" mnemonicParsing="false" onAction="#buttonXorPressed" text="XOR" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button alignment="CENTER" minWidth="50.0" mnemonicParsing="false" onAction="#buttonResetPressed" text="X" GridPane.rowIndex="2" />
+         </children>
+      </GridPane>
+      <VBox alignment="CENTER">
+         <children>
+            <Button alignment="CENTER" minWidth="50.0" mnemonicParsing="false" onAction="#buttonEqualsPressed" text="=" />
+         </children>
+      </VBox>
+   </children>
+</VBox>

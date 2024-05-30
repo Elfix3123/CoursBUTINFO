@@ -7,4 +7,3 @@ Pour chaque opération, il est nécessaire de distinguer son origine et sa desti
 Le compte est la plus petite entité retenue pour le classement et l'enregistrement des opérations comptables. Ainsi, l'ensemble des comptes constitue la comptabilité de l'enterprise. Il y a d'autres entités comme le journal, le grand livre et la balance. Le bilan fait compte du patrimoine à une date donnée alors que le compte de résultat fait compte d'une activité pour une période donnée.
 La comptabilité évolue : aujourd'hui, on cherche à normaliser les actes comptables au niveau national et international.
 Les comtes revêtissent plusieurs adjectifs : ils doivent être fidèles, réguliers, sincères.
-Une charge correspond à une consommation réalisée par l'entreprise dans le cadre de son activité normale. Elle a un caractère définitif, représente un apauvrissement
