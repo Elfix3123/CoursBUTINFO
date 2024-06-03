@@ -29,6 +29,7 @@ public class Controller {
 			button.setOnAction(e -> onSquareClicked(index));
 			i++;
 		}
+		label.setText("Au tour du joueur " + (morpion.getJoueurCourant() == 0 ? "X" : "O"));
 	}
 
 	public void loadNamesScreen() {
@@ -58,17 +59,29 @@ public class Controller {
 		button.setDisable(true);
 		fin = morpion.jouer(b);
 
-		if (fin) {
+		if (fin & morpion.getCasesLibres() != 0) {
 			for (Node node : grid.getChildren()) {
 				button = (Button) node;
 				button.setDisable(true);
 			}
 			label.setText("Le joueur " + (morpion.getJoueurCourant() == 0 ? "X" : "O") + " a gagné !");
 		}
+		else if (fin) {
+			label.setText("Match nul !");
+		}
+		else {
+			label.setText("Au tour du joueur " + (morpion.getJoueurCourant() == 0 ? "X" : "O"));
+		}
 	}
 
 	@FXML
 	public void onEndButtonClicked(ActionEvent event) {
-		((Stage) btnEnd.getScene().getWindow()).close();
+		for (Node node : grid.getChildren()) {
+			Button button = (Button) node;
+			button.setDisable(false);
+			button.setText("");
+		}
+		morpion = new Morpion();
+		label.setText("Au tour du joueur " + (morpion.getJoueurCourant() == 0 ? "X" : "O"));
 	}
 }

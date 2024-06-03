@@ -73,6 +73,6 @@
             </Button>
          </children>
       </GridPane>
-      <Button fx:id="btnEnd" mnemonicParsing="false" onAction="#onEndButtonClicked" text="Fin" />
+      <Button fx:id="btnEnd" mnemonicParsing="false" onAction="#onEndButtonClicked" text="Recommencer" />
    </children>
 </VBox>
