@@ -21,11 +21,13 @@ public class Controller {
 	boolean fin = false;
 	private Morpion morpion = new Morpion();
 
-	public void Initialise() {
+	public void initialize() {
+		int i = 0;
 		for (Node node : grid.getChildren()) {
 			Button button = (Button) node;
-			System.out.println(GridPane.getRowIndex(button) * 3 + GridPane.getColumnIndex(button));
-			button.setOnAction(e -> onSquareClicked(GridPane.getRowIndex(button) * 3 + GridPane.getColumnIndex(button)));
+			final int index = i;
+			button.setOnAction(e -> onSquareClicked(index));
+			i++;
 		}
 	}
 
@@ -51,13 +53,14 @@ public class Controller {
 	}
 
 	private void onSquareClicked(int b) {
-
-		buttons.get(b).setText(morpion.getJoueurCourant() == 0 ? "X" : "O");
-		buttons.get(b).setDisable(true);
+		Button button = (Button)grid.getChildren().get(b);
+		button.setText(morpion.getJoueurCourant() == 0 ? "X" : "O");
+		button.setDisable(true);
 		fin = morpion.jouer(b);
 
 		if (fin) {
-			for (Button button : buttons) {
+			for (Node node : grid.getChildren()) {
+				button = (Button) node;
 				button.setDisable(true);
 			}
 			label.setText("Le joueur " + (morpion.getJoueurCourant() == 0 ? "X" : "O") + " a gagné !");
@@ -66,7 +69,6 @@ public class Controller {
 
 	@FXML
 	public void onEndButtonClicked(ActionEvent event) {
-		System.out.println(buttons);
-		System.out.println(buttons.get(0));
+		((Stage) btnEnd.getScene().getWindow()).close();
 	}
 }
