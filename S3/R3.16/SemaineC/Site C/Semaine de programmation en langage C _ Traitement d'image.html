@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<!-- saved from url=(0095)https://www-info.iut2.univ-grenoble-alpes.fr/intranet/enseignements/semaine-C/traitement-image/ -->
+<html lang="fr-FR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Semaine de programmation en langage C&nbsp;: Traitement d'image</title>
+    <link rel="icon" href="https://www-info.iut2.univ-grenoble-alpes.fr/intranet/enseignements/semaine-C/c-language-logo.svg" sizes="any" type="image/svg+xml">
+    <link rel="stylesheet" href="./Semaine de programmation en langage C _ Traitement d&#39;image_files/style.css" type="text/css">
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="./Semaine de programmation en langage C _ Traitement d&#39;image_files/stackoverflow-dark.min.css" type="text/css">
+    <script src="./Semaine de programmation en langage C _ Traitement d&#39;image_files/highlight.min.js.téléchargement"></script>
+    <script>hljs.highlightAll();</script>
+  </head>
+  <body>
+    <h1>Semaine de programmation en langage C</h1>
+    <nav class="breadcrumb">
+      <ol>
+        <li><a href="https://www-info.iut2.univ-grenoble-alpes.fr/intranet/enseignements/semaine-C/">Page principale</a></li>
+        <li>Traitement d'image</li>
+      </ol>
+    </nav>
+    <h2>Traitement d'image</h2>
+    <p>
+      Dans cette unité vous travaillerez les notions suivantes&nbsp;:
+    </p>
+    <ul>
+      <li>les pointeurs et l'allocation dynamique de mémoire,</li>
+      <li>la compilation d'un exécutable à partir de plusieurs fichiers binaires,</li>
+      <li>le parcours d'un tableau 1D représentant des données 2D,</li>
+      <li>l'appel à un programme externe,</li>
+      <li>et des traitements d'image simple.</li>
+    </ul>
+    <h3>Prérequis</h3>
+    <h4>Image en niveau de gris</h4>
+    <p>
+      Une image en niveaux de gris (communément appelée à tort image noir et blanc) est une suite de pixels codés chacun sur un octet.
+      La valeur d'un octet (comprise entre 0 et 255) indique la teinte du pixel correspondant&nbsp;: de 0 (noir) à 255 (blanc) en passant par les 254 nuances de gris intermédiaires.
+    </p>
+    <p>
+      Dans les applications d'images existantes, la plupart du temps les images en mémoire vive sont stockées non pas sous la forme d'un tableau bi-dimensionnel, mais dans un vecteur mono-dimensionnel.
+      C'est aussi la solution choisie ici.
+      En quelque sorte, les lignes de l'image sont stockées continûment les unes après les autres dans la mémoire.
+    </p>
+    <p>
+      La figure suivante montre une image de 3 lignes et de 4 colonnes où, pour l'explication, les pixels sont identifiés par les lettres de <code>A</code> à <code>L</code>.
+      Chaque pixel est un octet.
+      En dessous, on peut voir comment ces pixels sont rangés en mémoire.
+      On donne également un exemple de passage d'une coordonnée
+      <math>
+        <mo fence="true" stretchy="true" form="prefix">(</mo>
+        <mi>x</mi>
+        <mo separator="true">,</mo>
+        <mi>y</mi>
+        <mo fence="true" stretchy="true" form="postfix">)</mo>
+      </math>
+      à l'image à un indice <code>i</code> en mémoire pour le pixel <code>G</code>.
+    </p>
+    <figure>
+      <img src="./Semaine de programmation en langage C _ Traitement d&#39;image_files/2d-1d-row-major.svg" alt="conversion row-major 2D/1D" role="img">
+      <figcaption>Illustration de la conversion <em lang="en">row-major</em> 2D/1D.</figcaption>
+    </figure>
+    <p>
+      Ici, le pixel <code>G</code> dont les coordonnées bi-dimensionnelles sont
+      <math>
+        <mo stretchy="true" form="prefix">(</mo>
+        <mn>2</mn>
+        <mo>,</mo>
+        <mn>1</mn>
+        <mo stretchy="true" form="postfix">)</mo>
+      </math>
+      aura dans le vecteur mono-dimensionnel l'indice <code>6</code>.
+      Cet indice est calculé à l'aide de la formule
+      <math>
+        <mtext><code>i</code></mtext>
+        <mo>=</mo>
+        <mi>y</mi>
+        <mo>⋅</mo>
+        <msub>
+          <mi>N</mi>
+          <mi>col</mi>
+        </msub>
+        <mo>+</mo>
+        <mi>x</mi>
+      </math>
+      où
+      <math>
+        <msub>
+          <mi>N</mi>
+          <mi>col</mi>
+        </msub>
+      </math>
+      est la taille d'une ligne, à savoir le nombre de colonnes ou la largeur du tableau bi-dimensionnel.
+    </p>
+    <h4>Matériel fourni</h4>
+    <p>
+      Nous travaillerons avec des images au format <a href="https://fr.wikipedia.org/wiki/Portable_pixmap#PGM" target="_blank"><abbr>PGM</abbr> (<em lang="en">portable graymap</em>)</a> binaire.
+      Il vous est fourni un fichier image de test <a href="https://www-info.iut2.univ-grenoble-alpes.fr/intranet/enseignements/semaine-C/traitement-image/guadalest.pgm" type="image/x-portable-graymap" download=""><code>guadalest.pgm</code></a>.
+      L'image de test n'est pas visualisable dans le navigateur car le format <abbr>PGM</abbr> n'est pas adapté à cet usage.
+      Les visionneuses d'image telles que <span class="role-command">eog</span> ou <span class="role-command">xv</span> comprennent le format <abbr>PGM</abbr>.
+    </p>
+    <p>
+    Pour lire et écrire des images au format PGM binaire, il vous est fourni la bibliothèque partagée <code>naivepgmio</code>.
+    Cette bibliothèque définit deux fonctions <code>pgm_naiveread()</code> et <code>pgm_naivewrite()</code> permettant respectivement de lire et écrire des images.
+    La bibliothèque définit aussi le type <code>pgm_t_pixel</code> permettant de stocker la valeur d'un pixel et la constante <code>PGM_PIXEL_MAX</code> indiquant la valeur maximum possible pour un pixel.
+    Afin de pouvoir utiliser la bibliothèque, il faut inclure son fichier d'entête <code>naivepgmio.h</code>.
+    </p>
+    <figure>
+      <figcaption>Extrait du fichier entête <code>naivepgmio.h</code>.</figcaption>
+      <pre><code class="language-c hljs"><span class="hljs-keyword">typedef</span> <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> pgm_t_pixel;
+<span class="hljs-meta">#<span class="hljs-keyword">define</span> PGM_PIXEL_MAX ((pgm_t_pixel)UCHAR_MAX)</span>
+
+<span class="hljs-keyword">extern</span> pgm_t_pixel *<span class="hljs-title function_">pgm_naiveread</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span> *filename,
+                                  <span class="hljs-type">size_t</span> *width,
+                                  <span class="hljs-type">size_t</span> *height)</span>;
+<span class="hljs-keyword">extern</span> <span class="hljs-type">int</span> <span class="hljs-title function_">pgm_naivewrite</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span> *filename,
+                          <span class="hljs-type">const</span> pgm_t_pixel *pixels,
+                          <span class="hljs-type">size_t</span> width,
+                          <span class="hljs-type">size_t</span> height)</span>;</code></pre>
+    </figure>
+    <ul>
+      <li>Lire avec attention le contenu de l'entête <code>naivepgmio.h</code> pour bien comprendre comment utiliser l'<abbr title="interface de programmation applicative">API</abbr> fournie.</li>
+      <li>Télécharger le fichier <a href="https://www-info.iut2.univ-grenoble-alpes.fr/intranet/enseignements/semaine-C/traitement-image/guadalest.pgm" type="image/x-portable-graymap" download=""><code>guadalest.pgm</code></a>.
+    </li></ul>
+    <h4 id="compilation">Compilation</h4>
+    <p>
+      Jusqu'à présent, tout le code source était contenu dans un unique fichier.
+      Ce n'est plus le cas ici&nbsp;: le code des fonctions fournies n'est pas dans le fichier source que vous allez écrire.
+      Pour créer un exécutable, deux étapes se succèdent&nbsp;: il va falloir compiler les fichiers source vers des fichiers intermédiaires dit fichiers objet, puis ces fichiers objet sont liés pour créer l'exécutable.
+    </p>
+    <h5>Compilation fichiers objet</h5>
+    <p>
+      Un fichier objet est un fichier du même format qu'un exécutable.
+      À la différence d'un exécutable qui se suffit à lui même, le fichier objet n'est pas complet&nbsp;: il manque, par exemple, le code de certaines fonctions.
+      La commande pour compiler un fichier objet à partir d'un fichier source est sensiblement la même que pour compiler un fichier source autonome&nbsp;: on ajoute l'option <code>-c</code>.
+      La convention est de nommer <code>file.o</code> le fichier objet produit à partir du fichier source <code>file.c</code>.
+    </p>
+    <figure>
+      <figcaption>
+        Compilation d'un fichier objet <code>file.o</code> à partir de <code>file.c</code>.
+        Noter l'utilisation de l'option <code>-c</code>.
+      </figcaption>
+      <pre><code class="language-console hljs language-shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">gcc -std=c99 -Wall -Wextra -g -c -o file.o file.c</span>
+<span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-comment">#                             ^^</span></span></code></pre>
+    </figure>
+    <h5>Édition de liens</h5>
+    <p>
+      L'édition de liens consiste, entre autres choses, à construire un binaire exécutable à partir des fichiers objet incomplets.
+      Cette étape est aussi assurée par <span class="role-command">gcc</span>.
+    </p>
+    <figure>
+      <figcaption>
+        Construction d'un binaire exécutable <code>executable</code> à partir de plusieurs fichiers objet.
+      </figcaption>
+      <pre><code class="language-console hljs language-shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">gcc -o executable objet_01.o objet_02.o</span></code></pre>
+    </figure>
+    <p>
+      Lorsque certaines fonctions sont définies dans une bibliothèque qui n'est pas standard il faut indiquer explicitement à l'éditeur de liens que cette bibliothèque est utilisée.
+      L'option <code>-l</code> de l'éditeur de liens permet d'ajouter une bibliothèque à l'exécutable produit.
+    </p>
+    <figure>
+      <figcaption>
+        Construction d'un binaire exécutable <code>executable</code> à partir de plusieurs fichiers objet et d'une bibliothèque non standard <code>biblioname</code>.
+        Attention, il n'y a pas d'espace entre <code>-l</code> et <code>biblioname</code> et il faut ajouter l'option <code>-l</code> après la liste des fichiers objet.
+      </figcaption>
+      <pre><code class="language-console hljs language-shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">gcc -o executable objet_01.o objet_02.o -lbiblioname</span>
+<span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-comment">#                                       ^^^^^^^^^^^^</span></span></code></pre>
+    </figure>
+    <h3>Avant de commencer</h3>
+    <p>
+      Créer un nouveau dépôt git <code>pgm.git</code> afin de pouvoir versionner votre travail.
+    </p>
+    <figure>
+      <figcaption>Création du dépôt git.</figcaption>
+      <pre><code class="language-console hljs language-shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git init pgm.git</span>
+Initialized empty Git repository in …/pgm.git/.git/
+<span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-comment"># /!\ ne pas oublier de se déplacer dans le répertoire de travail (working directory)</span></span>
+<span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">cd</span> pgm.git/</span></code></pre>
+    </figure>
+    <p>
+      Vous êtes prêt·e à travailler&nbsp;!
+    </p>
+    <h3>Duplication d'une image</h3>
+    <ol class="question-thread">
+      <li>Écrire un nouveau programme <code>traitement-image.c</code>.</li>
+    </ol>
+    <p>
+      Ce programme doit dupliquer un fichier image au format PGM dans un nouveau fichier au même format en utilisant les fonctions fournies <code>pgm_naiveread()</code> et <code>pgm_naivewrite()</code>.
+      Pour ce faire il faudra&nbsp;:
+    </p>
+    <ol class="question-thread">
+      <li>
+        Inclure l'entête de la bibliothèque fournie <code>naivepgmio.h</code>.
+        La bibliothèque fournie est installée au niveau du système, aussi vous utiliserez la syntaxe <code class="language-c">#include &lt;...&gt;</code> pour l'inclusion.
+      </li>
+      <li>Déclarer les variables nécessaires à la lecture et l'écriture d'une image&nbsp;: à savoir le vecteur de pixels, la largeur et la hauteur.
+      </li><li>Lire le fichier <code>guadalest.pgm</code> puis écrire le fichier <code>guadalest_copie.pgm</code>.
+      </li><li>Compiler le code de votre fichier source <code>traitement-image.c</code> vers un fichier objet <code>traitement-image.o</code>.</li>
+      <li>Construire votre exécutable <code>traitement-image</code> à partir de votre fichier objet et de la bibliothèque fournie (édition de liens).
+    </li></ol>
+    <p>
+      Une fois que votre programme compile, assurez-vous de sa correction en faisant les vérifications suivantes&nbsp;:
+    </p>
+    <ul>
+      <li>Le fichier original n'a pas été modifié.</li>
+      <li>
+        La copie contient le même contenu que l'original à l'octet près.
+        Vous pouvez vous aidez de la commande <span class="role-command">diff</span>.
+        <pre><code class="language-console hljs language-shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">diff -q -s -- guadalest.pgm guadalest_good-copy.pgm</span>
+Files guadalest.pgm and guadalest_good-copy.pgm are identical
+<span class="hljs-meta prompt_">$ </span><span class="language-bash">diff -q -s -- guadalest.pgm guadalest_bad-copy.pgm</span>
+Files guadalest.pgm and guadalest_bad-copy.pgm differ</code></pre>
+        Si les fichiers différent, vous pouvez vous aider de la commande <span class="role-command">binwalk</span> (combinée à la commande <span class="role-command">less</span>) pour visualiser où se trouvent les différences (affichées en rouge dans votre terminal).
+        <pre><code class="language-console hljs language-shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">binwalk --hexdump --red guadalest.pgm guadalest_bad-copy.pgm | less -R</span>
+
+OFFSET      guadalest.pgm                                                        guadalest_bad-copy.pgm
+--------------------------------------------------------------------------------
+0x00000000  50 35 0A 34 30 30 20 35 33 34 0A 32 35 35 0A 55 |P5.400.534.255.U| \ 50 35 0A 34 30 30 20 20 20 35 33 34 0A 32 35 35 |P5.400...534.255|
+0x00000010  54 54 53 53 54 54 54 55 55 54 55 55 55 55 55 55 |TTSSTTTUUTUUUUUU| / 0A 55 54 54 53 53 54 54 54 55 55 54 55 55 55 55 |.UTTSSTTTUUTUUUU|
+0x00000020  54 54 54 54 55 54 54 54 55 55 54 54 54 54 54 55 |TTTTUTTTUUTTTTTU| \ 55 55 54 54 54 54 55 54 54 54 55 55 54 54 54 54 |UUTTTTUTTTUUTTTT|
+0x00000030  56 55 54 55 54 54 54 53 54 54 55 55 54 55 55 54 |VUTUTTTSTTUUTUUT| / 54 55 56 55 54 55 54 54 54 53 54 54 55 55 54 55 |TUVUTUTTTSTTUUTU|
+0x00000040  55 55 55 55 55 54 54 56 55 55 54 56 55 54 55 55 |UUUUUTTVUUTVUTUU| \ 55 54 55 55 55 55 55 54 54 56 55 55 54 56 55 54 |UTUUUUUTTVUUTVUT|
+0x00000050  54 54 55 55 54 54 54 55 55 56 55 56 55 55 55 56 |TTUUTTTUUVUVUUUV| / 55 55 54 54 55 55 54 54 54 55 55 56 55 56 55 55 |UUTTUUTTTUUVUVUU|
+0x00000060  55 55 55 54 55 55 55 56 56 54 56 56 56 56 55 55 |UUUTUUUVVTVVVVUU| \ 55 56 55 55 55 54 55 55 55 56 56 54 56 56 56 56 |UVUUUTUUUVVTVVVV|
+:
+</code></pre>
+      </li>
+      <li>
+        Il n'y a pas de fuite mémoire en utilisant <span class="role-command">valgrind</span>.
+    </li></ul>
+    <ol class="question-thread">
+      <li>Une fois le programme fonctionnel, créer une version (<code>commit</code>) qui enregistre votre travail.</li>
+    </ol>
+    <h3>Affichage d'une image par le programme</h3>
+    <p>
+      L'objet est de permettre à votre programme d'afficher directement une image à partir du fichier image.
+      Un programme C peut faire exécuter un autre programme.
+      Pour la semaine de C, nous utiliserons la fonction <code>system()</code> fournie par l'entête <code>stdlib.h</code> pour lancer une commande via un <em lang="en">shell</em>.
+      Vous verrez plus en détail en cours de système les mécanismes permettant de créer un nouveau processus.
+      La fonction <code>system()</code> prend en argument une chaîne de caractères correspondant à la commande à exécuter.
+      Par exemple&nbsp;:
+    </p>
+    <pre><code class="language-c hljs">system(<span class="hljs-string">"kcalc &amp;"</span>);  <span class="hljs-comment">// lancer la calculette de KDE</span></code></pre>
+    <ol class="question-thread">
+      <li>
+        Écrire la fonction <code>pgm_show()</code> qui appelle une visionneuse d'image comprenant le format PGM (par exemple <span class="role-command">eog</span> ou <span class="role-command">xv</span>) en lui passant le nom du fichier image à afficher.
+        Utiliser la fonction <code>snprintf()</code> pour reconstituer la commande.
+        <pre><code class="language-c hljs"><span class="hljs-type">void</span> <span class="hljs-title function_">pgm_show</span><span class="hljs-params">(<span class="hljs-type">char</span> *filename)</span></code></pre>
+      </li>
+      <li>Une fois la fonction <code>pgm_show()</code> implémentée et testée, créer une version (<code>commit</code>) qui enregistre votre travail.</li>
+    </ol>
+    <h3>Création d'une image synthétique simple</h3>
+    <ol class="question-thread">
+      <li>
+        Écrire la fonction <code>pgm_malloc()</code> qui crée dynamiquement une image dont les dimensions sont passées en paramètres.
+        La couleur des pixels n'est pas initialisée.
+        La fonction retourne l'adresse de la zone mémoire allouée pour stocker les pixels ou <code>NULL</code> en cas d'échec.
+        <pre><code class="language-c hljs">pgm_t_pixel *<span class="hljs-title function_">pgm_malloc</span><span class="hljs-params">(<span class="hljs-type">int</span> width, <span class="hljs-type">int</span> height)</span></code></pre>
+      </li>
+      <li>
+        Écrire la fonction <code>pgm_solid()</code> qui initialise tous les pixels d'une image existante à la <em>couleur</em> passée en paramètre.
+        <pre><code class="language-c hljs"><span class="hljs-type">void</span> <span class="hljs-title function_">pgm_solid</span><span class="hljs-params">(pgm_t_pixel *pixels, <span class="hljs-type">int</span> width, <span class="hljs-type">int</span> height, pgm_t_pixel color)</span></code></pre>
+      </li>
+      <li>
+        Dans votre <code>main()</code>, à l'aide des fonctions <code>pgm_malloc()</code>, <code>pgm_solid()</code>, <code>pgm_show()</code> et <code>pgm_naivewrite()</code>, tester la bonne création d'une image simple de couleur unie.
+      </li>
+      <li>
+        Vérifier l'absence de fuite mémoire.
+      </li>
+      <li>Une fois la création d'une image synthétique fonctionnelle, créer une version (<code>commit</code>) qui enregistre votre travail.</li>
+    </ol>
+    <h3>Modification d'une image existante</h3>
+    <ol class="question-thread">
+      <li>
+        Créer la fonction <code>pgm_negative()</code> qui transforme une image en son négatif (comme un <a href="https://en.wikipedia.org/wiki/Negative_(photography)#Negative_image" target="_blank" lang="en">négatif photo</a>).
+        Utiliser une formule simple pour réaliser ce traitement.
+        <pre><code class="language-c hljs"><span class="hljs-type">void</span> <span class="hljs-title function_">pgm_negative</span><span class="hljs-params">(pgm_t_pixel *pixels, <span class="hljs-type">int</span> width, <span class="hljs-type">int</span> height)</span></code></pre>
+      </li>
+      <li>
+        Créer la fonction <code>pgm_threshold()</code> qui effectue un seuillage de l'image.
+        Elle binarise l'image par rapport à un seuil passé en paramètre.
+        Le résultat d'un seuillage est une image avec uniquement du noir et du blanc.
+        Le seuil est défini par un niveau de gris&nbsp;: les pixels dont la valeur est inférieure au seuil sont remplacés par la valeur <code>0</code>, les autres sont remplacés par <code>255</code> sinon.
+        <pre><code class="language-c hljs"><span class="hljs-type">void</span> <span class="hljs-title function_">pgm_threshold</span><span class="hljs-params">(pgm_t_pixel *pixels, <span class="hljs-type">int</span> width, <span class="hljs-type">int</span> height, pgm_t_pixel threshold)</span></code></pre>
+      </li>
+      <li>
+        Tester les nouveaux traitements implémentés dans votre <code>main()</code>.
+      </li>
+      <li>
+        Vérifier l'absence de fuite mémoire.
+      </li>
+      <li>Créer une version (<code>commit</code>) qui enregistre votre travail pour chaque traitement implémenté.</li>
+    </ol>
+    <h3>Image dégradée</h3>
+    <ol class="question-thread">
+      <li>
+        Créer la fonction <code>pgm_gradient()</code> qui remplit une image existante de dimensions quelconques avec un dégradé comme ci-dessous.
+        Attention, la couleur des pixels dépend de leur colonne&nbsp;!
+        <figure>
+          <img src="./Semaine de programmation en langage C _ Traitement d&#39;image_files/gradient.png" alt="exemple de gradient">
+          <figcaption>Exemple de gradient.</figcaption>
+        </figure>
+      </li>
+      <li>
+        Vérifier l'absence de fuite mémoire.
+      </li>
+      <li>Une fois la création d'une image dégradée fonctionnelle, créer une version (<code>commit</code>) qui enregistre votre travail.</li>
+    </ol>
+  
+
+</body></html>

@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<!-- saved from url=(0091)https://www-info.iut2.univ-grenoble-alpes.fr/intranet/enseignements/semaine-C/notions-base/ -->
+<html lang="fr-FR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Semaine de programmation en langage C&nbsp;: Notions de base</title>
+    <link rel="icon" href="https://www-info.iut2.univ-grenoble-alpes.fr/intranet/enseignements/semaine-C/c-language-logo.svg" sizes="any" type="image/svg+xml">
+    <link rel="stylesheet" href="./Semaine de programmation en langage C _ Notions de base_files/style.css" type="text/css">
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="./Semaine de programmation en langage C _ Notions de base_files/stackoverflow-dark.min.css" type="text/css">
+    <script src="./Semaine de programmation en langage C _ Notions de base_files/highlight.min.js.téléchargement"></script>
+    <script>hljs.highlightAll();</script>
+  </head>
+  <body>
+    <h1>Semaine de programmation en langage C</h1>
+    <nav class="breadcrumb">
+      <ol>
+        <li><a href="https://www-info.iut2.univ-grenoble-alpes.fr/intranet/enseignements/semaine-C/">Page principale</a></li>
+        <li>Notions de base</li>
+      </ol>
+    </nav>
+    <h2>Notions de base</h2>
+    <p>
+      Cette unité comporte une série de petits exercices indépendants qui vous font aborder les notions de base avec peu de lignes de code.
+      Nommez les programmes comme il est demandé et conservez bien tous les petits programmes sources (<code>.c</code>) que vous écrivez.
+      Dans certains exercices, des <span class="role-advice">conseils</span> sont donnés pour vous aider à partir dans la bonne direction.
+      Lisez les avant de commencer à programmer.
+    </p>
+    <h3>Rappels</h3>
+    <h4>Commande de compilation pour produire <span class="role-command">executable</span> à partir de <code>source.c</code></h4>
+    <pre><code class="language-console hljs language-shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">gcc -std=c99 -Wall -Wextra -g -o executable source.c</span></code></pre>
+    <h4>Code de <code>hello-world.c</code></h4>
+    <pre><code class="language-c hljs"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span>
+
+<span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span>
+{
+	<span class="hljs-built_in">printf</span>(<span class="hljs-string">"Hello world!\n"</span>);
+
+	<span class="hljs-keyword">return</span> EXIT_SUCCESS;
+}</code></pre>
+    <h3>Ressources fournies</h3>
+    <p>
+      Il vous est fourni pour cette unité un dépôt git contenant des squelettes de code à compléter au fur et à mesure de votre progression.
+      Cloner le dépôt git local <code>/users/info/pub/info/semaine-C/notions-base.git</code>.
+      Ce dépôt est en lecture seule, aussi supprimer le <em lang="en">remote</em> <code>origin</code> créé lors du clonage.
+    </p>
+    <figure>
+      <figcaption>Récupération des squelettes de code fournis.</figcaption>
+      <pre><code class="language-console hljs language-shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git <span class="hljs-built_in">clone</span> /users/info/pub/info/semaine-C/notions-base.git</span>
+Cloning into 'notions-base.git'...
+Receiving objects: 100% (8/8), done.
+Resolving deltas: 100% (1/1), done.
+<span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-comment"># /!\ ne pas oublier de se déplacer dans le répertoire de travail (working directory)</span></span>
+<span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">cd</span> notions-base.git/</span>
+<span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">ls</span></span>
+minmaj.c  miroir.c  mon_echo.c  produit.c
+<span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-comment"># suppression du remote en lecture seule</span></span>
+<span class="hljs-meta prompt_">$ </span><span class="language-bash">git remote remove origin</span></code></pre>
+    </figure>
+    <p>
+      Vous êtes prêt·e à travailler&nbsp;!
+    </p>
+    <h3 class="exercise">Produit de deux entiers</h3>
+    <ol class="question-thread">
+      <li>Compléter le programme <code>produit.c</code> qui demande de saisir deux entiers (à l'aide de <code>scanf()</code>) et qui affiche (à l'aide de <code>printf()</code>) le produit des deux entiers saisis.</li>
+    </ol>
+    <figure>
+      <figcaption>Exemple de trace pour le programme <span class="role-command">produit</span>.</figcaption>
+      <pre><code class="language-console hljs language-shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">./produit</span>
+programme qui multiplie 2 nombres
+saisir un premier nombre : 7
+saisir un deuxieme nombre : 6
+7 x 6 = 42</code></pre>
+    </figure>
+    <ol class="question-thread">
+      <li>Une fois le programme fonctionnel, créer une version (<code>commit</code>) qui enregistre votre travail.</li>
+    </ol>
+    <h3 class="exercise">Table de multiplication</h3>
+    <ol class="question-thread">
+      <li>Écrire le programme <code>table.c</code> qui lit un entier (<code>scanf()</code>) et qui affiche (<code>printf()</code>) sa table de multiplication.</li>
+    </ol>
+    <figure>
+      <figcaption>Exemple de trace pour le programme <span class="role-command">table</span>.</figcaption>
+      <pre><code class="language-console hljs language-shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">./table</span>
+vous voulez la table de combien ? 7
+0 x 7 = 0
+1 x 7 = 7
+2 x 7 = 14
+3 x 7 = 21
+4 x 7 = 28
+5 x 7 = 35
+6 x 7 = 42
+7 x 7 = 49
+8 x 7 = 56
+9 x 7 = 63
+10 x 7 = 70</code></pre>
+    </figure>
+    <ol class="question-thread">
+      <li>Une fois le programme fonctionnel, créer une version (<code>commit</code>) qui enregistre votre travail.</li>
+    </ol>
+    <h3 class="exercise">Inversion de chaîne de caractères</h3>
+    <ol class="question-thread">
+      <li>
+        Compléter le programme <code>miroir.c</code> qui déclare deux chaînes de caractères <code>orig</code> et <code>mirror</code>
+        <pre><code class="language-c hljs"><span class="hljs-meta">#<span class="hljs-keyword">define</span> BUFFER_LEN 64</span>
+
+<span class="hljs-type">char</span> orig[BUFFER_LEN] = <span class="hljs-string">"bonjour"</span>;
+<span class="hljs-comment">// = {0}; is the universal zero initializer, C99 Standard 6.7.8.21</span>
+<span class="hljs-type">char</span> mirror[BUFFER_LEN] = {<span class="hljs-number">0</span>};  <span class="hljs-comment">// fill buffer with 0 (a.k.a. '\0')</span></code></pre>
+        et qui recopie à l'envers la chaîne <code>orig</code> dans <code>mirror</code> en écrasant l'ancien contenu de <code>mirror</code>.
+        Avec la définition précédente, <code>mirror</code> contiendra <code>"ruojnob"</code> une fois le programme exécuté.
+      </li>
+      <li>Afficher la chaîne <code>mirror</code> sur la sortie standard.</li>
+      <li>Une fois le programme fonctionnel, créer une version (<code>commit</code>) qui enregistre votre travail.</li>
+    </ol>
+    <h3 class="exercise">Appel de fonction&nbsp;: Conversion Fahrenheit/Celsius</h3>
+    <ol class="question-thread">
+      <li>Écrire le programme <code>conversion.c</code> qui affiche une table de conversion de températures en degrés Fahrenheit vers des températures en degrés Celsius.</li>
+    </ol>
+    <p>
+      Le programme donnera la conversion de 0&nbsp;°F à 200&nbsp;°F par pas de 20&nbsp;°F.
+    </p>
+    <p>
+      Pour effectuer la conversion, la fonction <code>main()</code> appellera la fonction <code>celsius()</code> que vous définirez avec le prototype suivant&nbsp;
+    </p>
+    <pre><code class="hljs language-java"><span class="hljs-type">float</span> <span class="hljs-title function_">celsius</span><span class="hljs-params">(<span class="hljs-type">float</span> fahrenheit)</span></code></pre>
+    <p>
+      et qui utilisera la formule
+      <math display="block">
+        <mi>c</mi>
+        <mo>=</mo>
+        <mfrac>
+          <mn>5</mn>
+          <mn>9</mn>
+        </mfrac>
+        <mo>⋅</mo>
+        <mrow>
+          <mo fence="true" stretchy="true" form="prefix">(</mo>
+          <mi>f</mi>
+          <mo>−</mo>
+          <mn>32</mn>
+          <mo fence="true" stretchy="true" form="postfix">)</mo>
+        </mrow>
+      </math>
+      où <math><mi>c</mi></math> représente la température en degrés Celsius et <math><mi>f</mi></math> représente la température en degrés Fahrenheit.
+    </p>
+    <p>
+      Pour la mise en forme de la table, vous utiliserez le caractère de tabulation <code>'\t'</code>.
+    </p>
+    <figure>
+      <figcaption>Trace à reproduire pour le programme <span class="role-command">conversion</span>.</figcaption>
+      <pre><code class="language-console hljs language-shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">./conversion</span>
+-----------------------
+Fahrenheit	Celsius
+-----------------------
+         0	  -17.8
+        20	   -6.7
+        40	    4.4
+        60	   15.6
+        80	   26.7
+       100	   37.8
+       120	   48.9
+       140	   60.0
+       160	   71.1
+       180	   82.2
+       200	   93.3</code></pre>
+    </figure>
+    <ol class="question-thread">
+      <li>Une fois le programme fonctionnel, créer une version (<code>commit</code>) qui enregistre votre travail.</li>
+    </ol>
+    <h3 class="exercise">Commande <span class="role-command">echo</span></h3>
+    <ol class="question-thread">
+      <li>Tester la commande Unix <span class="role-command">echo</span> dans votre console.</li>
+    </ol>
+    <pre><code class="language-console hljs language-shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">echo</span> Bonjour Maitre</span>
+Bonjour Maitre</code></pre>
+    <ol class="question-thread">
+      <li>Compléter le programme <code>mon_echo.c</code> qui reproduit le comportement de cette commande dont l'objet est d'afficher à l'écran les arguments qui lui sont passés.</li>
+      <li>Une fois le programme fonctionnel, créer une version (<code>commit</code>) qui enregistre votre travail.</li>
+    </ol>
+    <section class="role-advice">
+      <h4>Conseils</h4>
+      <ul>
+        <li>Il faut utiliser la version longue du prototype de <code>main()</code> pour avoir accès aux arguments en utilisant les paramètres formels <code>argc</code> et <code>argv</code>.</li>
+        <li>
+          Certains caractères sont interprétés par le shell (par exemple, <code>!</code>, <code>$</code>, <code>*</code>, …).
+          Pour éviter leur interprétation, il faut les échapper entre deux apostrophes <code>'</code>.
+        </li>
+      </ul>
+    </section>
+    <h3 class="exercise">Nombre de minuscules et majuscules</h3>
+    <ol class="question-thread">
+      <li>
+        Compléter le programme <code>minmaj.c</code> qui lit au clavier une chaîne de caractères et affiche le nombre de minuscules et majuscules qu'elle contient.
+      </li>
+    </ol>
+    <figure>
+      <figcaption>Exemple de trace pour le programme <span class="role-command">minmaj</span>.</figcaption>
+      <pre><code class="language-console hljs language-shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">./minmaj</span>
+Entrez une chaine quelconque&nbsp;: Bonjour Maitre !
+lower:	11
+upper:	2
+other:	4</code></pre>
+    </figure>
+    <section id="readline" class="role-advice">
+      <h4>Code fourni&nbsp;: <code>readline()</code></h4>
+      <p>
+        Pour lire une chaîne de caractères qui contient des espaces, la fonction <code>readline()</code> est fournie.
+      </p>
+      <pre><code class="language-c hljs"><span class="hljs-meta">#<span class="hljs-keyword">define</span> _POSIX_C_SOURCE 200809L  <span class="hljs-comment">// getline in POSIX.1-2008</span></span>
+
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span>
+
+<span class="hljs-comment">/*
+ * readline() reads an entire line from stream and stores at most one less than
+ * size characters into the buffer pointed to by buffer.
+ * A terminating null byte ('\0') is stored after the last character in the
+ * buffer.
+ *
+ * On success, readline() returns the number of characters read, excluding the
+ * terminating null byte ('\0').
+ *
+ * The function returns -1 on failure to read a line (including end-of-file
+ * condition).
+ */</span>
+<span class="hljs-type">ssize_t</span> <span class="hljs-title function_">readline</span><span class="hljs-params">(<span class="hljs-type">char</span> *buffer, <span class="hljs-type">size_t</span> size, FILE *stream)</span>
+{
+	<span class="hljs-type">char</span> *line = <span class="hljs-literal">NULL</span>;
+	<span class="hljs-type">size_t</span> len = <span class="hljs-number">0</span>;
+	<span class="hljs-type">ssize_t</span> nread;
+	<span class="hljs-type">ssize_t</span> ncopied = <span class="hljs-number">-1</span>;
+
+	nread = getline(&amp;line, &amp;len, stream);
+	<span class="hljs-keyword">if</span> (nread != <span class="hljs-number">-1</span>) {
+		<span class="hljs-comment">// copy at most size - 1 bytes</span>
+		ncopied = nread &lt; (<span class="hljs-type">ssize_t</span>)size - <span class="hljs-number">1</span> ? nread : (<span class="hljs-type">ssize_t</span>)size - <span class="hljs-number">1</span>;
+		<span class="hljs-built_in">memcpy</span>(buffer, line, ncopied);
+		<span class="hljs-comment">// terminating null byte</span>
+		buffer[size] = <span class="hljs-string">'\0'</span>;
+	}
+	<span class="hljs-built_in">free</span>(line);
+
+	<span class="hljs-keyword">return</span> ncopied;
+}</code></pre>
+      <p>
+        Une fois intégrée à votre code, la fonction <code>readline()</code> s'utilise de la manière suivante&nbsp;:
+      </p>
+      <pre><code class="language-c hljs"><span class="hljs-meta">#<span class="hljs-keyword">define</span> BUFFER_LEN 64</span>
+
+<span class="hljs-type">char</span> buffer[BUFFER_LEN];
+<span class="hljs-type">ssize_t</span> nread;
+
+nread = readline(buffer, BUFFER_LEN, <span class="hljs-built_in">stdin</span>);</code></pre>
+    </section>
+    <section class="role-advice">
+      <h4>Conseils</h4>
+      <p>
+        Il n'est pas nécessaire de connaître le codage ASCII&nbsp;: un caractère peut être interprété comme un entier sur un octet.
+      </p>
+    </section>
+    <ol class="question-thread">
+      <li>Une fois le programme fonctionnel, créer une version (<code>commit</code>) qui enregistre votre travail.</li>
+    </ol>
+    <h3 class="exercise">Comptage de lettres</h3>
+    <ol class="question-thread">
+      <li>
+        Dupliquer <code>minmaj.c</code> dans <code>comptage.c</code>.
+        Modifier le programme <code>comptage.c</code> afin qu'il compte en un seul parcours le nombre d'occurrences de tous les caractères d'une chaîne.
+      </li>
+    </ol>
+    <figure>
+      <figcaption>Exemple de trace pour le programme <span class="role-command">comptage</span>.</figcaption>
+      <pre><code class="language-console hljs language-shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">./comptage</span>
+Entrez une chaine quelconque&nbsp;: un mur mura Murat et Murat murmura !!!
+ (0x0a): 1
+ (0x20): 7
+!(0x21): 3
+M(0x4d): 2
+a(0x61): 4
+e(0x65): 1
+m(0x6d): 4
+n(0x6e): 1
+r(0x72): 6
+t(0x74): 3
+u(0x75): 7</code></pre>
+    </figure>
+    <section class="role-advice">
+      <h4>Conseils</h4>
+      <ul>
+        <li>Trouver un moyen d'avoir autant de compteurs que de caractères ASCII possibles.</li>
+      </ul>
+    </section>
+    <ol class="question-thread">
+      <li>Une fois le programme fonctionnel, créer une version (<code>commit</code>) qui enregistre votre travail.</li>
+    </ol>
+    <h3 class="exercise">Pyramide</h3>
+    <ol class="question-thread">
+      <li>Créer un nouveau fichier source <code>pyramide.c</code>.</li>
+      <li>
+        Écrire une procédure <code>putchars()</code> (une fonction dont le type de retour est <code>void</code>) qui affiche <code>repeat</code> fois sur la sortie standard le caractère <code>ch</code>.
+        <pre><code class="language-c hljs"><span class="hljs-type">void</span> <span class="hljs-title function_">putchars</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> repeat, <span class="hljs-type">char</span> ch)</span></code></pre>
+      Vous pouvez vous aider de la fonction standard <code>putchar()</code> pour cela.
+      </li>
+      <li>Tester votre procédure à l'aide d'un <code>int main(void)</code> très simple.</li>
+      <li>Écrire une fonction <code>int main(void)</code> qui demande la hauteur d'une pyramide (<code>scanf()</code>) et qui affiche la pyramide avec le caractère <code>'*'</code> en utilisant la procédure <code>putchars()</code> précédemment définie.</li>
+    </ol>
+    <figure>
+      <figcaption>Exemple d'utilisation du programme <span class="role-command">pyramide</span>.</figcaption>
+      <pre><code class="language-console hljs language-shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">./pyramide</span>
+hauteur ? 5
+    *
+   ***
+  *****
+ *******
+*********</code></pre>
+    </figure>
+    <section class="role-advice">
+      <h4>Conseils (avant de coder&nbsp;!)</h4>
+      <ul>
+        <li>Pour une hauteur <code>h</code>, combien de caractères <code>c</code> comporte la base&nbsp;?</li>
+        <li>Pour un niveau <code>n</code>, combien de caractères <code>c</code> sont affichés sur une ligne&nbsp;?</li>
+        <li>Pour un niveau <code>n</code>, combien d'espaces sont affichées avant le premier caractère&nbsp;?</li>
+      </ul>
+    </section>
+    <ol class="question-thread">
+      <li>Une fois le programme fonctionnel, créer une version (<code>commit</code>) qui enregistre votre travail.</li>
+      <li>
+        Modifier votre programme pour qu'il récupère la hauteur et le caractère à afficher dans les arguments passés en paramètres du programme.
+        Le programme doit tester que le bon nombre d'arguments est donné.
+      </li>
+    </ol>
+    <figure>
+      <figcaption>Exemple d'appel du programme <span class="role-command">pyramide</span> avec des arguments.</figcaption>
+      <pre><code class="language-console hljs language-shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">./pyramide 3 0</span>
+  0
+ 000
+00000</code></pre>
+    </figure>
+    <section class="role-advice">
+      <h4>Conseils</h4>
+      <p>
+        Les arguments <code>"3"</code> et <code>"0"</code> sont deux chaînes de caractères.
+        Il faut donc les convertir&nbsp;:
+      </p>
+      <ul>
+        <li><code>"3"</code> en entier <code>3</code> (à l'aide d'<code>atoi()</code>),</li>
+        <li>et <code>"0"</code> en caractère <code>'0'</code> (c'est le premier caractère de la chaîne <code>argv[2]</code>, à savoir <code>argv[2][0]</code>).</li>
+      </ul>
+    </section>
+    <ol class="question-thread">
+      <li>Une fois le programme modifié fonctionnel, créer une nouvelle version (<code>commit</code>) qui enregistre votre travail.</li>
+    </ol>
+    <h3 class="exercise">Calculette en ligne de commande</h3>
+    <ol class="question-thread">
+      <li>
+        Écrire un programme <code>calculette.c</code> qui accepte trois arguments&nbsp;: un premier entier (opérande de gauche <code>lhs</code>), un opérateur (<code>+</code>, <code>-</code>, <code>x</code>, <code>/</code>) et un deuxième entier (opérande de droite <code>rhs</code>).
+        Le programme calcule et affiche le résultat de l'opération ou un message d'erreur si nécessaire.
+      </li>
+    </ol>
+    <figure>
+      <figcaption>Exemple de trace pour le programme <span class="role-command">calculette</span>.</figcaption>
+      <pre><code class="language-console hljs language-shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">./calculette 546 / 13</span>
+546 / 13 = 42</code></pre>
+    </figure>
+    <section class="role-advice">
+      <h4>Conseils</h4>
+      <ul>
+        <li>Penser à convertir les chaînes de caractères en entier.</li>
+        <li>Utiliser le caractère <code>'x'</code> et non <code>'*'</code> pour la multiplication.</li>
+      </ul>
+    </section>
+    <ol class="question-thread">
+      <li>Une fois le programme fonctionnel, créer une version (<code>commit</code>) qui enregistre votre travail.</li>
+    </ol>
+    <h3 class="exercise">Conversion <code>bin2dec()</code>&nbsp;: base 2 vers base 10</h3>
+    <ol class="question-thread">
+      <li>Créer un nouveau fichier source <code>bin2dec.c</code>.</li>
+      <li>
+        Écrire une procédure <code>bin2dec()</code> de prototype
+        <pre><code class="hljs language-java"><span class="hljs-keyword">void</span> <span class="hljs-title function_">bin2dec</span><span class="hljs-params">(<span class="hljs-type">char</span> bin[], <span class="hljs-type">char</span> dec[])</span></code></pre>
+        qui convertit une chaîne de caractères <code>bin</code> contenant les caractères <code>'0'</code> et <code>'1'</code> représentant un entier naturel exprimé en base 2 en une chaîne de caractères <code>dec</code> contenant les caractères <code>'0'</code> à <code>'9'</code> représentant cet entier naturel exprimé en base 10.
+      </li>
+      <li>Écrire un <code>main()</code> qui permet de tester votre procédure.</li>
+    </ol>
+    <figure>
+      <figcaption>Exemple de trace pour le programme <span class="role-command">bin2dec</span>.</figcaption>
+      <pre><code class="language-console hljs language-shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">./bin2dec</span>
+donner un nombre en binaire&nbsp;: 101010
+&lt;101010&gt;2 = &lt;42&gt;10</code></pre>
+    </figure>
+    <section class="role-advice">
+      <h4>Conseils</h4>
+      <p>
+        Pour écrire le résultat de la conversion dans la chaîne de caractères <code>dec</code>, on utilisera la fonction <code>sprintf()</code> qui fonctionne comme <code>printf()</code> avec un argument supplémentaire pour indiquer dans quel tableau écrire le résultat.
+      </p>
+    </section>
+    <ol class="question-thread">
+      <li>Une fois le programme fonctionnel, créer une version (<code>commit</code>) qui enregistre votre travail.</li>
+    </ol>
+    <h3 class="exercise">Conversion <code>dec2bin()</code>&nbsp;: base 10 vers base 2</h3>
+    <ol class="question-thread">
+      <li>Créer un nouveau fichier source <code>dec2bin.c</code>.</li>
+      <li>
+        Écrire une procédure <code>dec2bin()</code> de prototype
+        <pre><code class="hljs language-java"><span class="hljs-keyword">void</span> <span class="hljs-title function_">dec2bin</span><span class="hljs-params">(<span class="hljs-type">char</span> dec[], <span class="hljs-type">char</span> bin[])</span></code></pre>
+        qui fait l'opération inverse de <code>bin2dec()</code>&nbsp;: elle convertit une représentation en base 10 contenue dans <code>dec</code> en une représentation en base 2 contenue dans <code>bin</code>.
+      </li>
+    </ol>
+    <figure>
+      <figcaption>Exemple de trace pour le programme <span class="role-command">bin2dec</span>.</figcaption>
+      <pre><code class="language-console hljs language-shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">./dec2bin</span>
+donner un nombre en decimal&nbsp;: 42
+&lt;42&gt;10 = &lt;101010&gt;2
+</code></pre>
+    </figure>
+    <section class="role-advice">
+      <h4>Conseils</h4>
+      <ul>
+        <li>Convertir <code>dec</code> en entier naturel à l'aide d'<code>atoi()</code>.</li>
+        <li>Utiliser les divisions successives par 2 (cf. cours d'architecture de première année).</li>
+        <li>Le reste de la division entière peut être obtenu avec l'opérateur modulo <code>%</code>.</li>
+      </ul>
+    </section>
+    <ol class="question-thread">
+      <li>Une fois le programme fonctionnel, créer une version (<code>commit</code>) qui enregistre votre travail.</li>
+    </ol>
+  
+
+</body></html>

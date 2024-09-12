@@ -62,6 +62,7 @@ public class HelloController {
 			for (Toggle toggle : genre.getToggles()) {
 				System.out.println(toggle.getProperties());
 			}
+			
 		}
 
 		catch(Exception e) {e.printStackTrace();}

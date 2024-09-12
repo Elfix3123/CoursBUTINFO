@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<!-- saved from url=(0102)https://www-info.iut2.univ-grenoble-alpes.fr/intranet/enseignements/semaine-C/programmation-modulaire/ -->
+<html lang="fr-FR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Semaine de programmation en langage C&nbsp;: Programmation modulaire</title>
+    <link rel="icon" href="https://www-info.iut2.univ-grenoble-alpes.fr/intranet/enseignements/semaine-C/c-language-logo.svg" sizes="any" type="image/svg+xml">
+    <link rel="stylesheet" href="./Semaine de programmation en langage C _ Programmation modulaire_files/style.css" type="text/css">
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="./Semaine de programmation en langage C _ Programmation modulaire_files/stackoverflow-dark.min.css" type="text/css">
+    <script src="./Semaine de programmation en langage C _ Programmation modulaire_files/highlight.min.js.téléchargement"></script>
+    <script>hljs.highlightAll();</script>
+  </head>
+  <body>
+    <h1>Semaine de programmation en langage C</h1>
+    <nav class="breadcrumb">
+      <ol>
+        <li><a href="https://www-info.iut2.univ-grenoble-alpes.fr/intranet/enseignements/semaine-C/">Page principale</a></li>
+        <li>Programmation modulaire</li>
+      </ol>
+    </nav>
+    <h2>Programmation modulaire</h2>
+    <p>
+      Cette unité a pour but de vous faire travailler sur les notions&nbsp;:
+    </p>
+    <ul>
+      <li>de découpage en modules,</li>
+      <li>de macro-commandes sans et avec paramètres,</li>
+      <li>de compilation conditionelle,</li>
+      <li>de mesure du temps processeur d'un bout de code.</li>
+    </ul>
+    <h3>Prérequis</h3>
+    <h4>Pré-processeur</h4>
+    <p>
+      Le pré-processeur intervient avant le compilateur.
+      C'est la première étape de la compilation.
+      C’est une partie de <span class="role-command">gcc</span>.
+      Les deux instructions (ou directives) du pré-processeur les plus fréquemment employées sont <code>#include</code> et <code>#define</code> que vous avez déjà utilisé.
+    </p>
+    <p>
+      Le pré-processeur permet aussi de définir des <em>macros avec arguments</em> et de mettre en œuvre la <em>compilation conditionnelle</em>.
+    </p>
+    <h3>Modularisation</h3>
+    <p>
+      Lorsqu'une application grossit, il n'est pas réaliste et désirable d'écrire tout son code au sein d'un unique fichier.
+      On découpe alors le code en plusieurs fichiers (ou modules).
+      Cela permet essentiellement une meilleure structuration du code, une maintenance plus simple du code, une meilleure réutilisation du code et une compilation plus rapide.
+    </p>
+    <p>
+      Chaque module est constitué d'un fichier entête (<code>.h</code> pour <em lang="en">header</em>) et d'un fichier contenant le code (<code>.c</code>).
+      Le fichier <code>.h</code> contient les déclarations permettant d'utiliser les fonctions et variables dans d'autres modules.
+      Le fichier <code>.c</code> contient l'implémentation des fonctions déclarées.
+    </p>
+    <p>
+      L'objet de cette unité est de découper en plusieurs modules le fichier <code>main.c</code> de l'<a href="https://www-info.iut2.univ-grenoble-alpes.fr/intranet/enseignements/semaine-C/structures/">unité précédente</a>&nbsp;:
+    </p>
+    <ul>
+      <li><code>main.c</code> ne comportera plus que la fonction <code>main()</code> et la fonction <code>pgm_show()</code>,</li>
+      <li><code>traitement.c</code> contiendra toutes les fonctions de traitement d'image,</li>
+      <li><code>allocation.c</code> contiendra les fonctions <code>pgm_malloc()</code> et <code>pgm_free()</code>.</li>
+    </ul>
+    <p>Procéder de la façon suivante&nbsp;:</p>
+    <ol class="question-thread">
+      <li>
+        Cette unité construit au dessus du code écrit pour l'unité précédente.
+        Vérifier que le dossier de travail du dépôt <code>pgm.git</code> est propre&nbsp;: tous les fichiers importants sont suivis et toutes les modifications ont été enregistrées.
+      </li>
+      <li>Ventiler toutes les fonctions que vous avez écrites dans les modules définis ci-dessus.</li>
+      <li>
+        Pour les modules <code>traitement.c</code> et <code>allocation.c</code>, créer les fichiers entêtes <code>traitement.h</code> et <code>allocation.h</code> correspondants.
+        Ajouter dans ces fichiers entêtes les déclarations (prototypes) des fonctions implémentées dans les fichiers <code>.c</code> correspondants.
+      </li>
+      <li>
+        Ajouter à chaque fichier <code>.h</code> les gardes pré-processeur pour éviter des erreurs de définitions multiples.
+      </li>
+    </ol>
+    <section id="include-guard" class="role-advice">
+      <h4>Garde pré-processeur (<code lang="en">#include guard</code>)</h4>
+      <p>
+        Dans chaque fichier <code>.h</code>, on ajoutera en début de fichier et en fin de fichier le code ci-dessous afin d’éviter des erreurs de définitions multiples.
+        Par exemple, pour un module qui s'appellerait <code>mon-module.h</code>&nbsp;:
+      </p>
+      <pre><code class="langage-c hljs language-cpp"><span class="hljs-meta">#<span class="hljs-keyword">ifndef</span> MON_MODULE_H_  <span class="hljs-comment">/* convention classique: nom du module en majuscules, suivi de _H_ */</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">define</span> MON_MODULE_H_</span>
+
+<span class="hljs-comment">/* contenu du fichier */</span>
+
+<span class="hljs-meta">#<span class="hljs-keyword">endif</span> <span class="hljs-comment">/* MON_MODULE_H_ */</span></span></code></pre>
+      <p>
+        Cette construction est nécessaire en raison du fonctionnement du pré-processeur et de la directive <code>#include</code>.
+        La directive <code>#include</code> recopie <em>in extenso</em> le contenu du fichier en argument.
+        Sans la garde, plusieurs inclusions du même fichier dans une chaîne d'inclusions aboutit à plusieurs définitions identiques.
+        Avec la garde, à la première inclusion de <code>mon-module.h</code>, la macro <code>MON_MODULE_H_</code> sera créée.
+        Dans les inclusions suivantes la macro <code>MON_MODULE_H_</code> existera et le contenu du fichier entre les directives <code>#ifndef</code> et <code>#endif</code> ne sera pas à nouveau copié.
+      </p>
+    </section>
+    <ol class="question-thread">
+      <li>
+        Ajouter les directives <code>#include</code> nécessaires dans les fichiers <code>.c</code> afin que chaque module puisse utiliser le type <code>pgm_t_image</code>, les constantes ainsi que les fonctions utilisées et implémentées dans d'autres modules.
+      </li>
+    </ol>
+    <section class="role-advice">
+      <h4>Conseil</h4>
+      <p>
+        Pour chacun des fichiers (<code>.c</code> et <code>.h</code>) faire la liste du ou des fichiers <code>.h</code> dont il dépend.
+      </p>
+    </section>
+    <ol class="question-thread">
+      <li>
+        Compiler chaque fichier <code>.c</code> séparément pour générer les fichiers objet <code>.o</code>, puis réaliser l'édition de liens (cf. unité <a href="https://www-info.iut2.univ-grenoble-alpes.fr/intranet/enseignements/semaine-C/traitement-image/#compilation">Traitement d'image</a>).
+      </li>
+      <li>Tester cette nouvelle version.</li>
+      <li>Une fois le programme fonctionnel, créer une version (<code>commit</code>) qui enregistre votre travail.</li>
+    </ol>
+    <h3>Macro-commandes</h3>
+    <p>
+      C'est une bonne pratique que de remplacer des séquences d'instructions fréquentes par un appel à une fonction.
+      Cela permet de n'écrire qu'une seule fois ce bout de code, rend le code plus lisible et évite la propagation de bug due à des copier-collers successifs.
+    </p>
+    <p>
+      Par exemple, le calcul du maximum de deux valeurs peut s'écrire&nbsp;:
+    </p>
+    <pre><code class="language-c hljs"><span class="hljs-keyword">if</span> (a &gt; b) {
+	maximum = a;
+} <span class="hljs-keyword">else</span> {
+	maximum = b;
+}</code></pre>
+    <p>
+      En définissant une fonction pour faire cette séquence d'instructions, on peut écrire plus simplement les lignes précédentes ainsi&nbsp;:
+    </p>
+    <pre><code class="language-c hljs">maximum = max(a, b)</code></pre>
+    <p>
+      Le code s'en trouve allégé mais le coût d'exécution est plus grand&nbsp;: un appel de fonction déroute le programme, empile et dépile des informations.
+      Les opérations liées à cet appel de fonction induit des cycles processeur supplémentaires.
+    </p>
+    <p>
+      L'idéal serait de remplacer l'appel de fonction par un copier-coller automatique du code.
+      L'utilisation d'une macro-commande pré-processeur permet cela.
+    </p>
+    <p>
+      Illustrons la définition et l'utilisation d'une macro-commande permettant de calculer le carré d'une valeur numérique (entier ou réel).
+    </p>
+    <pre><code class="language-c hljs"><span class="hljs-meta">#<span class="hljs-keyword">define</span> CARRE(x) ((x) * (x))</span>
+
+c = CARRE(a + b);</code></pre>
+    <p>
+      Le pré-processeur remplace la macro-commande en utilisant sa définition et en remplaçant ses paramètres formels <em>textuellement</em>.
+      L'exemple précédent sera remplacé par le pré-processeur par le code suivant&nbsp;:
+    </p>
+    <pre><code class="language-c hljs">c = ((a + b) * (a + b))</code></pre>
+    <p>
+      Il faut noter plusieurs points importants&nbsp;:
+    </p>
+    <ul>
+      <li>les paramètres d'une macro-commande ne sont pas typés,</li>
+      <li>il est important de parenthéser chaque utilisation d'un argument et le contenu complet de la définition de la macro-commande pour que les priorités des opérateurs soient respectées.</li>
+    </ul>
+    <ol class="question-thread">
+      <li>
+        Écrire, dans <code>traitement.c</code>, la macro-commande <code>SEUIL1_PIXEL(valeur, seuil)</code> qui renvoie <code>0</code> si <code>valeur &lt; seuil</code>, <code>255</code> sinon.
+        Pour écrire cette macro, on utilisera l'opérateur conditionnel <code>?</code>.
+      </li>
+    </ol>
+    <section class="role-advice">
+      <h4>Opérateur conditionnel <code>?</code></h4>
+      <p>
+        L'opérateur conditionnel, ou opérateur ternaire, <code>?</code> prend trois opérandes, à savoir une condition, une valeur si vrai et une valeur si faux organisé comme suit&nbsp;:
+      </p>
+      <pre><code class="language-c hljs">(condition) ? valeur_si_vrai : valeur_si_faux</code></pre>
+      <p>
+        Par exemple, on peut écrire le maximum de la manière suivante&nbsp;:
+      </p>
+      <pre><code class="language-c hljs">maximum = (a &gt; b) ? a : b;</code></pre>
+    </section>
+    <ol class="question-thread">
+      <li>Modifier votre fonction <code>pgm_threshold()</code> pour utiliser la macro-commande <code>SEUIL1_PIXEL</code>.</li>
+      <li>
+        Une macro-commande peut également se comporter comme une procédure.
+        Écrire la macro-commande <code>SEUIL2_PIXEL(valeur, seuil)</code> qui remplace <code>valeur</code> par <code>0</code> ou <code>255</code>.
+      </li>
+    </ol>
+    <section class="role-advice">
+      <h4>Conseil</h4>
+      <p>
+        Si la macro est syntaxiquement incorrecte, le compilateur donnera un ou plusieurs messages d'erreur.
+        Pour comprendre pourquoi, il est possible de voir le code généré par le pré-processeur, tel qu'il sera vu par le compilateur.
+        On peut le faire en visualisant le fichier <code>.i</code> obtenu avec la commande suivante&nbsp;:
+      </p>
+      <pre><code class="language-console hljs language-shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">gcc -std=c99 -Wall -Wextra -g -E -o traitement.i traitement.c</span>
+<span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-comment">#                             ^^</span></span></code></pre>
+    </section>
+    <ol class="question-thread">
+      <li>Une fois le programme fonctionnel, créer une version (<code>commit</code>) qui enregistre votre travail.</li>
+    </ol>
+    <h3>Compilation conditionnelle</h3>
+    <p>
+      La compilation conditionnelle permet d’inclure du code de façon sélective, selon des conditions évaluées avant la compilation.
+    </p>
+    <p>
+      On veut rajouter la possibilité d'afficher le nom des fonctions de traitement d'image à chaque fois qu'elles s'exécutent.
+      En C99, il existe une variable spéciale nommée <code>__func__</code> qui contient le nom de la fonction courante.
+    </p>
+    <ol class="question-thread">
+      <li>Dans une des fonctions de <code>traitement.c</code> ajouter un appel à <code>printf()</code> pour comprendre le fonctionnement de <code>__func__</code>.</li>
+      <li>
+        Déplacer ce <code>printf()</code> dans une macro-commande <code>AFFICHER_FONCTION</code> définie dans <code>traitement.c</code> et appeler la macro dans la fonction choisie.
+        Ici, la macro-commande définie est sans paramètre.
+      </li>
+      <li>
+        Définir dans <code>traitement.h</code> une constante nommée <code>DEBUG</code>.
+        On veut le fonctionnement suivant&nbsp;: si <code>DEBUG</code> vaut <code>1</code>, le nom de la fonction est affichée.
+        Si <code>DEBUG</code> vaut <code>0</code>, le nom de la fonction n'est pas affiché.
+        Sans toucher à l'appel de la macro <code>AFFICHER_FONCTION</code>, et connaissant le fonctionnement d'une macro, trouver un moyen astucieux utilisant les directives de compilation conditionnelle (une structure <code>si alors sinon</code> au niveau du pré-processeur) pour obtenir ce fonctionnement.
+      </li>
+    </ol>
+    <section class="role-advice">
+      <h4>Directives de compilation conditionnelle</h4>
+      <p>
+        Les directives <code>#if</code>, <code>#else</code> et <code>#endif</code> permettent d'inclure du code de manière conditionnelle en fonction de la valeur d'une macro constante.
+      </p>
+      <pre><code class="language-c hljs"><span class="hljs-meta">#<span class="hljs-keyword">if</span> DEBUG</span>
+<span class="hljs-comment">// instructions vues par le compilateur lorsque DEBUG ≠ 0</span>
+<span class="hljs-meta">#<span class="hljs-keyword">else</span></span>
+<span class="hljs-comment">// instructions vues par le compilateur lorsque DEBUG vaut 0</span>
+<span class="hljs-meta">#<span class="hljs-keyword">endif</span></span></code></pre>
+    </section>
+    <ol class="question-thread">
+      <li>Tester le bon fonctionnement de votre macro avec les deux valeurs de <code>DEBUG</code>. </li>
+      <li>Ajouter un appel à <code>AFFICHER_FONCTION</code> dans toutes les fonctions de <code>traitement.c</code></li>
+      <li>Une fois le programme fonctionnel, créer une version (<code>commit</code>) qui enregistre votre travail.</li>
+    </ol>
+    <h3>Mesure du temps d'exécution</h3>
+    <p>
+      Vous allez mesurer le temps d'exécution de votre fonction <code>main()</code> qui contient tous vos appels de fonctions.
+      La bibliothèque <code>time.h</code> fournit la fonction <code>clock()</code> qui permet de connaître le temps CPU écoulé (type <code>clock_t</code>) depuis le début du programme.
+      Pour connaître la durée d'un traitement, le principe est très simple&nbsp;: appeler <code>clock()</code> avant et après ce traitement et faire la différence des deux temps obtenus.
+      Pour convertir la durée ainsi calculée en secondes, il faut diviser la différence par la constante <code>CLOCKS_PER_SEC</code>.
+      Pour ne pas trop dégrader la précision de la mesure, convertissez en <code>float</code> avant de diviser.
+    </p>
+    <ol class="question-thread">
+      <li>
+        Afficher le temps pris par l'exécution du contenu de la fonction <code>main()</code>.
+        Les traitements étant simples et les machines puissantes, il se peut que le temps affiché soit égal à zéro.
+        Pour cette raison, dans cet exercice, on mettra le contenu de la fonction <code>main()</code> dans une boucle de 10, 20 ou 50 itérations.
+      </li>
+      <li>Exécuter plusieurs fois votre programme et notez le temps moyen obtenu.</li>
+    </ol>
+    <p>
+      En rajoutant l'option <code>-O3</code> lorsqu'on appelle le compilateur <span class="role-command">gcc</span>, on optimise au maximum la rapidité du code (par défaut il n'y a pas d'optimisation (<code>-O0</code>) pour pouvoir déboguer le code).
+    </p>
+    <ol class="question-thread">
+      <li>
+        Compiler et linker les modules avec l'option <code>-O3</code> et calculer le nouveau temps moyen d'exécution qui devrait être inférieur au temps obtenu précédemment.
+        Comparer les temps.
+      </li>
+    </ol>
+  
+
+</body></html>

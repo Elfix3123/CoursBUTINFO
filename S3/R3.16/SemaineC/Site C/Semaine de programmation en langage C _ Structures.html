@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<!-- saved from url=(0089)https://www-info.iut2.univ-grenoble-alpes.fr/intranet/enseignements/semaine-C/structures/ -->
+<html lang="fr-FR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Semaine de programmation en langage C&nbsp;: Structures</title>
+    <link rel="icon" href="https://www-info.iut2.univ-grenoble-alpes.fr/intranet/enseignements/semaine-C/c-language-logo.svg" sizes="any" type="image/svg+xml">
+    <link rel="stylesheet" href="./Semaine de programmation en langage C _ Structures_files/style.css" type="text/css">
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="./Semaine de programmation en langage C _ Structures_files/stackoverflow-dark.min.css" type="text/css">
+    <script src="./Semaine de programmation en langage C _ Structures_files/highlight.min.js.téléchargement"></script>
+    <script>hljs.highlightAll();</script>
+  </head>
+  <body>
+    <h1>Semaine de programmation en langage C</h1>
+    <nav class="breadcrumb">
+      <ol>
+        <li><a href="https://www-info.iut2.univ-grenoble-alpes.fr/intranet/enseignements/semaine-C/">Page principale</a></li>
+        <li>Structures</li>
+      </ol>
+    </nav>
+    <h2>Structures</h2>
+    <p>
+      Cette unité a pour but de vous faire travailler sur les notions de structure et de type défini par l'utilisateur.
+    </p>
+    <h3>Rappels</h3>
+    <h4>Commande de compilation pour produire <span class="role-command">executable</span> à partir de <code>source.c</code></h4>
+    <pre><code class="language-console hljs language-shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">gcc -std=c99 -Wall -Wextra -g -o executable source.c</span></code></pre>
+    <h4>Commandes de compilation et d'édition de liens pour produire un exécutable à partir de plusieurs fichiers source</h4>
+    <pre><code class="language-console hljs language-shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">gcc -std=c99 -Wall -Wextra -g -c -o first.o first.c</span>
+<span class="hljs-meta prompt_">$ </span><span class="language-bash">gcc -std=c99 -Wall -Wextra -g -c -o second.o second.c</span>
+<span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-comment"># ...</span></span>
+<span class="hljs-meta prompt_">$ </span><span class="language-bash">gcc -o executable first.o second.o <span class="hljs-comment"># ...</span></span></code></pre>
+    <p>
+      Attention à ne pas oublier l'option <code>-l</code> après la liste de fichiers objet lorsque qu'on ajoute une bibliothèque non standard pendant l'édition de liens.
+    </p>
+    <h3>Prérequis</h3>
+    <h4>Définition et utilisation d'une structure image</h4>
+    <p>
+      Vous aurez remarqué lors de l'<a href="https://www-info.iut2.univ-grenoble-alpes.fr/intranet/enseignements/semaine-C/traitement-image/">unité précédente</a> que les appels au fonction de traitement des images sont lourds et sujets aux erreurs.
+      À chaque fois, il est nécessaire de passer au moins trois paramètres&nbsp;: le vecteur de pixels, la largeur et la hauteur.
+      Cette <abbr title="interface de programmation applicative">API</abbr> ne respecte pas le principe d'encapsulation puisqu'elle impose de connaitre les détails d'implémentation pour être utilisée.
+      D'autre part, les trois paramètres utilisés sont sémantiquement liés&nbsp;: ils représentent les propriétés d'une seule image.
+      Pour manipuler une image, il est en effet indispensable de connaître les trois informations suivantes&nbsp;:
+    </p>
+    <ol>
+      <li>l'adresse où sont stockés les pixels,</li>
+      <li>la largeur de l'image,</li>
+      <li>et sa hauteur.</li>
+    </ol>
+    <p>
+      La notion de structure en C permet de regrouper des informations sémantiquement liées dans un nouveau type.
+      Aussi, nous définissons le nouveau type structure <code>pgm_t_image</code> pour regrouper les trois propriétés d'une image.
+    </p>
+    <pre><code class="language-c hljs"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">pgm_image</span> {</span>
+	pgm_t_pixel *pixels;
+	<span class="hljs-type">size_t</span> width;
+	<span class="hljs-type">size_t</span> height;
+} pgm_t_image;</code></pre>
+    <p>
+      Le nouveau type défini est <code>struct pgm_image</code>, avec un alias <code>pgm_t_image</code>.
+    </p>
+    <h4>Matériel fourni</h4>
+    <p>
+      Les fonctions fournies dans l'unité précédente <code>pgm_naiveread()</code> et <code>pgm_naivewrite()</code> ne sont plus adaptées.
+      Ces deux fonctions sont remplacées par les fonctions <code>pgm_read()</code> et <code> pgm_write()</code> qui manipulent la structure nouvellement définie.
+      Pour cette raison il vous est fourni une nouvelle bibliothèque <code>pgmio</code> dont l'entête est <code>pgmio.h</code>.
+      Cet entête contient la définition de la structure <code>pgm_t_image</code> et les prototypes des nouvelles fonctions fournies pour la lecture et l'écriture des fichiers PGM.
+    </p>
+    <figure>
+      <figcaption>Extrait du fichier entête <code>pgmio.h</code></figcaption>
+      <pre><code class="language-c hljs"><span class="hljs-keyword">typedef</span> <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> pgm_t_pixel;
+<span class="hljs-meta">#<span class="hljs-keyword">define</span> PGM_PIXEL_MAX ((pgm_t_pixel)UCHAR_MAX)</span>
+
+<span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">pgm_image</span> {</span>
+	pgm_t_pixel *pixels;
+	<span class="hljs-type">size_t</span> width;
+	<span class="hljs-type">size_t</span> height;
+} pgm_t_image;
+
+<span class="hljs-keyword">extern</span> pgm_t_image *<span class="hljs-title function_">pgm_read</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span> *filename)</span>;
+<span class="hljs-keyword">extern</span> <span class="hljs-type">int</span> <span class="hljs-title function_">pgm_write</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span> *filename, <span class="hljs-type">const</span> pgm_t_image *pgm)</span>;</code></pre>
+    </figure>
+    <figure>
+      <figcaption><em lang="en">diff</em> entre les prototypes des deux <abbr title="interface de programmation applicative">API</abbr> (<code>libnaivepgmio</code> <em>vs.</em> <code>libpgmio</code>).</figcaption>
+      <pre><code class="language-diff hljs"><span class="hljs-deletion">-extern pgm_t_pixel *pgm_naiveread(const char *filename,</span>
+<span class="hljs-deletion">-                                  size_t *width,</span>
+<span class="hljs-deletion">-                                  size_t *height);</span>
+<span class="hljs-addition">+extern pgm_t_image *pgm_read(const char *filename);</span></code></pre>
+      <pre><code class="language-diff hljs"><span class="hljs-deletion">-extern int pgm_naivewrite(const char *filename,</span>
+<span class="hljs-deletion">-                          const pgm_t_pixel *pixels,</span>
+<span class="hljs-deletion">-                          size_t width,</span>
+<span class="hljs-deletion">-                          size_t height);</span>
+<span class="hljs-addition">+extern int pgm_write(const char *filename, const pgm_t_image *pgm);</span></code></pre>
+    </figure>
+    <h3><em lang="en">Refactoring</em> pour intégrer la structure <code>pgm_t_image</code></h3>
+    <p>
+      Le travail de cette unité est d'écrire une nouvelle version de l'application de traitement d'image qui conserve les mêmes fonctionnalités mais en utilisant la structure <code>pgm_t_image</code>.
+      Pour ce faire un certain nombre de modifications du code écrit est nécessaire.
+    </p>
+    <ol class="question-thread">
+      <li>
+        Cette unité construit au dessus du code écrit pour l'unité précédente.
+        Vérifier que le dossier de travail du dépôt <code>pgm.git</code> est propre&nbsp;: tous les fichiers importants sont suivis et toutes les modifications ont été enregistrées.
+      </li>
+      <li>
+        <p>
+          Modifier la directive d'inclusion pour utiliser la nouvelle bibliothèque.
+        </p>
+        <pre><code class="language-diff hljs"><span class="hljs-deletion">-#include &lt;naivepgmio.h&gt;</span>
+<span class="hljs-addition">+#include &lt;pgmio.h&gt;</span></code></pre>
+      </li><li>
+        Modifier les déclarations du <code>main()</code> pour utiliser <code>pgm_t_image</code>.
+      </li><li>
+        Modifier les prototypes des fonctions <code>pgm_malloc()</code> et <code>pgm_solid()</code>.
+        <pre><code class="language-c hljs">pgm_t_image *<span class="hljs-title function_">pgm_malloc</span><span class="hljs-params">(<span class="hljs-type">size_t</span> width, <span class="hljs-type">size_t</span> height)</span>;
+<span class="hljs-type">void</span> <span class="hljs-title function_">pgm_solid</span><span class="hljs-params">(pgm_t_image *pgm, pgm_t_pixel color)</span>;</code></pre>
+      </li>
+      <li>
+        Modifier les appels à <code>pgm_malloc()</code> et <code>pgm_solid()</code>.
+      </li>
+      <li>
+        Modifier le corps de la fonction <code>pgm_malloc()</code>.
+        Attention, il faut maintenant faire plusieurs allocations dynamiques.
+        Dessiner la structure des allocations mémoire avant de coder.
+      </li>
+      <li>
+        Écrire la fonction <code>pgm_free()</code> qui libère le vecteur de pixels et la structure elle même.
+        C'est le pendant de la fonction <code>pgm_malloc()</code>.
+        Remplacer les appels à <code>free()</code> dans le <code>main()</code> par des appels à <code>pgm_free()</code>.
+      </li>
+      <li>
+        Tester, en commençant par un appel à <code>pgm_solid()</code>, la correction de votre code&nbsp;: image correctement générée, fuites mémoire, etc.
+      </li>
+      <li>
+        Modifier, puis tester, les fonctions concernant les autres traitements <code>pgm_negative()</code>, <code>pgm_threshold()</code> et <code>pgm_gradient()</code>.
+      </li>
+      <li>Une fois le programme fonctionnel, créer une version (<code>commit</code>) qui enregistre votre travail.</li>
+    </ol>
+  
+
+</body></html>

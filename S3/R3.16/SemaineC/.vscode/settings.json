@@ -1,0 +1,10 @@
+{
+	"files.associations": {
+		"stdlib.h": "c",
+		"naivepgmio.h": "c",
+		"limits.h": "c",
+		"stdio.h": "c",
+		"traitement.h": "c",
+		"allocation.h": "c"
+	}
+}

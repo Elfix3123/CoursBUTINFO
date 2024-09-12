@@ -1,0 +1,142 @@
+/* general look & feel  ---------------- */
+
+:root {
+  --primary-color: rgb(0, 0, 128);
+  --secondary-color: rgb(128, 0, 0);
+  --main-bg-color: rgb(246, 246, 246);
+  --advice-bg-color: rgb(153, 204, 255);
+  --table-border-color: rgb(204, 204, 204);
+  --td-bg-color: rgb(255, 255, 255);
+  --th-bg-color: rgb(240, 240, 240);
+  --kbd-border-color: rgb(170, 170, 170);
+  --kbd-bg-color: rgb(249, 249, 249);
+  counter-reset:
+    exercise -1
+    question-thread -1
+  ;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--main-bg-color);
+  margin: auto;
+  width: 80%;
+  font-size: 100%;
+  font-family: Verdana, sans-serif;
+  text-align: justify;
+}
+
+section.role-advice {
+  padding: .2rem 1rem;  /* vertical horizontal */
+}
+
+h1 {
+  font-size: 200%;
+  color: var(--primary-color);
+}
+
+h2 {
+  font-size: 140%;
+  color: var(--primary-color);
+}
+
+h3 {
+  font-size: 130%;
+  color: var(--secondary-color);
+}
+
+h3.exercise::before {
+  counter-increment: exercise;
+  content: "Exercice " counter(exercise, decimal) " – ";
+}
+
+ul {
+  list-style-type: "– ";
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td, th {
+  border-style: solid;
+  border-width: 1px;
+  border-color: var(--table-border-color);
+  padding: .5rem .2rem;
+  font-weight: normal;
+}
+
+td {
+  background-color: var(--td-bg-color);
+}
+
+th {
+  background-color: var(--th-bg-color);
+}
+
+kbd {
+  padding: .1em .3em;
+  background-color: var(--kbd-bg-color);
+  border-color: var(--kbd-border-color);
+  border-width: .1em;
+  border-style: solid;
+  border-radius: .2em;
+}
+
+
+/* navigation  ------------------------- */
+
+.breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.breadcrumb li:not(:last-child)::after {
+  display: inline-block;
+  margin: 0 .25rem;  /* vertical horizontal */
+  color: var(--secondary-color);
+  content: ">";
+  font-size: 80%;
+  font-weight: bold;
+}
+
+#work-units > ol {
+  counter-reset: work-unit;
+}
+
+#work-units > ol li {
+  counter-increment: work-unit;
+}
+
+#work-units > ol li::marker {
+  content: "Unité " counter(work-unit, decimal) " – ";
+}
+
+
+/* question thread  -------------------- */
+
+ol.question-thread > li {
+  counter-increment: question-thread;
+}
+
+ol.question-thread > li::marker {
+  content: counter(question-thread, decimal) ". ";
+}
+
+/* inline roles  ----------------------- */
+
+.role-advice {
+  background-color: var(--advice-bg-color);
+}
+
+.role-command {
+  font-family: monospace;
+}

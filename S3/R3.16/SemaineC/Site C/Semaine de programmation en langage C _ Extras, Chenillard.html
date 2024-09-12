@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<!-- saved from url=(0096)https://www-info.iut2.univ-grenoble-alpes.fr/intranet/enseignements/semaine-C/extras/chenillard/ -->
+<html lang="fr-FR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Semaine de programmation en langage C&nbsp;: Extras, Chenillard</title>
+    <link rel="icon" href="https://www-info.iut2.univ-grenoble-alpes.fr/intranet/enseignements/semaine-C/c-language-logo.svg" sizes="any" type="image/svg+xml">
+    <link rel="stylesheet" href="./Semaine de programmation en langage C _ Extras, Chenillard_files/style.css" type="text/css">
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="./Semaine de programmation en langage C _ Extras, Chenillard_files/stackoverflow-dark.min.css" type="text/css">
+    <script src="./Semaine de programmation en langage C _ Extras, Chenillard_files/highlight.min.js.téléchargement"></script>
+    <script>hljs.highlightAll();</script>
+    <!-- asciinema -->
+    <link rel="stylesheet" href="./Semaine de programmation en langage C _ Extras, Chenillard_files/asciinema-player.css" type="text/css">
+    <script src="./Semaine de programmation en langage C _ Extras, Chenillard_files/asciinema-player.min.js.téléchargement"></script>
+    <script>const ASCIINEMA_PLAYER_OPTIONS = Object.freeze({fit: false, terminalFontSize: '100%', terminalFontFamily: 'monospace'});</script>
+  </head>
+  <body>
+    <h1>Semaine de programmation en langage C</h1>
+    <nav class="breadcrumb">
+      <ol>
+        <li><a href="https://www-info.iut2.univ-grenoble-alpes.fr/intranet/enseignements/semaine-C/">Page principale</a></li>
+        <li><a href="https://www-info.iut2.univ-grenoble-alpes.fr/intranet/enseignements/semaine-C/extras/">Extras</a></li>
+        <li>Chenillard</li>
+      </ol>
+    </nav>
+    <h2>Chenillard</h2>
+    <p>
+      Cette unité a pour but de vous faire travaillez sur des manipulations bas niveau classiques en C.
+      En particulier vous travaillerez avec les opérations bit à bit.
+      Cette unité étudie ces notions en implémentant un chenillard.
+    </p>
+    <h3>Rappels</h3>
+    <h4>Commande de compilation pour produire <span class="role-command">executable</span> à partir de <code>source.c</code></h4>
+    <pre><code class="language-console hljs language-shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">gcc -std=c99 -Wall -Wextra -g -o executable source.c</span></code></pre>
+    <h3>Définition et fonctionnement d'un chenillard</h3>
+    <p>
+      Un chenillard est un système d'éclairage dynamique temporisé.
+      Il est composé d'une rangée d'ampoules (<abbr title="light-emitting diode" lang="en">LED</abbr>s, spots, …).
+      Ponctuellement, une seule ampoule de la rangée est allumée pendant une durée paramétrable appelée temporisation.
+      Puis c'est au tour de l'ampoule suivante de s'allumer, et ainsi de suite.
+      Le fonctionnement le plus simple est cyclique&nbsp;: l'allumage de la première ampoule de la rangée suit l'extinction de la dernière.
+      D'autres animations plus sophistiquées sont aussi possibles, ainsi que définies ci-après.
+    </p>
+    <p>
+      Habituellement les chenillards sont implémentés par des circuits électroniques à base de logique séquentielle simple.
+      Ces circuits pilotent des systèmes à l'instar des rangées de spots de discothèque, des panneaux d'avertissements de travaux, ou du capot de KITT.
+    </p>
+    <figure>
+      <img src="./Semaine de programmation en langage C _ Extras, Chenillard_files/kitt.webp" alt="extrait de l&#39;introduction de la série K 2000">
+      <!--
+        origin: https://youtu.be/oNyXYPhnUIs
+        command: ffmpeg -i {video} -ss '00:00:12.666' -to '00:00:14.749' -filter:v 'crop=ih/3*4:ih' -quality 80 -compression_level 6 -loop 0 -an -s 400:300 kitt.webp
+      -->
+      <figcaption>Chenillard sur le capot de KITT, ainsi que vu dans l'introduction de la série K&nbsp;2000.</figcaption>
+    </figure>
+    <h3>Chenillard programmable</h3>
+    <p>
+      L'objectif de cette unité est de réaliser un chenillard programmable simple et visualisable dans une console.
+      L'enregistrement ci-dessous illustre ce qui est attendu.
+      Le caractère <code>'.'</code> représente une ampoule éteinte et le caractère <code>'*'</code> représente une ampoule allumée.
+    </p>
+    <figure>
+      <figcaption>Exemple de chenillard simple en console.</figcaption>
+      <div id="asciinema-chenillard-simple"><div class="ap-wrapper" tabindex="-1"><div class="ap-player asciinema-theme-asciinema" style="font-size: 100%;"><pre class="ap-terminal ap-cursor ap-blink" style="width: 80ch; height: 10.6667em; font-size: 100%; font-family: monospace; line-height: 1.33333em;"><span class="ap-line" style="height: 1.33333em;"><span class="">$ ./chenillard                                                                  </span></span><span class="ap-line" style="height: 1.33333em;"><span class="">.....*..........</span><span class=" ap-cursor-a"> </span><span class=" ap-cursor-b fg-bg bg-fg"> </span><span class="">                                                               </span></span><span class="ap-line" style="height: 1.33333em;"><span class="">                                                                                </span></span><span class="ap-line" style="height: 1.33333em;"><span class="">                                                                                </span></span><span class="ap-line" style="height: 1.33333em;"><span class="">                                                                                </span></span><span class="ap-line" style="height: 1.33333em;"><span class="">                                                                                </span></span><span class="ap-line" style="height: 1.33333em;"><span class="">                                                                                </span></span><span class="ap-line" style="height: 1.33333em;"><span class="">                                                                                </span></span></pre><div class="ap-control-bar ap-seekable"><span class="ap-playback-button"><svg version="1.1" viewBox="0 0 12 12" class="ap-icon"><path d="M1,0 L11,6 L1,12 Z"></path></svg></span><span class="ap-timer"><span class="ap-time-elapsed">00:00</span><span class="ap-time-remaining">-00:04</span></span><span class="ap-progressbar"><span class="ap-bar"><span class="ap-gutter"><span class="ap-gutter-fill" style="width: 100%; transform: scaleX(0); transform-origin: left center;"></span></span></span></span><span class="ap-fullscreen-button" title="Toggle fullscreen mode"><svg version="1.1" viewBox="0 0 12 12" class="ap-icon"><path d="M12,0 L7,0 L9,2 L7,4 L8,5 L10,3 L12,5 Z"></path><path d="M0,12 L0,7 L2,9 L4,7 L5,8 L3,10 L5,12 Z"></path></svg><svg version="1.1" viewBox="0 0 12 12" class="ap-icon"><path d="M7,5 L7,0 L9,2 L11,0 L12,1 L10,3 L12,5 Z"></path><path d="M5,7 L0,7 L2,9 L0,11 L1,12 L3,10 L5,12 Z"></path></svg></span></div><div class="ap-overlay ap-overlay-start"><div class="ap-play-button"><div><span><svg version="1.1" viewBox="0 0 866.0254037844387 866.0254037844387" class="ap-icon"><defs><mask id="small-triangle-mask"><rect width="100%" height="100%" fill="white"></rect><polygon points="508.01270189221935 433.01270189221935, 208.0127018922194 259.8076211353316, 208.01270189221927 606.217782649107" fill="black"></polygon></mask></defs><polygon points="808.0127018922194 433.01270189221935, 58.01270189221947 -1.1368683772161603e-13, 58.01270189221913 866.0254037844386" mask="url(#small-triangle-mask)" fill="white" class="ap-play-btn-fill"></polygon><polyline points="481.2177826491071 333.0127018922194, 134.80762113533166 533.0127018922194" stroke="white" stroke-width="90" class="ap-play-btn-stroke"></polyline></svg></span></div></div></div></div></div></div>
+      <script>AsciinemaPlayer.create('chenillard-simple.cast', document.getElementById('asciinema-chenillard-simple'), {...ASCIINEMA_PLAYER_OPTIONS, poster: 'npt:0:3', rows: 8});</script>
+    </figure>
+    <ol class="question-thread">
+      <li>
+        Écrire le programme <code>chenillard.c</code> qui respecte les spécifications suivantes&nbsp;:
+        <ul>
+          <li>les caractères représentant les deux états possibles d'une ampoule seront définis à l'aide de constantes pré-processeur nommées <code>ON</code> et <code>OFF</code>;</li>
+          <li>le nombre d'ampoules constituant la rampe du chenillard sera définit comme une constante pré-processeur;</li>
+          <li>la rampe d'ampoules sera modélisée par un tableau de caractères;</li>
+          <li>à l'instant <math><mi>t</mi></math>, la rampe sera affichée comme une chaîne de caractères;</li>
+          <li>la durée de temporisation entre deux changements d'état de la rampe sera définie en millisecondes dans une constante pré-processeur.</li>
+        </ul>
+      </li>
+    </ol>
+    <section id="temporisation" class="role-advice">
+      <h4>Code fourni&nbsp;: <code>ms_sleep()</code></h4>
+      <p>
+        La fonction <code>ms_sleep()</code> est fournie pour réaliser la temporisation.
+        Copier l'extrait de code ci-après dans votre fichier source en prenant garde à définir la constante <code>_POSIX_C_SOURCE</code> avant toute autre directive ou instruction.
+      </p>
+      <pre><code class="language-c hljs"><span class="hljs-meta">#<span class="hljs-keyword">define</span> _POSIX_C_SOURCE 199309L  <span class="hljs-comment">// nanosleep in POSIX.1b (real-time extensions)</span></span>
+
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;time.h&gt;</span></span>
+
+<span class="hljs-type">static</span> <span class="hljs-type">void</span> <span class="hljs-title function_">ms_sleep</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">unsigned</span> <span class="hljs-type">long</span> <span class="hljs-type">long</span> <span class="hljs-type">int</span> ms)</span>
+{
+	<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">timespec</span> <span class="hljs-title">delay</span> =</span> {
+		.tv_sec = ms / <span class="hljs-number">1000</span>,
+		.tv_nsec = ms % <span class="hljs-number">1000</span> * <span class="hljs-number">1000000</span>,
+	};
+	nanosleep(&amp;delay, <span class="hljs-literal">NULL</span>);
+}</code></pre>
+      <p>
+        Une fois intégrée à votre code, chaque appel à la fonction <code>ms_sleep()</code> interrompt l'exécution de votre programme pour une durée de <code>ms</code> millisecondes.
+      </p>
+    </section>
+    <section class="role-advice">
+      <h4>Conseils</h4>
+      <ul>
+        <li>utiliser le caractère <code>'\r'</code> pour revenir écrire au début de la ligne;</li>
+        <li>afin de garantir un affichage correct, il faut forcer l'affichage du tampon de sortie après avoir appelé <code>printf()</code>&nbsp;: cela se fait avec l'appel <code>fflush(stdout)</code> (<code>fflush()</code> et <code>stdout</code> sont définis dans <code>stdio.h</code>).</li>
+      </ul>
+    </section>
+    <h3>Optimisation de l'utilisation mémoire</h3>
+    <p>
+      La modélisation précédente n'utilise pas au mieux la mémoire pour représenter l'état de la rampe du chenillard.
+      En effet, l'état de chaque ampoule ne nécessite qu'un seul bit d'information alors qu'un caractère est stocké sur un octet&nbsp;: on utilise ici huit fois plus de mémoire que nécessaire&nbsp;!
+    </p>
+    <p>
+      Afin de diminuer les besoins en mémoire, nous allons gérer de manière différente le chenillard.
+      Cela permettra aussi de faire des effets plus complexes.
+      L'idée clef ici est de considérer le chenillard comme <code>n</code> ampoules commandées par <code>n</code> interrupteurs.
+      L'état des interrupteurs et l'affichage de la rampe sont alors dissociés&nbsp;: l'état des <code>n</code> interrupteurs sera stocké dans un entier non signé avec une représentation sur au moins <code>n</code> bits tandis que l'affichage de la rampe est fait avec un tableau de caractères.
+      Aussi, on conserve la rampe précédemment définie uniquement pour l'affichage.
+    </p>
+    <ol class="question-thread">
+      <li>Dupliquer le programme <code>chenillard.c</code> en un nouveau programme <code>chenillard-bits.c</code>.</li>
+    </ol>
+    <h4>Modélisation et manipulation des interrupteurs</h4>
+    <p>
+      Le standard C ne définit pas de manière explicite le nombre de bits des représentations pour les types primitifs <code>char</code>, <code>short int</code>, <code>int</code>, <code>long int</code> et <code>long long int</code>.
+      Pour cette raison, la version C99 du langage introduit dans l'entête <code>stdint.h</code> des types entier dont le nombre de bits de la représentation est explicite&nbsp;: par exemple <code>uint8_t</code> est le type représentant un entier non signé sur 8&nbsp;bits (cf. <a href="https://en.cppreference.com/w/c/types/integer" lang="en">résumé des types définis</a>).
+      En fonction du nombre d'ampoules présentes sur la rampe, les interrupteurs seront stockés dans un entier non signé de 8, 16, 32 ou 64 bits.
+      Par exemple, une rampe de huit ampoules sera stockée avec un entier de type <code>uint8_t</code>.
+      La rampe représentée par la valeur <code>7</code> correspond à l'affichage <code>.....***</code>.
+    </p>
+    <ol class="question-thread">
+      <li>Définir l'alias de type <code>t_switch</code> qui correspond au type entier utilisé.</li>
+    </ol>
+    <h4>Lecture de la valeur d'un interrupteur&nbsp;: technique du masquage</h4>
+    <p>
+      Il n'est pas possible d'accéder directement à la valeur d'un bit.
+      En effet la granularité la plus fine est l'octet.
+      Pour pallier à cette limitation, la technique du masquage est utilisée.
+      Cette technique repose sur les opérations bit à bit du langage et les quatre identités logiques suivantes&nbsp;:
+    </p>
+    <math display="block">
+      <mtable>
+        <mtr>
+          <mtd>
+            <mi>a</mi>
+            <mo>∧</mo>
+            <mtext>true</mtext>
+          </mtd>
+          <mtd>
+            <mo>=</mo>
+          </mtd>
+          <mtd>
+            <mi>a</mi>
+          </mtd>
+        </mtr>
+        <mtr>
+          <mtd>
+            <mi>a</mi>
+            <mo>∧</mo>
+            <mtext>false</mtext>
+          </mtd>
+          <mtd>
+            <mo>=</mo>
+          </mtd>
+          <mtd>
+            <mtext>false</mtext>
+          </mtd>
+        </mtr>
+        <mtr><mtd><!-- empty line --></mtd></mtr>
+        <mtr>
+          <mtd>
+            <mi>a</mi>
+            <mo>∨</mo>
+            <mtext>true</mtext>
+          </mtd>
+          <mtd>
+            <mo>=</mo>
+          </mtd>
+          <mtd>
+            <mtext>true</mtext>
+          </mtd>
+        </mtr>
+        <mtr>
+          <mtd>
+            <mi>a</mi>
+            <mo>∨</mo>
+            <mtext>false</mtext>
+          </mtd>
+          <mtd>
+            <mo>=</mo>
+          </mtd>
+          <mtd>
+            <mtext>a</mtext>
+          </mtd>
+        </mtr>
+      </mtable>
+    </math>
+    <p>
+    où <math><mo>∧</mo></math> correspond au <code>ET</code> logique et <math><mo>∨</mo></math> correspond au <code>OU</code> logique.
+    </p>
+    <p>
+      Ainsi, pour déterminer la valeur d'un bit particulier on utilise l'opération logique bit à bit <code>&amp;</code> (<code>ET</code>) avec une valeur particulière appelée masque.
+      Le masque est construit en utilisant le nombre dont tous les bits en représentation binaire non signée sont à <code>0</code> à l'exception du bit qui nous intéresse.
+      Par exemple, le masque de valeur <code>64</code> (<code>0100&nbsp;0000</code> en représentation binaire non signé sur 8 bits) permet d'extraire le 2<sup>ème</sup> bit de poids fort.
+    </p>
+    <figure>
+      <figcaption>Illustration de l'extraction du 2<sup>ème</sup> bit de poids fort.</figcaption>
+      <pre>  0110 1101  : octet quelconque
+&amp; 0100 0000  : masque correspondant au 2<sup>ème</sup> bit de poids fort
+-----------
+  0100 0000  : résultat (!= 0 donc le bit vaut 1)</pre>
+    </figure>
+    <ol class="question-thread">
+      <li>
+        Écrire la fonction <code>is_bulb_on()</code> qui renvoie l'état de l'ampoule passée en paramètre étant donné l'état des interrupteurs passé en paramètre.
+        La fonction renvoie la valeur <code>1</code> si l'ampoule <code>bulb</code> est allumée, <code>0</code> sinon.
+        <pre><code class="language-c hljs"><span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> <span class="hljs-title function_">is_bulb_on</span><span class="hljs-params">(t_switch state, <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> bulb)</span></code></pre>
+        L'implémentation de cette fonction peut être décomposé en deux étapes&nbsp;: le calcul du masque et son utilisation.
+        Le calcul du masque utilisera les décalages logiques.
+      </li>
+    </ol>
+    <h4>Implémentation de divers effets</h4>
+    <p>
+      Afin de modifier l'état des ampoules, il faut modifier les bits correspondants aux interrupteurs à l'aide de transformations arithmétiques ou logiques.
+      L'objectif est d'implémenter divers effets ainsi qu'illustré dans l'animation ci-dessous.
+    </p>
+    <figure>
+      <figcaption>Divers effets de chenillard avec 32 ampoules (type <code>uint32_t</code>).</figcaption>
+      <div id="asciinema-chenillard-bits"><div class="ap-wrapper" tabindex="-1"><div class="ap-player asciinema-theme-asciinema" style="font-size: 100%;"><pre class="ap-terminal ap-cursor ap-blink" style="width: 80ch; height: 21.3333em; font-size: 100%; font-family: monospace; line-height: 1.33333em;"><span class="ap-line" style="height: 1.33333em;"><span class="">$ ./chenillard-bits                                                             </span></span><span class="ap-line" style="height: 1.33333em;"><span class="">==== invert ====                                                                </span></span><span class="ap-line" style="height: 1.33333em;"><span class="">*****************************..*                                                </span></span><span class="ap-line" style="height: 1.33333em;"><span class="">                                                                                </span></span><span class="ap-line" style="height: 1.33333em;"><span class="">==== increment ====                                                             </span></span><span class="ap-line" style="height: 1.33333em;"><span class="">..........................*..*.*                                                </span></span><span class="ap-line" style="height: 1.33333em;"><span class="">                                                                                </span></span><span class="ap-line" style="height: 1.33333em;"><span class="">==== rotate[left] ====                                                          </span></span><span class="ap-line" style="height: 1.33333em;"><span class="">...........................*..**                                                </span></span><span class="ap-line" style="height: 1.33333em;"><span class="">                                                                                </span></span><span class="ap-line" style="height: 1.33333em;"><span class="">==== rotate[right] ====                                                         </span></span><span class="ap-line" style="height: 1.33333em;"><span class="">.**...........................*.</span><span class=" ap-cursor-a"> </span><span class=" ap-cursor-b fg-bg bg-fg"> </span><span class="">                                               </span></span><span class="ap-line" style="height: 1.33333em;"><span class="">                                                                                </span></span><span class="ap-line" style="height: 1.33333em;"><span class="">                                                                                </span></span><span class="ap-line" style="height: 1.33333em;"><span class="">                                                                                </span></span><span class="ap-line" style="height: 1.33333em;"><span class="">                                                                                </span></span></pre><div class="ap-control-bar ap-seekable"><span class="ap-playback-button"><svg version="1.1" viewBox="0 0 12 12" class="ap-icon"><path d="M1,0 L11,6 L1,12 Z"></path></svg></span><span class="ap-timer"><span class="ap-time-elapsed">00:00</span><span class="ap-time-remaining">-00:15</span></span><span class="ap-progressbar"><span class="ap-bar"><span class="ap-gutter"><span class="ap-gutter-fill" style="width: 100%; transform: scaleX(0); transform-origin: left center;"></span></span></span></span><span class="ap-fullscreen-button" title="Toggle fullscreen mode"><svg version="1.1" viewBox="0 0 12 12" class="ap-icon"><path d="M12,0 L7,0 L9,2 L7,4 L8,5 L10,3 L12,5 Z"></path><path d="M0,12 L0,7 L2,9 L4,7 L5,8 L3,10 L5,12 Z"></path></svg><svg version="1.1" viewBox="0 0 12 12" class="ap-icon"><path d="M7,5 L7,0 L9,2 L11,0 L12,1 L10,3 L12,5 Z"></path><path d="M5,7 L0,7 L2,9 L0,11 L1,12 L3,10 L5,12 Z"></path></svg></span></div><div class="ap-overlay ap-overlay-start"><div class="ap-play-button"><div><span><svg version="1.1" viewBox="0 0 866.0254037844387 866.0254037844387" class="ap-icon"><defs><mask id="small-triangle-mask"><rect width="100%" height="100%" fill="white"></rect><polygon points="508.01270189221935 433.01270189221935, 208.0127018922194 259.8076211353316, 208.01270189221927 606.217782649107" fill="black"></polygon></mask></defs><polygon points="808.0127018922194 433.01270189221935, 58.01270189221947 -1.1368683772161603e-13, 58.01270189221913 866.0254037844386" mask="url(#small-triangle-mask)" fill="white" class="ap-play-btn-fill"></polygon><polyline points="481.2177826491071 333.0127018922194, 134.80762113533166 533.0127018922194" stroke="white" stroke-width="90" class="ap-play-btn-stroke"></polyline></svg></span></div></div></div></div></div></div>
+      <script>AsciinemaPlayer.create('chenillard-bits.cast', document.getElementById('asciinema-chenillard-bits'), {...ASCIINEMA_PLAYER_OPTIONS, poster: 'npt:0:13', rows: 16});</script>
+    </figure>
+    <h5>Effet «&nbsp;inversion&nbsp;»</h5>
+    <ol class="question-thread">
+      <li>
+        Écrire la fonction <code>invert()</code> qui change l'état de chaque ampoule dans la rampe passée en argument.
+        <pre><code class="language-c hljs">t_switch <span class="hljs-title function_">invert</span><span class="hljs-params">(t_switch state)</span></code></pre>
+      </li>
+      <li>Tester le bon fonctionnement de votre implémentation avec diverses tailles d'entiers et en modifiant la configuration (valeur) de départ des interrupteurs.</li>
+    </ol>
+    <h5>Effet «&nbsp;compteur&nbsp;»</h5>
+    <ol class="question-thread">
+      <li>
+        Écrire la fonction <code>increment()</code> qui incrémente de <code>1</code> la valeur passée en argument.
+        <pre><code class="language-c hljs">t_switch <span class="hljs-title function_">increment</span><span class="hljs-params">(t_switch state)</span></code></pre>
+      </li>
+      <li>Tester le bon fonctionnement de votre implémentation avec diverses tailles d'entiers et en modifiant la configuration (valeur) de départ des interrupteurs.</li>
+    </ol>
+    <h5>Effet «&nbsp;rotation gauche&nbsp;»</h5>
+    <ol class="question-thread">
+      <li>
+        Écrire la fonction <code>rotate_left()</code> qui effectue une rotation des ampoules vers la gauche.
+        <pre><code class="language-c hljs">t_switch <span class="hljs-title function_">rotate_left</span><span class="hljs-params">(t_switch state)</span></code></pre>
+        Utiliser l'opérateur binaire <code>&lt;&lt;</code> pour implémenter cette opération.
+        Trouver un moyen simple de gérer le passage des ampoules de la gauche à la droite (gestion du <em lang="en">wrapping</em>).
+      </li>
+      <li>Tester le bon fonctionnement de votre implémentation avec diverses tailles d'entiers et en modifiant la configuration (valeur) de départ des interrupteurs.</li>
+    </ol>
+    <h5>Effet «&nbsp;rotation droite&nbsp;»</h5>
+    <ol class="question-thread">
+      <li>
+        Écrire la fonction <code>rotate_right()</code> qui effectue une rotation des ampoules vers la droite.
+        <pre><code class="language-c hljs">t_switch <span class="hljs-title function_">rotate_right</span><span class="hljs-params">(t_switch state)</span></code></pre>
+        Utiliser l'opérateur binaire <code>&gt;&gt;</code> pour implémenter cette opération.
+        Trouver un moyen simple de gérer le passage des ampoules de la droite à la gauche (gestion du <em lang="en">wrapping</em>).
+      </li>
+      <li>Tester le bon fonctionnement de votre implémentation avec diverses tailles d'entiers et en modifiant la configuration (valeur) de départ des interrupteurs.</li>
+    </ol>
+  
+
+</body></html>

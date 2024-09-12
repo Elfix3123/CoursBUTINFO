@@ -85,3 +85,4 @@ public class Controller {
 		label.setText("Au tour du joueur " + (morpion.getJoueurCourant() == 0 ? "X" : "O"));
 	}
 }
+²

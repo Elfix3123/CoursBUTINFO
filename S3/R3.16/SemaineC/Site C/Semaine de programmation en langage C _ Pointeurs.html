@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<!-- saved from url=(0088)https://www-info.iut2.univ-grenoble-alpes.fr/intranet/enseignements/semaine-C/pointeurs/ -->
+<html lang="fr-FR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Semaine de programmation en langage C&nbsp;: Pointeurs</title>
+    <link rel="icon" href="https://www-info.iut2.univ-grenoble-alpes.fr/intranet/enseignements/semaine-C/c-language-logo.svg" sizes="any" type="image/svg+xml">
+    <link rel="stylesheet" href="./Semaine de programmation en langage C _ Pointeurs_files/style.css" type="text/css">
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="./Semaine de programmation en langage C _ Pointeurs_files/stackoverflow-dark.min.css" type="text/css">
+    <script src="./Semaine de programmation en langage C _ Pointeurs_files/highlight.min.js.téléchargement"></script>
+    <script>hljs.highlightAll();</script>
+  </head>
+  <body>
+    <h1>Semaine de programmation en langage C</h1>
+    <nav class="breadcrumb">
+      <ol>
+        <li><a href="https://www-info.iut2.univ-grenoble-alpes.fr/intranet/enseignements/semaine-C/">Page principale</a></li>
+        <li>Pointeurs</li>
+      </ol>
+    </nav>
+    <h2>Pointeurs</h2>
+    <p>
+      Cette unité a pour objectif de vous faire travailler les notions suivantes&nbsp;:
+    </p>
+    <ul>
+      <li>les pointeurs,</li>
+      <li>le passage de paramètre par adresse,</li>
+      <li>et l'allocation dynamique de mémoire.</li>
+    </ul>
+    <h3>Rappels</h3>
+    <h4>Commande de compilation pour produire <span class="role-command">executable</span> à partir de <code>source.c</code></h4>
+    <pre><code class="language-console hljs language-shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">gcc -std=c99 -Wall -Wextra -g -o executable source.c</span></code></pre>
+    <h3>Avant de commencer</h3>
+    <p>
+      Créer un nouveau dépôt git <code>pointeurs.git</code> afin de pouvoir versionner votre travail.
+    </p>
+    <figure>
+      <figcaption>Création du dépôt git.</figcaption>
+      <pre><code class="language-console hljs language-shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git init pointeurs.git</span>
+Initialized empty Git repository in …/pointeurs.git/.git/
+<span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-comment"># /!\ ne pas oublier de se déplacer dans le répertoire de travail (working directory)</span></span>
+<span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">cd</span> pointeurs.git/</span></code></pre>
+    </figure>
+    <p>
+      Vous êtes prêt·e à travailler&nbsp;!
+    </p>
+    <h3 class="exercise">Passage de paramètre par adresse</h3>
+    <ol class="question-thread">
+      <li>Écrire un nouveau programme <code>carre.c</code>.</li>
+      <li>
+        Écrire la fonction <code>carre_copie()</code> qui retourne le carré d'en entier passé en paramètre.
+        C'est une version sans pointeur.
+        <pre><code class="language-c hljs"><span class="hljs-type">int</span> <span class="hljs-title function_">carre_copie</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span></code></pre>
+      </li>
+      <li>
+        Dans le corps du <code>main()</code>, afficher la valeur de l'entier utilisé en paramètre, avant et après l'appel à la fonction <code>carre_copie()</code>.
+      </li>
+      <li>
+        Écrire la procédure <code>carre_adresse()</code> qui élève au carré l'entier d'adresse <code>adr_n</code> passé en paramètre.
+        <pre><code class="language-c hljs"><span class="hljs-type">void</span> <span class="hljs-title function_">carre_adresse</span><span class="hljs-params">(<span class="hljs-type">int</span> *adr_n)</span></code></pre>
+      </li>
+      <li>
+        Dans le corps du <code>main()</code>, afficher la valeur de l'entier dont l'adresse a été passée, avant et après l'appel à la procédure <code>carre_adresse()</code>.
+      </li>
+      <li>Une fois le programme fonctionnel, créer une version (<code>commit</code>) qui enregistre votre travail.</li>
+    </ol>
+    <h3 class="exercise">Passage de plusieurs paramètres par adresse</h3>
+    <ol class="question-thread">
+      <li>Écrire un nouveau programme <code>permutation.c</code>.</li>
+      <li>
+        Dans le corps du <code>main()</code>, écrire le code qui permet de permuter deux entiers <code>a</code> et <code>b</code> de la manière la plus simple qui soit.
+        Instrumenter le code pour observer que la permutation se fait correctement.
+      </li>
+      <li>
+        Extraire les instructions pour effectuer la permutation dans une procédure <code>permuter()</code>.
+        Les paramètres formels sont les adresses des deux entiers à permuter.
+        <pre><code class="language-c hljs"><span class="hljs-type">void</span> <span class="hljs-title function_">permuter</span><span class="hljs-params">(<span class="hljs-type">int</span> *adr_a, <span class="hljs-type">int</span> *adr_b)</span></code></pre>
+      </li>
+      <li>
+        Dans le corps du <code>main()</code>, remplacer les instructions de permutation par un appel à la procédure <code>permuter()</code>.
+        Vérifier le bon fonctionnement de la permutation en affichant le contenu des entiers <code>a</code> et <code>b</code> avant et après l'appel à la procédure.
+      </li>
+      <li>Une fois le programme fonctionnel, créer une version (<code>commit</code>) qui enregistre votre travail.</li>
+    </ol>
+    <h3 class="exercise">Duplication d'une chaîne de caractères</h3>
+    <ol class="question-thread">
+      <li>Écrire un nouveau programme <code>duplique.c</code>.</li>
+      <li>
+        Écrire la fonction <code>copier_chaine()</code> dont le prototype est le suivant&nbsp;:
+        <pre><code class="language-c hljs"><span class="hljs-type">char</span> *<span class="hljs-title function_">copier_chaine</span><span class="hljs-params">(<span class="hljs-type">char</span> *str)</span></code></pre>
+      </li>
+    </ol>
+    <p>
+      La fonction <code>copier_chaine()</code> duplique en mémoire la chaîne de caractères passée en paramètre et retourne l'adresse de la nouvelle chaîne de caractères ou <code>NULL</code> en cas d'échec.
+      La copie est créée dynamiquement.
+      On rappelle qu'en C, une chaîne de caractères se termine par le caractère nul <code>'\0'</code> comme sentinelle identifiant la fin de la chaîne.
+      En conséquent, une chaîne de <code>n</code> caractères occupe <code>n + 1</code> octets en mémoire.
+    </p>
+    <section class="role-advice">
+      <h4>Conseils</h4>
+      <ul>
+        <li>Utiliser la fonction standard <code>malloc()</code> définie dans l'entête <code>stdlib.h</code>.</li>
+        <li>Utiliser les fonctions standards, définies dans l'entête <code>string.h</code>, <code>strnlen()</code> et <code>strncpy()</code> pour connaître la longueur d'une chaîne de caractères et faire la copie.</li>
+        <li>Penser à libérer la mémoire allouée avec <code>free()</code>.</li>
+      </ul>
+    </section>
+    <ol class="question-thread">
+      <li>
+        Tester votre implémentation dans votre <code>main()</code> où vous aurez, par exemple, déclaré
+        <pre><code class="language-c hljs"><span class="hljs-type">char</span> original[] = <span class="hljs-string">"Ma super chaine a copier"</span>;
+<span class="hljs-type">char</span> *copie;  <span class="hljs-comment">// copie a allouer dynamiquement</span></code></pre>
+      </li>
+      <li>
+        Une fois que votre code compile et qu'il duplique correctement la chaîne de caractères, vérifiez que son comportement est correct au regard de l'utilisation de la mémoire avec l'outil Memcheck de <span class="role-command">valgrind</span>.
+        <figure>
+          <figcaption>
+            Exemple d'appel du programme <span class="role-command">duplique</span> avec <span class="role-command">valgrind</span>.
+            La mention <q><code>All heap blocks were freed -- no leaks are possible</code></q> indique qu'il n'y a pas de fuite mémoire.
+          </figcaption>
+          <pre><code class="language-console hljs language-shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">valgrind ./duplique</span>
+==349799== Memcheck, a memory error detector
+==349799== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==349799== Using Valgrind-3.19.0 and LibVEX; rerun with -h for copyright info
+==349799== Command: ./duplique
+==349799==
+Ma super chaine a copier
+Ma super chaine a copier
+==349799==
+==349799== HEAP SUMMARY:
+==349799==     in use at exit: 0 bytes in 0 blocks
+==349799==   total heap usage: 2 allocs, 2 frees, 1,049 bytes allocated
+==349799==
+==349799== All heap blocks were freed -- no leaks are possible
+==349799==
+==349799== For lists of detected and suppressed errors, rerun with: -s
+==349799== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+</code></pre>
+        </figure>
+        Tant que <span class="role-command">valgrind</span> vous indique que des blocs sont perdus, c'est que vous avez une fuite mémoire&nbsp;: corrigez votre code&nbsp;!
+        Pour plus de détail sur l'utilisation de <span class="role-command">valgrind</span>, référez-vous au <a href="https://valgrind.org/docs/manual/quick-start.html" lang="en">tutoriel de prise en main</a>.
+      </li>
+      <li>Une fois le programme fonctionnel, créer une version (<code>commit</code>) qui enregistre votre travail.</li>
+    </ol>
+  
+
+</body></html>

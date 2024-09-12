@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<!-- saved from url=(0099)https://www-info.iut2.univ-grenoble-alpes.fr/intranet/enseignements/semaine-C/organisation-binaire/ -->
+<html lang="fr-FR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Semaine de programmation en langage C&nbsp;: Organisation mémoire d'un binaire</title>
+    <link rel="icon" href="https://www-info.iut2.univ-grenoble-alpes.fr/intranet/enseignements/semaine-C/c-language-logo.svg" sizes="any" type="image/svg+xml">
+    <link rel="stylesheet" href="./Semaine de programmation en langage C _ Organisation mémoire d&#39;un binaire_files/style.css" type="text/css">
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="./Semaine de programmation en langage C _ Organisation mémoire d&#39;un binaire_files/stackoverflow-dark.min.css" type="text/css">
+    <script src="./Semaine de programmation en langage C _ Organisation mémoire d&#39;un binaire_files/highlight.min.js.téléchargement"></script>
+    <script>hljs.highlightAll();</script>
+  </head>
+  <body>
+    <h1>Semaine de programmation en langage C</h1>
+    <nav class="breadcrumb">
+      <ol>
+        <li><a href="https://www-info.iut2.univ-grenoble-alpes.fr/intranet/enseignements/semaine-C/">Page principale</a></li>
+        <li>Organisation mémoire d'un binaire</li>
+      </ol>
+    </nav>
+    <h2>Organisation mémoire d'un binaire</h2>
+    <p>
+      Dans cette unité, vous allez observer comment sont réparties les zones mémoires d'un programme en cours d'exécution.
+    </p>
+    <section class="role-advice">
+      <h4>Attention</h4>
+      <p>
+        Cette unité est à réaliser sur une station Linux (directement en salle Linux, ou <a href="https://www-info.iut2.univ-grenoble-alpes.fr/intranet/enseignements/semaine-C/conseils-astuces/#windows">via <abbr title="Virtual Network Computing">VNC</abbr></a> en salle Windows)&nbsp;!
+      </p>
+    </section>
+    <h3>Anatomie d'un programme en mémoire</h3>
+    <h4>Mémoire adressable</h4>
+    <p>
+      Sous Linux, bien que le système d'exploitation fasse croire au programme en cours d'exécution qu'il est seul sur la machine, il ne peut pas utiliser toute la mémoire.
+      La mémoire est divisée en trois zones de la manière suivante&nbsp;:
+    </p>
+    <ul>
+      <li>
+        Les adresses hautes sont réservées pour le système d'exploitation&nbsp;: on parle de <em lang="en">kernel space</em>.
+        Cette plage d'adresse se termine à l'adresse <code>0xffff_ffff_ffe0_0000</code> et a une taille de 128TB ou 64PB.
+      </li>
+      <li>
+        Les adresses basses sont celles utilisables par le programme&nbsp;: on parle de <em lang="en">user space</em>.
+        Cette plage d'adresse commence à l'adresse <code>0x0000_0000_0000_0000</code> et a une taille de 128TB ou 64PB.
+      </li>
+      <li>
+        Les adresses situées entre ces deux plages ne sont pas utilisées et sont considérées comme non valable.
+      </li>
+    </ul>
+    <h4>Mémoire <em lang="en">user-space</em></h4>
+    <p>
+      Sous Linux l'espace mémoire utilisable à l'exécution par le programme est divisé en différentes zones appelées segments.
+      Le format de fichier exécutable <abbr title="Executable and Linkable Format" lang="en">ELF</abbr> organise un fichier binaire (executable ou non) en sections.
+      Les sections sont regroupées dans des segments.
+      Parmi les segments importants (la liste n'est pas exhaustive), on retrouve&nbsp;:
+    </p>
+    <ul>
+      <li><code>.text</code>&nbsp;: le code (les instructions exécutables) du programme;</li>
+      <li><code>.data</code>&nbsp;: les variables globales initialisées;</li>
+      <li><code>.bss</code>&nbsp;: les variables globales déclarées mais non initialisées;</li>
+      <li><code>heap</code>&nbsp;: le tas, pour les allocations dynamiques;</li>
+      <li><code>stack</code>&nbsp;: la pile, pour la gestion des appels de fonction et les variables locales.</li>
+    </ul>
+    <p>
+      L'utilitaire <span class="role-command">size</span> permet d'extraire la liste des sections et leurs tailles.
+    </p>
+    <figure>
+      <figcaption>Sections et leurs tailles pour le fichier binaire <code>instrumented-program</code>.</figcaption>
+      <pre><code class="language-console hljs language-shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">size -- instrumented-program</span>
+   text	  data	   bss	   dec	   hex	filename
+   2420	   632	     8	  3060	   bf4	instrumented-program</code></pre>
+    </figure>
+    <p>
+      Il vous est fourni le programme <a href="https://www-info.iut2.univ-grenoble-alpes.fr/intranet/enseignements/semaine-C/organisation-binaire/instrumented-program.c" type="text/x-csrc" download=""><code>instrumented-program.c</code></a> qu'il vous faudra compléter.
+      Dans ce programme, la fonction fournie <code>dump_memory_map()</code> permet d'afficher les zones mémoire utilisées par le programme.
+    </p>
+    <figure>
+      <figcaption>Extrait de l'affichage fait par <code>dump_memory_map()</code>des zones mémoires.</figcaption>
+      <pre><code class="language-console hljs language-shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">./instrumented-program</span>
+address                   perms offset  dev   inode                      pathname
+-------                   ----- ------  ---   -----                      --------
+55fa620a1000-55fa620a2000 r--p 00000000 fe:04 917552                     /tmp/semaine-C/instrumented-program
+55fa620a2000-55fa620a3000 r-xp 00001000 fe:04 917552                     /tmp/semaine-C/instrumented-program
+55fa620a3000-55fa620a4000 r--p 00002000 fe:04 917552                     /tmp/semaine-C/instrumented-program
+55fa620a4000-55fa620a5000 r--p 00002000 fe:04 917552                     /tmp/semaine-C/instrumented-program
+55fa620a5000-55fa620a6000 rw-p 00003000 fe:04 917552                     /tmp/semaine-C/instrumented-program</code></pre>
+    </figure>
+    <p>
+      Pour chaque zone mémoire utilisée par le programme, la plage d'adresse (<code>address</code>), les permissions (<code>perms</code>), ainsi que le rôle ou l'origine du contenu (<code>pathname</code>).
+      La colonne <code>perms</code> décrit l'ensemble des permissions associées à la zone mémoire avec la sémantique suivante&nbsp;: <code>r</code>&nbsp;<em lang="en">read</em>, <code>w</code>&nbsp;<em lang="en">write</em>, <code>x</code>&nbsp;<em lang="en">execute</em>, <code>s</code>&nbsp;<em lang="en">shared</em>, <code>p</code>&nbsp;<em lang="en">private</em>.
+      Ces permissions sont similaires à celles utilisées sur les fichiers, mais à une granularité plus fine.
+    </p>
+    <ol class="question-thread">
+      <li>
+        Quelle(s) permission(s) doit avoir le segment contenant le code&nbsp;?
+        Dans l'extrait de l'affichage, à quelle ligne correspond le segment de code&nbsp;?
+      </li>
+      <li>
+        Les plages d'adresses sont-elles conservées entre deux exécutions&nbsp;?
+        Pourquoi&nbsp;?
+      </li>
+    </ol>
+    <p>
+      À l'aide de l'utilitaire <span class="role-command">size</span> et du programme <a href="https://www-info.iut2.univ-grenoble-alpes.fr/intranet/enseignements/semaine-C/organisation-binaire/instrumented-program.c" type="text/x-csrc" download=""><code>instrumented-program.c</code></a>, réaliser les observations suivantes&nbsp;:
+    </p>
+    <ol class="question-thread">
+      <li>
+        Dans quel segment se trouve la variable <code>str</code>&nbsp;?
+        Dans quel segment se trouve le contenu vers lequel elle pointe&nbsp;?
+        Quelles sont les permissions de ces segments&nbsp;?
+        Combien d'octets sont nécessaire pour stocker <code>str</code> dans le fichier binaire&nbsp;?
+        Combien d'octets sont nécessaire pour stocker le contenu pointé par <code>str</code> dans le fichier binaire&nbsp;?
+      </li>
+      <li>
+        Dans quel segment se trouve la variable <code>alloc</code>&nbsp;?
+        Dans quel segment se trouve le contenu vers lequel elle pointe&nbsp;?
+        Quelles sont les permissions de ces segments&nbsp;?
+        Combien d'octets sont nécessaire pour stocker <code>alloc</code> dans le fichier binaire&nbsp;?
+      </li>
+    </ol>
+    <p>
+      Modifier le programme pour ajouter deux variables globales <code>globvar_decl</code> et <code>globvar_init</code>.
+      La variable <code>globvar_decl</code> sera uniquement déclarée mais non initialisée, tandis que la variable <code>globvar_init</code> sera déclarée et initialisée.
+    </p>
+    <ol class="question-thread">
+      <li>
+        Dans quel segment se trouve la variable <code>globvar_decl</code>&nbsp;?
+        Quelles sont les permissions de ce segment&nbsp;?
+        Combien d'octets sont nécessaire pour stocker <code>globvar_decl</code> dans le fichier binaire&nbsp;?
+      </li>
+      <li>
+        Dans quel segment se trouve la variable <code>globvar_init</code>&nbsp;?
+        Quelles sont les permissions de ce segment&nbsp;?
+        Combien d'octets sont nécessaire pour stocker <code>globvar_init</code> dans le fichier binaire&nbsp;?
+      </li>
+    </ol>
+    <p>
+      Déclarer une constante à l'aide de <code>#define</code>.
+    </p>
+    <ol class="question-thread">
+      <li>Combien d'octets sont nécessaire pour stocker cette constante dans le fichier binaire&nbsp;?</li>
+    </ol>
+  
+
+</body></html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<!-- saved from url=(0108)https://www-info.iut2.univ-grenoble-alpes.fr/intranet/enseignements/semaine-C/extras/pointeurs-avanc%C3%A9s/ -->
+<html lang="fr-FR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Semaine de programmation en langage C&nbsp;: Extras, Pointeurs avancés</title>
+    <link rel="icon" href="https://www-info.iut2.univ-grenoble-alpes.fr/intranet/enseignements/semaine-C/c-language-logo.svg" sizes="any" type="image/svg+xml">
+    <link rel="stylesheet" href="./Semaine de programmation en langage C _ Extras, Pointeurs avancés_files/style.css" type="text/css">
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="./Semaine de programmation en langage C _ Extras, Pointeurs avancés_files/stackoverflow-dark.min.css" type="text/css">
+    <script src="./Semaine de programmation en langage C _ Extras, Pointeurs avancés_files/highlight.min.js.téléchargement"></script>
+    <script>hljs.highlightAll();</script>
+  </head>
+  <body>
+    <h1>Semaine de programmation en langage C</h1>
+    <nav class="breadcrumb">
+      <ol>
+        <li><a href="https://www-info.iut2.univ-grenoble-alpes.fr/intranet/enseignements/semaine-C/">Page principale</a></li>
+        <li><a href="https://www-info.iut2.univ-grenoble-alpes.fr/intranet/enseignements/semaine-C/extras/">Extras</a></li>
+        <li>Pointeurs avancés</li>
+      </ol>
+    </nav>
+    <h2>Pointeurs avancés</h2>
+    <p>
+      Cette unité approfondie la notion de pointeur au travers d'un exercice dans lequel une structure de données avec deux indirections est utilisée.
+    </p>
+    <h3>Rappels</h3>
+    <h4>Commande de compilation pour produire <span class="role-command">executable</span> à partir de <code>source.c</code></h4>
+    <pre><code class="language-console hljs language-shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">gcc -std=c99 -Wall -Wextra -g -o executable source.c</span></code></pre>
+    <h3>Triangle de Pascal</h3>
+    <p>
+      Le <a href="https://fr.wikipedia.org/wiki/Triangle_de_Pascal" target="_blank">triangle de Pascal</a> est une présentation tabulaire des coefficients binomiaux.
+      Cette présentation permet de calculer simplement les coefficients des différents monômes présents dans le développement des puissances d'un binôme
+      <math>
+        <msup>
+          <mrow>
+            <mo fence="true" stretchy="true" form="prefix">(</mo>
+              <mi>a</mi>
+              <mo>+</mo>
+              <mi>b</mi>
+            <mo fence="true" stretchy="true" form="postfix">)</mo>
+          </mrow>
+          <mi>n</mi>
+        </msup>
+      </math>.
+      L'identité remarquable du second degré&nbsp;:
+      <math display="block">
+        <msup>
+          <mrow>
+            <mo fence="true" stretchy="true" form="prefix">(</mo>
+            <mi>a</mi>
+            <mo>+</mo>
+            <mi>b</mi>
+            <mo fence="true" stretchy="true" form="postfix">)</mo>
+          </mrow>
+          <mn>2</mn>
+        </msup>
+        <mo>=</mo>
+        <mn>1</mn>
+        <mo>⋅</mo>
+        <msup>
+          <mi>a</mi>
+          <mn>2</mn>
+        </msup>
+        <mo>+</mo>
+        <mn>2</mn>
+        <mo>⋅</mo>
+        <mi>a</mi>
+        <mi>b</mi>
+        <mo>+</mo>
+        <mn>1</mn>
+        <mo>⋅</mo>
+        <msup>
+          <mi>b</mi>
+          <mn>2</mn>
+        </msup>
+      </math>
+      en est un exemple.
+    </p>
+    <p>
+      Les coefficients <math><mn>1</mn></math>, <math><mn>2</mn></math> et <math><mn>1</mn></math> se retrouvent dans la 3<sup>ème</sup> ligne du triangle qui correspond au coefficients pour le binôme de degré 2.
+      La première ligne correspond au coefficient pour le binôme de degré 0.
+    </p>
+    <p>
+      Le triangle est construit en suivant les règles suivantes&nbsp;:
+    </p>
+    <ul>
+      <li>le premier niveau (ou ligne) du triangle est le niveau <math><mn>0</mn></math>,</li>
+      <li>il y a <math><mi>n</mi><mo>+</mo><mn>1</mn></math> coefficients au niveau <math><mi>n</mi></math>,</li>
+      <li>le premier coefficient
+        <math>
+          <mi>coeff</mi>
+          <mrow>
+            <mo fence="true" stretchy="true" form="prefix">[</mo>
+              <mi>n</mi>
+              <mo separator="true">,</mo>
+              <mn>0</mn>
+            <mo fence="true" stretchy="true" form="postfix">]</mo>
+          </mrow>
+        </math>
+        et le dernier coefficient
+        <math>
+          <mi>coeff</mi>
+          <mrow>
+            <mo fence="true" stretchy="true" form="prefix">[</mo>
+              <mi>n</mi>
+              <mo separator="true">,</mo>
+              <mi>n</mi>
+            <mo fence="true" stretchy="true" form="postfix">]</mo>
+          </mrow>
+        </math>
+        d'un niveau <math><mi>n</mi></math> valent <math><mn>1</mn></math>,
+      </li>
+      <li>
+        le <math><mi>i</mi></math><sup>ème</sup> coefficient du niveau <math><mi>n</mi></math> est calculé en faisant la somme des deux coefficients voisins du niveau
+        <math><mi>n</mi><mo>−</mo><mn>1</mn></math>&nbsp;:
+        <math>
+          <mi>coeff</mi>
+          <mrow>
+            <mo fence="true" stretchy="true" form="prefix">[</mo>
+            <mi>n</mi>
+            <mo separator="true">,</mo>
+            <mi>i</mi>
+            <mo fence="true" stretchy="true" form="postfix">]</mo>
+          </mrow>
+          <mo>=</mo>
+          <mi>coeff</mi>
+          <mrow>
+            <mo fence="true" stretchy="true" form="prefix">[</mo>
+            <mi>n</mi>
+            <mo>−</mo>
+            <mn>1</mn>
+            <mo separator="true">,</mo>
+            <mi>i</mi>
+            <mo>−</mo>
+            <mn>1</mn>
+            <mo fence="true" stretchy="true" form="postfix">]</mo>
+          </mrow>
+          <mo>+</mo>
+          <mi>coeff</mi>
+          <mrow>
+            <mo fence="true" stretchy="true" form="prefix">[</mo>
+            <mi>n</mi>
+            <mo>−</mo>
+            <mn>1</mn>
+            <mo separator="true">,</mo>
+            <mi>i</mi>
+            <mo fence="true" stretchy="true" form="postfix">]</mo>
+          </mrow>
+        </math>.
+      </li>
+    </ul>
+    <h3>Gestion d'une allocation mémoire bi-dimensionnelle</h3>
+    <p>
+      Pour réaliser les calculs de façon simple, l'entièreté du triangle sera stockée en mémoire dans une zone allouée dynamiquement.
+      Cette zone sera un tableau bi-dimensionnel ainsi que représenté sur la figure ci-après.
+    </p>
+    <figure>
+      <img src="./Semaine de programmation en langage C _ Extras, Pointeurs avancés_files/structure-allocations-mémoire.svg" alt="structure allocations mémoire" role="img">
+      <figcaption>Structure des allocations mémoire du tableau bi-dimensionnel stockant un triangle de profondeur 5.</figcaption>
+    </figure>
+    <p>
+      Pour calculer les coefficients binomiaux de degré <math><mi>n</mi></math> il faut un triangle de profondeur <math><mi>n</mi><mo>+</mo><mn>1</mn></math>.
+      L'allocation d'un triangle de profondeur <code>n + 1</code> est faite en deux étapes&nbsp;:
+    </p>
+    <ol>
+      <li>
+        Allouer un tableau de <code>n + 1</code> pointeurs vers des entiers.
+        La variable qui stocke l'adresse de ce tableau est de type <code>int**</code>.
+        Chaque case de ce tableau correspond à un niveau du triangle.
+      </li>
+      <li>
+        Pour chaque case du tableau créé à l'étape précédente, il faut allouer la mémoire nécessaire pour stocker les coefficients de chaque niveau.
+        Aussi, chaque case du tableau est de type <code>int*</code> et contient l'adresse du tableau contenant les coefficients.
+    </li></ol>
+    <section class="role-advice">
+      <h4>Remarques</h4>
+      <ul>
+        <li>
+          Ce tableau alloué dynamiquement est particulier car chaque ligne a une longueur différente.
+          Une telle structure n'est pas possible avec un tableau déclaré comme ceci&nbsp;: <code>triangle[·][·]</code>.
+        </li>
+        <li>
+          Vous avez déjà rencontré une structure similaire en manipulant l'argument <code>argv</code> utilisé dans la version longue du prototype de <code>main()</code>.
+        </li>
+      </ul>
+    </section>
+    <h3>Implémentation&nbsp;: travail à réaliser</h3>
+    <p>
+      Écrire un nouveau programme <code>pascal.c</code>.
+    </p>
+    <h4>Gestion de la mémoire</h4>
+    <ol class="question-thread">
+      <li>Écrire la fonction <code>pascal_malloc()</code> qui alloue dynamiquement la mémoire pour stocker un triangle de profondeur donnée en paramètre.</li>
+      <li>
+        Écrire la fonction <code>pascal_free()</code> qui libère la mémoire allouée pour stocker un triangle.
+        Cette fonction est le pendant de <code>pascal_malloc()</code>.
+      </li>
+      <li>
+        Tester le bon fonctionnement de vos fonctions d'allocation/restitution de mémoire.
+        En particulier, vérifier l'absence de fuite mémoire.
+      </li>
+    </ol>
+    <h4>Calcul et affichage des coefficients</h4>
+    <ol class="question-thread">
+      <li>Créer une fonction <code>pascal_fill()</code> qui calcule toutes les valeurs des coefficients dans un triangle déjà alloué.</li>
+      <li>
+        À l'aide des fonctions définies, faire afficher à votre programme le triangle de Pascal contenant les coefficients binomiaux de degré <math><mi>n</mi></math>.
+        Le degré sera passé en paramètre de votre programme.
+      </li>
+    </ol>
+    <figure>
+      <figcaption>Exemple de trace pour le programme <span class="role-command">pascal</span>.</figcaption>
+      <pre><code class="language-console hljs language-shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">./pascal 8</span>
+1
+1	1
+1	2	1
+1	3	3	1
+1	4	6	4	1
+1	5	10	10	5	1
+1	6	15	20	15	6	1
+1	7	21	35	35	21	7	1
+1	8	28	56	70	56	28	8	1</code></pre>
+    </figure>
+    <ol class="question-thread">
+      <li>Une fois que le calcul et l'affichage du triangle est correct, modifier votre programme pour afficher le développement du binôme de degré <math><mi>n</mi></math>.</li>
+    </ol>
+    <figure>
+      <figcaption>Exemple de trace pour le programme <span class="role-command">pascal</span> modifié pour afficher le développement du binôme.</figcaption>
+      <pre><code class="language-console hljs language-shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">./pascal 5</span>
+(a + b)^5 = a^5 + 5.a^4.b^1 + 10.a^3.b^2 + 10.a^2.b^3 + 5.a^1.b^4 + b^5</code></pre>
+    </figure>
+  
+
+</body></html>
