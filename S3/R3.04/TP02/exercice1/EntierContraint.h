@@ -31,7 +31,8 @@ private:
 // A compléter : rajouter operator << et operator >>
 // ATTENTION : ce sont des fonctions (pas des méthodes)
 inline EntierContraint::operator int() const {return this->getVal();};
-
+std::ostream & operator << (std::ostream & sortie, const EntierContraint & ec);
+std::istream & operator >> (std::istream & entree, EntierContraint & ec);
 
 #endif /* ENTIERCONTRAINT_H */
 

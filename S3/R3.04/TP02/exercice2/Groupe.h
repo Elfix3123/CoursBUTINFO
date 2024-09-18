@@ -8,6 +8,9 @@
 class Groupe {
 public:
     Groupe(const std::string & intitule = "Un Groupe");
+    Groupe(const Groupe & groupe);
+    Groupe &operator = (const Groupe &groupe);
+    ~Groupe();
     void setIntitule(const std::string & intitule);
     void addPersonne(const std::string & nom);
     void setNomPersonne(unsigned int i,
@@ -20,6 +23,7 @@ private:
     std::string m_intitule;
     std::vector<Personne*> m_effectif;           // un Groupe est composé de Personnes
 };
+
 
 #endif /* GROUPE_H */
 

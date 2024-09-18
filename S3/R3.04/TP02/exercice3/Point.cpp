@@ -3,9 +3,6 @@
 #include <string>
 using namespace std;
 
-
-// A COMPLETER : implémenter l'opérateur <
-
 // Constantes de classe
 const std::string Point::NOM_DEF = "ORIGINE";
 const int         Point::X_DEF   = 0;
@@ -13,6 +10,10 @@ const int         Point::Y_DEF   = 0;
 
 Point::Point(const std::string & nom, int x, int y)
 : m_nom(nom), m_x(x), m_y(y) {
+}
+
+bool Point::operator<(const Point & p) const {
+    return (this->getX() <= p.getX() && this->getY() <= p.getY());
 }
 
 Point::~Point() {

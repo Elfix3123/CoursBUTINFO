@@ -8,6 +8,7 @@ class Point {
 public:
     Point(const std::string & nom = NOM_DEF, int x = X_DEF, int y = Y_DEF);
     ~Point();
+    bool operator<(const Point & p) const;
     const std::string & getNom() const;
     int getX() const;
     int getY() const;
@@ -16,8 +17,6 @@ public:
     void setY(int y);
     void saisir(std::istream & entree = std::cin);
     void afficher(std::ostream & sortie = std::cout) const;
-
-    // A CCOMPLETER : Rajouter l'opérateur < pour le TP02 exercice 3
 
 private: // membres privés
     // attributs d'instance

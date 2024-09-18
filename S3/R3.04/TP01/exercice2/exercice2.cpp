@@ -43,6 +43,8 @@ int main(int argc, char** argv) {
 	cout << "Test de afficher()" << endl;
 	e->afficher(cout);
 
+	delete e;
+
 	return 0;
 }
 

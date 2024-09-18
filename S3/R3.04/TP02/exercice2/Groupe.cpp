@@ -9,30 +9,59 @@ using namespace std;
 // Implémenter les méthodes nécessaires pour la forme canonique de COPLIEN
 
 Groupe::Groupe(const std::string &intitule)
-        : m_intitule(intitule) {
+		: m_intitule(intitule) {
+}
+
+///////////////////////////////////////////////////
+Groupe::Groupe(const Groupe &groupe) {
+	this->m_intitule = groupe.m_intitule;
+	for (Personne *personne: groupe.m_effectif) {
+		this->m_effectif.push_back(new Personne(*personne));
+	}
+}
+
+///////////////////////////////////////////////////
+Groupe &Groupe::operator=(const Groupe &groupe) {
+	this->m_intitule = groupe.m_intitule;
+
+	for (Personne *personne: this->m_effectif){
+		delete personne;
+	}
+	this->m_effectif.clear();
+
+	for (Personne *personne: groupe.m_effectif)
+		this->m_effectif.push_back(new Personne(*personne));
+	return *this;
+}
+
+///////////////////////////////////////////////////
+Groupe::~Groupe() {
+    for (Personne *personne: m_effectif) {
+        delete personne;
+    }
 }
 
 ///////////////////////////////////////////////////
 void Groupe::setIntitule(const std::string &intitule) {
-    this->m_intitule = intitule;
+	this->m_intitule = intitule;
 }
 
 ///////////////////////////////////////////////////
 void Groupe::addPersonne(const std::string &nom) {
-    this->m_effectif.push_back(new Personne(nom));
+	this->m_effectif.push_back(new Personne(nom));
 }
 
 ///////////////////////////////////////////////////
 void Groupe::setNomPersonne(unsigned int i,
-                            const std::string nom) {
-    if (i < this->m_effectif.size())
-        this->m_effectif[i]->setNom(nom);
+							const std::string nom) {
+	if (i < this->m_effectif.size())
+		this->m_effectif[i]->setNom(nom);
 }
 
 ///////////////////////////////////////////////////
 void Groupe::affiche() const {
-    cout << "Groupe " << this->m_intitule << " = { ";
-    for (Personne *personne: this->m_effectif)
-        cout << personne->getNom() << " ";
-    cout << "}" << endl;
+	cout << "Groupe " << this->m_intitule << " = { ";
+	for (Personne *personne: this->m_effectif)
+		cout << personne->getNom() << " ";
+	cout << "}" << endl;
 }

@@ -5,6 +5,8 @@
 class Personne {
 public:
     Personne(std::string nom);
+    Personne(const Personne & personne);
+    Personne & operator=(const Personne & personne);
     const std::string & getNom() const;
     void setNom(const std::string & nom);
     virtual ~Personne();

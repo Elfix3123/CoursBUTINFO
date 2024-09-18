@@ -9,7 +9,8 @@ int main(int argc, char** argv) {
 	i = int(*e);
 	cout << i << endl;
 
-	
+	cin >> *e;
+	cout << *e << endl;
 
 	return 0;
 }
