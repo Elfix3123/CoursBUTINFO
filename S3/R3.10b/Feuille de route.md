@@ -5,6 +5,7 @@ Identifier :
 Créer un workflow de gestion de projet.
 
 # Définitions clefs des éléments de cadrage
+Identification des parties prenantes : client, maitrise d'ouvrage, maitrise d'oeuvre
 ## Efficacité vs efficience
 Efficacité : capacité a remplir les objectifs fixer dans le cahier des charges et respecter les contraintes, fonctionnelles, techniques et temporelle
 Efficience : capacité  à être efficace en minimisant la consommation de ressource

@@ -6,3 +6,4 @@ L'humain est par nature résistant au changement; c'est pourquoi il est nécessa
 - L'aspect de l'**évaluation des processus** permet d'évaluer la complétion des objectifs afin de vérifier l'effet du changement.
 Le changement se fait sur plusieurs dimensions : il a un impact technique et organisationnel mais aussi humain.
 Les reactions au changement peuvent être polarisées, mais une majorité restera au moins indécise sur celui-ci; l'objectif est alors de motiver à accepter le changement, à travers par exemple des primes ou de l'enrichissement social.
+Pour faire accepter le changement, il est alors nécessaire d'avoir une vision claire, de communiquer, d'impliquer et de former.

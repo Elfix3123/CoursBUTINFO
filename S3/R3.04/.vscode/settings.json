@@ -45,5 +45,6 @@
 		"stdexcept": "cpp",
 		"streambuf": "cpp",
 		"typeinfo": "cpp"
-	}
+	},
+	"cmake.sourceDirectory": "/home/felix/Documents/Cours/S3/R3.04/TP01"
 }

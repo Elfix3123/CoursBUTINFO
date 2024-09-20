@@ -13,7 +13,7 @@ public class CompareRech {
 		System.out.println(vInt + " : " + vInt.size() + " éléments");
 
 		System.out.print("Saisissez un entier : ");
-		int unInt = lecteur.nextInt();
+		int unInt = lecteur.nextInt(); 
 		lecteur.nextLine();
 
 		System.out.println("* Resultat de la recherche séquentielle itérative : " + Utilitaire.rechSeqIt_O(vInt, unInt));
