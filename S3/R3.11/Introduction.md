@@ -14,4 +14,18 @@ Le RGPD repose sur 6 grands principes qui s'imposent aux détenteurs de fichier 
 - Exactitude des données
 - Conservation limitée des données
 - Sécurité
-Le responsable de traitement doit être en mesure de prouver en permanence leur respect.
+Le responsable de traitement doit être en mesure de prouver en permanence leur respect, et les données doivent être mises à jour de manière systématique. 
+La charge de la preuve du respect du règlement repose sur le responsable de traitement.
+La politique de gestion des données doit s'appuyer sur une analyse risques, dans une démarche proactive. L'analyse risque se fait au travers d'un PIA, un document qui doit être mis en place et qui évalue les risques associés aux stockages et traitements des données, par exemple celles dont le volume est important, qui concernent des personnes vulnérables ou des informations protégées par le secret professionnel. Tous ces facteurs engendrent plusieurs risques, comme celui de la destruction ou de l’accès non autorisé au données 
+Le responsable de traitement à également plusieurs autres obligations :
+- L'obligation d'information, càd d'informer celui dont les données sont collectées de la finalité du traitement des données, de la base légale justifiant le traitement, du caractère obligatoire ou facultatif du traitement des données...
+- L'obligation documentaire, càd de tenir un registre des traitements qui tient compte de l'ensemble des traitements par lesquels passent les données.
+- L'obligation d'alerte, càd d'informer en moins de 72h les individus dont les données ont été accédées par des personnes non autorisées, par exemple dans le cas d'un piratage.
+## Consentement
+Le consentement constitue la base de la licéité de la collecte, du stockage et du traitement des données. 
+Pour être le valable, le consentement doit être :
+- Libre, càd non contraint dans le sens où il doit pouvoir être retiré sans préjudice.
+- Spécifique, càd concernant un ensemble de traitements et une finalité connue.
+- Eclairé, càd assorti d'une informations sur l'identité du responsable, les finalités, les données collectées...
+- Univoque, càd permettant d'identifier sans aucun doute la personne ayant donné son consentement.
+- Préalable, càd fait avant toute collecte.
