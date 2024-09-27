@@ -2,4 +2,6 @@
 #include "Billet.h"
 using namespace std;
 
-// A COMPLETER
+std::ostream &operator<<(std::ostream &sortie, const Billet &billet) {
+    return sortie << billet.getTrajet() << endl << billet.getTarif() << endl << billet.getPrix() << endl;
+}

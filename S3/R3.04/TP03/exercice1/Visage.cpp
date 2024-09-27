@@ -17,7 +17,7 @@ Visage::Visage(const Visage &unVisage) : m_nez(Nez(unVisage.m_nez.getLongueur())
 		this->m_boutons.push_back(Bouton(bouton.getDiametre()));
 	}
 	for (const Bijou *bijou : unVisage.m_bijoux) {
-		this->m_bijoux.push_back(new Bijou(bijou->getPrix()));
+		this->m_bijoux.push_back(bijou);
 	}
 }
 
@@ -37,16 +37,64 @@ void Visage::setChapeau(const Chapeau &unChapeau) {
 	this->m_pt_chapeau = &unChapeau;
 }
 
-void Visage::addBijou(const Bijou &unBijou) {
-	this->m_bijoux.push_back(&unBijou);
+void Visage::addBijou(const Bijou *unBijou) {
+	this->m_bijoux.push_back(unBijou);
 }
 
 const Visage &Visage::operator=(const Visage &unVisage) {
+	this->m_nez = Nez(unVisage.m_nez.getLongueur());
+	if (this->m_variete.getType() != unVisage.m_variete.getType())
+	{
+		throw "Changement de variété interdit";
+	}
+	
+	if (unVisage.m_pt_moustache != nullptr) {
+		this->m_pt_moustache = new Moustache(unVisage.m_pt_moustache->getLargeur());
+	}
+	else {
+		this->m_pt_moustache = nullptr;
+	}
+	if (unVisage.m_pt_chapeau != nullptr) {
+		this->m_pt_chapeau = unVisage.m_pt_chapeau;
+	}
+	else {
+		this->m_pt_chapeau = nullptr;
+	}
+	for (Bouton bouton : unVisage.m_boutons) {
+		this->m_boutons.push_back(Bouton(bouton.getDiametre()));
+	}
+	for (const Bijou *bijou : unVisage.m_bijoux) {
+		this->m_bijoux.push_back(bijou);
+	}
+
+	return *this;
 }
 
 
 Visage::~Visage() {
+	delete this->m_pt_moustache;
 }
 
 std::ostream &operator<<(std::ostream &sortie, const Visage &visage) {
+	sortie << "Attributs du Visage :" << endl << visage.m_variete << endl << visage.m_nez << endl;
+	if (visage.m_pt_moustache == nullptr) {
+		sortie << "- pas de moustache" << endl;
+	}
+	else {
+		sortie << *(visage.m_pt_moustache) << endl;
+	}
+	if (visage.m_pt_chapeau == nullptr) {
+		sortie << "- pas de chapeau" << endl;
+	}
+	else {
+		sortie << *(visage.m_pt_chapeau) << endl;
+	}
+	for (Bouton bouton : visage.m_boutons) {
+		sortie << bouton << endl;
+	}
+	for (const Bijou *bijou : visage.m_bijoux) {
+		sortie << *bijou << endl;
+	}
+
+	return sortie;
 }

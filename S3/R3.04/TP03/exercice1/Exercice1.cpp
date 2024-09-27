@@ -8,9 +8,9 @@ const Variete BDF("Belle de Fontenay"); // Allocation statique d'une variete de 
 int main(int argc, char** argv) {
     Visage misterPatate(7, BDF); // Nez de 7cm, variété "Belle de Fontenay"
     misterPatate.setChapeau(Chapeau(100)); // Chapeau de 100 grammes
-    misterPatate.addBijou(Bijou(10)); // Bijou 10€
-    misterPatate.addBijou(Bijou(20)); // Bijou 20€
-    misterPatate.addBijou(Bijou(100)); // Bijou 100€
+    misterPatate.addBijou(new Bijou(10)); // Bijou 10€
+    misterPatate.addBijou(new Bijou(20)); // Bijou 20€
+    misterPatate.addBijou(new Bijou(100)); // Bijou 100€
     misterPatate.addBouton(1); // Bouton 1cm
     misterPatate.addBouton(2); // Bouton 2cm
     cout << "misterPatate original : " << endl

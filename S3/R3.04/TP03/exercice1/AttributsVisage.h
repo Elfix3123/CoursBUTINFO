@@ -33,6 +33,7 @@ public:
   inline int getLargeur() const { return  m_largeur; }
 };
 inline std::ostream & operator << (std::ostream & sortie, const Moustache & moustache) {
+  moustache.getLargeur();
    return sortie << "Moustache mesurant " <<  moustache.getLargeur() << " cm";
 }
 ////////////////////////////////////////////////////////////////////////////////

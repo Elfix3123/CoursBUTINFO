@@ -1,0 +1,50 @@
+[
+{
+  "directory": "/home/felix/Documents/Cours/S3/R3.04/TP02/build",
+  "command": "/usr/bin/g++   -g -std=gnu++14 -o CMakeFiles/exercice1.dir/exercice1/exercice1.cpp.o -c /home/felix/Documents/Cours/S3/R3.04/TP02/exercice1/exercice1.cpp",
+  "file": "/home/felix/Documents/Cours/S3/R3.04/TP02/exercice1/exercice1.cpp",
+  "output": "CMakeFiles/exercice1.dir/exercice1/exercice1.cpp.o"
+},
+{
+  "directory": "/home/felix/Documents/Cours/S3/R3.04/TP02/build",
+  "command": "/usr/bin/g++   -g -std=gnu++14 -o CMakeFiles/exercice1.dir/exercice1/EntierContraint.cpp.o -c /home/felix/Documents/Cours/S3/R3.04/TP02/exercice1/EntierContraint.cpp",
+  "file": "/home/felix/Documents/Cours/S3/R3.04/TP02/exercice1/EntierContraint.cpp",
+  "output": "CMakeFiles/exercice1.dir/exercice1/EntierContraint.cpp.o"
+},
+{
+  "directory": "/home/felix/Documents/Cours/S3/R3.04/TP02/build",
+  "command": "/usr/bin/g++   -g -std=gnu++14 -o CMakeFiles/exercice2.dir/exercice2/exercice2.cpp.o -c /home/felix/Documents/Cours/S3/R3.04/TP02/exercice2/exercice2.cpp",
+  "file": "/home/felix/Documents/Cours/S3/R3.04/TP02/exercice2/exercice2.cpp",
+  "output": "CMakeFiles/exercice2.dir/exercice2/exercice2.cpp.o"
+},
+{
+  "directory": "/home/felix/Documents/Cours/S3/R3.04/TP02/build",
+  "command": "/usr/bin/g++   -g -std=gnu++14 -o CMakeFiles/exercice2.dir/exercice2/Personne.cpp.o -c /home/felix/Documents/Cours/S3/R3.04/TP02/exercice2/Personne.cpp",
+  "file": "/home/felix/Documents/Cours/S3/R3.04/TP02/exercice2/Personne.cpp",
+  "output": "CMakeFiles/exercice2.dir/exercice2/Personne.cpp.o"
+},
+{
+  "directory": "/home/felix/Documents/Cours/S3/R3.04/TP02/build",
+  "command": "/usr/bin/g++   -g -std=gnu++14 -o CMakeFiles/exercice2.dir/exercice2/Groupe.cpp.o -c /home/felix/Documents/Cours/S3/R3.04/TP02/exercice2/Groupe.cpp",
+  "file": "/home/felix/Documents/Cours/S3/R3.04/TP02/exercice2/Groupe.cpp",
+  "output": "CMakeFiles/exercice2.dir/exercice2/Groupe.cpp.o"
+},
+{
+  "directory": "/home/felix/Documents/Cours/S3/R3.04/TP02/build",
+  "command": "/usr/bin/g++   -g -std=gnu++14 -o CMakeFiles/exercice3.dir/exercice3/exercice3.cpp.o -c /home/felix/Documents/Cours/S3/R3.04/TP02/exercice3/exercice3.cpp",
+  "file": "/home/felix/Documents/Cours/S3/R3.04/TP02/exercice3/exercice3.cpp",
+  "output": "CMakeFiles/exercice3.dir/exercice3/exercice3.cpp.o"
+},
+{
+  "directory": "/home/felix/Documents/Cours/S3/R3.04/TP02/build",
+  "command": "/usr/bin/g++   -g -std=gnu++14 -o CMakeFiles/exercice3.dir/exercice3/Point.cpp.o -c /home/felix/Documents/Cours/S3/R3.04/TP02/exercice3/Point.cpp",
+  "file": "/home/felix/Documents/Cours/S3/R3.04/TP02/exercice3/Point.cpp",
+  "output": "CMakeFiles/exercice3.dir/exercice3/Point.cpp.o"
+},
+{
+  "directory": "/home/felix/Documents/Cours/S3/R3.04/TP02/build",
+  "command": "/usr/bin/g++   -g -std=gnu++14 -o CMakeFiles/exercice4.dir/exercice4/exercice4.cpp.o -c /home/felix/Documents/Cours/S3/R3.04/TP02/exercice4/exercice4.cpp",
+  "file": "/home/felix/Documents/Cours/S3/R3.04/TP02/exercice4/exercice4.cpp",
+  "output": "CMakeFiles/exercice4.dir/exercice4/exercice4.cpp.o"
+}
+]

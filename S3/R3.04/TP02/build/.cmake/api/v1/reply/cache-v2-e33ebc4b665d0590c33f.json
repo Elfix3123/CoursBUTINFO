@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/felix/Documents/Cours/S3/R3.04/TP03/build"
+			"value" : "/home/felix/Documents/Cours/S3/R3.04/TP02/build"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -155,10 +155,10 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "CXX compiler"
+					"value" : "No help, variable specified on the command line."
 				}
 			],
-			"type" : "STRING",
+			"type" : "FILEPATH",
 			"value" : "/usr/bin/g++"
 		},
 		{
@@ -283,10 +283,10 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "C compiler"
+					"value" : "No help, variable specified on the command line."
 				}
 			],
-			"type" : "STRING",
+			"type" : "FILEPATH",
 			"value" : "/usr/bin/gcc"
 		},
 		{
@@ -543,7 +543,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/felix/Documents/Cours/S3/R3.04/TP03/build/CMakeFiles/pkgRedirects"
+			"value" : "/home/felix/Documents/Cours/S3/R3.04/TP02/build/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -603,7 +603,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/felix/Documents/Cours/S3/R3.04/TP03"
+			"value" : "/home/felix/Documents/Cours/S3/R3.04/TP02"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -847,7 +847,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "TP03"
+			"value" : "TP02"
 		},
 		{
 			"name" : "CMAKE_RANLIB",
@@ -1146,7 +1146,7 @@
 			"value" : "FALSE"
 		},
 		{
-			"name" : "TP03_BINARY_DIR",
+			"name" : "TP02_BINARY_DIR",
 			"properties" : 
 			[
 				{
@@ -1155,10 +1155,10 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/felix/Documents/Cours/S3/R3.04/TP03/build"
+			"value" : "/home/felix/Documents/Cours/S3/R3.04/TP02/build"
 		},
 		{
-			"name" : "TP03_IS_TOP_LEVEL",
+			"name" : "TP02_IS_TOP_LEVEL",
 			"properties" : 
 			[
 				{
@@ -1170,7 +1170,7 @@
 			"value" : "ON"
 		},
 		{
-			"name" : "TP03_SOURCE_DIR",
+			"name" : "TP02_SOURCE_DIR",
 			"properties" : 
 			[
 				{
@@ -1179,7 +1179,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/felix/Documents/Cours/S3/R3.04/TP03"
+			"value" : "/home/felix/Documents/Cours/S3/R3.04/TP02"
 		},
 		{
 			"name" : "_CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED",

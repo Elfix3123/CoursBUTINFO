@@ -10,7 +10,7 @@ public:
 	void setMoustache(int largeur);
 	void addBouton(int diametre);
 	void setChapeau(const Chapeau &unChapeau);
-	void addBijou(const Bijou &unBijou);
+	void addBijou(const Bijou *unBijou);
 	const Visage &operator=(const Visage &unVisage);
 	Visage(const Visage &unVisage);
 	~Visage();

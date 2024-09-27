@@ -8,7 +8,7 @@ L'agile se base sur plusieurs principes forts; l'agile est :
 L'agile a également un encadrement temporel fort, avec des daily et weekly meeting et des sprint de 2 à 4 semaines, et est piloté par les tests, dans une démarche ressemblant au développement en V.
 L'agile ne comprend pas de CDC; il comprend seulement un backlog, qui contient l'ensemble des user story. Son fonctionnement est tel qu'il existe un backlog de produit, et un backlog de sprint dans lequel on met des user story à mesure que de plus en plus sont validées. L'équipe projet, de 5 à 7 personnes, travaille sur le backlog de sprint jusqu'à la release, où les utilisateurs valident ou non le travail fait pendant une rétrospective. 
 # SCRUM
-Le développement est découpé en petites entités indépendantes, des sprint, avec des livrables fréquents, des scrum quotitiens
+
 # Outils agiles
 Les modèles agiles reposent sur l'utilisation de pratiques agiles.
 ## Intégration continue
