@@ -16,6 +16,9 @@ $infos = explode('/', $music);
 	<h1>Ma musique dans mon Jukebox</h1>
 	</header>
 	<main>
+		<nav>
+			<a href="<?=$_SERVER['HTTP_REFERER']?>">Retour</a>
+		</nav>
 		<section>
 			<figure>
 				<img src="data/<?=$music?>.jpeg" />
