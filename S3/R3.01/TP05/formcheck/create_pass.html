@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Create new password</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="validation.js"></script>
+</head>
+
+<body>
+
+    <section>
+        <form onsubmit="return validateForm()" action="set_passwd.php" method="post">
+            <h2>Select a password</h2>
+            <fieldset>
+                <label>Type your password</label>
+                <input type="password" id="password" name="password">
+                <label>Retype your password</label>
+                <input type="password" id="passcheck" name="passcheck">
+            </fieldset>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+</body>
+<script src="validation.js"></script>
+</html>

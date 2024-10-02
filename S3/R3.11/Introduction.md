@@ -29,3 +29,28 @@ Pour être le valable, le consentement doit être :
 - Eclairé, càd assorti d'une informations sur l'identité du responsable, les finalités, les données collectées...
 - Univoque, càd permettant d'identifier sans aucun doute la personne ayant donné son consentement.
 - Préalable, càd fait avant toute collecte.
+Le consentement peut être recueilli pour toute personne de plus de 15 ans, ou de 13 ans avec l'accord d'un représentant légal.
+## Droit des personnes
+Les personnes fichées ont un certain nombre de droits dans le RGPD ainsi que la Loi pour une République Numérique de 2016. Ils répondent à une obligation des détenteurs de fichiers.
+- Le droit à l'information, corollaire de l'obligation à la transparence et préalable à la collecte de donnée.
+- Le droit d'opposition, qui permet de s'opposer à l'utilisation de ses données à des fins de sollicitation, ou de s'opposer au traitement des données pour motif légitime. 
+- Le droit d'accès et de rectification, qui permet de demander au détenteur de fichier l'ensemble des données conservées, ainsi que de les rectifier. Le délai de réponse est d'un mois.
+- Le doit à la portabilité, qui permet de recevoir ses données dans un format lisible par un ordinateur et couramment utilisé, et d'obtenir la transmission directe des données à un autre responsable de traitement.
+Les droits suivant sont ajoutés par la LpuRN de 2016.
+- Le droit au déréférencement, qui permet de demander aux moteurs de recherche de supprimer les résultats associés à son nom et prénom.
+- Un raccourcissement du droit à l'oubli pour les mineurs (1 mois)
+- Une possibilité d'exercer les droits par voie électronique
+- Le droit à la mort numérique; une action concernant la mort numérique permet de donner des directives relatives à la conservation ou l'effacement des données après le décès. Les directives peuvent être générales (sur l'ensemble des données de la personne, un tiers de confiance est chargé de les faire respecter) ou bien particulières (concernent un responsable des données).
+## Sanctions
+Le RGPD apporte un accroissement important des sanctions liées au non-respect du RGPD; un système de sanctions graduelles est mis en place :
+- Un avertissement ou mise en demeure
+- Une injonction de cesser la violation
+- Une limitation ou suspension temporaire des traitements de données
+- Des sanctions administratives (4% du chiffre d'affaire mondial consolidé ou 20 millions d'euros d'amende) et pénales (5 ans d'emprisonnement et 300,000 euros d'amende)
+## Autorités de contrôle
+On compte 3 niveaux d'autorité de contrôle :
+- Le Comité Européen de Protection des Données au niveau européen
+- La Commission Nationale Informatique et Libertés au niveau national
+- Le Délégué à la Protection des Données au niveau local
+### La CNIL
+La CNIL est le régulateur des données personnel et garant du respect du RGPD au niveau national. En tant qu'autorité administrative indépendante, elle a des prérogatives judiciaires, législatives et administratives. Elle a pour missions d'informer et conseiller, d'accompagner, de contrôler et enquêter et de sanctionner.
