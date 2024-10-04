@@ -18,7 +18,7 @@ Le test driven development est une pratique agile qui consiste à faire de la pr
 - La phase rouge, càd le développement d'un test unitaire avant la fonction associée et qui échoue donc
 - La phase verte, atteinte lors que le code minimal valide le test unitaire
 - Le refactoring, phase pendant laquelle le code est structuré, homogénéisé et documenté tout en gardant les tests validés
-Cette pratique permet de limiter les bugs puis qu'éliminés en continu et d'optimiser les morceaux de codes individuels (principe de non régression), mais nécessite beaucoup de temps dans son implémentation et son execution. s
+Cette pratique permet de limiter les bugs puis qu'éliminés en continu et d'optimiser les morceaux de codes individuels (principe de non régression), mais nécessite beaucoup de temps dans son implémentation et son execution.
 ## Planning poker : 
 Le planning poker/scrum poker est une méthode agile qui utilise des cartes physiques (d'où le nom poker) pour estimer le temps et les ressources nécessaires pour compléter chaque user story du backlog de sprint. On utilise un lot de cartes avec des durées différentes (suite de Fibonacci) afin de parier sur la durée d'une user story
 ## Kanban des tâches 

@@ -5,8 +5,9 @@
 using namespace std;
 
 const unsigned int Repertoire::getTaille() {
-	unsigned int taille = 0;
+	unsigned int taille = 4;
 	vector<Element *>::iterator it = this->m_contenu.begin();
+
 	while (it != this->m_contenu.end()) {
 		taille += (**it).getTaille();
 		it++;

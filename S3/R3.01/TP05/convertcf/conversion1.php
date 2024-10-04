@@ -1,8 +1,8 @@
 <?php
 // Partie CONTRÔLE de cette page WEB
 // Placer ici la récupération des données de la query string et le calcul
-$C = $_GET['temp_in'] ?? NAN;
-if (!is_numeric($C) || is_nan($C)) {
+$C = $_GET['temp_in'] ?? "";
+if (!is_numeric($C)) {
   $F = "X";
 }
 else {
@@ -20,7 +20,7 @@ else {
   <body>
     <h1>Conversion de températures</h1>
     <form  action="conversion1.php" method="get">
-      <input id="in" type="number" step="any" name="temp_in" value="">
+      <input id="in" type="number" step="any" name="temp_in" value="<?=$C?>">
       <label for="in">Celcius</label>
       égal
       <output id="out" for="in" name="temp_out"><?=$F?></output>

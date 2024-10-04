@@ -16,7 +16,7 @@ class Element {
 	virtual const std::string getDateModif() = 0;
 	virtual void setDateModif(const std::string date) = 0;
 	virtual void afficher();
-	virtual void ajouter(Element *elt);
+	virtual void ajouter(Element *elt) = 0;
 	virtual ~Element() {};
 
 	private:

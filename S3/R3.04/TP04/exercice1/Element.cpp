@@ -21,8 +21,8 @@ void Element::setProprietaire(const Usager &proprietaire) {
 }
 
 void Element::afficher() {
-	cout << "Nom : " << this->getNom() << endl
-	<< "Propriétaire : " << this->getProprietaire().getLogin() << endl
-	<< "Taille : " << this->getTaille() << endl
+	cout << "Nom : " << this->getNom() << " - "
+	<< "Propriétaire : " << this->getProprietaire().getLogin() << " - "
+	<< "Taille : " << this->getTaille() << "Ko - "
 	<< "Date de modification : " << this->getDateModif() << endl;
 }
