@@ -16,7 +16,7 @@ Class Change {
 
 	// Charge la liste des Taux et des idf de devises
 	private function load(string $filename) {
-		$file = fopen("./../data/exchangeRate.csv", "r");
+		$file = fopen($filename, "r");
 		fgetcsv($file);	// Clear CSV header
 		while ($line = fgetcsv($file)) {
 			$this->rates[$line[0] . " " . $line[1]] = $line[2];
@@ -33,10 +33,10 @@ Class Change {
 
 	// Calcul du taux entre deux IDF de devises
 	function getRate(string $from,string $to) : float {
-		if (!is_null($this->rates[$from . " " . $to])) {
+		if (array_key_exists($from . " " . $to, $this->rates)) {
 			return $this->rates[$from . " " . $to];
 		}
-		else if (!is_null($this->rates[$to . " " . $from])) {
+		else if (array_key_exists($to . " " . $from, $this->rates)) {
 			return 1.0/$this->rates[$to . " " . $from];
 		}
 		else if ($to == $from) {
