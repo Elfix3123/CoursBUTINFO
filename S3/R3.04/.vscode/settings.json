@@ -53,5 +53,6 @@
 		"map": "cpp",
 		"regex": "cpp"
 	},
-	"cmake.ignoreCMakeListsMissing": true
+	"cmake.ignoreCMakeListsMissing": true,
+	"r.lsp.promptToInstall": false
 }

@@ -52,5 +52,18 @@ On compte 3 niveaux d'autorité de contrôle :
 - Le Comité Européen de Protection des Données au niveau européen
 - La Commission Nationale Informatique et Libertés au niveau national
 - Le Délégué à la Protection des Données au niveau local
+### Le CEPD
+Le CEPD est l'organisme de tutelle des différents organismes de contrôles nationaux. Cette entité n'agit pas directement mais coordinate les actions des différentes autorités de régulation. Elle détermine également les axes de contrôles des différentes autorités de régulation.
 ### La CNIL
-La CNIL est le régulateur des données personnel et garant du respect du RGPD au niveau national. En tant qu'autorité administrative indépendante, elle a des prérogatives judiciaires, législatives et administratives. Elle a pour missions d'informer et conseiller, d'accompagner, de contrôler et enquêter et de sanctionner.
+La CNIL est le régulateur des données personnel et garant du respect du RGPD au niveau national. En tant qu'autorité administrative indépendante, elle a des prérogatives judiciaires, législatives et administratives; elle est financée par l'Etat, qui n'a cependant aucun contrôle effectif sur ses actions. Elle est composée de 18 membres nommées pendant 5 ans, qui proviennent du pouvoir exécutif, législatif et judiciaire, qui sont les seuls habilités à décider des sanctions et à décider des plans d'actions, ainsi que de près de 200 agents publics, qui font en pratique les contrôles.
+La CNIL prend 4 missions principales :
+- L'axe de gestion des procédures administratives, qui tend à diminuer au cours du temps en raison de la fin de l'obligation de déclaration de collecte des données avec le RGPD et l'accountability.
+- L'axe d'information et de sensibilisation du public, à savoir les détenteurs de fichiers comme les personnes fichées; la CNIL informe les entreprises sur comment se mettre en règle, et les particuliers sur leurs droits et leurs moyens d'action.
+- L'axe d'accompagnement et de conseil du gouvernement, qui est croissant depuis 1978; tous les textes imaginés par le gouvernement doivent obligatoirement faire l'objet d'une saisine préalable de la CNIL, qui rend un avis qui n'est pas obligatoirement suivi.
+- L'axe de contrôle et de sanction, qui est renforcé depuis 1978.
+De plus, on retrouve un axe de certification des processus d'anonymisation dans le cadre du service public de la donnée.
+La CNIL implémente le principe de guichet unique, le "one stop shop", qui impose d'avoir pour chaque pays une autorité de contrôle unique en matière de régulation des données personnelles; chaque dossier est traité par une et une seule autorité de contrôle, y compris si le litige fait intervenir des entité appartenant à de multiples pays. 
+### Le DPO
+Le DPO est l'individu garant au niveau du détenteur de fichier du respect des prérogatives du RGPD. Il prend la place du CIL et est obligatoire dans les cas suivant :
+- Traitement effectué par une autorité ou organisme public
+- Activité conduisant à effectuer un suivi régulier et systématique à grande échelle; pour remplir cette condition, le traitement doit faire partie d'une liste précise (profilage, opérateurs et fournisseurs de télécommunication, géolocalisation...) concerner un grand nombre de personnes et de données et les données doivent avoir un volume important et être stockées longtemps
