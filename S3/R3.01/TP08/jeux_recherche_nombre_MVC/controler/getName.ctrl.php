@@ -20,6 +20,7 @@ if ($nom == '') {
   $view->display('getName');
 } else {
   // On démarre le jeu avec le nom d'un joueur
-  $view->assign('nom', $nom);
+  session_start();
+  $_SESSION['nom'] = $nom;
   $view->display('startGame');
 }

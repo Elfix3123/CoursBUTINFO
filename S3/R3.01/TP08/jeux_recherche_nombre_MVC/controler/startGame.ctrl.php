@@ -6,7 +6,7 @@ require_once('model/game.class.php');
 //////////////////////////////////////////////////////////////////////////////
 // PARTIE RECUPERATION DES DONNEES ET GESTION DES ERREURS
 //////////////////////////////////////////////////////////////////////////////
-$nom = $_GET['nom'] ?? '';
+$nom = $_SESSION['nom'] ?? '';
 $jouer = $_GET['jouer'] ?? '';
 $view = new View();
 
@@ -44,9 +44,6 @@ if ($jouer == 'Non') {
 
 // Le joueur veux bien jouer
 
-// Ouvre la session
-session_start();
-
 // Récupère l'objet du Jeu dans la session
 if (isset($_SESSION['game'])) {
   $game = $_SESSION['game'];
@@ -66,7 +63,6 @@ $_SESSION['game'] = $game;
 //////////////////////////////////////////////////////////////////////////////
 
   // Passage des paramètres à la vue
-  $view->assign('nom', $nom);
   // Est-ce la première fois ?
   if ($game->getNbGame() <= 1) {
     // On affiche la vue de l'affichage de la règle du jeu

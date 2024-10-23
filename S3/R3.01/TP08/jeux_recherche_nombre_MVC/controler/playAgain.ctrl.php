@@ -7,7 +7,7 @@ require_once('model/game.class.php');
 //////////////////////////////////////////////////////////////////////////////
 // PARTIE RECUPERATION DES DONNEES ET GESTION DES ERREURS
 //////////////////////////////////////////////////////////////////////////////
-$nom = $_GET['nom'] ?? '';
+$nom = $_SESSION['nom'] ?? '';
 $jouer = $_GET['jouer'] ?? '';
 
 // Vérification de la query string
