@@ -11,10 +11,10 @@ Class &operator=(const Class &class);
 ```
 
 # Agregation et composition :
-Cardinalite		1			0..1			*
-Agregation		`Class c;`	`Class *c;`		`std::Vector<Class> c;`
-							`delete c;`
-Composition		`Class &c;`	`Class *c`		`std::Vector<Class *> c;`
+| Cardinalite     | 1 | 0..1 | * |
+|-|-|-|-|
+| Agregation | `Class c` | `Class *c;` `delete c;` | `std::Vector<Class> c;` |
+| Composition | `Class &c;` | `Class *c` | `std::Vector<Class *> c;` |
 
 # Pattern composite
 ## Component
