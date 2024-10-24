@@ -1,8 +1,8 @@
 # Const :
-| | | |
+| Format | `p` modifiable | `*p` modifiable |
 |-|-|-|
-| `const int *p` | `p` modifiable | `*p` non modifiable |
-| `int * const p` | `p` non modifiable | `*p` modifiable |
+| `const int *p` | oui | non |
+| `int * const p` | non | oui |
 
 # Coplien :
 ```
