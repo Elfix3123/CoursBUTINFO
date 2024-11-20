@@ -1,0 +1,1 @@
+/usr/bin/g++ -g CMakeFiles/exercice2.dir/Exercice2/TestPile.cpp.o CMakeFiles/exercice2.dir/Shared/PrecondVioleeExcep.cpp.o -o exercice2 

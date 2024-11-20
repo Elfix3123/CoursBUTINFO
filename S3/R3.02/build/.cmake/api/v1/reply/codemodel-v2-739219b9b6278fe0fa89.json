@@ -1,0 +1,87 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.19"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "R203\u2014TP0",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "exercice1::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-exercice1-Debug-0375ef5c635ec95d1479.json",
+					"name" : "exercice1",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "exercice2::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-exercice2-Debug-f64284290d3b4f5e0ae0.json",
+					"name" : "exercice2",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "exercice3::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-exercice3-Debug-217fcb1dfa51636e48ff.json",
+					"name" : "exercice3",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "exercice4::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-exercice4-Debug-dedb07cec783b9982bbd.json",
+					"name" : "exercice4",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/felix/Documents/Cours/S3/R3.02/build",
+		"source" : "/home/felix/Documents/Cours/S3/R3.02/TP00/R203\u2013TP0"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

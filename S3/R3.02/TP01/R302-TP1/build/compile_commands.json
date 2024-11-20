@@ -1,0 +1,38 @@
+[
+{
+  "directory": "/home/felix/Documents/Cours/S3/R3.02/TP01/R302-TP1/build",
+  "command": "/usr/bin/g++   -g -std=gnu++14 -o CMakeFiles/exercice1.dir/Exercice1/TesteListe.cpp.o -c /home/felix/Documents/Cours/S3/R3.02/TP01/R302-TP1/Exercice1/TesteListe.cpp",
+  "file": "/home/felix/Documents/Cours/S3/R3.02/TP01/R302-TP1/Exercice1/TesteListe.cpp",
+  "output": "CMakeFiles/exercice1.dir/Exercice1/TesteListe.cpp.o"
+},
+{
+  "directory": "/home/felix/Documents/Cours/S3/R3.02/TP01/R302-TP1/build",
+  "command": "/usr/bin/g++   -g -std=gnu++14 -o CMakeFiles/exercice1.dir/Shared/PrecondVioleeExcep.cpp.o -c /home/felix/Documents/Cours/S3/R3.02/TP01/R302-TP1/Shared/PrecondVioleeExcep.cpp",
+  "file": "/home/felix/Documents/Cours/S3/R3.02/TP01/R302-TP1/Shared/PrecondVioleeExcep.cpp",
+  "output": "CMakeFiles/exercice1.dir/Shared/PrecondVioleeExcep.cpp.o"
+},
+{
+  "directory": "/home/felix/Documents/Cours/S3/R3.02/TP01/R302-TP1/build",
+  "command": "/usr/bin/g++   -g -std=gnu++14 -o CMakeFiles/exercice2.dir/Exercice2/TestPile.cpp.o -c /home/felix/Documents/Cours/S3/R3.02/TP01/R302-TP1/Exercice2/TestPile.cpp",
+  "file": "/home/felix/Documents/Cours/S3/R3.02/TP01/R302-TP1/Exercice2/TestPile.cpp",
+  "output": "CMakeFiles/exercice2.dir/Exercice2/TestPile.cpp.o"
+},
+{
+  "directory": "/home/felix/Documents/Cours/S3/R3.02/TP01/R302-TP1/build",
+  "command": "/usr/bin/g++   -g -std=gnu++14 -o CMakeFiles/exercice2.dir/Shared/PrecondVioleeExcep.cpp.o -c /home/felix/Documents/Cours/S3/R3.02/TP01/R302-TP1/Shared/PrecondVioleeExcep.cpp",
+  "file": "/home/felix/Documents/Cours/S3/R3.02/TP01/R302-TP1/Shared/PrecondVioleeExcep.cpp",
+  "output": "CMakeFiles/exercice2.dir/Shared/PrecondVioleeExcep.cpp.o"
+},
+{
+  "directory": "/home/felix/Documents/Cours/S3/R3.02/TP01/R302-TP1/build",
+  "command": "/usr/bin/g++   -g -std=gnu++14 -o CMakeFiles/exercice3.dir/Exercice3/testeListeTrieeChainee.cpp.o -c /home/felix/Documents/Cours/S3/R3.02/TP01/R302-TP1/Exercice3/testeListeTrieeChainee.cpp",
+  "file": "/home/felix/Documents/Cours/S3/R3.02/TP01/R302-TP1/Exercice3/testeListeTrieeChainee.cpp",
+  "output": "CMakeFiles/exercice3.dir/Exercice3/testeListeTrieeChainee.cpp.o"
+},
+{
+  "directory": "/home/felix/Documents/Cours/S3/R3.02/TP01/R302-TP1/build",
+  "command": "/usr/bin/g++   -g -std=gnu++14 -o CMakeFiles/exercice3.dir/Shared/PrecondVioleeExcep.cpp.o -c /home/felix/Documents/Cours/S3/R3.02/TP01/R302-TP1/Shared/PrecondVioleeExcep.cpp",
+  "file": "/home/felix/Documents/Cours/S3/R3.02/TP01/R302-TP1/Shared/PrecondVioleeExcep.cpp",
+  "output": "CMakeFiles/exercice3.dir/Shared/PrecondVioleeExcep.cpp.o"
+}
+]

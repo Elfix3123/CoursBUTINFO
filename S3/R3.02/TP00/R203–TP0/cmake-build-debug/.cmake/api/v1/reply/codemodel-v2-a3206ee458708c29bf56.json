@@ -1,0 +1,87 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.19"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "R203\u2014TP0",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "exercice1::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-exercice1-Debug-4bb45e085d418145b797.json",
+					"name" : "exercice1",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "exercice2::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-exercice2-Debug-c795582e533fdf5b3f7c.json",
+					"name" : "exercice2",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "exercice3::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-exercice3-Debug-d62e5cdd80ad347e740b.json",
+					"name" : "exercice3",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "exercice4::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-exercice4-Debug-d0cfe4f18d48f4faea74.json",
+					"name" : "exercice4",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/hb/Documents/ Enseignement/R3.02/TP_Sols/R203\u2013TP0/cmake-build-debug",
+		"source" : "/Users/hb/Documents/ Enseignement/R3.02/TP_Sols/R203\u2013TP0"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}

@@ -1,0 +1,26 @@
+[
+{
+  "directory": "/home/felix/Documents/Cours/S3/R3.02/build",
+  "command": "/usr/bin/g++   -g -std=gnu++14 -o CMakeFiles/exercice1.dir/exercice1.cpp.o -c /home/felix/Documents/Cours/S3/R3.02/TP00/R203–TP0/exercice1.cpp",
+  "file": "/home/felix/Documents/Cours/S3/R3.02/TP00/R203–TP0/exercice1.cpp",
+  "output": "CMakeFiles/exercice1.dir/exercice1.cpp.o"
+},
+{
+  "directory": "/home/felix/Documents/Cours/S3/R3.02/build",
+  "command": "/usr/bin/g++   -g -std=gnu++14 -o CMakeFiles/exercice2.dir/exercice2.cpp.o -c /home/felix/Documents/Cours/S3/R3.02/TP00/R203–TP0/exercice2.cpp",
+  "file": "/home/felix/Documents/Cours/S3/R3.02/TP00/R203–TP0/exercice2.cpp",
+  "output": "CMakeFiles/exercice2.dir/exercice2.cpp.o"
+},
+{
+  "directory": "/home/felix/Documents/Cours/S3/R3.02/build",
+  "command": "/usr/bin/g++   -g -std=gnu++14 -o CMakeFiles/exercice3.dir/exercice3.cpp.o -c /home/felix/Documents/Cours/S3/R3.02/TP00/R203–TP0/exercice3.cpp",
+  "file": "/home/felix/Documents/Cours/S3/R3.02/TP00/R203–TP0/exercice3.cpp",
+  "output": "CMakeFiles/exercice3.dir/exercice3.cpp.o"
+},
+{
+  "directory": "/home/felix/Documents/Cours/S3/R3.02/build",
+  "command": "/usr/bin/g++   -g -std=gnu++14 -o CMakeFiles/exercice4.dir/exercice4.cpp.o -c /home/felix/Documents/Cours/S3/R3.02/TP00/R203–TP0/exercice4.cpp",
+  "file": "/home/felix/Documents/Cours/S3/R3.02/TP00/R203–TP0/exercice4.cpp",
+  "output": "CMakeFiles/exercice4.dir/exercice4.cpp.o"
+}
+]
