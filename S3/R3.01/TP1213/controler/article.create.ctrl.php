@@ -6,7 +6,7 @@ include_once("framework/view.fw.php");
 // Inclusion du modèle
 include_once("model/article.class.php");
 // Nom du répertoire ou stocker les images téléchargées
-$imgPath = __DIR__."public/img/";;
+$imgPath = "/home/felix/public/";
 
 $error = [];
 $message = "";
@@ -16,10 +16,6 @@ $libelle = $_POST['libelle'] ?? "";
 $categorie = $_POST['categorie'] ?? 0;
 $prix = $_POST['prix'] ?? 0;
 $image = $_FILES['image'] ?? 0;
-
-if ($image) {
-	move_uploaded_file($image['tmp_name'], $imgPath . basename($image['name']));
-}
 
 if (!$ref) {
 	$error[] = "La référence doit etre non nulle.";
@@ -47,7 +43,8 @@ if ($image['type'] != "image/jpeg" and $image['type'] != "image/png") {
 }
 
 if (!sizeof($error)) {
-	$article = new Article($ref, $libelle, categorie::read($categorie), $prix, $image['name']);
+	move_uploaded_file($image['tmp_name'], $imgPath . basename($image['name']));
+	$article = new Article($ref, $libelle, categorie::read($categorie), $prix, "/".$image['name']);
 	$article->create();
 	$message = "Insertion reussie";
 }
