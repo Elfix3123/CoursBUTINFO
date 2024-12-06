@@ -11,4 +11,4 @@ Il commence par préparer le terrain grâce au pathos ; en particulier, il valid
 Il propose ensuite l’élection d'un leader, qui doit être lui pour que la manipulation puisse être mise en place. De par sa position hiérarchique, l'affect de ses élèves et sa position de coach de l'équipe de water-polo, il l'est quasiment déjà. Il en profite pour utiliser une stratégie de manipulation en disant "qui est contre" plutôt que "qui est pour".
 Il instaure ensuite un certain nombre de règles qui permettront d'instaurer une idée de discipline chez les victimes. 
 Il cherche ensuite à développer un esprit communautaire, qui se développera ensuite en esprit communautariste ; ceci est fait à travers les symboles, comme la chemise ou le logo, et à travers des actions comme la privatisation du skatepark : les non membres du groupe ne doivent pas être considérés. 
-Pour que le groupe reste en place et survive, il est nécessaire de recruter de nouveaux membres
+Pour que le groupe reste en place et survive, il est nécessaire de recruter de nouveaux membres.

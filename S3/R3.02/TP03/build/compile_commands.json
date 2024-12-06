@@ -1,0 +1,26 @@
+[
+{
+  "directory": "/home/felix/Documents/Cours/S3/R3.02/TP03/build",
+  "command": "/usr/bin/g++ -g -std=gnu++14 -o CMakeFiles/mondial.dir/TestMondial.cpp.o -c /home/felix/Documents/Cours/S3/R3.02/TP03/TestMondial.cpp",
+  "file": "/home/felix/Documents/Cours/S3/R3.02/TP03/TestMondial.cpp",
+  "output": "CMakeFiles/mondial.dir/TestMondial.cpp.o"
+},
+{
+  "directory": "/home/felix/Documents/Cours/S3/R3.02/TP03/build",
+  "command": "/usr/bin/g++ -g -std=gnu++14 -o CMakeFiles/mondial.dir/Mondial.cpp.o -c /home/felix/Documents/Cours/S3/R3.02/TP03/Mondial.cpp",
+  "file": "/home/felix/Documents/Cours/S3/R3.02/TP03/Mondial.cpp",
+  "output": "CMakeFiles/mondial.dir/Mondial.cpp.o"
+},
+{
+  "directory": "/home/felix/Documents/Cours/S3/R3.02/TP03/build",
+  "command": "/usr/bin/g++ -g -std=gnu++14 -o CMakeFiles/mondial.dir/tinyxml2.cpp.o -c /home/felix/Documents/Cours/S3/R3.02/TP03/tinyxml2.cpp",
+  "file": "/home/felix/Documents/Cours/S3/R3.02/TP03/tinyxml2.cpp",
+  "output": "CMakeFiles/mondial.dir/tinyxml2.cpp.o"
+},
+{
+  "directory": "/home/felix/Documents/Cours/S3/R3.02/TP03/build",
+  "command": "/usr/bin/g++ -g -std=gnu++14 -o CMakeFiles/mondial.dir/PrecondVioleeExcep.cpp.o -c /home/felix/Documents/Cours/S3/R3.02/TP03/PrecondVioleeExcep.cpp",
+  "file": "/home/felix/Documents/Cours/S3/R3.02/TP03/PrecondVioleeExcep.cpp",
+  "output": "CMakeFiles/mondial.dir/PrecondVioleeExcep.cpp.o"
+}
+]

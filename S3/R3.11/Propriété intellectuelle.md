@@ -1,4 +1,3 @@
-
 # Introduction
 La propriété intellectuelle est unifiée en 1994 avec la création du code de propriété intellectuelle. La propriété intellectuelle confère le droit de propriété, un ensemble de prérogatives (droits exclusifs) données au titulaire, sur un ensemble de création résultant d'un effort intellectuel pouvant être valorisé. Le droit de propriété intellectuelle, en tant que droit de propriété, est démembrable. 
 La propriété intellectuelle contient quatre grands domaines de droit : le brevet, les dessins et modèles, les droits d'auteurs et les marques. Ces droits sont **superposables**, fonctionnent de manière **territoriale** et ont des **différences de durée**.

@@ -1,0 +1,30 @@
+#!/bin/sh
+
+rm resu.data
+
+kilo=1024
+mega=`expr $kilo "*" $kilo`
+giga=`expr $kilo "*" $mega`
+
+for prefixe in $kilo $mega
+  do
+  for zeros in "" 0 00
+    do
+    for chiffre in `seq 1 5`
+      do
+      taille=`expr $chiffre$zeros "*" $prefixe`
+      echo "$taille"
+      bin-gcc/tableau1d-auto "$taille"
+    done
+  done
+done
+
+for prefixe in $giga
+  do
+  for unite in `seq 1 2 29` 29.5
+    do
+      taille=`calc $unite "*" $prefixe`
+      echo "$taille"
+      bin-gcc/tableau1d-auto "$taille"
+  done
+done

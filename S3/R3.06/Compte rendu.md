@@ -8,13 +8,13 @@
     - `interface` représente l'interface par laquelle accepter les requêtes DHCP
 - Une fois le service lancé (`systemctl start udhcpd`), le client peut envoyer des requêtes DHCP au serveur
     - Commande `ifup INTERFACE`
-    - La route par default sera modifié pour ajouter la passerelle spécifiée
+		    - La route par default sera modifié pour ajouter la passerelle spécifiée
     - Le fichier `/etc/resolv.conf` sera modifié pour ajouter le serveur DNS spécifié
 
 Configuration d'un serveur DNS :
 - Configurations stockées dans `/etc/bind/`
 - Fichier de configuration principal : `named.conf.default-zones`
-- Autres fichiers de configuration : `db.SITE.TDL`
+	- Autres fichiers de configuration : `db.SITE.TDL`
 
 Mettre en place des VLANs :
 - Associer chaque port du switch à un VLAN

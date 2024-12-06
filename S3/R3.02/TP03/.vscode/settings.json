@@ -1,0 +1,20 @@
+{
+	"cmake.sourceDirectory": "/home/felix/Documents/Cours/S3/R3.02/TP03",
+	"files.associations": {
+		"*.embeddedhtml": "html",
+		"iostream": "cpp",
+		"string": "cpp",
+		"string_view": "cpp",
+		"ostream": "cpp",
+		"array": "cpp",
+		"deque": "cpp",
+		"unordered_map": "cpp",
+		"vector": "cpp",
+		"format": "cpp",
+		"initializer_list": "cpp",
+		"span": "cpp",
+		"text_encoding": "cpp",
+		"map": "cpp",
+		"typeinfo": "cpp"
+	}
+}
