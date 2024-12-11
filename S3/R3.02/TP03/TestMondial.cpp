@@ -208,6 +208,23 @@ void testPrintCityInformation(Mondial& theMondial) {
 	cout << endl;
 }
 
+void testPrintIslandInformations(Mondial& theMondial) {
+	cout << endl << "******************************" << endl;
+	cout << "*                            *" << endl;
+	cout << "* Informations sur une île   *" << endl;
+	cout << "*                            *" << endl;
+	cout << "******************************" << endl << endl;
+	string islandName = "Iceland";
+	theMondial.printIslandsInformations(islandName);
+	cout << endl;
+	islandName = "Corse";
+	theMondial.printIslandsInformations(islandName);
+	cout << endl;
+	islandName = "Test";
+	theMondial.printIslandsInformations(islandName);
+	cout << endl;
+}
+
 int main() {
 	// version HB
 	//Mondial theMondial("/Users/hb/Documents/ Enseignement/R3.02/TP_Sols/R302-TP3-Correction-compile/mondial_HB.xml");
@@ -231,8 +248,7 @@ int main() {
 	testPrintCountriesWithProvincesCrossedByRiver(theMondial);
 	testPrintCountriesAndProvincesCrossedByRiver(theMondial);
 	testPrintCityInformation(theMondial);
-
-	//theMondial.printIslandsInformations();
+	testPrintIslandInformations(theMondial);
 	
 	return 0;
 }
@@ -424,5 +440,30 @@ La ville Paris
  - sa population est : 2249975
 
 La ville Test, n'existe pas !
+
+
+******************************
+*                            *
+* Informations sur une île   *
+*                            *
+******************************
+
+L'île Iceland
+        - Est dans les mers : Atlantic Ocean, Greenland Sea, Norwegian Sea, 
+        - Est dans le pays : Iceland
+        - Sa superficie est : 102829
+        - Sa latitude est : 65
+        - Sa longitude est : -18
+        - Son altitude est : 2110
+
+L'île Corse
+        - Est dans la mer : Mediterranean Sea
+        - Est dans le pays : France
+        - Sa superficie est : 8680
+        - Sa latitude est : 41.4
+        - Sa longitude est : 8.4
+        - Son altitude est : 2706
+
+L'île Test, n'existe pas !
  */
 

@@ -1,8 +1,9 @@
-/* 
- * File:   Mondial.cpp
- * Author: hb
+/**
+ * \file Mondial.cpp
+ * \author hb, ajouts par Felix Martins
  * 
- * Created on 22 novembre 2018, 16:05
+ * \date 22-11-2018, 16:05
+ * 		Ajouts le 09-12-2024
  */
 
 #include "Mondial.h"
@@ -11,8 +12,8 @@
 #include <iostream>     // pour cout
 #include <iomanip>      // pour setw()
 #include <sstream>
-#include <iterator>
-#include <map>
+#include <iterator>		// Iterateurs pour parcours complet de vecteurs
+#include <map>			// Tableaux associatifs de divisions administratives de rivières
 
 Mondial::Mondial(const char* filename) {
 	// Chargement du fichier XML en mémoire
@@ -29,9 +30,9 @@ void Mondial::Print() {
  * FOURNIE
  */
 int Mondial::getNbAirports() const {
-	// initialisation du nombre d’aéroports
+	// initialisation du nombre d'aéroports
 	int nb = 0;
-	// accéder à <airportscategory>, c’est un fils de l'élément <racineMondial>
+	// accéder à <airportscategory>, c'est un fils de l'élément <racineMondial>
 	XMLElement* airportsCategory = racineMondial->FirstChildElement("airportscategory");
 	// parcours complet des fils de <airportscategory> en les comptants
 	// 1) accéder au premier fils <airport> de <airportscategory>
@@ -43,7 +44,7 @@ int Mondial::getNbAirports() const {
 		// avancer au frère <airport> suivant de currentAirport
 		currentAirport = currentAirport->NextSiblingElement();
 	}
-	// currentAirport n’a plus de frère {currentAirport == nullptr}, c’est le dernier
+	// currentAirport n'a plus de frère {currentAirport == nullptr}, c'est le dernier
 	return nb;
 }
 
@@ -53,7 +54,7 @@ int Mondial::getNbAirports() const {
 void Mondial::printCountriesCode() const {
 	int rank = 1; // rang du pays
 	string carcodeValue; // valeur de l'attribut "car_cod" du pays courant
-	// accéder à <countriescategory>, c’est un fils de l'élément <racineMondial>)
+	// accéder à <countriescategory>, c'est un fils de l'élément <racineMondial>)
 	XMLElement* countriesCategory = racineMondial->FirstChildElement("countriescategory");
 	// parcours complet des fils de <countriescategory> en affichant le rang et le code
 	// 1) accéder au premier fils <country> de <countriescategory>
@@ -61,16 +62,16 @@ void Mondial::printCountriesCode() const {
 	// 2) parcourir tous les <country> qui sont des frères
 	while (currentCountry != nullptr) {
 		// traiter le pays courant
-		//      1) récupérer la valeur de l’attribut "car_code"
+		//      1) récupérer la valeur de l'attribut "car_code"
 		carcodeValue = currentCountry->Attribute("car_code");
-		//      2) faire l’affichage
+		//      2) faire l'affichage
 		cout << setw(5) << rank << " : " << carcodeValue << endl;
 		// avancer au frère <country> suivant de currentCountry
 		currentCountry = currentCountry->NextSiblingElement();
 		// mettre à jour le rang
 		rank = rank + 1;
 	}
-	// currentCountry n’a pas de frère {currentCountry == nullptr}, c’est fini
+	// currentCountry n'a pas de frère {currentCountry == nullptr}, c'est fini
 }
 
 
@@ -82,7 +83,7 @@ void Mondial::printCountriesCode() const {
 int Mondial::getNbDeserts() const {
 	// initialisation du nombre de deserts
 	int nb = 0;
-	// accéder à <desertscategory>, c’est un fils de l'élément <racineMondial>
+	// accéder à <desertscategory>, c'est un fils de l'élément <racineMondial>
 	XMLElement* desertscategory = racineMondial->FirstChildElement("desertscategory");
 	// parcours complet des fils de <desertscategory> en les comptants
 	// 1) accéder au premier fils <desert> de <desertscategory>
@@ -94,7 +95,7 @@ int Mondial::getNbDeserts() const {
 		// avancer au frère <desert> suivant de currentDesert
 		currentDesert = currentDesert->NextSiblingElement();
 	}
-	// currentDesert n’a plus de frère {currentDesert == nullptr}, c’est le dernier
+	// currentDesert n'a plus de frère {currentDesert == nullptr}, c'est le dernier
 	return nb;
 }
 
@@ -107,7 +108,7 @@ int Mondial::getNbDeserts() const {
 int Mondial::getNbElemCat(const string categoryName) {
 	// initialisation du nombre d'éléments
 	int nb = 0;
-	// accéder à la catégorie (en décodant le nom), c’est un fils de l'élément <racineMondial>
+	// accéder à la catégorie (en décodant le nom), c'est un fils de l'élément <racineMondial>
 	// utilisation de c_str pour la compatibilité avec FirstChildElement(const char*)
 	XMLElement* category = racineMondial->FirstChildElement(this->decod_category[categoryName].c_str());
 	// parcours complet des fils de la catégorie en les comptants
@@ -120,7 +121,7 @@ int Mondial::getNbElemCat(const string categoryName) {
 		// avancer à l'éléments suivant de currentElement
 		currentElement = currentElement->NextSiblingElement();
 	}
-	// currentElement n’a plus de frère {currentElement == nullptr}, c’est le dernier
+	// currentElement n'a plus de frère {currentElement == nullptr}, c'est le dernier
 	return nb;
 }
 
@@ -204,7 +205,7 @@ XMLElement* Mondial::getCountryXmlelementFromNameIter(string countryName) const 
 int Mondial::getCountryPopulationFromName(string countryName) const {
 	XMLElement *country = getCountryXmlelementFromNameRec(countryName);
 
-	return (country == nullptr ? -1 : stoi(getCountryXmlelementFromNameRec(countryName)->FirstChildElement("population")->GetText()));
+	return (country == nullptr ? -1 : stoi(getCountryXmlelementFromNameRec(countryName)->LastChildElement("population")->GetText()));
 }
 
 /**
@@ -414,7 +415,7 @@ void Mondial::printCityInformation(string cityName) const {
 
 	// Grace aux conditions des while, on a ici soit la bonne ville soit un nullptr dans currentCity
 	if (currentCity == nullptr)
-		cout << "La ville " << cityName << " n'existe pas" << endl;
+		cout << "La ville " << cityName << ", n'existe pas" << endl;
 	else {
 		// On récupere le bon pays et eventuellement la bonne province (c'est à dire l'avant derniere traitée)
 		currentCountry = currentCountry->PreviousSiblingElement("country");
@@ -426,24 +427,66 @@ void Mondial::printCityInformation(string cityName) const {
 		"\t- Sa latitude est : " << currentCity->FirstChildElement("latitude")->GetText() << endl <<
 		"\t- Sa longitude est : " << currentCity->FirstChildElement("longitude")->GetText() << endl <<
 		"\t- Son altitude est : " << currentCity->FirstChildElement("elevation")->GetText() << endl <<
-		"\t- Sa population est : " << currentCity->FirstChildElement("population")->GetText() << endl;
+		"\t- Sa population est : " << currentCity->LastChildElement("population")->GetText() << endl;
 	}
 	
 }
 
 /**
- * Exemple de question additionnelle pour l'exercice 9 afficher toutes les informations disponibles
- * dans Mondial concernant toutes les îles.
- * On peut commencer par une île en particulier à partir de son nom
+ * Affiche les informations de l'ile de nom islandName de l'instance courante de Mondial
+ * 
+ * @param islandName le nom de l'ile
  */
-void Mondial::printIslandsInformations() const {
-	/**
-	 * A COMPLETER
-	 */
+void Mondial::printIslandsInformations(string islandName) const {
+	XMLElement *currentIsland = racineMondial->FirstChildElement("islandscategory")->FirstChildElement("island");
+
+	// On effectue un parcours complet des adelphes du pays jusqu'à qu'ils n'y aie plus d'adelphes ou que le nom du pays soit le bon
+	while (currentIsland != nullptr && currentIsland->FirstChildElement("name")->GetText() != islandName) {
+		currentIsland = currentIsland->NextSiblingElement();
+	}
+
+	// On a a ce point soit nullptr soit la bonne ile avec la condition du if
+	if (currentIsland == nullptr) {
+		cout << "L'île " << islandName << ", n'existe pas !" << endl;
+	}
+	else {
+		cout << "L'île " << islandName << endl;
+		// Cas ou l'ile est dans la mer
+		string seas = currentIsland->Attribute("sea");	// On stocke dans une variable pour pouvoir passer par reference à split
+		if (seas != "") {
+			vector<string> splittedSeas = split(seas, ' ');
+			// Cas ou l'ile est dans une seule mer
+			if (splittedSeas.size() == 1) {
+				cout << "\t- Est dans la mer : " << getSeaXMLElementFromCode(splittedSeas[0])->FirstChildElement("name")->GetText() << endl;
+			}
+			// Cas ou l'ile est dans plusieurs mers
+			else {
+				cout << "\t- Est dans les mers : ";
+				for (string sea : splittedSeas) {
+					cout << getSeaXMLElementFromCode(sea)->FirstChildElement("name")->GetText() << ", ";
+				}
+				cout << endl;
+			}
+		}
+		// Cas ou l'ile est dans un lac
+		else if (currentIsland->Attribute("lake") != "") {
+			cout << "\t- Est dans le lac : " << getLakeXMLElementFromCode(currentIsland->Attribute("lake"))->FirstChildElement("name")->GetText() << endl;
+		}
+		// Cas ou l'ile est dans un fleuve
+		else if (currentIsland->Attribute("river") != "") {
+			cout << "\t- Est dans le fleuve : " << getRiverXMLElementFromCode(currentIsland->Attribute("river"))->FirstChildElement("name")->GetText() << endl;
+		}
+
+		cout << "\t- Est dans le pays : " << getCountryXmlelementFromCode(currentIsland->Attribute("country"))->FirstChildElement("name")->GetText() << endl <<
+		"\t- Sa superficie est : " << currentIsland->FirstChildElement("area")->GetText() << endl <<
+		"\t- Sa latitude est : " << currentIsland->FirstChildElement("latitude")->GetText() << endl <<
+		"\t- Sa longitude est : " << currentIsland->FirstChildElement("longitude")->GetText() << endl <<
+		"\t- Son altitude est : " << currentIsland->FirstChildElement("elevation")->GetText() << endl;
+	}
 }
 
 /**
- * Renvoie le XMLElement de la division administrative de code provinceCode du pays de code countryCode de l'instance courante de Mondial, ou nullptr si la province n'existe pas
+ * Renvoie le XMLElement de la division administrative de code provinceCode du pays de code countryCode de l'instance courante de Mondial, ou bien nullptr si la province n'existe pas
  * 
  * @param countryCode le code du pays
  * @param provinceCode le code de la province
@@ -459,6 +502,57 @@ XMLElement* Mondial::getProvinceXmlelementFromCodesIter(string countryCode, stri
 	}
 
 	return currentProvince;	// On renvoie soit nullptr soit la bonne province avec la condition du if
+}
+
+/**
+ * Renvoie le XMLElement de la mer d'id seaCode de l'instance courante de Mondial, ou bien nullptr si la mer n'existe pas
+ * 
+ * @param seaCode l'id de la mer
+ * @return un pointeur vers le XMLElement de la mer ou nullptr si la mer n'existe pas
+ */
+XMLElement* Mondial::getSeaXMLElementFromCode(string seaCode) const {
+	XMLElement *currentSea = racineMondial->FirstChildElement("seascategory")->FirstChildElement("sea");
+
+	// On effectue un parcours complet des adelphes de la mer jusqu'à qu'ils n'y aie plus d'adelphes ou que l'id de la mer soit le bon
+	while (currentSea != nullptr && currentSea->Attribute("id") != seaCode) {
+		currentSea = currentSea->NextSiblingElement();
+	}
+
+	return currentSea;	// On renvoie soit nullptr soit la bonne mer avec la condition du if
+}
+
+/**
+ * Renvoie le XMLElement du lac d'id lakeCode de l'instance courante de Mondial, ou bien nullptr si le lac n'existe pas
+ * 
+ * @param lakeCode l'id du lac
+ * @return un pointeur vers le XMLElement du lac ou nullptr si le lac n'existe pas
+ */
+XMLElement* Mondial::getLakeXMLElementFromCode(string lakeCode) const {
+	XMLElement *currentLake = racineMondial->FirstChildElement("lakescategory")->FirstChildElement("lake");
+
+	// On effectue un parcours complet des adelphes du lac jusqu'à qu'ils n'y aie plus d'adelphes ou que l'id du lac soit le bon
+	while (currentLake != nullptr && currentLake->Attribute("id") != lakeCode) {
+		currentLake = currentLake->NextSiblingElement();
+	}
+
+	return currentLake;		// On renvoie soit nullptr soit le bon lac avec la condition du if
+}
+
+/**
+ * Renvoie le XMLElement de la riviere d'id riverCode de l'instance courante de Mondial, ou bien nullptr si la riviere n'existe pas
+ * 
+ * @param riverCode l'id de la riviere
+ * @return un pointeur vers le XMLElement de la riviere ou nullptr si la riviere n'existe pas
+ */
+XMLElement* Mondial::getRiverXMLElementFromCode(string riverCode) const {
+	XMLElement *currentRiver = racineMondial->FirstChildElement("riverscategory")->FirstChildElement("river");
+
+	// On effectue un parcours complet des adelphes de la riviere jusqu'à qu'ils n'y aie plus d'adelphes ou que l'id de la riviere soit le bon
+	while (currentRiver != nullptr && currentRiver->Attribute("id") != riverCode) {
+		currentRiver = currentRiver->NextSiblingElement();
+	}
+
+	return currentRiver;	// On renvoie soit nullptr soit la bonne riviere avec la condition du if
 }
 
 /**

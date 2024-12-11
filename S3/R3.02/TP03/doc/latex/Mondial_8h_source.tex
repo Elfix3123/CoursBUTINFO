@@ -1,0 +1,112 @@
+\doxysection{Mondial.\+h}
+\hypertarget{Mondial_8h_source}{}\label{Mondial_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ }}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ File:\ \ \ Mondial.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ Author:\ hb}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Created\ on\ 22\ novembre\ 2018,\ 16:05}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ MONDIAL\_H}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ MONDIAL\_H}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}tinyxml2.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}PrecondVioleeExcep.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{using\ namespace\ }tinyxml2;\ \textcolor{comment}{//\ dans\ l'espace\ de\ nom\ de\ la\ bibliothèque}}
+\DoxyCodeLine{00018\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classMondial}{Mondial}}\ \{}
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{classMondial}{Mondial}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ filename);}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classMondial_aab222bc89858079f6726ad14403c7c0b}{getNbAirports}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00025\ \ \ \ \ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classMondial_a187e96e979365cf7fc9614b2a5b0aaf8}{getNbDeserts}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00027\ \ \ \ \ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classMondial_ae8e49a0ff19d9e855bae02edc435f436}{getNbElemCat}}(\textcolor{keywordtype}{string}\ categoryName);}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMondial_a1bb92c69589db03b044a9c3244404978}{printCountriesCode}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00031\ \ \ \ \ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{classMondial_a2f57b239d16cefb4ffaa092ebee067eb}{getCountryCodeFromName}}(\textcolor{keywordtype}{string}\ countryName)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classMondial_a1c84f2c002473fa87d436c2851defb91}{getCountryPopulationFromName}}(\textcolor{keywordtype}{string}\ countryName)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMondial_af0a5f3d82928abe8eaa0df7e2c5609c1}{printCountryBorders}}(\textcolor{keywordtype}{string}\ countryName)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMondial_a7c6a3bb938c7ad5f4990ba7f70b4dfc7}{printCountriesWithProvincesCrossedByRiver}}(\textcolor{keywordtype}{string}\ riverName)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMondial_a7012fa1e216bba6aee221254fca73622}{printAllCountriesCrossedByRiver}}(\textcolor{keywordtype}{string}\ riverName)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00041\ \ \ \ \ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMondial_ac12df375717b85e145cd39840117a61e}{printCountriesAndProvincesCrossedByRiver}}(\textcolor{keywordtype}{string}\ riverName)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00043\ \ \ \ \ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMondial_a63395c6e529ba451448c1b907e9382b2}{printCityInformation}}(\textcolor{keywordtype}{string}\ cityName)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00045\ \ \ \ \ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMondial_ac6e9f15249ef6433e2da45eae35a98dd}{printIslandsInformations}}(\textcolor{keywordtype}{string}\ islandName)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ Print();}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classMondial}{\string~Mondial}}();}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{comment}{//\ Un\ XMLDocument\ permet\ d'accéder\ à\ toutes\ les\ fonctionnalités\ de\ la\ bibliothèque}}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{comment}{//\ Il\ peut\ être\ sauvegardé,\ chargé,\ et\ affiché\ à\ l'écran.}}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{comment}{//\ Tous\ les\ noeuds\ sont\ connectés\ et\ alloués\ à\ un\ document.}}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{comment}{//\ Si\ le\ document\ est\ supprimé,\ tous\ ses\ noeuds\ sont\ aussi\ supprimés.}}
+\DoxyCodeLine{00058\ \ \ \ \ \mbox{\hyperlink{classtinyxml2_1_1XMLDocument}{XMLDocument}}\ imageMondial;}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{comment}{//\ XMLElement\ est\ une\ classe\ container.}}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{comment}{//\ Un\ element\ possède\ une\ valeur,\ un\ nom\ et\ peut\ contenir\ d'autres\ éléments,\ du\ texte,\ des\ commentaires,\ des\ inconnus}}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{comment}{//\ Un\ élément\ peut\ contenir\ un\ nombre\ arbitraire\ d'attributs\ \ \ \ }}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{comment}{//\ racineMondial\ est\ un\ élément\ de\ la\ classe\ <mondial>\ qui\ permet\ de\ parcourir\ les\ entrées\ familles\ d'éléments\ pays,\ fleuves,\ ...}}
+\DoxyCodeLine{00063\ \ \ \ \ \mbox{\hyperlink{classtinyxml2_1_1XMLElement}{XMLElement}}*\ racineMondial;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00064\ \ \ \ \ }
+\DoxyCodeLine{00065\ \ \ \ \ map<string,\ string>\ decod\_category\ =\ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}pays"{}},\ \textcolor{stringliteral}{"{}countriescategory"{}}\},}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}continent"{}},\ \textcolor{stringliteral}{"{}continentscategory"{}}\},}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}organisation"{}},\ \textcolor{stringliteral}{"{}organizationscategory"{}}\},}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}mer"{}},\ \textcolor{stringliteral}{"{}seascategory"{}}\},}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}fleuve"{}},\ \textcolor{stringliteral}{"{}riverscategory"{}}\},}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}lac"{}},\ \textcolor{stringliteral}{"{}lakescategory"{}}\},}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}île"{}},\ \textcolor{stringliteral}{"{}islandscategory"{}}\},}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}montagne"{}},\ \textcolor{stringliteral}{"{}mountainscategory"{}}\},}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}désert"{}},\ \textcolor{stringliteral}{"{}desertscategory"{}}\},}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}aéroport"{}},\ \textcolor{stringliteral}{"{}airportscategory"{}}\},}
+\DoxyCodeLine{00076\ \ \ \ \ \};}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \mbox{\hyperlink{classtinyxml2_1_1XMLElement}{XMLElement}}*\ getCountryXmlelementFromNameRec(\textcolor{keywordtype}{string}\ countryName)\ \textcolor{keyword}{const};\ }
+\DoxyCodeLine{00079\ \ \ \ \ }
+\DoxyCodeLine{00080\ \ \ \ \ \mbox{\hyperlink{classtinyxml2_1_1XMLElement}{XMLElement}}*\ getCountryXmlelementFromNameRecWorker(\mbox{\hyperlink{classtinyxml2_1_1XMLElement}{XMLElement}}*\ currentCountryElement,\ \textcolor{keywordtype}{string}\ countryName)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00081\ \ \ }
+\DoxyCodeLine{00082\ \ \ \ \ \mbox{\hyperlink{classtinyxml2_1_1XMLElement}{XMLElement}}*\ getCountryXmlelementFromNameIter(\textcolor{keywordtype}{string}\ countryName)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00083\ \ \ \ \ }
+\DoxyCodeLine{00084\ \ \ \ \ \mbox{\hyperlink{classtinyxml2_1_1XMLElement}{XMLElement}}*\ getCountryXmlelementFromCode(\textcolor{keywordtype}{string}\ countryCode)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \mbox{\hyperlink{classtinyxml2_1_1XMLElement}{XMLElement}}*\ getRiverXmlelementFromNameIter(\textcolor{keywordtype}{string}\ riverName)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ \mbox{\hyperlink{classtinyxml2_1_1XMLElement}{XMLElement}}*\ getProvinceXmlelementFromCodesIter(\textcolor{keywordtype}{string}\ countryCode,\ \textcolor{keywordtype}{string}\ provinceCode)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \mbox{\hyperlink{classtinyxml2_1_1XMLElement}{XMLElement}}*\ getSeaXMLElementFromCode(\textcolor{keywordtype}{string}\ seaCode)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \ \ \ \ \mbox{\hyperlink{classtinyxml2_1_1XMLElement}{XMLElement}}*\ getLakeXMLElementFromCode(\textcolor{keywordtype}{string}\ lakeCode)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ \mbox{\hyperlink{classtinyxml2_1_1XMLElement}{XMLElement}}*\ getRiverXMLElementFromCode(\textcolor{keywordtype}{string}\ riverCode)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{comment}{//\ Procédures\ de\ découpage\ des\ chaînes\ en\ mots}}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Out>}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordtype}{void}\ split(\textcolor{keywordtype}{string}\&\ s,\ \textcolor{keywordtype}{char}\ delim,\ Out\ result)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00109\ \ \ \ \ vector<std::string>\ split(\textcolor{keywordtype}{string}\&\ s,\ \textcolor{keywordtype}{char}\ delim)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \};}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ MONDIAL\_H\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00114\ }
+
+\end{DoxyCode}

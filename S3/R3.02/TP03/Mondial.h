@@ -43,7 +43,7 @@ public:
     
     void printCityInformation(string cityName) const;
     
-    void printIslandsInformations() const;
+    void printIslandsInformations(string islandName) const;
 
 
     void Print();
@@ -86,6 +86,12 @@ private:
     XMLElement* getRiverXmlelementFromNameIter(string riverName) const;
 
     XMLElement* getProvinceXmlelementFromCodesIter(string countryCode, string provinceCode) const;
+
+    XMLElement* getSeaXMLElementFromCode(string seaCode) const;
+
+    XMLElement* getLakeXMLElementFromCode(string lakeCode) const;
+
+    XMLElement* getRiverXMLElementFromCode(string riverCode) const;
 
     // Procédures de découpage des chaînes en mots
 
