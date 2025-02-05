@@ -1,0 +1,8 @@
+#!/bin/bash
+
+for file in /usr/share/icons/gnome/256x256/mimetypes/*.png
+do
+	echo "Converting $file to /tmp/img/$(basename "$file" .png).jpeg..."
+	convert "$file" "/tmp/img/$(basename "$file" .png).jpeg"
+done
+

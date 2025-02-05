@@ -1,0 +1,28 @@
+#!/bin/bash
+
+affiche()
+{
+	if [ $# = 0 ]
+	then
+		currentfile="."
+	elif [ $# = 1 ]
+	then
+		currentfile=$1
+	else
+		echo "incorrect arg number : must be 0 or 1"
+		exit
+	fi
+
+	echo "$btmfiles"
+	for btmfiles in "$currentfile"/*
+	do
+		if [ -d "$btmfiles" ] && [ -x "$btmfiles" ]
+		then
+			affiche "$btmfiles"
+		else
+			echo "$btmfiles"
+		fi
+	done
+}
+
+affiche $1

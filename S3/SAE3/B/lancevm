@@ -1,0 +1,4 @@
+ssh assr 'qemu-system-x86_64 -M q35 -cpu host -m 2048 -enable-kvm -device VGA,xres=1024,yres=768 -drive 
+format=raw,file=S3.01-debian-12.img,discard=unmap -net nic,macaddr=02:01:01:01:01:22 
+-net tap,ifname=tap122,script= -nographic' &
+

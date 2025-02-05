@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo -n "Entrez un nom de fichier : "
+read file
+echo "Réponse lue : $file"
+if [ -f $file ]
+then
+  echo "$file est un fichier"
+else
+  echo "$file n'est pas un fichier"
+fi

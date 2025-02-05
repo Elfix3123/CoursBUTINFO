@@ -1,0 +1,9 @@
+1. The drive probably uses FAT16.
+2. The sector count of the image is 444 160 and it's image type is Raw.
+3. The cluster size is 16 384. 50 clusters are in use, and 61 501 remain free.
+4. The "E5" at the beginning of a file name means this file has been deleted in FAT16.
+5. The EXIF data of images says they have been created arround September 2008 but the PDF file, apparently from June 2008, talks about those pictures.
+6. Since the image files contains the keyword "Photoshop", and since their modification date is sometimes prior to their creation date, the images may have been forged.
+7. "lily.jpg" is a PDF file.
+9. The sdelete utility write random bits instead of data, so it may have been used to erase the .ZZZZ file.
+11. In the unallocated space, the 00002 file is a jpg file.

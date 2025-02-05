@@ -1,0 +1,4 @@
+#!/bin/bash
+echo 'Un double slash \\ est doublement spécial'
+echo "Un double slash \\ est doublement spécial"
+echo $(Un double slash \\ est doublement spécial)

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [ $# = 0 ]
+then
+	arcrep="B"
+else
+	arcrep="$1"
+fi
+
+echo "Repertoire a archiver : $HOME/$arcrep"
+
+if tar --exclude --zstd -cvf /tmp/"$arcrep"-"$(date -I)".tar.zstd "$HOME/$arcrep"
+then
+	echo "Archive creee : /tmp/$arcrep-$(date -I).tar.zstd"
+else 
+	echo "Erreur lors de la creation de l'archive, code $?"
+fi

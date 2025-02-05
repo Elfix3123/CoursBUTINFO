@@ -1,0 +1,227 @@
+{
+  "main": {
+    "id": "1c6eec8a6de9a120",
+    "type": "split",
+    "children": [
+      {
+        "id": "df8d8f222db9c1ac",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "fda3879804d97779",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "S3/R3.11/Propriété littéraire et artistique.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Propriété littéraire et artistique"
+            }
+          },
+          {
+            "id": "178c6ac85d2e4554",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "S3/R3.11/Propriété industrielle.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Propriété industrielle"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "290f5699e9b23daf",
+    "type": "split",
+    "children": [
+      {
+        "id": "37121171bbc5d4b0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "24b954db099fe555",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "dc142662aca86ca8",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "b8c9af51f966f3b9",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "56ee0d18a4a21d29",
+    "type": "split",
+    "children": [
+      {
+        "id": "7786ffb7cf777a1b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0c40d94291abdf66",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "S3/R3.12/Presentation.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Presentation"
+            }
+          },
+          {
+            "id": "9ba1f5a894bc3695",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "S3/R3.12/Presentation.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Presentation"
+            }
+          },
+          {
+            "id": "a25168717cb56e1c",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "149d844b5fa2d3db",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "S3/R3.12/Presentation.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Presentation"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "fda3879804d97779",
+  "lastOpenFiles": [
+    "S3/R3.11/Propriété industrielle.md",
+    "S3/R3.11/Propriété littéraire et artistique.md",
+    "S3/R3.05/TD/TD03.md",
+    "S3/R3.05/TD/TD03-2-1.png",
+    "S3/R3.05/TD/TD03-2-3.png",
+    "S3/R3.05/TD/TP03-2-1.png",
+    "S3/R3.05/TD/TD03-2-2.png",
+    "S3/R3.05/TD/TD03-1.drawio",
+    "S3/R3.05/TD/Untitled Diagram.drawio",
+    "S3/R3.05/TD/TD03-1.png",
+    "S3/R3.05/TD/Untitled Diagram.drawio.png",
+    "Untitled Diagram.drawio.png",
+    "S3/R3.05/TD/TD02.md",
+    "S3/R3.05/TD/TD01.md",
+    "Untitled.md",
+    "S3/R3.13/Vulgarisation.md",
+    "S3/R3.13/Sémiotique visuelle.md",
+    "S3/R3.13/CV&LM.md",
+    "S3/R3.13/L'entretient d'embauche.md",
+    "S3/R3.13/La Vague.md",
+    "S3/SAE3/ExpCom.md",
+    "S3/R3.05/TP/TP02/bin-clang/tableau2d-00cd7116.o.tmp",
+    "S3/R3.05/TP/TP02/bin-clang/tableau2d-9c88a0a7.o.tmp",
+    "S3/R3.05/TP/TP02/bin-clang/tableau2d.o",
+    "S3/R3.05/TP/TP02/bin-clang/tableau2d-c3823663.o.tmp",
+    "S3/R3.05/TP/TP02/bin-clang/tableau2d-685e3b23.o.tmp",
+    "S3/R3.05/TP/TP02/bin-clang/tableau2d-b8999290.o.tmp",
+    "S3/R3.05/TP/TP02/bin-clang/tableau2d-6745b1d0.o.tmp",
+    "S3/R3.05/TP/TP02/bin-gcc/tableau2d",
+    "S3/R3.06/Compte rendu.md",
+    "S3/R3.03/Untitled 1.md",
+    "S3/R3.04/rappel.md",
+    "S3/R3.05/TD01.md",
+    "S3/R3.11/RGPD.md",
+    "S3/R3.11/TD01.md",
+    "S3/R3.12/Presentation.md",
+    "S3/SAE3/B/Traitement de données.md",
+    "S3/R3.10b/Méthodes Agiles.md",
+    "S3/R3.12/Oreo.md",
+    "S3/R3.11/Untitled 1.md",
+    "S3/R3.10a/La dimension humaine du SI.md",
+    "S3/R3.10a/La dimension organisationnelle du SI.md",
+    "Portfolio/img/SAE204.png",
+    "Portfolio/img/SAE201.png",
+    "Portfolio/img/SAE1012.png"
+  ]
+}

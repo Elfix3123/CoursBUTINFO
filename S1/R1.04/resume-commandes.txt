@@ -1,4 +1,4 @@
-#!/bin/bash au début de chaque script bash
+#!/bin/bash au début de chaque script bash	
 
 shellcheck SCRIPT : verifie que SCRIPT est ecrit correctement 
 

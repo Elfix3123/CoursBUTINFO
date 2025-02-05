@@ -1,0 +1,7 @@
+#!/bin/bash
+if .cp titi toto
+then
+	echo "prg returned zero"
+else
+	echo "prg returned non-zero ($?)"
+fi
