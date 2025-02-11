@@ -42,7 +42,7 @@ documentation. We recommend starting with the
 [GoogleTest Primer](https://google.github.io/googletest/primer.html).
 
 More information about building GoogleTest can be found at
-[googletest/README.md](googletest/README.md).
+[googletest/README.md](S3/R3.04/TP06/build/_deps/googletest-src/googletest/README.md).
 
 ## Features
 

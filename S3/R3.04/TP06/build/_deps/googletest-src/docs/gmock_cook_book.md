@@ -1088,7 +1088,7 @@ matchers.
 
 As a convenience and example, gMock provides some matchers for 2-tuples,
 including the `Lt()` matcher above. See
-[Multi-argument Matchers](reference/matchers.md#MultiArgMatchers) for the
+[Multi-argument Matchers](matchers.md#MultiArgMatchers) for the
 complete list.
 
 Note that if you want to pass the arguments to a predicate of your own (e.g.
@@ -1136,13 +1136,13 @@ Matches(AllOf(Ge(0), Le(100), Ne(50)))
 
 ### Using Matchers in googletest Assertions
 
-See [`EXPECT_THAT`](reference/assertions.md#EXPECT_THAT) in the Assertions
+See [`EXPECT_THAT`](assertions.md#EXPECT_THAT) in the Assertions
 Reference.
 
 ### Using Predicates as Matchers
 
 gMock provides a set of built-in matchers for matching arguments with expected
-values—see the [Matchers Reference](reference/matchers.md) for more information.
+values—see the [Matchers Reference](matchers.md) for more information.
 In case you find the built-in set lacking, you can use an arbitrary unary
 predicate function or functor as a matcher - as long as the predicate accepts a
 value of the type you want. You do this by wrapping the predicate inside the
@@ -1716,7 +1716,7 @@ the test should reflect our real intent, instead of being overly constraining.
 
 gMock allows you to impose an arbitrary DAG (directed acyclic graph) on the
 calls. One way to express the DAG is to use the
-[`After` clause](reference/mocking.md#EXPECT_CALL.After) of `EXPECT_CALL`.
+[`After` clause](mocking.md#EXPECT_CALL.After) of `EXPECT_CALL`.
 
 Another way is via the `InSequence()` clause (not the same as the `InSequence`
 class), which we borrowed from jMock 2. It's less flexible than `After()`, but

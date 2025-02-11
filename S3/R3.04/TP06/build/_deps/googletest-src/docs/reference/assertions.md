@@ -56,7 +56,7 @@ in the future.
 Generates a fatal failure, which returns from the current function.
 
 Can only be used in functions that return `void`. See
-[Assertion Placement](../advanced.md#assertion-placement) for more information.
+[Assertion Placement](advanced.md#assertion-placement) for more information.
 
 ### ADD_FAILURE {#ADD_FAILURE}
 
@@ -114,7 +114,7 @@ Expected: starts with "Hello"
 
 GoogleTest provides a built-in library of matchers—see the
 [Matchers Reference](matchers.md). It is also possible to write your own
-matchers—see [Writing New Matchers Quickly](../gmock_cook_book.md#NewMatchers).
+matchers—see [Writing New Matchers Quickly](gmock_cook_book.md#NewMatchers).
 The use of matchers makes `EXPECT_THAT` a powerful, extensible assertion.
 
 *The idea for this assertion was borrowed from Joe Walnes' Hamcrest project,
@@ -147,7 +147,7 @@ will result.
 If an argument supports the `<<` operator, it will be called to print the
 argument when the assertion fails. Otherwise, GoogleTest will attempt to print
 them in the best way it can—see
-[Teaching GoogleTest How to Print Your Values](../advanced.md#teaching-googletest-how-to-print-your-values).
+[Teaching GoogleTest How to Print Your Values](advanced.md#teaching-googletest-how-to-print-your-values).
 
 Arguments are always evaluated exactly once, so it's OK for the arguments to
 have side effects. However, the argument evaluation order is undefined and
@@ -451,7 +451,7 @@ expressions as they appear in the source code. The types `T1`, `T2`, ..., `Tn`
 can be either value types or reference types; if an argument has type `T`, it
 can be declared as either `T` or `const T&`, whichever is appropriate. For more
 about the return type `testing::AssertionResult`, see
-[Using a Function That Returns an AssertionResult](../advanced.md#using-a-function-that-returns-an-assertionresult).
+[Using a Function That Returns an AssertionResult](advanced.md#using-a-function-that-returns-an-assertionresult).
 
 As an example, see the following code:
 
@@ -522,7 +522,7 @@ Verifies that *`expression`* is a failure `HRESULT`.
 ## Death Assertions {#death}
 
 The following assertions verify that a piece of code causes the process to
-terminate. For context, see [Death Tests](../advanced.md#death-tests).
+terminate. For context, see [Death Tests](advanced.md#death-tests).
 
 These assertions spawn a new process and execute the code under test in that
 process. How that happens depends on the platform and the variable
@@ -567,7 +567,7 @@ status and produces `stderr` output that matches *`matcher`*.
 
 The parameter *`matcher`* is either a [matcher](matchers.md) for a `const
 std::string&`, or a regular expression (see
-[Regular Expression Syntax](../advanced.md#regular-expression-syntax))—a bare
+[Regular Expression Syntax](advanced.md#regular-expression-syntax))—a bare
 string *`s`* (with no matcher) is treated as
 [`ContainsRegex(s)`](matchers.md#string-matchers), **not**
 [`Eq(s)`](matchers.md#generic-comparison).
@@ -619,7 +619,7 @@ cases:
 
 The parameter *`matcher`* is either a [matcher](matchers.md) for a `const
 std::string&`, or a regular expression (see
-[Regular Expression Syntax](../advanced.md#regular-expression-syntax))—a bare
+[Regular Expression Syntax](advanced.md#regular-expression-syntax))—a bare
 string *`s`* (with no matcher) is treated as
 [`ContainsRegex(s)`](matchers.md#string-matchers), **not**
 [`Eq(s)`](matchers.md#generic-comparison).

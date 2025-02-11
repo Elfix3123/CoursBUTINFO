@@ -42,7 +42,7 @@ Defines an individual test named *`TestName`* that uses the test fixture class
 Both arguments *`TestFixtureName`* and *`TestName`* must be valid C++
 identifiers and must not contain underscores (`_`). *`TestFixtureName`* must be
 the name of a test fixture class—see
-[Test Fixtures](../primer.md#same-data-multiple-tests).
+[Test Fixtures](primer.md#same-data-multiple-tests).
 
 The statements within the test body can be any code under test.
 [Assertions](assertions.md) used within the test body determine the outcome of
@@ -63,7 +63,7 @@ test fixture class *`TestFixtureName`*. The test suite name is
 Both arguments *`TestFixtureName`* and *`TestName`* must be valid C++
 identifiers and must not contain underscores (`_`). *`TestFixtureName`* must be
 the name of a value-parameterized test fixture class—see
-[Value-Parameterized Tests](../advanced.md#value-parameterized-tests).
+[Value-Parameterized Tests](advanced.md#value-parameterized-tests).
 
 The statements within the test body can be any code under test. Within the test
 body, the test parameter can be accessed with the `GetParam()` function (see
@@ -130,7 +130,7 @@ INSTANTIATE_TEST_SUITE_P(
 ```
 
 For more information, see
-[Value-Parameterized Tests](../advanced.md#value-parameterized-tests).
+[Value-Parameterized Tests](advanced.md#value-parameterized-tests).
 
 See also
 [`GTEST_ALLOW_UNINSTANTIATED_PARAMETERIZED_TEST`](#GTEST_ALLOW_UNINSTANTIATED_PARAMETERIZED_TEST).
@@ -168,7 +168,7 @@ The type alias (`using` or `typedef`) is necessary for the `TYPED_TEST_SUITE`
 macro to parse correctly.
 
 See also [`TYPED_TEST`](#TYPED_TEST) and
-[Typed Tests](../advanced.md#typed-tests) for more information.
+[Typed Tests](advanced.md#typed-tests) for more information.
 
 ### TYPED_TEST {#TYPED_TEST}
 
@@ -205,7 +205,7 @@ TYPED_TEST(MyFixture, Example) {
 }
 ```
 
-For more information, see [Typed Tests](../advanced.md#typed-tests).
+For more information, see [Typed Tests](advanced.md#typed-tests).
 
 ### TYPED_TEST_SUITE_P {#TYPED_TEST_SUITE_P}
 
@@ -218,7 +218,7 @@ The argument *`TestFixtureName`* is a fixture class template, parameterized by a
 type. See [`TYPED_TEST_SUITE`](#TYPED_TEST_SUITE) for an example.
 
 See also [`TYPED_TEST_P`](#TYPED_TEST_P) and
-[Type-Parameterized Tests](../advanced.md#type-parameterized-tests) for more
+[Type-Parameterized Tests](advanced.md#type-parameterized-tests) for more
 information.
 
 ### TYPED_TEST_P {#TYPED_TEST_P}
@@ -238,7 +238,7 @@ and `TestFixture` refers to the fixture class. See [`TYPED_TEST`](#TYPED_TEST)
 for an example.
 
 See also [`REGISTER_TYPED_TEST_SUITE_P`](#REGISTER_TYPED_TEST_SUITE_P) and
-[Type-Parameterized Tests](../advanced.md#type-parameterized-tests) for more
+[Type-Parameterized Tests](advanced.md#type-parameterized-tests) for more
 information.
 
 ### REGISTER_TYPED_TEST_SUITE_P {#REGISTER_TYPED_TEST_SUITE_P}
@@ -262,7 +262,7 @@ REGISTER_TYPED_TEST_SUITE_P(MyFixture, HasPropertyA, HasPropertyB);
 ```
 
 See also [`INSTANTIATE_TYPED_TEST_SUITE_P`](#INSTANTIATE_TYPED_TEST_SUITE_P) and
-[Type-Parameterized Tests](../advanced.md#type-parameterized-tests) for more
+[Type-Parameterized Tests](advanced.md#type-parameterized-tests) for more
 information.
 
 ### INSTANTIATE_TYPED_TEST_SUITE_P {#INSTANTIATE_TYPED_TEST_SUITE_P}
@@ -290,7 +290,7 @@ The type alias (`using` or `typedef`) is necessary for the
 `INSTANTIATE_TYPED_TEST_SUITE_P` macro to parse correctly.
 
 For more information, see
-[Type-Parameterized Tests](../advanced.md#type-parameterized-tests).
+[Type-Parameterized Tests](advanced.md#type-parameterized-tests).
 
 ### FRIEND_TEST {#FRIEND_TEST}
 
@@ -333,7 +333,7 @@ TEST_F(MyClassTest, HasPropertyB) { ... }
 }  // namespace my_namespace
 ```
 
-See [Testing Private Code](../advanced.md#testing-private-code) for more
+See [Testing Private Code](advanced.md#testing-private-code) for more
 information.
 
 ### SCOPED_TRACE {#SCOPED_TRACE}
@@ -345,7 +345,7 @@ be added to the failure message for each assertion failure that occurs in the
 scope.
 
 For more information, see
-[Adding Traces to Assertions](../advanced.md#adding-traces-to-assertions).
+[Adding Traces to Assertions](advanced.md#adding-traces-to-assertions).
 
 See also the [`ScopedTrace` class](#ScopedTrace).
 
@@ -364,7 +364,7 @@ test suite.
 
 Similar to assertions, `GTEST_SKIP` allows streaming a custom message into it.
 
-See [Skipping Test Execution](../advanced.md#skipping-test-execution) for more
+See [Skipping Test Execution](advanced.md#skipping-test-execution) for more
 information.
 
 ### GTEST_ALLOW_UNINSTANTIATED_PARAMETERIZED_TEST {#GTEST_ALLOW_UNINSTANTIATED_PARAMETERIZED_TEST}
@@ -418,7 +418,7 @@ needs to override the methods it cares about.
 `::testing::Environment`
 
 Represents a global test environment. See
-[Global Set-Up and Tear-Down](../advanced.md#global-set-up-and-tear-down).
+[Global Set-Up and Tear-Down](advanced.md#global-set-up-and-tear-down).
 
 #### Protected Methods {#Environment-protected}
 
@@ -573,8 +573,8 @@ Gets the name of the test suite.
 `const char* TestSuite::type_param() const`
 
 Returns the name of the parameter type, or `NULL` if this is not a typed or
-type-parameterized test suite. See [Typed Tests](../advanced.md#typed-tests) and
-[Type-Parameterized Tests](../advanced.md#type-parameterized-tests).
+type-parameterized test suite. See [Typed Tests](advanced.md#typed-tests) and
+[Type-Parameterized Tests](advanced.md#type-parameterized-tests).
 
 ##### should_run {#TestSuite::should_run}
 
@@ -694,8 +694,8 @@ Returns the test name.
 `const char* TestInfo::type_param() const`
 
 Returns the name of the parameter type, or `NULL` if this is not a typed or
-type-parameterized test. See [Typed Tests](../advanced.md#typed-tests) and
-[Type-Parameterized Tests](../advanced.md#type-parameterized-tests).
+type-parameterized test. See [Typed Tests](advanced.md#typed-tests) and
+[Type-Parameterized Tests](advanced.md#type-parameterized-tests).
 
 ##### value_param {#TestInfo::value_param}
 
@@ -703,7 +703,7 @@ type-parameterized test. See [Typed Tests](../advanced.md#typed-tests) and
 
 Returns the text representation of the value parameter, or `NULL` if this is not
 a value-parameterized test. See
-[Value-Parameterized Tests](../advanced.md#value-parameterized-tests).
+[Value-Parameterized Tests](advanced.md#value-parameterized-tests).
 
 ##### file {#TestInfo::file}
 
@@ -733,7 +733,7 @@ full name matches the user-specified filter.
 
 GoogleTest allows the user to filter the tests by their full names. Only the
 tests that match the filter will run. See
-[Running a Subset of the Tests](../advanced.md#running-a-subset-of-the-tests)
+[Running a Subset of the Tests](advanced.md#running-a-subset-of-the-tests)
 for more information.
 
 ##### is_reportable {#TestInfo::is_reportable}
@@ -1277,8 +1277,8 @@ The template argument `T...` can be any number of types, for example:
 ::testing::Types<char, int, unsigned int>
 ```
 
-See [Typed Tests](../advanced.md#typed-tests) and
-[Type-Parameterized Tests](../advanced.md#type-parameterized-tests) for more
+See [Typed Tests](advanced.md#typed-tests) and
+[Type-Parameterized Tests](advanced.md#type-parameterized-tests) for more
 information.
 
 ### WithParamInterface {#WithParamInterface}
@@ -1300,7 +1300,7 @@ static const ParamType& GetParam()
 ```
 
 For more information, see
-[Value-Parameterized Tests](../advanced.md#value-parameterized-tests).
+[Value-Parameterized Tests](advanced.md#value-parameterized-tests).
 
 ## Functions
 
@@ -1332,7 +1332,7 @@ platforms where there is no `argc`/`argv`.
 
 Adds a test environment to the test program. Must be called before
 [`RUN_ALL_TESTS()`](#RUN_ALL_TESTS) is called. See
-[Global Set-Up and Tear-Down](../advanced.md#global-set-up-and-tear-down) for
+[Global Set-Up and Tear-Down](advanced.md#global-set-up-and-tear-down) for
 more information.
 
 See also [`Environment`](#Environment).
@@ -1362,7 +1362,7 @@ Must be called before [`RUN_ALL_TESTS()`](#RUN_ALL_TESTS) is invoked, otherwise
 behavior is undefined.
 
 See
-[Registering tests programmatically](../advanced.md#registering-tests-programmatically)
+[Registering tests programmatically](advanced.md#registering-tests-programmatically)
 for more information.
 
 ### RUN_ALL_TESTS {#RUN_ALL_TESTS}
@@ -1405,7 +1405,7 @@ See [`AssertionResult`](#AssertionResult).
 Compile-time assertion for type equality. Compiles if and only if `T1` and `T2`
 are the same type. The value it returns is irrelevant.
 
-See [Type Assertions](../advanced.md#type-assertions) for more information.
+See [Type Assertions](advanced.md#type-assertions) for more information.
 
 ### PrintToString {#PrintToString}
 
@@ -1414,7 +1414,7 @@ See [Type Assertions](../advanced.md#type-assertions) for more information.
 Prints any value `x` using GoogleTest's value printer.
 
 See
-[Teaching GoogleTest How to Print Your Values](../advanced.md#teaching-googletest-how-to-print-your-values)
+[Teaching GoogleTest How to Print Your Values](advanced.md#teaching-googletest-how-to-print-your-values)
 for more information.
 
 ### PrintToStringParamName {#PrintToStringParamName}
@@ -1424,7 +1424,7 @@ for more information.
 A built-in parameterized test name generator which returns the result of
 [`PrintToString`](#PrintToString) called on `info.param`. Does not work when the
 test parameter is a `std::string` or C string. See
-[Specifying Names for Value-Parameterized Test Parameters](../advanced.md#specifying-names-for-value-parameterized-test-parameters)
+[Specifying Names for Value-Parameterized Test Parameters](advanced.md#specifying-names-for-value-parameterized-test-parameters)
 for more information.
 
 See also [`TestParamInfo`](#TestParamInfo) and

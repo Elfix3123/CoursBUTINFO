@@ -60,13 +60,13 @@ regardless of whether the method being mocked is `public`, `protected`, or
 
 `EXPECT_CALL(`*`mock_object`*`,`*`method_name`*`(`*`matchers...`*`))`
 
-Creates an [expectation](../gmock_for_dummies.md#setting-expectations) that the
+Creates an [expectation](gmock_for_dummies.md#setting-expectations) that the
 method *`method_name`* of the object *`mock_object`* is called with arguments
 that match the given matchers *`matchers...`*. `EXPECT_CALL` must precede any
 code that exercises the mock object.
 
 The parameter *`matchers...`* is a comma-separated list of
-[matchers](../gmock_for_dummies.md#matchers-what-arguments-do-we-expect) that
+[matchers](gmock_for_dummies.md#matchers-what-arguments-do-we-expect) that
 correspond to each argument of the method *`method_name`*. The expectation will
 apply only to calls of *`method_name`* whose arguments match all of the
 matchers. If `(`*`matchers...`*`)` is omitted, the expectation behaves as if
@@ -227,7 +227,7 @@ Specifies the mock function's actual behavior when invoked, for a single
 matching function call.
 
 The parameter *`action`* represents the
-[action](../gmock_for_dummies.md#actions-what-should-it-do) that the function
+[action](gmock_for_dummies.md#actions-what-should-it-do) that the function
 call will perform. See the [Actions Reference](actions.md) for a list of
 built-in actions.
 
@@ -261,7 +261,7 @@ matching function calls. Takes effect after the actions specified in the
 [`WillOnce`](#EXPECT_CALL.WillOnce) clauses, if any, have been performed.
 
 The parameter *`action`* represents the
-[action](../gmock_for_dummies.md#actions-what-should-it-do) that the function
+[action](gmock_for_dummies.md#actions-what-should-it-do) that the function
 call will perform. See the [Actions Reference](actions.md) for a list of
 built-in actions.
 
@@ -328,7 +328,7 @@ Defines what happens when the method *`method_name`* of the object
 *Does not* set any expectations that the method will be called.
 
 The parameter *`matchers...`* is a comma-separated list of
-[matchers](../gmock_for_dummies.md#matchers-what-arguments-do-we-expect) that
+[matchers](gmock_for_dummies.md#matchers-what-arguments-do-we-expect) that
 correspond to each argument of the method *`method_name`*. The `ON_CALL`
 specification will apply only to calls of *`method_name`* whose arguments match
 all of the matchers. If `(`*`matchers...`*`)` is omitted, the behavior is as if
@@ -384,7 +384,7 @@ The `With` clause can be used at most once with each `ON_CALL` statement.
 Specifies the default behavior of a matching mock function call.
 
 The parameter *`action`* represents the
-[action](../gmock_for_dummies.md#actions-what-should-it-do) that the function
+[action](gmock_for_dummies.md#actions-what-should-it-do) that the function
 call will perform. See the [Actions Reference](actions.md) for a list of
 built-in actions.
 
@@ -439,7 +439,7 @@ DefaultValue<T>::Clear();
 `::testing::NiceMock<T>`
 
 Represents a mock object that suppresses warnings on
-[uninteresting calls](../gmock_cook_book.md#uninteresting-vs-unexpected). The
+[uninteresting calls](gmock_cook_book.md#uninteresting-vs-unexpected). The
 template parameter `T` is any mock class, except for another `NiceMock`,
 `NaggyMock`, or `StrictMock`.
 
@@ -470,7 +470,7 @@ class of `T`, a warning might still be generated.
 `::testing::NaggyMock<T>`
 
 Represents a mock object that generates warnings on
-[uninteresting calls](../gmock_cook_book.md#uninteresting-vs-unexpected). The
+[uninteresting calls](gmock_cook_book.md#uninteresting-vs-unexpected). The
 template parameter `T` is any mock class, except for another `NiceMock`,
 `NaggyMock`, or `StrictMock`.
 
@@ -497,7 +497,7 @@ Mock objects of type `T` by default behave the same way as `NaggyMock<T>`.
 `::testing::StrictMock<T>`
 
 Represents a mock object that generates test failures on
-[uninteresting calls](../gmock_cook_book.md#uninteresting-vs-unexpected). The
+[uninteresting calls](gmock_cook_book.md#uninteresting-vs-unexpected). The
 template parameter `T` is any mock class, except for another `NiceMock`,
 `NaggyMock`, or `StrictMock`.
 

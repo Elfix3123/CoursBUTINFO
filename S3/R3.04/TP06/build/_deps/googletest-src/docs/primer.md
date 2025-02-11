@@ -119,7 +119,7 @@ this in mind if you get a heap checker error in addition to assertion errors.
 
 To provide a custom failure message, simply stream it into the macro using the
 `<<` operator or a sequence of such operators. See the following example, using
-the [`ASSERT_EQ` and `EXPECT_EQ`](reference/assertions.md#EXPECT_EQ) macros to
+the [`ASSERT_EQ` and `EXPECT_EQ`](assertions.md#EXPECT_EQ) macros to
 verify value equality:
 
 ```c++
@@ -140,7 +140,7 @@ your code in various ways. You can check Boolean conditions, compare values
 based on relational operators, verify string values, floating-point values, and
 much more. There are even assertions that enable you to verify more complex
 states by providing custom predicates. For the complete list of assertions
-provided by GoogleTest, see the [Assertions Reference](reference/assertions.md).
+provided by GoogleTest, see the [Assertions Reference](assertions.md).
 
 ## Simple Tests
 

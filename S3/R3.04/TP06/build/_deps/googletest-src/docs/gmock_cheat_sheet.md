@@ -134,7 +134,7 @@ gMock has a **built-in default action** for any function that returns `void`,
 the default-constructed value, if one exists for the given type.
 
 To customize the default action for functions with return type `T`, use
-[`DefaultValue<T>`](reference/mocking.md#DefaultValue). For example:
+[`DefaultValue<T>`](mocking.md#DefaultValue). For example:
 
 ```cpp
   // Sets the default action for return type std::unique_ptr<Buzz> to
@@ -158,7 +158,7 @@ To customize the default action for functions with return type `T`, use
 ```
 
 To customize the default action for a particular method of a specific mock
-object, use [`ON_CALL`](reference/mocking.md#ON_CALL). `ON_CALL` has a similar
+object, use [`ON_CALL`](mocking.md#ON_CALL). `ON_CALL` has a similar
 syntax to `EXPECT_CALL`, but it is used for setting default behaviors when you
 do not require that the mock method is called. See
 [Knowing When to Expect](gmock_cook_book.md#UseOnCall) for a more detailed
@@ -166,28 +166,28 @@ discussion.
 
 ## Setting Expectations {#ExpectCall}
 
-See [`EXPECT_CALL`](reference/mocking.md#EXPECT_CALL) in the Mocking Reference.
+See [`EXPECT_CALL`](mocking.md#EXPECT_CALL) in the Mocking Reference.
 
 ## Matchers {#MatcherList}
 
-See the [Matchers Reference](reference/matchers.md).
+See the [Matchers Reference](matchers.md).
 
 ## Actions {#ActionList}
 
-See the [Actions Reference](reference/actions.md).
+See the [Actions Reference](actions.md).
 
 ## Cardinalities {#CardinalityList}
 
-See the [`Times` clause](reference/mocking.md#EXPECT_CALL.Times) of
+See the [`Times` clause](mocking.md#EXPECT_CALL.Times) of
 `EXPECT_CALL` in the Mocking Reference.
 
 ## Expectation Order
 
 By default, expectations can be matched in *any* order. If some or all
 expectations must be matched in a given order, you can use the
-[`After` clause](reference/mocking.md#EXPECT_CALL.After) or
-[`InSequence` clause](reference/mocking.md#EXPECT_CALL.InSequence) of
-`EXPECT_CALL`, or use an [`InSequence` object](reference/mocking.md#InSequence).
+[`After` clause](mocking.md#EXPECT_CALL.After) or
+[`InSequence` clause](mocking.md#EXPECT_CALL.InSequence) of
+`EXPECT_CALL`, or use an [`InSequence` object](mocking.md#InSequence).
 
 ## Verifying and Resetting a Mock
 

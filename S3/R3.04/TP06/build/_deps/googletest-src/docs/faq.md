@@ -280,7 +280,7 @@ disabled by our build system. Please see more details
 
 In GoogleTest, death tests are run in a child process and the way they work is
 delicate. To write death tests you really need to understand how they work—see
-the details at [Death Assertions](reference/assertions.md#death) in the
+the details at [Death Assertions](assertions.md#death) in the
 Assertions Reference.
 
 In particular, death tests don't like having multiple threads in the parent
@@ -354,7 +354,7 @@ You may still want to use `SetUp()/TearDown()` in the following cases:
 
 ## The compiler complains "no matching function to call" when I use ASSERT_PRED*. How do I fix it?
 
-See details for [`EXPECT_PRED*`](reference/assertions.md#EXPECT_PRED) in the
+See details for [`EXPECT_PRED*`](assertions.md#EXPECT_PRED) in the
 Assertions Reference.
 
 ## My compiler complains about "ignoring return value" when I call RUN_ALL_TESTS(). Why?
