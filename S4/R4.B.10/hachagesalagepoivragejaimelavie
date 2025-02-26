@@ -1,0 +1,8 @@
+<?php
+echo "Hachage Bcrypt :\n";
+echo password_hash("supermdp", PASSWORD_BCRYPT);
+echo "\n";
+echo "Argon 2 :\n";
+echo password_hash("supermdp", PASSWORD_ARGON2ID);
+echo "\n";
+?>

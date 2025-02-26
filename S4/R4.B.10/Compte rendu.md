@@ -14,5 +14,7 @@ Utiliser la clef publique de quelqu'un pour chiffrer un document assure que seul
 - Uploader des clefs : `gpg --send-keys --keyserver keys.openpgp.org CLEF`
 - Télécharger des clefs : `gpg --recv-keys --keyserver keyserver.ubuntu.com CLEF`
 - Vérifier une signature : `gpg --verify CLEF DOCUMENT_A_VERIFIER`
-- Calculer une empreinte de clef : `gpg --fingerprint CLEF`
+- Calculer une empreinte de clef : `gpg --fingerprint CLEF` ou `gpg --show-key CLEF`
 - Signer une clef : `gpg --sign-key CLEF`
+# Chiffrement de disque
+La mise en place d'un LVM chiffré utilise l'algorithme AES en mode XTS avec une clef de 1024 bits selon le standard LUKS2. 
