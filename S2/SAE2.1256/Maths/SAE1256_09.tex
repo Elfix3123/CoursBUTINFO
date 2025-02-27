@@ -1,0 +1,163 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Maximisation d'une fonction linéaire},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Maximisation d'une fonction linéaire}
+\author{}
+\date{\vspace{-2.5em}17/05/2024}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}\label{introduction}
+
+Dans le cadre de notre organisation de tournoi, nous cherchons à vendre
+du merch pendant les évènements physiques. Nous décidons dans ce cadre
+de vendre deux types de merch, des tshirt et des magnets, et posons les
+prix de ceux-ci à 5 euros pour un magnet et 12 euros pour un tshirt.
+Nous cherchons à maximiser l'argent récolté dans le cas où chacunes des
+unités préparées est vendue. Dans ce cadre, nous posons la fonction
+\(f(x, y) = 5x + 12y\) qui représente l'argent récolté et où \(x\)
+représente le nombre de magnets vendus et \(y\) le nombre de tshirts
+vendus. La question de la maximisation de l'argent récolté devient alors
+celle de la maximisation de la fonction \(f\).
+
+\section{Contraintes}\label{contraintes}
+
+Nous posons cependant certaines contraintes qui limitent notre champs
+d'action :
+
+\begin{itemize}
+\item
+  Le nombre d'unités de chaque type doit être positif.
+\item
+  En raison de la taille du camion, le nombre total d'unités doit être
+  inférieur à 50.
+\item
+  En raison du poids maximal transportable par nos équipements, le poids
+  total des unités doit être inférieur à 15kg, sachant que chaque magnet
+  pèse 100g et que chaque tshirt pèse 500g.
+\end{itemize}
+
+Nous formalisons les contraintes précédentes comme suit : \[
+\begin{cases}
+x,y\geq 0\\
+x + y \leq 50 \\
+0.1x + 0.5y \leq 15
+\end{cases}
+\]
+
+\section{Résolution graphique}\label{ruxe9solution-graphique}
+
+Afin de résoudre graphiquement le maximum de \(f\) qui réspecte les
+contraintes énnoncées précédemment, on représente le domaine des
+contraintes dans le plan :
+
+\includegraphics{SAE1256_09_files/figure-latex/unnamed-chunk-1-1.pdf}
+
+Nous avons ici représenté \(y = -x + 5\) en bleu, \(y = 0.2x + 30\) en
+rouge, \(x = 0\) en orange et \(y = 0\) en vert. Avec ces
+représentations graphiques, nous pouvons visuellement voir nos
+contraintes; ainsi, nous pouvons représenter graphiquement la fonction,
+qu'on déplace afin de trouver les valeurs de \(x\) et \(y\) qui la
+maximisent.
+
+\includegraphics{SAE1256_09_files/figure-latex/unnamed-chunk-2-1.pdf}
+
+Nous avons ici représenté \(y = \frac{-5x}{12}\) en violet et
+\(y = \frac{-5x}{12} + 35.5\) en rose. La droite violette représente
+ainsi la fonction qu'on cherche à maximiser et la droite rose une
+fonction qui en découle, modifié afin qu'un point de celle-ci soit le
+maximum qui correspond à nos contraintes. Ainsi, nous pouvons déduire
+graphiquement que les valeurs de \(x\) et \(y\) qui maximisent la
+fonction \(f(x, y) = 5x + 12y\) tout en respectant nos contraintes sont
+\(x = 25\) et \(y = 25\).
+
+\section{Résolution par simplex}\label{ruxe9solution-par-simplex}
+
+Nous cherchons désoirmais à résoudre le problème de maximisation de
+\(f\) en utilisant la méthode du simplex.
+
+\begin{verbatim}
+## 
+## Linear Programming Results
+## 
+## Call : simplex(a = z, A1 = A1, b1 = b1, maxi = TRUE)
+## 
+## Maximization Problem with Objective Function Coefficients
+## x1 x2 
+##  5 12 
+## 
+## 
+## Optimal solution has the following values
+## x1 x2 
+## 25 25 
+## The optimal value of the objective  function is 425.
+\end{verbatim}
+
+\section{Conclusion}\label{conclusion}
+
+\end{document}

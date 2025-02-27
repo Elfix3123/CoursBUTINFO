@@ -1,1 +1,8 @@
-{}
+{
+  "spellcheckDictionary": [
+    "ne",
+    "ne"
+  ],
+  "alwaysUpdateLinks": true,
+  "readableLineLength": true
+}

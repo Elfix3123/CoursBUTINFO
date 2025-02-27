@@ -4,35 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "df8d8f222db9c1ac",
+        "id": "52a5e5d9a3383454",
         "type": "tabs",
         "children": [
           {
-            "id": "fda3879804d97779",
+            "id": "d820011ca61158db",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "S3/R3.11/Propriété littéraire et artistique.md",
+                "file": "Fiches/Bonnes pratiques de sécurité.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Propriété littéraire et artistique"
-            }
-          },
-          {
-            "id": "178c6ac85d2e4554",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "S3/R3.11/Propriété industrielle.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Propriété industrielle"
+              "title": "Bonnes pratiques de sécurité"
             }
           }
         ]
@@ -54,7 +40,8 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
+                "sortOrder": "alphabetical",
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -91,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "56ee0d18a4a21d29",
@@ -176,50 +164,51 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "fda3879804d97779",
+  "active": "d820011ca61158db",
   "lastOpenFiles": [
-    "S3/R3.11/Propriété industrielle.md",
-    "S3/R3.11/Propriété littéraire et artistique.md",
-    "S3/R3.05/TD/TD03.md",
+    "Fiches/Critères qualité SQuaRE.md",
+    "Untitled.canvas",
+    "2025-02-26.md",
+    "S3/R3.04/TP06/build/_deps/googletest-src/docs/gmock_cheat_sheet.md",
+    "Fiches/Bonnes pratiques de sécurité.md",
+    "Fiches/resume-commandes.md",
+    "S4/R4.09/Qualité des données.md",
+    "S4/R4.B.11/TD3.md",
+    "S4/R4.B.11/TD2.md",
+    "S4/R4.06/Le rapport de stage.md",
+    "S4/R4.06/Bilan de SAE.md",
+    "S4/R4.07/Cours de com.md",
+    "S4/R4.08/Compte rendu.md",
+    "S1/R1.04/Variables du shell.md",
+    "Fiches/resume-commandes.txt",
+    "S1/R1.04/Shell.md",
+    "S1/R1.04/Les principales distributions Linux.md",
+    "S1/R1.04/Le rseau.md",
+    "S1/R1.04/Le logiciel libre.md",
+    "S1/R1.04/Interfaces graphiques.md",
+    "S1/R1.04/Filtres.md",
+    "S1/R1.04/Documentation en ligne.md",
+    "S1/R1.04/Distribution Linux.md",
+    "S1/R1.04/Commandes Stockage et Archivage.md",
+    "S1/R1.04/Archivage.md",
+    "S1/R1.04/R1.04.md",
+    "S4/R4.09/Qualité informatique.md",
+    "Fiches",
+    "S4/R4.B.10/hachagesalagepoivragejaimelavie",
+    "S4/R4.08",
+    "S4/R4.01/R4.08",
+    "S4/R4.07",
+    "S4/R4.09",
+    "S4/R4.03",
+    "S4/R4.B.11",
+    "S4/R4.06",
     "S3/R3.05/TD/TD03-2-1.png",
     "S3/R3.05/TD/TD03-2-3.png",
     "S3/R3.05/TD/TP03-2-1.png",
     "S3/R3.05/TD/TD03-2-2.png",
-    "S3/R3.05/TD/TD03-1.drawio",
-    "S3/R3.05/TD/Untitled Diagram.drawio",
     "S3/R3.05/TD/TD03-1.png",
     "S3/R3.05/TD/Untitled Diagram.drawio.png",
     "Untitled Diagram.drawio.png",
-    "S3/R3.05/TD/TD02.md",
-    "S3/R3.05/TD/TD01.md",
-    "Untitled.md",
-    "S3/R3.13/Vulgarisation.md",
-    "S3/R3.13/Sémiotique visuelle.md",
-    "S3/R3.13/CV&LM.md",
-    "S3/R3.13/L'entretient d'embauche.md",
-    "S3/R3.13/La Vague.md",
-    "S3/SAE3/ExpCom.md",
-    "S3/R3.05/TP/TP02/bin-clang/tableau2d-00cd7116.o.tmp",
-    "S3/R3.05/TP/TP02/bin-clang/tableau2d-9c88a0a7.o.tmp",
-    "S3/R3.05/TP/TP02/bin-clang/tableau2d.o",
-    "S3/R3.05/TP/TP02/bin-clang/tableau2d-c3823663.o.tmp",
-    "S3/R3.05/TP/TP02/bin-clang/tableau2d-685e3b23.o.tmp",
-    "S3/R3.05/TP/TP02/bin-clang/tableau2d-b8999290.o.tmp",
-    "S3/R3.05/TP/TP02/bin-clang/tableau2d-6745b1d0.o.tmp",
-    "S3/R3.05/TP/TP02/bin-gcc/tableau2d",
-    "S3/R3.06/Compte rendu.md",
-    "S3/R3.03/Untitled 1.md",
-    "S3/R3.04/rappel.md",
-    "S3/R3.05/TD01.md",
-    "S3/R3.11/RGPD.md",
-    "S3/R3.11/TD01.md",
-    "S3/R3.12/Presentation.md",
-    "S3/SAE3/B/Traitement de données.md",
-    "S3/R3.10b/Méthodes Agiles.md",
-    "S3/R3.12/Oreo.md",
-    "S3/R3.11/Untitled 1.md",
-    "S3/R3.10a/La dimension humaine du SI.md",
-    "S3/R3.10a/La dimension organisationnelle du SI.md",
     "Portfolio/img/SAE204.png",
     "Portfolio/img/SAE201.png",
     "Portfolio/img/SAE1012.png"
