@@ -1,1 +1,0 @@
-/usr/bin/g++ -g CMakeFiles/sample3_unittest.dir/samples/sample3_unittest.cc.o -o sample3_unittest  ../../../lib/libgtest_main.a ../../../lib/libgtest.a 
