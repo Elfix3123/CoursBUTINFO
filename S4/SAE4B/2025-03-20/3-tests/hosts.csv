@@ -1,0 +1,5 @@
+localhost;router;Routeur principal
+10.1.0.1;router;Routeur principal
+10.1.0.3;dns;DNS externe
+10.4.0.5;dns;DNS interne
+10.2.0.3;user;Poste utilisateur

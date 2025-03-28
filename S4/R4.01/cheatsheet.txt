@@ -1,0 +1,15 @@
+TP 1 - Introduction
+composer install : installe les dépendances
+composer require PACKAGE : installe PACKAGE
+
+TP 2 - Traductions
+php bin/console translation:extract --force LL : créé le catalogue pour la langue LL
+
+TP 3 - Controlleurs
+php bin/console make:controller
+
+TP 4 - Doctrine
+php bin/console make:entity
+php bin/console make:migration
+php bin/console doctrine:migrations:migrate
+php bin/console doctrine:fixture:load

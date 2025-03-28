@@ -1,0 +1,218 @@
+apparmor module is loaded.
+158 profiles are loaded.
+56 profiles are in enforce mode.
+   /snap/snapd/23545/usr/lib/snapd/snap-confine
+   /snap/snapd/23545/usr/lib/snapd/snap-confine//mount-namespace-capture-helper
+   /snap/snapd/23771/usr/lib/snapd/snap-confine
+   /snap/snapd/23771/usr/lib/snapd/snap-confine//mount-namespace-capture-helper
+   /usr/bin/man
+   /usr/lib/cups/backend/cups-pdf
+   /usr/lib/snapd/snap-confine
+   /usr/lib/snapd/snap-confine//mount-namespace-capture-helper
+   /usr/sbin/cups-browsed
+   /usr/sbin/cupsd
+   /usr/sbin/cupsd//third_party
+   docker-default
+   libreoffice-senddoc
+   libreoffice-soffice//gpg
+   libreoffice-xpdfimport
+   lsb_release
+   man_filter
+   man_groff
+   nvidia_modprobe
+   nvidia_modprobe//kmod
+   plasmashell
+   plasmashell//QtWebEngineProcess
+   rsyslogd
+   snap-update-ns.code
+   snap-update-ns.discord
+   snap-update-ns.firefox
+   snap-update-ns.obsidian
+   snap-update-ns.thunderbird
+   snap-update-ns.tigervnc
+   snap.discord.discord
+   snap.discord.hook.configure
+   snap.firefox.firefox
+   snap.firefox.geckodriver
+   snap.firefox.hook.configure
+   snap.firefox.hook.disconnect-plug-host-hunspell
+   snap.firefox.hook.install
+   snap.firefox.hook.post-refresh
+   snap.thunderbird.hook.configure
+   snap.thunderbird.hook.install
+   snap.thunderbird.hook.post-refresh
+   snap.thunderbird.thunderbird
+   snap.tigervnc.hook.configure
+   snap.tigervnc.tigervnc
+   tcpdump
+   ubuntu_pro_apt_news
+   ubuntu_pro_esm_cache
+   ubuntu_pro_esm_cache//apt_methods
+   ubuntu_pro_esm_cache//apt_methods_gpgv
+   ubuntu_pro_esm_cache//cloud_id
+   ubuntu_pro_esm_cache//dpkg
+   ubuntu_pro_esm_cache//ps
+   ubuntu_pro_esm_cache//ubuntu_distro_info
+   ubuntu_pro_esm_cache_systemctl
+   ubuntu_pro_esm_cache_systemd_detect_virt
+   unix-chkpwd
+   unprivileged_userns
+10 profiles are in complain mode.
+   Xorg
+   libreoffice-oosplash
+   libreoffice-soffice
+   snap.code.code
+   snap.code.url-handler
+   snap.obsidian.obsidian
+   transmission-cli
+   transmission-daemon
+   transmission-gtk
+   transmission-qt
+0 profiles are in prompt mode.
+0 profiles are in kill mode.
+92 profiles are in unconfined mode.
+   1password
+   Discord
+   MongoDB Compass
+   QtWebEngineProcess
+   balena-etcher
+   brave
+   buildah
+   busybox
+   cam
+   ch-checkns
+   ch-run
+   chrome
+   chromium
+   crun
+   devhelp
+   element-desktop
+   epiphany
+   evolution
+   firefox
+   flatpak
+   foliate
+   geary
+   github-desktop
+   goldendict
+   ipa_verify
+   kchmviewer
+   keybase
+   lc-compliance
+   libcamerify
+   linux-sandbox
+   loupe
+   lxc-attach
+   lxc-create
+   lxc-destroy
+   lxc-execute
+   lxc-stop
+   lxc-unshare
+   lxc-usernsexec
+   mmdebstrap
+   msedge
+   nautilus
+   notepadqq
+   obsidian
+   opam
+   opera
+   pageedit
+   podman
+   polypane
+   privacybrowser
+   qcam
+   qmapshack
+   qutebrowser
+   rootlesskit
+   rpm
+   rssguard
+   runc
+   sbuild
+   sbuild-abort
+   sbuild-adduser
+   sbuild-apt
+   sbuild-checkpackages
+   sbuild-clean
+   sbuild-createchroot
+   sbuild-destroychroot
+   sbuild-distupgrade
+   sbuild-hold
+   sbuild-shell
+   sbuild-unhold
+   sbuild-update
+   sbuild-upgrade
+   scide
+   signal-desktop
+   slack
+   slirp4netns
+   steam
+   stress-ng
+   surfshark
+   systemd-coredump
+   thunderbird
+   toybox
+   trinity
+   tup
+   tuxedo-control-center
+   userbindmount
+   uwsgi-core
+   vdens
+   virtiofsd
+   vivaldi-bin
+   vpnns
+   vscode
+   wike
+   wpcom
+46 processes have profiles defined.
+29 processes are in enforce mode.
+   /usr/sbin/cups-browsed (1514) 
+   /usr/sbin/cupsd (1362) 
+   /usr/lib/postgresql/17/bin/postgres (1850) docker-default
+   /usr/lib/postgresql/17/bin/postgres (1975) docker-default
+   /usr/lib/postgresql/17/bin/postgres (1976) docker-default
+   /usr/lib/postgresql/17/bin/postgres (1982) docker-default
+   /usr/lib/postgresql/17/bin/postgres (1983) docker-default
+   /usr/lib/postgresql/17/bin/postgres (1984) docker-default
+   /usr/bin/plasmashell (2292) plasmashell
+   /usr/sbin/rsyslogd (1075) rsyslogd
+   /snap/discord/231/usr/share/discord/Discord (5471) snap.discord.discord
+   /snap/discord/231/usr/share/discord/Discord (5594) snap.discord.discord
+   /snap/discord/231/usr/share/discord/Discord (5595) snap.discord.discord
+   /snap/discord/231/usr/share/discord/chrome_crashpad_handler (5614) snap.discord.discord
+   /snap/discord/231/usr/share/discord/Discord (5696) snap.discord.discord
+   /snap/discord/231/usr/share/discord/Discord (5715) snap.discord.discord
+   /snap/discord/231/usr/share/discord/Discord (6007) snap.discord.discord
+   /snap/discord/231/usr/share/discord/Discord (6287) snap.discord.discord
+   /snap/firefox/5889/usr/lib/firefox/firefox (3683) snap.firefox.firefox
+   /snap/firefox/5889/usr/lib/firefox/firefox (3869) snap.firefox.firefox
+   /snap/firefox/5889/usr/lib/firefox/firefox (3893) snap.firefox.firefox
+   /snap/firefox/5889/usr/lib/firefox/firefox (3898) snap.firefox.firefox
+   /snap/firefox/5889/usr/lib/firefox/firefox (4156) snap.firefox.firefox
+   /snap/firefox/5889/usr/lib/firefox/firefox (4725) snap.firefox.firefox
+   /snap/firefox/5889/usr/lib/firefox/firefox (4733) snap.firefox.firefox
+   /snap/firefox/5889/usr/lib/firefox/firefox (4868) snap.firefox.firefox
+   /snap/firefox/5889/usr/lib/firefox/firefox (5006) snap.firefox.firefox
+   /snap/firefox/5889/usr/lib/firefox/firefox (5023) snap.firefox.firefox
+   /snap/firefox/5889/usr/lib/firefox/firefox (5197) snap.firefox.firefox
+17 processes are in complain mode.
+   /usr/lib/xorg/Xorg (1406) Xorg
+   /snap/code/187/usr/share/code/code (5714) snap.code.code
+   /snap/code/187/usr/share/code/code (5719) snap.code.code
+   /snap/code/187/usr/share/code/code (5720) snap.code.code
+   /snap/code/187/usr/share/code/chrome_crashpad_handler (5808) snap.code.code
+   /snap/code/187/usr/share/code/code (5881) snap.code.code
+   /snap/code/187/usr/share/code/code (6052) snap.code.code
+   /snap/code/187/usr/share/code/code (6097) snap.code.code
+   /snap/code/187/usr/share/code/code (6236) snap.code.code
+   /snap/code/187/usr/share/code/code (6237) snap.code.code
+   /snap/code/187/usr/share/code/code (6238) snap.code.code
+   /snap/obsidian/45/obsidian (5624) snap.obsidian.obsidian
+   /snap/obsidian/45/obsidian (5721) snap.obsidian.obsidian
+   /snap/obsidian/45/obsidian (5722) snap.obsidian.obsidian
+   /snap/obsidian/45/obsidian (6072) snap.obsidian.obsidian
+   /snap/obsidian/45/obsidian (6122) snap.obsidian.obsidian
+   /snap/obsidian/45/obsidian (6158) snap.obsidian.obsidian
+0 processes are in prompt mode.
+0 processes are in kill mode.
+0 processes are unconfined but have a profile defined.
+0 processes are in mixed mode.

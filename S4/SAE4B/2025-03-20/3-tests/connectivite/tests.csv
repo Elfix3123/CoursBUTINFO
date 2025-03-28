@@ -1,0 +1,19 @@
+# Connexion depuis le routeur principal
+10.1.0.1;10.1.0.3;t
+10.1.0.1;10.4.0.5;t
+10.1.0.1;10.2.0.3;t
+
+# Connexion depuis le DNS externe
+10.1.0.3;10.1.0.1;t
+10.1.0.3;10.4.0.5;f
+10.1.0.3;10.2.0.3;f
+
+# Connexion depuis le DNS interne
+10.4.0.5;10.1.0.3;t
+10.4.0.5;10.1.0.1;t
+10.4.0.5;10.2.0.3;t
+
+# Connexion depuis un poste utilisateur
+10.2.0.3;10.4.0.5;t
+10.2.0.3;10.1.0.3;t
+10.2.0.3;10.1.0.1;t

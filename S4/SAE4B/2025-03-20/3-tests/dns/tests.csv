@@ -1,0 +1,19 @@
+# DNS interne en local
+10.4.0.5;localhost;google.com;t
+10.4.0.5;localhost;dns.local;t
+
+# Accès au DNS interne depuis un poste
+10.2.0.3;10.4.0.5;google.com;t 
+
+# Accès au DNS interne depuis l'exterieur
+localhost;10.4.0.5;google.com;f
+
+# DNS externe en local
+10.1.0.3;localhost;google.com;t
+10.1.0.3;localhost;dns.local;f
+
+# Accès au DNS externe depuis un poste
+10.2.0.3;10.1.0.3;google.com;t 
+
+# Accès au DNS externe depuis l'exterieur
+localhost;10.1.0.3;google.com;t

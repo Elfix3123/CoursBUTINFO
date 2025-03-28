@@ -1,0 +1,43 @@
+hosts:
+  localhost:
+    name: Hyperviseur
+    interfaces:
+      vmbr1:
+        ip: 192.168.42.254/24
+  router:
+    name: Routeur principal
+    user: router
+    sshport: 22
+    interfaces:
+      ens18:
+        ip: 192.168.42.2/24
+      ens19:
+        ip: 10.1.0.1/16
+      ens20:
+        ip: 10.5.0.1/16
+  dnsext:
+    name: DNS externe
+    user: dns
+    sshport: 22
+    interfaces:
+      ens18:
+        ip: 10.1.0.3/24
+    itinerary:
+      - router
+  dnsint:
+    name: DNS interne
+    user: dns
+    sshport: 22
+    interfaces:
+      ens18:
+        ip: 10.4.0.5/16
+    itinerary:
+      - router
+  poste:
+    name: Poste utilisateur
+    user: user
+    interfaces:
+      ens18:
+
+tests:
+  - cmd: ping {}
