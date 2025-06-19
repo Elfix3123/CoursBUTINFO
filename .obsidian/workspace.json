@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "3a129256057ce699",
+        "id": "35bd3498668ca60c",
         "type": "tabs",
         "children": [
           {
-            "id": "68c85278ac55e017",
+            "id": "6b242f122276cf89",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Fiches/resume-commandes.md",
+                "file": "S4/R4.07/Cours de com.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "resume-commandes"
+              "title": "Cours de com"
             }
           }
         ]
@@ -163,28 +163,36 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "68c85278ac55e017",
+  "active": "6b242f122276cf89",
   "lastOpenFiles": [
+    "S3/R3.13/Vulgarisation.md",
+    "S3/R3.13/Sémiotique visuelle.md",
+    "S3/R3.13/CV&LM.md",
+    "S3/R3.13/La Vague.md",
+    "S3/R3.13/L'entretient d'embauche.md",
+    "S3/R3.12/Presentation.md",
+    "S4/R4.07/Cours de com.md",
+    "Fiches/Bonnes pratiques de sécurité.md",
+    "Fiches/Critères qualité SQuaRE.md",
+    "S4/SAE4B/SAE4B.zip",
+    "S4/SAE4B/zinkYOJE",
+    "S4/SAE4B/L2/zihaj4IL",
+    "S4/SAE4B/L2/4-automatisation/S4B_Livrable_4.pdf",
+    "S4/SAE4B/L2/5-rapport/S4B_Livrable_5.pdf",
+    "S4/SAE4B/L2/3-tests/README.md",
+    "S4/SAE4B/L2/3-tests/ldap/ldapHosts.csv",
+    "Fiches/Logiciels/hping3.md",
+    "Fiches/resume-commandes.md",
     "S4/R4.B.10/Compte rendu.md",
     "S4/R4.B.10/aa-status.txt",
-    "S4/R4.07/Cours de com.md",
     "S4/R4.B.10/TP06.md",
     "S4/R4.B.11/TD2.md",
-    "Fiches/Bonnes pratiques de sécurité.md",
     "Fiches/Logiciels/nftables.md",
     "S4/R4.03/TD3.md",
     "S4/SAE4B/tests/utils/CSVReader.py",
     "S4/SAE4B/tests/utils",
     "S4/SAE4B/utils",
-    "S4/SAE4B/tests/CSVReader.py",
-    "S4/SAE4B/tests/connectivite/connectivite.py",
-    "S4/SAE4B/tests/dns/dns.py",
-    "S4/SAE4B/tests/hosts.csv",
-    "S4/SAE4B/tests/hosts.py",
-    "S4/SAE4B/hosts.py",
     "S4/R4.03/TD1.md",
-    "Fiches/Critères qualité SQuaRE.md",
-    "Fiches/resume-commandes.md",
     "Documentation.md",
     "Untitled.canvas",
     "2025-02-26.md",
@@ -194,14 +202,6 @@
     "S4/R4.B.11/TD3.md",
     "S4/R4.06/Le rapport de stage.md",
     "S4/R4.06/Bilan de SAE.md",
-    "S4/R4.08/Compte rendu.md",
-    "S1/R1.04/Variables du shell.md",
-    "S1/R1.04/Shell.md",
-    "S1/R1.04/Les principales distributions Linux.md",
-    "S1/R1.04/Le rseau.md",
-    "S1/R1.04/Le logiciel libre.md",
-    "S1/R1.04/Interfaces graphiques.md",
-    "S1/R1.04/Filtres.md",
     "S3/R3.05/TD/TD03-2-1.png",
     "S3/R3.05/TD/TD03-2-3.png",
     "S3/R3.05/TD/TP03-2-1.png",

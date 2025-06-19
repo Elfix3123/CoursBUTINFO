@@ -1,0 +1,21 @@
+# DNS interne en local
+10.4.0.5;localhost;google.com;t
+10.4.0.5;localhost;dns.local;t
+10.4.0.5;localhost;wiki.voiron.fr;t
+
+# Accès au DNS interne depuis un poste
+10.2.0.3;10.4.0.5;wiki.voiron.fr;t
+
+# Accès au DNS interne depuis l'exterieur
+192.168.42.254;10.4.0.5;wiki.voiron.fr;f
+
+# DNS externe en local
+10.1.0.3;localhost;google.com;t
+10.1.0.3;localhost;dns.local;f
+10.1.0.3;localhost;wiki.voiron.fr;t
+
+# Accès au DNS externe depuis un poste
+10.2.0.3;10.1.0.3;wiki.voiron.fr;t 
+
+# Accès au DNS externe depuis l'exterieur
+192.168.42.254;10.1.0.3;wiki.voiron.fr;t

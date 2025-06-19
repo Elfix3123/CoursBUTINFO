@@ -1,0 +1,7 @@
+# Accès au wiki depuis un poste utilisateur
+10.2.0.3;https://wiki.voiron.fr/;t
+10.2.0.3;http://wiki.voiron.fr/;t
+
+# Accès au wiki depuis l'exterieur
+192.168.42.254;https://wiki.voiron.fr/;t
+192.168.42.254;http://wiki.voiron.fr/;t

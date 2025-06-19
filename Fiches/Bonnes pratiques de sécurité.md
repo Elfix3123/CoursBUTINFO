@@ -1,4 +1,4 @@
-# Organisation de la sécurité
+		# Organisation de la sécurité
 | Pratique                                 | Opérationnalisation                                                                                                                        |
 | :--------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------- |
 | Répartition des rôles et responsabilités | Définition du périmètre du SGSI (acteurs)<br>Définition des tâches du SGSI<br>Outils organisationnels (RACI)                               |
